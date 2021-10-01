@@ -1,0 +1,11 @@
+﻿#container {
+    max-width: 1400px;
+    width: 1400px;
+    height: 100%;
+    margin: 1em auto;
+}
+
+.scrolling-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}

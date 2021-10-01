@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Usuarios</h2>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-header">
+            USUARIO
+        </div>
+        <div class="card-body">
+            <table id="tblUsuario" class="table">
+                <thead>
+                    <tr>
+
+                        <th class="dni">DNI</th>
+                        <th class="nombre">Nombres</th>
+                        <th class="apellidos">Apellidos</th>
+                        <th class="usuario">Usuario</th>
+                        <th class="correo">Correo</th>
+                        <th class="profesion">Profesion</th>
+                        <th class="telefono">Telefono</th>
+                        <th class="action">Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Rol</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form">
+                            <div>
+                                <label for="txtDNI">Dni:</label>
+                                <input type="text" class="form-control" id="txtDni" />
+                            </div>
+                            <div class="form-group">
+                                <label for="txtNombre">Nombre:</label>
+                                <input type="text" class="form-control" id="txtNombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtApellidos">Apellidos:</label>
+                                <input type="text" class="form-control" id="txtApellidos">
+                            </div>
+                            <div class="form-group">
+                                <label for="txUsuario">Usuario:</label>
+                                <input type="text" class="form-control" id="txUsuario">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtPassword">Password:</label>
+                                <input type="password" class="form-control" id="txtPassword">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtProfesion">firma:</label>
+                                <input type="text" class="form-control" id="txtFirmaDigital">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtProfesion">Profesion:</label>
+                                <input type="text" class="form-control" id="txtProfesion">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtTelefono">Telefono:</label>
+                                <input type="text" class="form-control" id="txtTelefono">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtCorreo">correo:</label>
+                                <input type="text" class="form-control" id="txtCorreo">
+                            </div>                           
+                            <div class="form-group">
+                                <label for="fileImagen">Imagen:</label>
+                                <input type="file" class="form-control" id="fileImagen">
+                            </div>
+                            
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Views/Crear_Usuario.js"></script>

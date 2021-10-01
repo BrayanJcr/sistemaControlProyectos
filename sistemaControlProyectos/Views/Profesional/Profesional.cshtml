@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Profesional";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Profesionales</h2>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-header">
+            Profesional
+        </div>
+        <div class="card-body">
+            <table id="tblProfesional" class="table">
+                <thead>
+                    <tr>
+
+                        <th class="dni">DNI</th>
+                        <th class="nombre">Nombres</th>
+                        <th class="apellidos">Apellidos</th>
+                        <th class="profesion">Profesion</th>
+                        <th class="telefono">Telefono</th>
+                        <th class="correo">Correo</th>
+                        <th class="cargo">Cargo</th>
+                        <th class="area">Area</th>
+                        <th class="action">Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Rol</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form">
+                            <div>
+                                <label for="txtDni">Dni:</label>
+                                <input type="text" class="form-control" id="txtDni" />
+                            </div>
+                            <div class="form-group">
+                                <label for="txtCargo">Cargo:</label>
+                                <select class="form-control" id="cboCargo" name="Cargo"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtArea">Area:</label>
+                                <select class="form-control" id="cboArea" name="Area"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtCorreo">Imagen:</label>
+                                <input type="file" class="form-control" id="fileImagen">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtReporte">Reporte:</label>
+                                <input type="file" class="form-control" id="fileReporte">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Views/Crear_Profesional.js"></script>

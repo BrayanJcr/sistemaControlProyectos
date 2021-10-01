@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Gantt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="scrolling-container">
+    <div id="container"></div>
+</div>
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/Views/Gantt.js")" type="text/javascript"></script>
+}

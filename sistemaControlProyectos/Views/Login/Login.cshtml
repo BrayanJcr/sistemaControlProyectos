@@ -1,0 +1,60 @@
+﻿@model sistemaControlProyectos.Models.tblProfesional
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Loguearse.cshtml";
+}
+
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="w3-container w3-center w3-animate-left">
+        <div class="container login-container">
+            <div class="row">
+                <div class="col-md-6 login-form-2">
+                    <h3>Firma Digital</h3>
+                    <div class="w3-container">
+                        <br>
+                        <ul class="w3-ul">
+                            <li class="w3-jumbo"><i class="glyphicon glyphicon-upload"></i><spam>Firma Digital</spam></li>
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-6 login-form-1" id="form">
+                    <h3>Inicie Sesion</h3>
+
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="username" name="username" required />
+
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" placeholder="password" name="password" required />
+
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btnSubmit" value="Login" />
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="ForgetPwd">Olvido su contraseña?</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

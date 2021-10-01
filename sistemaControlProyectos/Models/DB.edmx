@@ -1,0 +1,2070 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBControlProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblActividad">
+          <Key>
+            <PropertyRef Name="IDActividad" />
+          </Key>
+          <Property Name="IDActividad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titActividad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fechaInicio" Type="date" Nullable="false" />
+          <Property Name="fechaFin" Type="date" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+          <Property Name="creador" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="proceso" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDProyecto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblArea">
+          <Key>
+            <PropertyRef Name="IDArea" />
+          </Key>
+          <Property Name="IDArea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdNomAreaPadre" Type="int" />
+          <Property Name="nomArea" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCargo">
+          <Key>
+            <PropertyRef Name="IDCargo" />
+          </Key>
+          <Property Name="IDCargo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomCargo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCuadernoObra">
+          <Key>
+            <PropertyRef Name="IDCuaderObra" />
+          </Key>
+          <Property Name="IDCuaderObra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empresa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="contratista" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Asientos" Type="int" Nullable="false" />
+          <Property Name="TituloAsi" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TipAsi" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDProyecto" Type="int" Nullable="false" />
+          <Property Name="IDDocumento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCuadernoProfesional">
+          <Key>
+            <PropertyRef Name="IDCuaderno_Profesional" />
+          </Key>
+          <Property Name="IDCuaderno_Profesional" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDProfesional" Type="int" Nullable="false" />
+          <Property Name="IDCuaderObra" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDocumento">
+          <Key>
+            <PropertyRef Name="IDDoc" />
+          </Key>
+          <Property Name="IDDoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreDoc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RealNomb" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOC" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProfesional">
+          <Key>
+            <PropertyRef Name="IDProfesional" />
+          </Key>
+          <Property Name="IDProfesional" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DNI" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="IDCargo" Type="int" Nullable="false" />
+          <Property Name="IDArea" Type="int" Nullable="false" />
+          <Property Name="IDReporte" Type="int" />
+        </EntityType>
+        <EntityType Name="tblProfesional_Actividad">
+          <Key>
+            <PropertyRef Name="IDProfActividad" />
+          </Key>
+          <Property Name="IDProfActividad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDProfesional" Type="int" Nullable="false" />
+          <Property Name="IDActividad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProfesional_Reunion">
+          <Key>
+            <PropertyRef Name="IDProfesional_reunion" />
+          </Key>
+          <Property Name="IDProfesional_reunion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDProfesional" Type="int" Nullable="false" />
+          <Property Name="IDReunion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProyecto">
+          <Key>
+            <PropertyRef Name="IDProyecto" />
+          </Key>
+          <Property Name="IDProyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titProyecto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fechaIniPro" Type="date" Nullable="false" />
+          <Property Name="fechaFinPro" Type="date" Nullable="false" />
+          <Property Name="Ubicacion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="distrito" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="departamento" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="imagen" Type="image" />
+          <Property Name="seguimiento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDProfesional" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRecurso">
+          <Key>
+            <PropertyRef Name="IDRecurso" />
+          </Key>
+          <Property Name="IDRecurso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomRecurso" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRecurso_Actividad">
+          <Key>
+            <PropertyRef Name="idRecursoActividad" />
+          </Key>
+          <Property Name="idRecursoActividad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDRecurso" Type="int" Nullable="false" />
+          <Property Name="IDActividad" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="costo" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblReporte">
+          <Key>
+            <PropertyRef Name="IDReport" />
+          </Key>
+          <Property Name="IDReport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaRep" Type="date" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="IDDoc" Type="int" Nullable="false" />
+          <Property Name="IDProfesional" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblReunion">
+          <Key>
+            <PropertyRef Name="IDReunion" />
+          </Key>
+          <Property Name="IDReunion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipoDeReunion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="ubicacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tema" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+          <Property Name="IDProyecto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="DNI" />
+          </Key>
+          <Property Name="DNI" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="contraseña" Type="varbinary" MaxLength="8000" Nullable="false" />
+          <Property Name="firma" Type="varchar" MaxLength="50" />
+          <Property Name="profesion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="50" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" />
+          <Property Name="usrImagen" Type="image" />
+        </EntityType>
+        <Association Name="FK__tblActivi__IDPro__49C3F6B7">
+          <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
+          <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProyecto">
+              <PropertyRef Name="IDProyecto" />
+            </Principal>
+            <Dependent Role="tblActividad">
+              <PropertyRef Name="IDProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCuader__IDCua__5165187F">
+          <End Role="tblCuadernoObra" Type="Self.tblCuadernoObra" Multiplicity="1" />
+          <End Role="tblCuadernoProfesional" Type="Self.tblCuadernoProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCuadernoObra">
+              <PropertyRef Name="IDCuaderObra" />
+            </Principal>
+            <Dependent Role="tblCuadernoProfesional">
+              <PropertyRef Name="IDCuaderObra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCuader__IDDoc__4222D4EF">
+          <End Role="tblDocumento" Type="Self.tblDocumento" Multiplicity="1" />
+          <End Role="tblCuadernoObra" Type="Self.tblCuadernoObra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDocumento">
+              <PropertyRef Name="IDDoc" />
+            </Principal>
+            <Dependent Role="tblCuadernoObra">
+              <PropertyRef Name="IDDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCuader__IDPro__412EB0B6">
+          <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
+          <End Role="tblCuadernoObra" Type="Self.tblCuadernoObra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProyecto">
+              <PropertyRef Name="IDProyecto" />
+            </Principal>
+            <Dependent Role="tblCuadernoObra">
+              <PropertyRef Name="IDProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCuader__IDPro__5070F446">
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
+          <End Role="tblCuadernoProfesional" Type="Self.tblCuadernoProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProfesional">
+              <PropertyRef Name="IDProfesional" />
+            </Principal>
+            <Dependent Role="tblCuadernoProfesional">
+              <PropertyRef Name="IDProfesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDAct__4D94879B">
+          <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="1" />
+          <End Role="tblProfesional_Actividad" Type="Self.tblProfesional_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblActividad">
+              <PropertyRef Name="IDActividad" />
+            </Principal>
+            <Dependent Role="tblProfesional_Actividad">
+              <PropertyRef Name="IDActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDAre__45F365D3">
+          <End Role="tblArea" Type="Self.tblArea" Multiplicity="1" />
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArea">
+              <PropertyRef Name="IDArea" />
+            </Principal>
+            <Dependent Role="tblProfesional">
+              <PropertyRef Name="IDArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDCar__44FF419A">
+          <End Role="tblCargo" Type="Self.tblCargo" Multiplicity="1" />
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCargo">
+              <PropertyRef Name="IDCargo" />
+            </Principal>
+            <Dependent Role="tblProfesional">
+              <PropertyRef Name="IDCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDPro__4BAC3F29">
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
+          <End Role="tblProfesional_Reunion" Type="Self.tblProfesional_Reunion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProfesional">
+              <PropertyRef Name="IDProfesional" />
+            </Principal>
+            <Dependent Role="tblProfesional_Reunion">
+              <PropertyRef Name="IDProfesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDPro__4CA06362">
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
+          <End Role="tblProfesional_Actividad" Type="Self.tblProfesional_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProfesional">
+              <PropertyRef Name="IDProfesional" />
+            </Principal>
+            <Dependent Role="tblProfesional_Actividad">
+              <PropertyRef Name="IDProfesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDRep__46E78A0C">
+          <End Role="tblReporte" Type="Self.tblReporte" Multiplicity="0..1" />
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReporte">
+              <PropertyRef Name="IDReport" />
+            </Principal>
+            <Dependent Role="tblProfesional">
+              <PropertyRef Name="IDReporte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDReu__4AB81AF0">
+          <End Role="tblReunion" Type="Self.tblReunion" Multiplicity="1" />
+          <End Role="tblProfesional_Reunion" Type="Self.tblProfesional_Reunion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReunion">
+              <PropertyRef Name="IDReunion" />
+            </Principal>
+            <Dependent Role="tblProfesional_Reunion">
+              <PropertyRef Name="IDReunion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfesio__DNI__30F848ED">
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="DNI" />
+            </Principal>
+            <Dependent Role="tblProfesional">
+              <PropertyRef Name="DNI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProyec__IDPro__440B1D61">
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
+          <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProfesional">
+              <PropertyRef Name="IDProfesional" />
+            </Principal>
+            <Dependent Role="tblProyecto">
+              <PropertyRef Name="IDProfesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblRecurs__IDAct__4E88ABD4">
+          <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="1" />
+          <End Role="tblRecurso_Actividad" Type="Self.tblRecurso_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblActividad">
+              <PropertyRef Name="IDActividad" />
+            </Principal>
+            <Dependent Role="tblRecurso_Actividad">
+              <PropertyRef Name="IDActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblRecurs__IDRec__4F7CD00D">
+          <End Role="tblRecurso" Type="Self.tblRecurso" Multiplicity="1" />
+          <End Role="tblRecurso_Actividad" Type="Self.tblRecurso_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRecurso">
+              <PropertyRef Name="IDRecurso" />
+            </Principal>
+            <Dependent Role="tblRecurso_Actividad">
+              <PropertyRef Name="IDRecurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblReport__IDDoc__4316F928">
+          <End Role="tblDocumento" Type="Self.tblDocumento" Multiplicity="1" />
+          <End Role="tblReporte" Type="Self.tblReporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDocumento">
+              <PropertyRef Name="IDDoc" />
+            </Principal>
+            <Dependent Role="tblReporte">
+              <PropertyRef Name="IDDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblReport__IDPro__47DBAE45">
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
+          <End Role="tblReporte" Type="Self.tblReporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProfesional">
+              <PropertyRef Name="IDProfesional" />
+            </Principal>
+            <Dependent Role="tblReporte">
+              <PropertyRef Name="IDProfesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblReunio__IDPro__48CFD27E">
+          <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
+          <End Role="tblReunion" Type="Self.tblReunion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProyecto">
+              <PropertyRef Name="IDProyecto" />
+            </Principal>
+            <Dependent Role="tblReunion">
+              <PropertyRef Name="IDProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdNomAreaPadre">
+          <End Role="tblArea" Type="Self.tblArea" Multiplicity="0..1" />
+          <End Role="tblArea1" Type="Self.tblArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArea">
+              <PropertyRef Name="IDArea" />
+            </Principal>
+            <Dependent Role="tblArea1">
+              <PropertyRef Name="IdNomAreaPadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_A_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="titulo" Type="varchar" Mode="In" />
+          <Parameter Name="fechaIni" Type="date" Mode="In" />
+          <Parameter Name="fechaFin" Type="date" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
+          <Parameter Name="creador" Type="varchar" Mode="In" />
+          <Parameter Name="proceso" Type="varchar" Mode="In" />
+          <Parameter Name="IDProyecto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_A_AREA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idNomAreaPadre" Type="int" Mode="In" />
+          <Parameter Name="nomArea" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_A_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_A_CuadernodeObra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="empresa" Type="varchar" Mode="In" />
+          <Parameter Name="contratista" Type="varchar" Mode="In" />
+          <Parameter Name="Asientos" Type="int" Mode="In" />
+          <Parameter Name="TituloAsi" Type="varchar" Mode="In" />
+          <Parameter Name="TipAsi" Type="varchar" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+          <Parameter Name="descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="estado" Type="varchar" Mode="In" />
+          <Parameter Name="IDProyecto" Type="int" Mode="In" />
+          <Parameter Name="IDDocumento" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_A_CUADERNOPROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProfesional" Type="int" Mode="In" />
+          <Parameter Name="IDCuaderObra" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_A_DOCUMENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDDoc" Type="int" Mode="In" />
+          <Parameter Name="NombreDoc" Type="varchar" Mode="In" />
+          <Parameter Name="RealNomb" Type="varchar" Mode="In" />
+          <Parameter Name="DOC" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_A_PROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DNI" Type="int" Mode="In" />
+          <Parameter Name="IDCargo" Type="int" Mode="In" />
+          <Parameter Name="IDArea" Type="int" Mode="In" />
+          <Parameter Name="IDReporte" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_A_ProfesionalActividad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProfActividad" Type="int" Mode="In" />
+          <Parameter Name="IDProfesional" Type="int" Mode="In" />
+          <Parameter Name="IDActividad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_A_ProfesionalReunion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProfesional_reunion" Type="int" Mode="In" />
+          <Parameter Name="IDProfesional" Type="int" Mode="In" />
+          <Parameter Name="IDReunion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_A_PROYECTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProyecto" Type="int" Mode="In" />
+          <Parameter Name="titulo" Type="varchar" Mode="In" />
+          <Parameter Name="fechaIniPro" Type="date" Mode="In" />
+          <Parameter Name="fechaFinPro" Type="date" Mode="In" />
+          <Parameter Name="Ubicacion" Type="varchar" Mode="In" />
+          <Parameter Name="distrito" Type="varchar" Mode="In" />
+          <Parameter Name="departamento" Type="varchar" Mode="In" />
+          <Parameter Name="imagen" Type="image" Mode="In" />
+          <Parameter Name="seguimiento" Type="varchar" Mode="In" />
+          <Parameter Name="IDProfesional" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_A_RECURSO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDRecurso" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_A_RECURSO_Actividad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idRecursoActividad" Type="int" Mode="In" />
+          <Parameter Name="IDRecurso" Type="int" Mode="In" />
+          <Parameter Name="IDActividad" Type="int" Mode="In" />
+          <Parameter Name="cantidad" Type="int" Mode="In" />
+          <Parameter Name="costo" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="SP_A_REPORTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaRep" Type="date" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Estado" Type="varchar" Mode="In" />
+          <Parameter Name="IDDoc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_A_REUNION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDReunion" Type="int" Mode="In" />
+          <Parameter Name="tipoDeReunion" Type="varchar" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+          <Parameter Name="ubicacion" Type="varchar" Mode="In" />
+          <Parameter Name="tema" Type="varchar" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
+          <Parameter Name="IDProyecto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_C_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_C_AREA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_C_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_C_CUADERNAPROPROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_C_CuadernodeObra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_C_DOCUMENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_C_PROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_C_ProfesionalActividad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_C_PROFESIONALID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProfesional" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_C_ProfesionalReunion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_C_PROYECTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_C_RECURSO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_C_RECURSO_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_C_REPORTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_C_REUNION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_E_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDActividad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_E_AREA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDArea" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_E_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDCargo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_E_CuadernodeObra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDCuaderObra" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_E_CUADERNOPROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDCuaderno_Profesional" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_E_DOCUMENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDDoc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_E_PROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProfesional" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_E_ProfesionalActividad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProfActividad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_E_ProfesionalReunion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProfesional_reunion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_E_PROYECTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProyecto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_E_RECURSO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDRecurso" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_E_RECURSO_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idRecursoActividad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_E_Reporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDReport" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_E_REUNION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDReunion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_M_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDActividad" Type="int" Mode="In" />
+          <Parameter Name="titulo" Type="varchar" Mode="In" />
+          <Parameter Name="fechaIni" Type="date" Mode="In" />
+          <Parameter Name="fechaFin" Type="date" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
+          <Parameter Name="creador" Type="varchar" Mode="In" />
+          <Parameter Name="proceso" Type="varchar" Mode="In" />
+          <Parameter Name="IDProyecto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_M_AREA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDArea" Type="int" Mode="In" />
+          <Parameter Name="idNombreArea" Type="int" Mode="In" />
+          <Parameter Name="nomArea" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_M_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDCargo" Type="int" Mode="In" />
+          <Parameter Name="nomCargo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_M_CuadernodeObra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDCuaderObra" Type="int" Mode="In" />
+          <Parameter Name="empresa" Type="varchar" Mode="In" />
+          <Parameter Name="contratista" Type="varchar" Mode="In" />
+          <Parameter Name="Asientos" Type="int" Mode="In" />
+          <Parameter Name="TituloAsi" Type="varchar" Mode="In" />
+          <Parameter Name="TipAsi" Type="varchar" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+          <Parameter Name="descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="estado" Type="varchar" Mode="In" />
+          <Parameter Name="IDProyecto" Type="int" Mode="In" />
+          <Parameter Name="IDDocumento" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_M_CuadernoProfesional" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDCuaderno_Profesional" Type="int" Mode="In" />
+          <Parameter Name="idProfesional" Type="int" Mode="In" />
+          <Parameter Name="IDCuaderObra" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_M_DOCUMENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDDoc" Type="int" Mode="In" />
+          <Parameter Name="NombreDoc" Type="varchar" Mode="In" />
+          <Parameter Name="RealNomb" Type="varchar" Mode="In" />
+          <Parameter Name="DOC" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_M_PROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DNI" Type="int" Mode="In" />
+          <Parameter Name="IDCargo" Type="int" Mode="In" />
+          <Parameter Name="IDArea" Type="int" Mode="In" />
+          <Parameter Name="IDReporte" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_M_ProfesionalActividad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProfActividad" Type="int" Mode="In" />
+          <Parameter Name="IDProfesional" Type="int" Mode="In" />
+          <Parameter Name="IDActividad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_M_ProfesionalReunion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProfesional_reunion" Type="int" Mode="In" />
+          <Parameter Name="IDProfesional" Type="int" Mode="In" />
+          <Parameter Name="IDReunion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_M_PROYECTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProyecto" Type="int" Mode="In" />
+          <Parameter Name="titulo" Type="varchar" Mode="In" />
+          <Parameter Name="fechaIniPro" Type="date" Mode="In" />
+          <Parameter Name="fechaFinPro" Type="date" Mode="In" />
+          <Parameter Name="Ubicacion" Type="varchar" Mode="In" />
+          <Parameter Name="distrito" Type="varchar" Mode="In" />
+          <Parameter Name="departamento" Type="varchar" Mode="In" />
+          <Parameter Name="imagen" Type="image" Mode="In" />
+          <Parameter Name="seguimiento" Type="varchar" Mode="In" />
+          <Parameter Name="IDProfesional" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_M_RECURSO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDRecurso" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_M_RECURSO_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idRecursoActividad" Type="int" Mode="In" />
+          <Parameter Name="IDRecurso" Type="int" Mode="In" />
+          <Parameter Name="IDActividad" Type="int" Mode="In" />
+          <Parameter Name="cantidad" Type="int" Mode="In" />
+          <Parameter Name="costo" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="SP_M_REPORTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDReport" Type="int" Mode="In" />
+          <Parameter Name="FechaRep" Type="date" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="estado" Type="varchar" Mode="In" />
+          <Parameter Name="IDDoc" Type="int" Mode="In" />
+          <Parameter Name="IDProfesional" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_M_REUNION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDReunion" Type="int" Mode="In" />
+          <Parameter Name="tipoDeReunion" Type="varchar" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+          <Parameter Name="ubicacion" Type="varchar" Mode="In" />
+          <Parameter Name="tema" Type="varchar" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
+          <Parameter Name="IDProyecto" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DBControlProyectoModelStoreContainer">
+          <EntitySet Name="tblActividad" EntityType="Self.tblActividad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblArea" EntityType="Self.tblArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCargo" EntityType="Self.tblCargo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCuadernoObra" EntityType="Self.tblCuadernoObra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCuadernoProfesional" EntityType="Self.tblCuadernoProfesional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDocumento" EntityType="Self.tblDocumento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProfesional" EntityType="Self.tblProfesional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProfesional_Actividad" EntityType="Self.tblProfesional_Actividad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProfesional_Reunion" EntityType="Self.tblProfesional_Reunion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProyecto" EntityType="Self.tblProyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRecurso" EntityType="Self.tblRecurso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRecurso_Actividad" EntityType="Self.tblRecurso_Actividad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblReporte" EntityType="Self.tblReporte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblReunion" EntityType="Self.tblReunion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblActivi__IDPro__49C3F6B7" Association="Self.FK__tblActivi__IDPro__49C3F6B7">
+            <End Role="tblProyecto" EntitySet="tblProyecto" />
+            <End Role="tblActividad" EntitySet="tblActividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCuader__IDCua__5165187F" Association="Self.FK__tblCuader__IDCua__5165187F">
+            <End Role="tblCuadernoObra" EntitySet="tblCuadernoObra" />
+            <End Role="tblCuadernoProfesional" EntitySet="tblCuadernoProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCuader__IDDoc__4222D4EF" Association="Self.FK__tblCuader__IDDoc__4222D4EF">
+            <End Role="tblDocumento" EntitySet="tblDocumento" />
+            <End Role="tblCuadernoObra" EntitySet="tblCuadernoObra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCuader__IDPro__412EB0B6" Association="Self.FK__tblCuader__IDPro__412EB0B6">
+            <End Role="tblProyecto" EntitySet="tblProyecto" />
+            <End Role="tblCuadernoObra" EntitySet="tblCuadernoObra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCuader__IDPro__5070F446" Association="Self.FK__tblCuader__IDPro__5070F446">
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+            <End Role="tblCuadernoProfesional" EntitySet="tblCuadernoProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDAct__4D94879B" Association="Self.FK__tblProfes__IDAct__4D94879B">
+            <End Role="tblActividad" EntitySet="tblActividad" />
+            <End Role="tblProfesional_Actividad" EntitySet="tblProfesional_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDAre__45F365D3" Association="Self.FK__tblProfes__IDAre__45F365D3">
+            <End Role="tblArea" EntitySet="tblArea" />
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDCar__44FF419A" Association="Self.FK__tblProfes__IDCar__44FF419A">
+            <End Role="tblCargo" EntitySet="tblCargo" />
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDPro__4BAC3F29" Association="Self.FK__tblProfes__IDPro__4BAC3F29">
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+            <End Role="tblProfesional_Reunion" EntitySet="tblProfesional_Reunion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDPro__4CA06362" Association="Self.FK__tblProfes__IDPro__4CA06362">
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+            <End Role="tblProfesional_Actividad" EntitySet="tblProfesional_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDRep__46E78A0C" Association="Self.FK__tblProfes__IDRep__46E78A0C">
+            <End Role="tblReporte" EntitySet="tblReporte" />
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDReu__4AB81AF0" Association="Self.FK__tblProfes__IDReu__4AB81AF0">
+            <End Role="tblReunion" EntitySet="tblReunion" />
+            <End Role="tblProfesional_Reunion" EntitySet="tblProfesional_Reunion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfesio__DNI__30F848ED" Association="Self.FK__tblProfesio__DNI__30F848ED">
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProyec__IDPro__440B1D61" Association="Self.FK__tblProyec__IDPro__440B1D61">
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+            <End Role="tblProyecto" EntitySet="tblProyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblRecurs__IDAct__4E88ABD4" Association="Self.FK__tblRecurs__IDAct__4E88ABD4">
+            <End Role="tblActividad" EntitySet="tblActividad" />
+            <End Role="tblRecurso_Actividad" EntitySet="tblRecurso_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblRecurs__IDRec__4F7CD00D" Association="Self.FK__tblRecurs__IDRec__4F7CD00D">
+            <End Role="tblRecurso" EntitySet="tblRecurso" />
+            <End Role="tblRecurso_Actividad" EntitySet="tblRecurso_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblReport__IDDoc__4316F928" Association="Self.FK__tblReport__IDDoc__4316F928">
+            <End Role="tblDocumento" EntitySet="tblDocumento" />
+            <End Role="tblReporte" EntitySet="tblReporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblReport__IDPro__47DBAE45" Association="Self.FK__tblReport__IDPro__47DBAE45">
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+            <End Role="tblReporte" EntitySet="tblReporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblReunio__IDPro__48CFD27E" Association="Self.FK__tblReunio__IDPro__48CFD27E">
+            <End Role="tblProyecto" EntitySet="tblProyecto" />
+            <End Role="tblReunion" EntitySet="tblReunion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdNomAreaPadre" Association="Self.FK_IdNomAreaPadre">
+            <End Role="tblArea" EntitySet="tblArea" />
+            <End Role="tblArea1" EntitySet="tblArea" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBControlProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblActividad">
+          <Key>
+            <PropertyRef Name="IDActividad" />
+          </Key>
+          <Property Name="IDActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titActividad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaFin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="creador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="proceso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDProyecto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblActivi__IDPro__49C3F6B7" FromRole="tblActividad" ToRole="tblProyecto" />
+          <NavigationProperty Name="tblProfesional_Actividad" Relationship="Self.FK__tblProfes__IDAct__4D94879B" FromRole="tblActividad" ToRole="tblProfesional_Actividad" />
+          <NavigationProperty Name="tblRecurso_Actividad" Relationship="Self.FK__tblRecurs__IDAct__4E88ABD4" FromRole="tblActividad" ToRole="tblRecurso_Actividad" />
+        </EntityType>
+        <EntityType Name="tblArea">
+          <Key>
+            <PropertyRef Name="IDArea" />
+          </Key>
+          <Property Name="IDArea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdNomAreaPadre" Type="Int32" />
+          <Property Name="nomArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDAre__45F365D3" FromRole="tblArea" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblArea1" Relationship="Self.FK_IdNomAreaPadre" FromRole="tblArea" ToRole="tblArea1" />
+          <NavigationProperty Name="tblArea2" Relationship="Self.FK_IdNomAreaPadre" FromRole="tblArea1" ToRole="tblArea" />
+        </EntityType>
+        <EntityType Name="tblCargo">
+          <Key>
+            <PropertyRef Name="IDCargo" />
+          </Key>
+          <Property Name="IDCargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomCargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDCar__44FF419A" FromRole="tblCargo" ToRole="tblProfesional" />
+        </EntityType>
+        <EntityType Name="tblCuadernoObra">
+          <Key>
+            <PropertyRef Name="IDCuaderObra" />
+          </Key>
+          <Property Name="IDCuaderObra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contratista" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Asientos" Type="Int32" Nullable="false" />
+          <Property Name="TituloAsi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipAsi" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDProyecto" Type="Int32" Nullable="false" />
+          <Property Name="IDDocumento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblCuadernoProfesional" Relationship="Self.FK__tblCuader__IDCua__5165187F" FromRole="tblCuadernoObra" ToRole="tblCuadernoProfesional" />
+          <NavigationProperty Name="tblDocumento" Relationship="Self.FK__tblCuader__IDDoc__4222D4EF" FromRole="tblCuadernoObra" ToRole="tblDocumento" />
+          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblCuader__IDPro__412EB0B6" FromRole="tblCuadernoObra" ToRole="tblProyecto" />
+        </EntityType>
+        <EntityType Name="tblCuadernoProfesional">
+          <Key>
+            <PropertyRef Name="IDCuaderno_Profesional" />
+          </Key>
+          <Property Name="IDCuaderno_Profesional" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDProfesional" Type="Int32" Nullable="false" />
+          <Property Name="IDCuaderObra" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblCuadernoObra" Relationship="Self.FK__tblCuader__IDCua__5165187F" FromRole="tblCuadernoProfesional" ToRole="tblCuadernoObra" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblCuader__IDPro__5070F446" FromRole="tblCuadernoProfesional" ToRole="tblProfesional" />
+        </EntityType>
+        <EntityType Name="tblDocumento">
+          <Key>
+            <PropertyRef Name="IDDoc" />
+          </Key>
+          <Property Name="IDDoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreDoc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RealNomb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOC" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="tblCuadernoObra" Relationship="Self.FK__tblCuader__IDDoc__4222D4EF" FromRole="tblDocumento" ToRole="tblCuadernoObra" />
+          <NavigationProperty Name="tblReporte" Relationship="Self.FK__tblReport__IDDoc__4316F928" FromRole="tblDocumento" ToRole="tblReporte" />
+        </EntityType>
+        <EntityType Name="tblProfesional">
+          <Key>
+            <PropertyRef Name="IDProfesional" />
+          </Key>
+          <Property Name="IDProfesional" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DNI" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDCargo" Type="Int32" Nullable="false" />
+          <Property Name="IDArea" Type="Int32" Nullable="false" />
+          <Property Name="IDReporte" Type="Int32" />
+          <NavigationProperty Name="tblArea" Relationship="Self.FK__tblProfes__IDAre__45F365D3" FromRole="tblProfesional" ToRole="tblArea" />
+          <NavigationProperty Name="tblCargo" Relationship="Self.FK__tblProfes__IDCar__44FF419A" FromRole="tblProfesional" ToRole="tblCargo" />
+          <NavigationProperty Name="tblCuadernoProfesional" Relationship="Self.FK__tblCuader__IDPro__5070F446" FromRole="tblProfesional" ToRole="tblCuadernoProfesional" />
+          <NavigationProperty Name="tblProfesional_Reunion" Relationship="Self.FK__tblProfes__IDPro__4BAC3F29" FromRole="tblProfesional" ToRole="tblProfesional_Reunion" />
+          <NavigationProperty Name="tblProfesional_Actividad" Relationship="Self.FK__tblProfes__IDPro__4CA06362" FromRole="tblProfesional" ToRole="tblProfesional_Actividad" />
+          <NavigationProperty Name="tblReporte" Relationship="Self.FK__tblProfes__IDRep__46E78A0C" FromRole="tblProfesional" ToRole="tblReporte" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.FK__tblProfesio__DNI__30F848ED" FromRole="tblProfesional" ToRole="tblUsuario" />
+          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblProyec__IDPro__440B1D61" FromRole="tblProfesional" ToRole="tblProyecto" />
+          <NavigationProperty Name="tblReporte1" Relationship="Self.FK__tblReport__IDPro__47DBAE45" FromRole="tblProfesional" ToRole="tblReporte" />
+        </EntityType>
+        <EntityType Name="tblProfesional_Actividad">
+          <Key>
+            <PropertyRef Name="IDProfActividad" />
+          </Key>
+          <Property Name="IDProfActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDProfesional" Type="Int32" Nullable="false" />
+          <Property Name="IDActividad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblProfes__IDAct__4D94879B" FromRole="tblProfesional_Actividad" ToRole="tblActividad" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDPro__4CA06362" FromRole="tblProfesional_Actividad" ToRole="tblProfesional" />
+        </EntityType>
+        <EntityType Name="tblProfesional_Reunion">
+          <Key>
+            <PropertyRef Name="IDProfesional_reunion" />
+          </Key>
+          <Property Name="IDProfesional_reunion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDProfesional" Type="Int32" Nullable="false" />
+          <Property Name="IDReunion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDPro__4BAC3F29" FromRole="tblProfesional_Reunion" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblReunion" Relationship="Self.FK__tblProfes__IDReu__4AB81AF0" FromRole="tblProfesional_Reunion" ToRole="tblReunion" />
+        </EntityType>
+        <EntityType Name="tblProyecto">
+          <Key>
+            <PropertyRef Name="IDProyecto" />
+          </Key>
+          <Property Name="IDProyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titProyecto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaIniPro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaFinPro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Ubicacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="distrito" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="departamento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="seguimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDProfesional" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblActivi__IDPro__49C3F6B7" FromRole="tblProyecto" ToRole="tblActividad" />
+          <NavigationProperty Name="tblCuadernoObra" Relationship="Self.FK__tblCuader__IDPro__412EB0B6" FromRole="tblProyecto" ToRole="tblCuadernoObra" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProyec__IDPro__440B1D61" FromRole="tblProyecto" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblReunion" Relationship="Self.FK__tblReunio__IDPro__48CFD27E" FromRole="tblProyecto" ToRole="tblReunion" />
+        </EntityType>
+        <EntityType Name="tblRecurso">
+          <Key>
+            <PropertyRef Name="IDRecurso" />
+          </Key>
+          <Property Name="IDRecurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomRecurso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblRecurso_Actividad" Relationship="Self.FK__tblRecurs__IDRec__4F7CD00D" FromRole="tblRecurso" ToRole="tblRecurso_Actividad" />
+        </EntityType>
+        <EntityType Name="tblRecurso_Actividad">
+          <Key>
+            <PropertyRef Name="idRecursoActividad" />
+          </Key>
+          <Property Name="idRecursoActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDRecurso" Type="Int32" Nullable="false" />
+          <Property Name="IDActividad" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="costo" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblRecurs__IDAct__4E88ABD4" FromRole="tblRecurso_Actividad" ToRole="tblActividad" />
+          <NavigationProperty Name="tblRecurso" Relationship="Self.FK__tblRecurs__IDRec__4F7CD00D" FromRole="tblRecurso_Actividad" ToRole="tblRecurso" />
+        </EntityType>
+        <EntityType Name="tblReporte">
+          <Key>
+            <PropertyRef Name="IDReport" />
+          </Key>
+          <Property Name="IDReport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaRep" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="IDDoc" Type="Int32" Nullable="false" />
+          <Property Name="IDProfesional" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblDocumento" Relationship="Self.FK__tblReport__IDDoc__4316F928" FromRole="tblReporte" ToRole="tblDocumento" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDRep__46E78A0C" FromRole="tblReporte" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblProfesional1" Relationship="Self.FK__tblReport__IDPro__47DBAE45" FromRole="tblReporte" ToRole="tblProfesional" />
+        </EntityType>
+        <EntityType Name="tblReunion">
+          <Key>
+            <PropertyRef Name="IDReunion" />
+          </Key>
+          <Property Name="IDReunion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoDeReunion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tema" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="IDProyecto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblProfesional_Reunion" Relationship="Self.FK__tblProfes__IDReu__4AB81AF0" FromRole="tblReunion" ToRole="tblProfesional_Reunion" />
+          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblReunio__IDPro__48CFD27E" FromRole="tblReunion" ToRole="tblProyecto" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="DNI" />
+          </Key>
+          <Property Name="DNI" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contraseña" Type="Binary" MaxLength="8000" FixedLength="false" Nullable="false" />
+          <Property Name="firma" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="profesion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usrImagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfesio__DNI__30F848ED" FromRole="tblUsuario" ToRole="tblProfesional" />
+        </EntityType>
+        <Association Name="FK__tblActivi__IDPro__49C3F6B7">
+          <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
+          <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProyecto">
+              <PropertyRef Name="IDProyecto" />
+            </Principal>
+            <Dependent Role="tblActividad">
+              <PropertyRef Name="IDProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDAct__4D94879B">
+          <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="1" />
+          <End Role="tblProfesional_Actividad" Type="Self.tblProfesional_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblActividad">
+              <PropertyRef Name="IDActividad" />
+            </Principal>
+            <Dependent Role="tblProfesional_Actividad">
+              <PropertyRef Name="IDActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblRecurs__IDAct__4E88ABD4">
+          <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="1" />
+          <End Role="tblRecurso_Actividad" Type="Self.tblRecurso_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblActividad">
+              <PropertyRef Name="IDActividad" />
+            </Principal>
+            <Dependent Role="tblRecurso_Actividad">
+              <PropertyRef Name="IDActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDAre__45F365D3">
+          <End Role="tblArea" Type="Self.tblArea" Multiplicity="1" />
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArea">
+              <PropertyRef Name="IDArea" />
+            </Principal>
+            <Dependent Role="tblProfesional">
+              <PropertyRef Name="IDArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdNomAreaPadre">
+          <End Role="tblArea" Type="Self.tblArea" Multiplicity="0..1" />
+          <End Role="tblArea1" Type="Self.tblArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArea">
+              <PropertyRef Name="IDArea" />
+            </Principal>
+            <Dependent Role="tblArea1">
+              <PropertyRef Name="IdNomAreaPadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDCar__44FF419A">
+          <End Role="tblCargo" Type="Self.tblCargo" Multiplicity="1" />
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCargo">
+              <PropertyRef Name="IDCargo" />
+            </Principal>
+            <Dependent Role="tblProfesional">
+              <PropertyRef Name="IDCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCuader__IDCua__5165187F">
+          <End Role="tblCuadernoObra" Type="Self.tblCuadernoObra" Multiplicity="1" />
+          <End Role="tblCuadernoProfesional" Type="Self.tblCuadernoProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCuadernoObra">
+              <PropertyRef Name="IDCuaderObra" />
+            </Principal>
+            <Dependent Role="tblCuadernoProfesional">
+              <PropertyRef Name="IDCuaderObra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCuader__IDDoc__4222D4EF">
+          <End Role="tblDocumento" Type="Self.tblDocumento" Multiplicity="1" />
+          <End Role="tblCuadernoObra" Type="Self.tblCuadernoObra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDocumento">
+              <PropertyRef Name="IDDoc" />
+            </Principal>
+            <Dependent Role="tblCuadernoObra">
+              <PropertyRef Name="IDDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCuader__IDPro__412EB0B6">
+          <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
+          <End Role="tblCuadernoObra" Type="Self.tblCuadernoObra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProyecto">
+              <PropertyRef Name="IDProyecto" />
+            </Principal>
+            <Dependent Role="tblCuadernoObra">
+              <PropertyRef Name="IDProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCuader__IDPro__5070F446">
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
+          <End Role="tblCuadernoProfesional" Type="Self.tblCuadernoProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProfesional">
+              <PropertyRef Name="IDProfesional" />
+            </Principal>
+            <Dependent Role="tblCuadernoProfesional">
+              <PropertyRef Name="IDProfesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblReport__IDDoc__4316F928">
+          <End Role="tblDocumento" Type="Self.tblDocumento" Multiplicity="1" />
+          <End Role="tblReporte" Type="Self.tblReporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDocumento">
+              <PropertyRef Name="IDDoc" />
+            </Principal>
+            <Dependent Role="tblReporte">
+              <PropertyRef Name="IDDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDPro__4BAC3F29">
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
+          <End Role="tblProfesional_Reunion" Type="Self.tblProfesional_Reunion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProfesional">
+              <PropertyRef Name="IDProfesional" />
+            </Principal>
+            <Dependent Role="tblProfesional_Reunion">
+              <PropertyRef Name="IDProfesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDPro__4CA06362">
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
+          <End Role="tblProfesional_Actividad" Type="Self.tblProfesional_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProfesional">
+              <PropertyRef Name="IDProfesional" />
+            </Principal>
+            <Dependent Role="tblProfesional_Actividad">
+              <PropertyRef Name="IDProfesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDRep__46E78A0C">
+          <End Role="tblReporte" Type="Self.tblReporte" Multiplicity="0..1" />
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReporte">
+              <PropertyRef Name="IDReport" />
+            </Principal>
+            <Dependent Role="tblProfesional">
+              <PropertyRef Name="IDReporte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfesio__DNI__30F848ED">
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="DNI" />
+            </Principal>
+            <Dependent Role="tblProfesional">
+              <PropertyRef Name="DNI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProyec__IDPro__440B1D61">
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
+          <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProfesional">
+              <PropertyRef Name="IDProfesional" />
+            </Principal>
+            <Dependent Role="tblProyecto">
+              <PropertyRef Name="IDProfesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblReport__IDPro__47DBAE45">
+          <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
+          <End Role="tblReporte" Type="Self.tblReporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProfesional">
+              <PropertyRef Name="IDProfesional" />
+            </Principal>
+            <Dependent Role="tblReporte">
+              <PropertyRef Name="IDProfesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProfes__IDReu__4AB81AF0">
+          <End Role="tblReunion" Type="Self.tblReunion" Multiplicity="1" />
+          <End Role="tblProfesional_Reunion" Type="Self.tblProfesional_Reunion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReunion">
+              <PropertyRef Name="IDReunion" />
+            </Principal>
+            <Dependent Role="tblProfesional_Reunion">
+              <PropertyRef Name="IDReunion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblReunio__IDPro__48CFD27E">
+          <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
+          <End Role="tblReunion" Type="Self.tblReunion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProyecto">
+              <PropertyRef Name="IDProyecto" />
+            </Principal>
+            <Dependent Role="tblReunion">
+              <PropertyRef Name="IDProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblRecurs__IDRec__4F7CD00D">
+          <End Role="tblRecurso" Type="Self.tblRecurso" Multiplicity="1" />
+          <End Role="tblRecurso_Actividad" Type="Self.tblRecurso_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRecurso">
+              <PropertyRef Name="IDRecurso" />
+            </Principal>
+            <Dependent Role="tblRecurso_Actividad">
+              <PropertyRef Name="IDRecurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBControlProyectoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblActividad" EntityType="Self.tblActividad" />
+          <EntitySet Name="tblArea" EntityType="Self.tblArea" />
+          <EntitySet Name="tblCargo" EntityType="Self.tblCargo" />
+          <EntitySet Name="tblCuadernoObra" EntityType="Self.tblCuadernoObra" />
+          <EntitySet Name="tblCuadernoProfesional" EntityType="Self.tblCuadernoProfesional" />
+          <EntitySet Name="tblDocumento" EntityType="Self.tblDocumento" />
+          <EntitySet Name="tblProfesional" EntityType="Self.tblProfesional" />
+          <EntitySet Name="tblProfesional_Actividad" EntityType="Self.tblProfesional_Actividad" />
+          <EntitySet Name="tblProfesional_Reunion" EntityType="Self.tblProfesional_Reunion" />
+          <EntitySet Name="tblProyecto" EntityType="Self.tblProyecto" />
+          <EntitySet Name="tblRecurso" EntityType="Self.tblRecurso" />
+          <EntitySet Name="tblRecurso_Actividad" EntityType="Self.tblRecurso_Actividad" />
+          <EntitySet Name="tblReporte" EntityType="Self.tblReporte" />
+          <EntitySet Name="tblReunion" EntityType="Self.tblReunion" />
+          <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" />
+          <AssociationSet Name="FK__tblActivi__IDPro__49C3F6B7" Association="Self.FK__tblActivi__IDPro__49C3F6B7">
+            <End Role="tblProyecto" EntitySet="tblProyecto" />
+            <End Role="tblActividad" EntitySet="tblActividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDAct__4D94879B" Association="Self.FK__tblProfes__IDAct__4D94879B">
+            <End Role="tblActividad" EntitySet="tblActividad" />
+            <End Role="tblProfesional_Actividad" EntitySet="tblProfesional_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblRecurs__IDAct__4E88ABD4" Association="Self.FK__tblRecurs__IDAct__4E88ABD4">
+            <End Role="tblActividad" EntitySet="tblActividad" />
+            <End Role="tblRecurso_Actividad" EntitySet="tblRecurso_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDAre__45F365D3" Association="Self.FK__tblProfes__IDAre__45F365D3">
+            <End Role="tblArea" EntitySet="tblArea" />
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdNomAreaPadre" Association="Self.FK_IdNomAreaPadre">
+            <End Role="tblArea" EntitySet="tblArea" />
+            <End Role="tblArea1" EntitySet="tblArea" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDCar__44FF419A" Association="Self.FK__tblProfes__IDCar__44FF419A">
+            <End Role="tblCargo" EntitySet="tblCargo" />
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCuader__IDCua__5165187F" Association="Self.FK__tblCuader__IDCua__5165187F">
+            <End Role="tblCuadernoObra" EntitySet="tblCuadernoObra" />
+            <End Role="tblCuadernoProfesional" EntitySet="tblCuadernoProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCuader__IDDoc__4222D4EF" Association="Self.FK__tblCuader__IDDoc__4222D4EF">
+            <End Role="tblDocumento" EntitySet="tblDocumento" />
+            <End Role="tblCuadernoObra" EntitySet="tblCuadernoObra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCuader__IDPro__412EB0B6" Association="Self.FK__tblCuader__IDPro__412EB0B6">
+            <End Role="tblProyecto" EntitySet="tblProyecto" />
+            <End Role="tblCuadernoObra" EntitySet="tblCuadernoObra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCuader__IDPro__5070F446" Association="Self.FK__tblCuader__IDPro__5070F446">
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+            <End Role="tblCuadernoProfesional" EntitySet="tblCuadernoProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblReport__IDDoc__4316F928" Association="Self.FK__tblReport__IDDoc__4316F928">
+            <End Role="tblDocumento" EntitySet="tblDocumento" />
+            <End Role="tblReporte" EntitySet="tblReporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDPro__4BAC3F29" Association="Self.FK__tblProfes__IDPro__4BAC3F29">
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+            <End Role="tblProfesional_Reunion" EntitySet="tblProfesional_Reunion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDPro__4CA06362" Association="Self.FK__tblProfes__IDPro__4CA06362">
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+            <End Role="tblProfesional_Actividad" EntitySet="tblProfesional_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDRep__46E78A0C" Association="Self.FK__tblProfes__IDRep__46E78A0C">
+            <End Role="tblReporte" EntitySet="tblReporte" />
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfesio__DNI__30F848ED" Association="Self.FK__tblProfesio__DNI__30F848ED">
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProyec__IDPro__440B1D61" Association="Self.FK__tblProyec__IDPro__440B1D61">
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+            <End Role="tblProyecto" EntitySet="tblProyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblReport__IDPro__47DBAE45" Association="Self.FK__tblReport__IDPro__47DBAE45">
+            <End Role="tblProfesional" EntitySet="tblProfesional" />
+            <End Role="tblReporte" EntitySet="tblReporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProfes__IDReu__4AB81AF0" Association="Self.FK__tblProfes__IDReu__4AB81AF0">
+            <End Role="tblReunion" EntitySet="tblReunion" />
+            <End Role="tblProfesional_Reunion" EntitySet="tblProfesional_Reunion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblReunio__IDPro__48CFD27E" Association="Self.FK__tblReunio__IDPro__48CFD27E">
+            <End Role="tblProyecto" EntitySet="tblProyecto" />
+            <End Role="tblReunion" EntitySet="tblReunion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblRecurs__IDRec__4F7CD00D" Association="Self.FK__tblRecurs__IDRec__4F7CD00D">
+            <End Role="tblRecurso" EntitySet="tblRecurso" />
+            <End Role="tblRecurso_Actividad" EntitySet="tblRecurso_Actividad" />
+          </AssociationSet>
+          <FunctionImport Name="SP_A_ACTIVIDAD" ReturnType="Collection(String)">
+            <Parameter Name="titulo" Mode="In" Type="String" />
+            <Parameter Name="fechaIni" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaFin" Mode="In" Type="DateTime" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+            <Parameter Name="creador" Mode="In" Type="String" />
+            <Parameter Name="proceso" Mode="In" Type="String" />
+            <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_A_AREA" ReturnType="Collection(String)">
+            <Parameter Name="idNomAreaPadre" Mode="In" Type="Int32" />
+            <Parameter Name="nomArea" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_A_CARGO" ReturnType="Collection(String)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_A_CuadernodeObra" ReturnType="Collection(String)">
+            <Parameter Name="empresa" Mode="In" Type="String" />
+            <Parameter Name="contratista" Mode="In" Type="String" />
+            <Parameter Name="Asientos" Mode="In" Type="Int32" />
+            <Parameter Name="TituloAsi" Mode="In" Type="String" />
+            <Parameter Name="TipAsi" Mode="In" Type="String" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="String" />
+            <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="IDDocumento" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_A_CUADERNOPROFESIONAL" ReturnType="Collection(String)">
+            <Parameter Name="idProfesional" Mode="In" Type="Int32" />
+            <Parameter Name="IDCuaderObra" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_A_DOCUMENTO" ReturnType="Collection(String)">
+            <Parameter Name="IDDoc" Mode="In" Type="Int32" />
+            <Parameter Name="NombreDoc" Mode="In" Type="String" />
+            <Parameter Name="RealNomb" Mode="In" Type="String" />
+            <Parameter Name="DOC" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="SP_A_PROFESIONAL" ReturnType="Collection(String)">
+            <Parameter Name="DNI" Mode="In" Type="Int32" />
+            <Parameter Name="IDCargo" Mode="In" Type="Int32" />
+            <Parameter Name="IDArea" Mode="In" Type="Int32" />
+            <Parameter Name="IDReporte" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_A_ProfesionalActividad" ReturnType="Collection(String)">
+            <Parameter Name="IDProfActividad" Mode="In" Type="Int32" />
+            <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
+            <Parameter Name="IDActividad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_A_ProfesionalReunion" ReturnType="Collection(String)">
+            <Parameter Name="IDProfesional_reunion" Mode="In" Type="Int32" />
+            <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
+            <Parameter Name="IDReunion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_A_PROYECTO" ReturnType="Collection(String)">
+            <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="titulo" Mode="In" Type="String" />
+            <Parameter Name="fechaIniPro" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaFinPro" Mode="In" Type="DateTime" />
+            <Parameter Name="Ubicacion" Mode="In" Type="String" />
+            <Parameter Name="distrito" Mode="In" Type="String" />
+            <Parameter Name="departamento" Mode="In" Type="String" />
+            <Parameter Name="imagen" Mode="In" Type="Binary" />
+            <Parameter Name="seguimiento" Mode="In" Type="String" />
+            <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_A_RECURSO" ReturnType="Collection(String)">
+            <Parameter Name="IDRecurso" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_A_RECURSO_Actividad" ReturnType="Collection(String)">
+            <Parameter Name="idRecursoActividad" Mode="In" Type="Int32" />
+            <Parameter Name="IDRecurso" Mode="In" Type="Int32" />
+            <Parameter Name="IDActividad" Mode="In" Type="Int32" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="costo" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_A_REPORTE" ReturnType="Collection(String)">
+            <Parameter Name="FechaRep" Mode="In" Type="DateTime" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="String" />
+            <Parameter Name="IDDoc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_A_REUNION" ReturnType="Collection(String)">
+            <Parameter Name="IDReunion" Mode="In" Type="Int32" />
+            <Parameter Name="tipoDeReunion" Mode="In" Type="String" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="ubicacion" Mode="In" Type="String" />
+            <Parameter Name="tema" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+            <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_C_ACTIVIDAD" ReturnType="Collection(DBControlProyectoModel.SP_C_ACTIVIDAD_Result)" />
+          <FunctionImport Name="SP_C_AREA" ReturnType="Collection(DBControlProyectoModel.SP_C_AREA_Result)" />
+          <FunctionImport Name="SP_C_CARGO" ReturnType="Collection(DBControlProyectoModel.SP_C_CARGO_Result)" />
+          <FunctionImport Name="SP_C_CUADERNAPROPROFESIONAL" ReturnType="Collection(DBControlProyectoModel.SP_C_CUADERNAPROPROFESIONAL_Result)" />
+          <FunctionImport Name="SP_C_CuadernodeObra" ReturnType="Collection(DBControlProyectoModel.SP_C_CuadernodeObra_Result)" />
+          <FunctionImport Name="SP_C_DOCUMENTO" ReturnType="Collection(DBControlProyectoModel.SP_C_DOCUMENTO_Result)" />
+          <FunctionImport Name="SP_C_PROFESIONAL" ReturnType="Collection(DBControlProyectoModel.SP_C_PROFESIONAL_Result)" />
+          <FunctionImport Name="SP_C_ProfesionalActividad" ReturnType="Collection(DBControlProyectoModel.SP_C_ProfesionalActividad_Result)" />
+          <FunctionImport Name="SP_C_PROFESIONALID" ReturnType="Collection(DBControlProyectoModel.SP_C_PROFESIONALID_Result)">
+            <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_C_ProfesionalReunion" ReturnType="Collection(DBControlProyectoModel.SP_C_ProfesionalReunion_Result)" />
+          <FunctionImport Name="SP_C_PROYECTO" ReturnType="Collection(DBControlProyectoModel.SP_C_PROYECTO_Result)" />
+          <FunctionImport Name="SP_C_RECURSO" ReturnType="Collection(DBControlProyectoModel.SP_C_RECURSO_Result)" />
+          <FunctionImport Name="SP_C_RECURSO_ACTIVIDAD" ReturnType="Collection(DBControlProyectoModel.SP_C_RECURSO_ACTIVIDAD_Result)" />
+          <FunctionImport Name="SP_C_REPORTE" ReturnType="Collection(DBControlProyectoModel.SP_C_REPORTE_Result)" />
+          <FunctionImport Name="SP_C_REUNION" ReturnType="Collection(DBControlProyectoModel.SP_C_REUNION_Result)" />
+          <FunctionImport Name="SP_E_ACTIVIDAD" ReturnType="Collection(String)">
+            <Parameter Name="IDActividad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_E_AREA" ReturnType="Collection(String)">
+            <Parameter Name="IDArea" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_E_CARGO" ReturnType="Collection(String)">
+            <Parameter Name="IDCargo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_E_CuadernodeObra" ReturnType="Collection(String)">
+            <Parameter Name="IDCuaderObra" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_E_CUADERNOPROFESIONAL" ReturnType="Collection(String)">
+            <Parameter Name="IDCuaderno_Profesional" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_E_DOCUMENTO" ReturnType="Collection(String)">
+            <Parameter Name="IDDoc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_E_PROFESIONAL" ReturnType="Collection(String)">
+            <Parameter Name="idProfesional" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_E_ProfesionalActividad" ReturnType="Collection(String)">
+            <Parameter Name="IDProfActividad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_E_ProfesionalReunion" ReturnType="Collection(String)">
+            <Parameter Name="IDProfesional_reunion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_E_PROYECTO" ReturnType="Collection(String)">
+            <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_E_RECURSO" ReturnType="Collection(String)">
+            <Parameter Name="IDRecurso" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_E_RECURSO_ACTIVIDAD" ReturnType="Collection(String)">
+            <Parameter Name="idRecursoActividad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_E_Reporte" ReturnType="Collection(String)">
+            <Parameter Name="IDReport" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_E_REUNION" ReturnType="Collection(String)">
+            <Parameter Name="IDReunion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_ACTIVIDAD" ReturnType="Collection(String)">
+            <Parameter Name="IDActividad" Mode="In" Type="Int32" />
+            <Parameter Name="titulo" Mode="In" Type="String" />
+            <Parameter Name="fechaIni" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaFin" Mode="In" Type="DateTime" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+            <Parameter Name="creador" Mode="In" Type="String" />
+            <Parameter Name="proceso" Mode="In" Type="String" />
+            <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_AREA" ReturnType="Collection(String)">
+            <Parameter Name="IDArea" Mode="In" Type="Int32" />
+            <Parameter Name="idNombreArea" Mode="In" Type="Int32" />
+            <Parameter Name="nomArea" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_CARGO" ReturnType="Collection(String)">
+            <Parameter Name="IDCargo" Mode="In" Type="Int32" />
+            <Parameter Name="nomCargo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_CuadernodeObra" ReturnType="Collection(String)">
+            <Parameter Name="IDCuaderObra" Mode="In" Type="Int32" />
+            <Parameter Name="empresa" Mode="In" Type="String" />
+            <Parameter Name="contratista" Mode="In" Type="String" />
+            <Parameter Name="Asientos" Mode="In" Type="Int32" />
+            <Parameter Name="TituloAsi" Mode="In" Type="String" />
+            <Parameter Name="TipAsi" Mode="In" Type="String" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="String" />
+            <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="IDDocumento" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_CuadernoProfesional" ReturnType="Collection(String)">
+            <Parameter Name="IDCuaderno_Profesional" Mode="In" Type="Int32" />
+            <Parameter Name="idProfesional" Mode="In" Type="Int32" />
+            <Parameter Name="IDCuaderObra" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_DOCUMENTO" ReturnType="Collection(String)">
+            <Parameter Name="IDDoc" Mode="In" Type="Int32" />
+            <Parameter Name="NombreDoc" Mode="In" Type="String" />
+            <Parameter Name="RealNomb" Mode="In" Type="String" />
+            <Parameter Name="DOC" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_PROFESIONAL" ReturnType="Collection(String)">
+            <Parameter Name="DNI" Mode="In" Type="Int32" />
+            <Parameter Name="IDCargo" Mode="In" Type="Int32" />
+            <Parameter Name="IDArea" Mode="In" Type="Int32" />
+            <Parameter Name="IDReporte" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_ProfesionalActividad" ReturnType="Collection(String)">
+            <Parameter Name="IDProfActividad" Mode="In" Type="Int32" />
+            <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
+            <Parameter Name="IDActividad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_ProfesionalReunion" ReturnType="Collection(String)">
+            <Parameter Name="IDProfesional_reunion" Mode="In" Type="Int32" />
+            <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
+            <Parameter Name="IDReunion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_PROYECTO" ReturnType="Collection(String)">
+            <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="titulo" Mode="In" Type="String" />
+            <Parameter Name="fechaIniPro" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaFinPro" Mode="In" Type="DateTime" />
+            <Parameter Name="Ubicacion" Mode="In" Type="String" />
+            <Parameter Name="distrito" Mode="In" Type="String" />
+            <Parameter Name="departamento" Mode="In" Type="String" />
+            <Parameter Name="imagen" Mode="In" Type="Binary" />
+            <Parameter Name="seguimiento" Mode="In" Type="String" />
+            <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_RECURSO" ReturnType="Collection(String)">
+            <Parameter Name="IDRecurso" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_RECURSO_ACTIVIDAD" ReturnType="Collection(String)">
+            <Parameter Name="idRecursoActividad" Mode="In" Type="Int32" />
+            <Parameter Name="IDRecurso" Mode="In" Type="Int32" />
+            <Parameter Name="IDActividad" Mode="In" Type="Int32" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="costo" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_REPORTE" ReturnType="Collection(String)">
+            <Parameter Name="IDReport" Mode="In" Type="Int32" />
+            <Parameter Name="FechaRep" Mode="In" Type="DateTime" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="String" />
+            <Parameter Name="IDDoc" Mode="In" Type="Int32" />
+            <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_M_REUNION" ReturnType="Collection(String)">
+            <Parameter Name="IDReunion" Mode="In" Type="Int32" />
+            <Parameter Name="tipoDeReunion" Mode="In" Type="String" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="ubicacion" Mode="In" Type="String" />
+            <Parameter Name="tema" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+            <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_C_ACTIVIDAD_Result">
+          <Property Type="Int32" Name="IDActividad" Nullable="false" />
+          <Property Type="String" Name="titActividad" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="fechaFin" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="String" Name="creador" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="proceso" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDProyecto" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_C_AREA_Result">
+          <Property Type="Int32" Name="IDArea" Nullable="false" />
+          <Property Type="Int32" Name="IdNomAreaPadre" Nullable="true" />
+          <Property Type="String" Name="nomArea" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_C_CARGO_Result">
+          <Property Type="Int32" Name="IDCargo" Nullable="false" />
+          <Property Type="String" Name="nomCargo" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_C_CUADERNAPROPROFESIONAL_Result">
+          <Property Type="Int32" Name="IDCuaderno_Profesional" Nullable="false" />
+          <Property Type="Int32" Name="IDProfesional" Nullable="false" />
+          <Property Type="Int32" Name="IDCuaderObra" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_C_CuadernodeObra_Result">
+          <Property Type="Int32" Name="IDCuaderObra" Nullable="false" />
+          <Property Type="String" Name="empresa" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="contratista" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Asientos" Nullable="false" />
+          <Property Type="String" Name="TituloAsi" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TipAsi" Nullable="false" MaxLength="70" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDProyecto" Nullable="false" />
+          <Property Type="Int32" Name="IDDocumento" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_C_DOCUMENTO_Result">
+          <Property Type="Int32" Name="IDDoc" Nullable="false" />
+          <Property Type="String" Name="NombreDoc" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="RealNomb" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="DOC" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_C_PROFESIONAL_Result">
+          <Property Type="Int32" Name="IDProfesional" Nullable="false" />
+          <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
+          <Property Type="Int32" Name="IDCargo" Nullable="false" />
+          <Property Type="Int32" Name="IDArea" Nullable="false" />
+          <Property Type="Int32" Name="IDReporte" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_C_ProfesionalActividad_Result">
+          <Property Type="Int32" Name="IDProfActividad" Nullable="false" />
+          <Property Type="Int32" Name="IDProfesional" Nullable="false" />
+          <Property Type="Int32" Name="IDActividad" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_C_PROFESIONALID_Result">
+          <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellidos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="profesion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="telefono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="nomCargo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="nomArea" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_C_ProfesionalReunion_Result">
+          <Property Type="Int32" Name="IDProfesional_reunion" Nullable="false" />
+          <Property Type="Int32" Name="IDProfesional" Nullable="false" />
+          <Property Type="Int32" Name="IDReunion" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_C_PROYECTO_Result">
+          <Property Type="Int32" Name="IDProyecto" Nullable="false" />
+          <Property Type="String" Name="titProyecto" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaIniPro" Nullable="false" />
+          <Property Type="DateTime" Name="fechaFinPro" Nullable="false" />
+          <Property Type="String" Name="Ubicacion" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="distrito" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="departamento" Nullable="false" MaxLength="100" />
+          <Property Type="Binary" Name="imagen" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="seguimiento" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDProfesional" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_C_RECURSO_Result">
+          <Property Type="Int32" Name="IDRecurso" Nullable="false" />
+          <Property Type="String" Name="nomRecurso" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_C_RECURSO_ACTIVIDAD_Result">
+          <Property Type="Int32" Name="idRecursoActividad" Nullable="false" />
+          <Property Type="Int32" Name="IDRecurso" Nullable="false" />
+          <Property Type="Int32" Name="IDActividad" Nullable="false" />
+          <Property Type="Int32" Name="cantidad" Nullable="false" />
+          <Property Type="Decimal" Name="costo" Nullable="false" Precision="7" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SP_C_REPORTE_Result">
+          <Property Type="Int32" Name="IDReport" Nullable="false" />
+          <Property Type="DateTime" Name="FechaRep" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="500" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="Int32" Name="IDDoc" Nullable="false" />
+          <Property Type="Int32" Name="IDProfesional" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_C_REUNION_Result">
+          <Property Type="Int32" Name="IDReunion" Nullable="false" />
+          <Property Type="String" Name="tipoDeReunion" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="String" Name="ubicacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tema" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="Int32" Name="IDProyecto" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBControlProyectoModelStoreContainer" CdmEntityContainer="DBControlProyectoEntities">
+          <EntitySetMapping Name="tblActividad">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblActividad">
+              <MappingFragment StoreEntitySet="tblActividad">
+                <ScalarProperty Name="IDActividad" ColumnName="IDActividad" />
+                <ScalarProperty Name="titActividad" ColumnName="titActividad" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="creador" ColumnName="creador" />
+                <ScalarProperty Name="proceso" ColumnName="proceso" />
+                <ScalarProperty Name="IDProyecto" ColumnName="IDProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblArea">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblArea">
+              <MappingFragment StoreEntitySet="tblArea">
+                <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+                <ScalarProperty Name="IdNomAreaPadre" ColumnName="IdNomAreaPadre" />
+                <ScalarProperty Name="nomArea" ColumnName="nomArea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCargo">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblCargo">
+              <MappingFragment StoreEntitySet="tblCargo">
+                <ScalarProperty Name="IDCargo" ColumnName="IDCargo" />
+                <ScalarProperty Name="nomCargo" ColumnName="nomCargo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCuadernoObra">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblCuadernoObra">
+              <MappingFragment StoreEntitySet="tblCuadernoObra">
+                <ScalarProperty Name="IDCuaderObra" ColumnName="IDCuaderObra" />
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
+                <ScalarProperty Name="contratista" ColumnName="contratista" />
+                <ScalarProperty Name="Asientos" ColumnName="Asientos" />
+                <ScalarProperty Name="TituloAsi" ColumnName="TituloAsi" />
+                <ScalarProperty Name="TipAsi" ColumnName="TipAsi" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="IDProyecto" ColumnName="IDProyecto" />
+                <ScalarProperty Name="IDDocumento" ColumnName="IDDocumento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCuadernoProfesional">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblCuadernoProfesional">
+              <MappingFragment StoreEntitySet="tblCuadernoProfesional">
+                <ScalarProperty Name="IDCuaderno_Profesional" ColumnName="IDCuaderno_Profesional" />
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+                <ScalarProperty Name="IDCuaderObra" ColumnName="IDCuaderObra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDocumento">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblDocumento">
+              <MappingFragment StoreEntitySet="tblDocumento">
+                <ScalarProperty Name="IDDoc" ColumnName="IDDoc" />
+                <ScalarProperty Name="NombreDoc" ColumnName="NombreDoc" />
+                <ScalarProperty Name="RealNomb" ColumnName="RealNomb" />
+                <ScalarProperty Name="DOC" ColumnName="DOC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProfesional">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblProfesional">
+              <MappingFragment StoreEntitySet="tblProfesional">
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="IDCargo" ColumnName="IDCargo" />
+                <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+                <ScalarProperty Name="IDReporte" ColumnName="IDReporte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProfesional_Actividad">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblProfesional_Actividad">
+              <MappingFragment StoreEntitySet="tblProfesional_Actividad">
+                <ScalarProperty Name="IDProfActividad" ColumnName="IDProfActividad" />
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+                <ScalarProperty Name="IDActividad" ColumnName="IDActividad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProfesional_Reunion">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblProfesional_Reunion">
+              <MappingFragment StoreEntitySet="tblProfesional_Reunion">
+                <ScalarProperty Name="IDProfesional_reunion" ColumnName="IDProfesional_reunion" />
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+                <ScalarProperty Name="IDReunion" ColumnName="IDReunion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProyecto">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblProyecto">
+              <MappingFragment StoreEntitySet="tblProyecto">
+                <ScalarProperty Name="IDProyecto" ColumnName="IDProyecto" />
+                <ScalarProperty Name="titProyecto" ColumnName="titProyecto" />
+                <ScalarProperty Name="fechaIniPro" ColumnName="fechaIniPro" />
+                <ScalarProperty Name="fechaFinPro" ColumnName="fechaFinPro" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="distrito" ColumnName="distrito" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="seguimiento" ColumnName="seguimiento" />
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRecurso">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblRecurso">
+              <MappingFragment StoreEntitySet="tblRecurso">
+                <ScalarProperty Name="IDRecurso" ColumnName="IDRecurso" />
+                <ScalarProperty Name="nomRecurso" ColumnName="nomRecurso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRecurso_Actividad">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblRecurso_Actividad">
+              <MappingFragment StoreEntitySet="tblRecurso_Actividad">
+                <ScalarProperty Name="idRecursoActividad" ColumnName="idRecursoActividad" />
+                <ScalarProperty Name="IDRecurso" ColumnName="IDRecurso" />
+                <ScalarProperty Name="IDActividad" ColumnName="IDActividad" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReporte">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblReporte">
+              <MappingFragment StoreEntitySet="tblReporte">
+                <ScalarProperty Name="IDReport" ColumnName="IDReport" />
+                <ScalarProperty Name="FechaRep" ColumnName="FechaRep" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IDDoc" ColumnName="IDDoc" />
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReunion">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblReunion">
+              <MappingFragment StoreEntitySet="tblReunion">
+                <ScalarProperty Name="IDReunion" ColumnName="IDReunion" />
+                <ScalarProperty Name="tipoDeReunion" ColumnName="tipoDeReunion" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+                <ScalarProperty Name="tema" ColumnName="tema" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="IDProyecto" ColumnName="IDProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsuario">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.tblUsuario">
+              <MappingFragment StoreEntitySet="tblUsuario">
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="firma" ColumnName="firma" />
+                <ScalarProperty Name="profesion" ColumnName="profesion" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="usrImagen" ColumnName="usrImagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_A_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_A_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="SP_A_AREA" FunctionName="DBControlProyectoModel.Store.SP_A_AREA" />
+          <FunctionImportMapping FunctionImportName="SP_A_CARGO" FunctionName="DBControlProyectoModel.Store.SP_A_CARGO" />
+          <FunctionImportMapping FunctionImportName="SP_A_CuadernodeObra" FunctionName="DBControlProyectoModel.Store.SP_A_CuadernodeObra" />
+          <FunctionImportMapping FunctionImportName="SP_A_CUADERNOPROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_A_CUADERNOPROFESIONAL" />
+          <FunctionImportMapping FunctionImportName="SP_A_DOCUMENTO" FunctionName="DBControlProyectoModel.Store.SP_A_DOCUMENTO" />
+          <FunctionImportMapping FunctionImportName="SP_A_PROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_A_PROFESIONAL" />
+          <FunctionImportMapping FunctionImportName="SP_A_ProfesionalActividad" FunctionName="DBControlProyectoModel.Store.SP_A_ProfesionalActividad" />
+          <FunctionImportMapping FunctionImportName="SP_A_ProfesionalReunion" FunctionName="DBControlProyectoModel.Store.SP_A_ProfesionalReunion" />
+          <FunctionImportMapping FunctionImportName="SP_A_PROYECTO" FunctionName="DBControlProyectoModel.Store.SP_A_PROYECTO" />
+          <FunctionImportMapping FunctionImportName="SP_A_RECURSO" FunctionName="DBControlProyectoModel.Store.SP_A_RECURSO" />
+          <FunctionImportMapping FunctionImportName="SP_A_RECURSO_Actividad" FunctionName="DBControlProyectoModel.Store.SP_A_RECURSO_Actividad" />
+          <FunctionImportMapping FunctionImportName="SP_A_REPORTE" FunctionName="DBControlProyectoModel.Store.SP_A_REPORTE" />
+          <FunctionImportMapping FunctionImportName="SP_A_REUNION" FunctionName="DBControlProyectoModel.Store.SP_A_REUNION" />
+          <FunctionImportMapping FunctionImportName="SP_C_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_C_ACTIVIDAD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_ACTIVIDAD_Result">
+                <ScalarProperty Name="IDActividad" ColumnName="IDActividad" />
+                <ScalarProperty Name="titActividad" ColumnName="titActividad" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="creador" ColumnName="creador" />
+                <ScalarProperty Name="proceso" ColumnName="proceso" />
+                <ScalarProperty Name="IDProyecto" ColumnName="IDProyecto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_AREA" FunctionName="DBControlProyectoModel.Store.SP_C_AREA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_AREA_Result">
+                <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+                <ScalarProperty Name="IdNomAreaPadre" ColumnName="IdNomAreaPadre" />
+                <ScalarProperty Name="nomArea" ColumnName="nomArea" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_CARGO" FunctionName="DBControlProyectoModel.Store.SP_C_CARGO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_CARGO_Result">
+                <ScalarProperty Name="IDCargo" ColumnName="IDCargo" />
+                <ScalarProperty Name="nomCargo" ColumnName="nomCargo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_CUADERNAPROPROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_C_CUADERNAPROPROFESIONAL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_CUADERNAPROPROFESIONAL_Result">
+                <ScalarProperty Name="IDCuaderno_Profesional" ColumnName="IDCuaderno_Profesional" />
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+                <ScalarProperty Name="IDCuaderObra" ColumnName="IDCuaderObra" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_CuadernodeObra" FunctionName="DBControlProyectoModel.Store.SP_C_CuadernodeObra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_CuadernodeObra_Result">
+                <ScalarProperty Name="IDCuaderObra" ColumnName="IDCuaderObra" />
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
+                <ScalarProperty Name="contratista" ColumnName="contratista" />
+                <ScalarProperty Name="Asientos" ColumnName="Asientos" />
+                <ScalarProperty Name="TituloAsi" ColumnName="TituloAsi" />
+                <ScalarProperty Name="TipAsi" ColumnName="TipAsi" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="IDProyecto" ColumnName="IDProyecto" />
+                <ScalarProperty Name="IDDocumento" ColumnName="IDDocumento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_DOCUMENTO" FunctionName="DBControlProyectoModel.Store.SP_C_DOCUMENTO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_DOCUMENTO_Result">
+                <ScalarProperty Name="IDDoc" ColumnName="IDDoc" />
+                <ScalarProperty Name="NombreDoc" ColumnName="NombreDoc" />
+                <ScalarProperty Name="RealNomb" ColumnName="RealNomb" />
+                <ScalarProperty Name="DOC" ColumnName="DOC" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_PROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_C_PROFESIONAL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_PROFESIONAL_Result">
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="IDCargo" ColumnName="IDCargo" />
+                <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+                <ScalarProperty Name="IDReporte" ColumnName="IDReporte" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_ProfesionalActividad" FunctionName="DBControlProyectoModel.Store.SP_C_ProfesionalActividad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_ProfesionalActividad_Result">
+                <ScalarProperty Name="IDProfActividad" ColumnName="IDProfActividad" />
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+                <ScalarProperty Name="IDActividad" ColumnName="IDActividad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_PROFESIONALID" FunctionName="DBControlProyectoModel.Store.SP_C_PROFESIONALID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_PROFESIONALID_Result">
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="profesion" ColumnName="profesion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="nomCargo" ColumnName="nomCargo" />
+                <ScalarProperty Name="nomArea" ColumnName="nomArea" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_ProfesionalReunion" FunctionName="DBControlProyectoModel.Store.SP_C_ProfesionalReunion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_ProfesionalReunion_Result">
+                <ScalarProperty Name="IDProfesional_reunion" ColumnName="IDProfesional_reunion" />
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+                <ScalarProperty Name="IDReunion" ColumnName="IDReunion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_PROYECTO" FunctionName="DBControlProyectoModel.Store.SP_C_PROYECTO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_PROYECTO_Result">
+                <ScalarProperty Name="IDProyecto" ColumnName="IDProyecto" />
+                <ScalarProperty Name="titProyecto" ColumnName="titProyecto" />
+                <ScalarProperty Name="fechaIniPro" ColumnName="fechaIniPro" />
+                <ScalarProperty Name="fechaFinPro" ColumnName="fechaFinPro" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="distrito" ColumnName="distrito" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="seguimiento" ColumnName="seguimiento" />
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_RECURSO" FunctionName="DBControlProyectoModel.Store.SP_C_RECURSO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_RECURSO_Result">
+                <ScalarProperty Name="IDRecurso" ColumnName="IDRecurso" />
+                <ScalarProperty Name="nomRecurso" ColumnName="nomRecurso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_RECURSO_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_C_RECURSO_ACTIVIDAD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_RECURSO_ACTIVIDAD_Result">
+                <ScalarProperty Name="idRecursoActividad" ColumnName="idRecursoActividad" />
+                <ScalarProperty Name="IDRecurso" ColumnName="IDRecurso" />
+                <ScalarProperty Name="IDActividad" ColumnName="IDActividad" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_REPORTE" FunctionName="DBControlProyectoModel.Store.SP_C_REPORTE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_REPORTE_Result">
+                <ScalarProperty Name="IDReport" ColumnName="IDReport" />
+                <ScalarProperty Name="FechaRep" ColumnName="FechaRep" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IDDoc" ColumnName="IDDoc" />
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_REUNION" FunctionName="DBControlProyectoModel.Store.SP_C_REUNION">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_REUNION_Result">
+                <ScalarProperty Name="IDReunion" ColumnName="IDReunion" />
+                <ScalarProperty Name="tipoDeReunion" ColumnName="tipoDeReunion" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+                <ScalarProperty Name="tema" ColumnName="tema" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="IDProyecto" ColumnName="IDProyecto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_E_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_E_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="SP_E_AREA" FunctionName="DBControlProyectoModel.Store.SP_E_AREA" />
+          <FunctionImportMapping FunctionImportName="SP_E_CARGO" FunctionName="DBControlProyectoModel.Store.SP_E_CARGO" />
+          <FunctionImportMapping FunctionImportName="SP_E_CuadernodeObra" FunctionName="DBControlProyectoModel.Store.SP_E_CuadernodeObra" />
+          <FunctionImportMapping FunctionImportName="SP_E_CUADERNOPROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_E_CUADERNOPROFESIONAL" />
+          <FunctionImportMapping FunctionImportName="SP_E_DOCUMENTO" FunctionName="DBControlProyectoModel.Store.SP_E_DOCUMENTO" />
+          <FunctionImportMapping FunctionImportName="SP_E_PROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_E_PROFESIONAL" />
+          <FunctionImportMapping FunctionImportName="SP_E_ProfesionalActividad" FunctionName="DBControlProyectoModel.Store.SP_E_ProfesionalActividad" />
+          <FunctionImportMapping FunctionImportName="SP_E_ProfesionalReunion" FunctionName="DBControlProyectoModel.Store.SP_E_ProfesionalReunion" />
+          <FunctionImportMapping FunctionImportName="SP_E_PROYECTO" FunctionName="DBControlProyectoModel.Store.SP_E_PROYECTO" />
+          <FunctionImportMapping FunctionImportName="SP_E_RECURSO" FunctionName="DBControlProyectoModel.Store.SP_E_RECURSO" />
+          <FunctionImportMapping FunctionImportName="SP_E_RECURSO_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_E_RECURSO_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="SP_E_Reporte" FunctionName="DBControlProyectoModel.Store.SP_E_Reporte" />
+          <FunctionImportMapping FunctionImportName="SP_E_REUNION" FunctionName="DBControlProyectoModel.Store.SP_E_REUNION" />
+          <FunctionImportMapping FunctionImportName="SP_M_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_M_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="SP_M_AREA" FunctionName="DBControlProyectoModel.Store.SP_M_AREA" />
+          <FunctionImportMapping FunctionImportName="SP_M_CARGO" FunctionName="DBControlProyectoModel.Store.SP_M_CARGO" />
+          <FunctionImportMapping FunctionImportName="SP_M_CuadernodeObra" FunctionName="DBControlProyectoModel.Store.SP_M_CuadernodeObra" />
+          <FunctionImportMapping FunctionImportName="SP_M_CuadernoProfesional" FunctionName="DBControlProyectoModel.Store.SP_M_CuadernoProfesional" />
+          <FunctionImportMapping FunctionImportName="SP_M_DOCUMENTO" FunctionName="DBControlProyectoModel.Store.SP_M_DOCUMENTO" />
+          <FunctionImportMapping FunctionImportName="SP_M_PROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_M_PROFESIONAL" />
+          <FunctionImportMapping FunctionImportName="SP_M_ProfesionalActividad" FunctionName="DBControlProyectoModel.Store.SP_M_ProfesionalActividad" />
+          <FunctionImportMapping FunctionImportName="SP_M_ProfesionalReunion" FunctionName="DBControlProyectoModel.Store.SP_M_ProfesionalReunion" />
+          <FunctionImportMapping FunctionImportName="SP_M_PROYECTO" FunctionName="DBControlProyectoModel.Store.SP_M_PROYECTO" />
+          <FunctionImportMapping FunctionImportName="SP_M_RECURSO" FunctionName="DBControlProyectoModel.Store.SP_M_RECURSO" />
+          <FunctionImportMapping FunctionImportName="SP_M_RECURSO_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_M_RECURSO_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="SP_M_REPORTE" FunctionName="DBControlProyectoModel.Store.SP_M_REPORTE" />
+          <FunctionImportMapping FunctionImportName="SP_M_REUNION" FunctionName="DBControlProyectoModel.Store.SP_M_REUNION" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
