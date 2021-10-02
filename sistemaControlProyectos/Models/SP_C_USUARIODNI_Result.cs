@@ -10,16 +10,9 @@
 namespace sistemaControlProyectos.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tblUsuario
+    public partial class SP_C_USUARIODNI_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblUsuario()
-        {
-            this.tblProfesional = new HashSet<tblProfesional>();
-        }
-    
         public string DNI { get; set; }
         public string nombre { get; set; }
         public string apellidos { get; set; }
@@ -29,8 +22,5 @@ namespace sistemaControlProyectos.Models
         public string correo { get; set; }
         public string telefono { get; set; }
         public byte[] usrImagen { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblProfesional> tblProfesional { get; set; }
     }
 }

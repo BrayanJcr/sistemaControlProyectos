@@ -181,11 +181,11 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_DOCUMENTO", iDDocParameter, nombreDocParameter, realNombParameter, dOCParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_PROFESIONAL(Nullable<int> dNI, Nullable<int> iDCargo, Nullable<int> iDArea, Nullable<int> iDReporte)
+        public virtual ObjectResult<string> SP_A_PROFESIONAL(string dNI, Nullable<int> iDCargo, Nullable<int> iDArea, Nullable<int> iDReporte)
         {
-            var dNIParameter = dNI.HasValue ?
+            var dNIParameter = dNI != null ?
                 new ObjectParameter("DNI", dNI) :
-                new ObjectParameter("DNI", typeof(int));
+                new ObjectParameter("DNI", typeof(string));
     
             var iDCargoParameter = iDCargo.HasValue ?
                 new ObjectParameter("IDCargo", iDCargo) :
@@ -373,6 +373,47 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_REUNION", iDReunionParameter, tipoDeReunionParameter, fechaParameter, ubicacionParameter, temaParameter, estadoParameter, iDProyectoParameter);
         }
     
+        public virtual ObjectResult<string> SP_A_USUARIO(string dNI, string nombre, string apellidos, string contraseña, string firma, string profesion, string correo, string telefono, byte[] usrImagen)
+        {
+            var dNIParameter = dNI != null ?
+                new ObjectParameter("DNI", dNI) :
+                new ObjectParameter("DNI", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var apellidosParameter = apellidos != null ?
+                new ObjectParameter("apellidos", apellidos) :
+                new ObjectParameter("apellidos", typeof(string));
+    
+            var contraseñaParameter = contraseña != null ?
+                new ObjectParameter("contraseña", contraseña) :
+                new ObjectParameter("contraseña", typeof(string));
+    
+            var firmaParameter = firma != null ?
+                new ObjectParameter("firma", firma) :
+                new ObjectParameter("firma", typeof(string));
+    
+            var profesionParameter = profesion != null ?
+                new ObjectParameter("profesion", profesion) :
+                new ObjectParameter("profesion", typeof(string));
+    
+            var correoParameter = correo != null ?
+                new ObjectParameter("correo", correo) :
+                new ObjectParameter("correo", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("telefono", telefono) :
+                new ObjectParameter("telefono", typeof(string));
+    
+            var usrImagenParameter = usrImagen != null ?
+                new ObjectParameter("usrImagen", usrImagen) :
+                new ObjectParameter("usrImagen", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_USUARIO", dNIParameter, nombreParameter, apellidosParameter, contraseñaParameter, firmaParameter, profesionParameter, correoParameter, telefonoParameter, usrImagenParameter);
+        }
+    
         public virtual ObjectResult<SP_C_ACTIVIDAD_Result> SP_C_ACTIVIDAD()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_ACTIVIDAD_Result>("SP_C_ACTIVIDAD");
@@ -450,6 +491,15 @@ namespace sistemaControlProyectos.Models
         public virtual ObjectResult<SP_C_REUNION_Result> SP_C_REUNION()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_REUNION_Result>("SP_C_REUNION");
+        }
+    
+        public virtual ObjectResult<SP_C_USUARIODNI_Result> SP_C_USUARIODNI(string dNI)
+        {
+            var dNIParameter = dNI != null ?
+                new ObjectParameter("DNI", dNI) :
+                new ObjectParameter("DNI", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_USUARIODNI_Result>("SP_C_USUARIODNI", dNIParameter);
         }
     
         public virtual ObjectResult<string> SP_E_ACTIVIDAD(Nullable<int> iDActividad)
@@ -736,11 +786,11 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_DOCUMENTO", iDDocParameter, nombreDocParameter, realNombParameter, dOCParameter);
         }
     
-        public virtual ObjectResult<string> SP_M_PROFESIONAL(Nullable<int> dNI, Nullable<int> iDCargo, Nullable<int> iDArea, Nullable<int> iDReporte)
+        public virtual ObjectResult<string> SP_M_PROFESIONAL(string dNI, Nullable<int> iDCargo, Nullable<int> iDArea, Nullable<int> iDReporte)
         {
-            var dNIParameter = dNI.HasValue ?
+            var dNIParameter = dNI != null ?
                 new ObjectParameter("DNI", dNI) :
-                new ObjectParameter("DNI", typeof(int));
+                new ObjectParameter("DNI", typeof(string));
     
             var iDCargoParameter = iDCargo.HasValue ?
                 new ObjectParameter("IDCargo", iDCargo) :
@@ -934,6 +984,29 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("IDProyecto", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_REUNION", iDReunionParameter, tipoDeReunionParameter, fechaParameter, ubicacionParameter, temaParameter, estadoParameter, iDProyectoParameter);
+        }
+    
+        public virtual ObjectResult<SP_C_PROFESIONALLOGIN_Result> SP_C_PROFESIONALLOGIN(string dNI, string contraseña)
+        {
+            var dNIParameter = dNI != null ?
+                new ObjectParameter("DNI", dNI) :
+                new ObjectParameter("DNI", typeof(string));
+    
+            var contraseñaParameter = contraseña != null ?
+                new ObjectParameter("contraseña", contraseña) :
+                new ObjectParameter("contraseña", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROFESIONALLOGIN_Result>("SP_C_PROFESIONALLOGIN", dNIParameter, contraseñaParameter);
+        }
+    
+        public virtual ObjectResult<SP_C_PROFESIONALRESPONSABLE_Result> SP_C_PROFESIONALRESPONSABLE()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROFESIONALRESPONSABLE_Result>("SP_C_PROFESIONALRESPONSABLE");
+        }
+    
+        public virtual ObjectResult<SP_C_USUARIO_Result> SP_C_USUARIO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_USUARIO_Result>("SP_C_USUARIO");
         }
     }
 }

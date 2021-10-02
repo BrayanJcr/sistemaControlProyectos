@@ -12,7 +12,6 @@ $(document).ready(function () {
             { "data": "DNI" },
             { "data": "nombre" },
             { "data": "apellidos" },
-            { "data": "usuario" },
             { "data": "correo" },
             { "data": "profesion" },
             { "data": "telefono" },  
@@ -40,7 +39,7 @@ $(document).ready(function () {
 });
 
 function abrirModal($DNI) {
-    
+    $("txtDni").val($DNI)
     if ($DNI != 0) {
         
         jQuery.ajax({
