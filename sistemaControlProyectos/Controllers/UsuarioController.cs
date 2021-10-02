@@ -24,19 +24,19 @@ namespace sistemaControlProyectos.Controllers
         public JsonResult Obtener(string dni)
         {
 
-            /*tblusuario oPersona = new tblusuario();
+            tblUsuario oPersona = new tblUsuario();
 
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
 
-                oPersona = (from p in db.tblusuario.Where(x => x.DNI == dni)
+                oPersona = (from p in db.tblUsuario.Where(x => x.DNI == dni)
                             select p).FirstOrDefault();
             }
 
-            return Json(oPersona, JsonRequestBehavior.AllowGet);*/
-            SP_C_USUARIODNI_Result list = ObtenerUsuario.instancia.ListarUsuarioid(dni);
+            return Json(oPersona, JsonRequestBehavior.AllowGet);
+            /*SP_C_USUARIODNI_Result list = ObtenerUsuario.instancia.ListarUsuarioid(dni);
 
-            return Json(new { data=list}, JsonRequestBehavior.AllowGet);
+            return Json(new { data=list}, JsonRequestBehavior.AllowGet);*/
         }
 
         [HttpPost]

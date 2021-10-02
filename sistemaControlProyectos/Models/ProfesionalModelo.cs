@@ -65,6 +65,8 @@ namespace sistemaControlProyectos.Models
 
             }
         }
+
+
         public bool EliminarProfesional(int profesional)
         {
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
