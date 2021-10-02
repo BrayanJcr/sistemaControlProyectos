@@ -111,7 +111,7 @@ function abrirModal($IDActividad) {
             success: function (data) {
 
                 if (data != null) {
-                    $("#txtTitulo").val(data.titulo);
+                    $("#txtTitulo").val(data.titActividad);
                     $("#txtFechaIni").val(Cambiarfecha(data.fechaInicio));
                     $("#txtFechaFin").val(Cambiarfecha(data.fechaFin));
                     $("#txtDescripcion").val(data.Descripcion);
