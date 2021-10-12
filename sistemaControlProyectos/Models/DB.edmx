@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DBControlProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBControlProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblActividad">
           <Key>
             <PropertyRef Name="IDActividad" />
@@ -26,6 +26,7 @@
           <Property Name="IDArea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdNomAreaPadre" Type="int" />
           <Property Name="nomArea" Type="varchar" MaxLength="50" />
+          <Property Name="encargado" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblCargo">
           <Key>
@@ -783,7 +784,8 @@
             <End Role="tblArea1" EntitySet="tblArea" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBControlProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -811,6 +813,7 @@
           <Property Name="IDArea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdNomAreaPadre" Type="Int32" />
           <Property Name="nomArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="encargado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDAre__45F365D3" FromRole="tblArea" ToRole="tblProfesional" />
           <NavigationProperty Name="tblArea1" Relationship="Self.FK_IdNomAreaPadre" FromRole="tblArea" ToRole="tblArea1" />
           <NavigationProperty Name="tblArea2" Relationship="Self.FK_IdNomAreaPadre" FromRole="tblArea1" ToRole="tblArea" />
@@ -1330,12 +1333,12 @@
             <Parameter Name="proceso" Mode="In" Type="String" />
             <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_A_AREA" ReturnType="Collection(String)">
+          <FunctionImport Name="SP_A_AREA">
             <Parameter Name="idNomAreaPadre" Mode="In" Type="Int32" />
             <Parameter Name="nomArea" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_A_CARGO" ReturnType="Collection(String)">
-          <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_A_CuadernodeObra" ReturnType="Collection(String)">
             <Parameter Name="empresa" Mode="In" Type="String" />
@@ -1431,7 +1434,7 @@
           <FunctionImport Name="SP_C_PROFESIONAL" ReturnType="Collection(DBControlProyectoModel.SP_C_PROFESIONAL_Result)" />
           <FunctionImport Name="SP_C_ProfesionalActividad" ReturnType="Collection(DBControlProyectoModel.SP_C_ProfesionalActividad_Result)" />
           <FunctionImport Name="SP_C_PROFESIONALID" ReturnType="Collection(DBControlProyectoModel.SP_C_PROFESIONALID_Result)">
-          <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
+            <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_C_PROFESIONALLOGIN" ReturnType="Collection(DBControlProyectoModel.SP_C_PROFESIONALLOGIN_Result)">
             <Parameter Name="DNI" Mode="In" Type="String" />
@@ -1446,52 +1449,52 @@
           <FunctionImport Name="SP_C_REUNION" ReturnType="Collection(DBControlProyectoModel.SP_C_REUNION_Result)" />
           <FunctionImport Name="SP_C_USUARIO" ReturnType="Collection(DBControlProyectoModel.SP_C_USUARIO_Result)" />
           <FunctionImport Name="SP_C_USUARIODNI" ReturnType="Collection(DBControlProyectoModel.SP_C_USUARIODNI_Result)">
-          <Parameter Name="DNI" Mode="In" Type="String" />
+            <Parameter Name="DNI" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_E_ACTIVIDAD" ReturnType="Collection(String)">
-          <Parameter Name="IDActividad" Mode="In" Type="Int32" />
+            <Parameter Name="IDActividad" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_AREA" ReturnType="Collection(String)">
-          <Parameter Name="IDArea" Mode="In" Type="Int32" />
+            <Parameter Name="IDArea" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_CARGO" ReturnType="Collection(String)">
-          <Parameter Name="IDCargo" Mode="In" Type="Int32" />
+            <Parameter Name="IDCargo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_CuadernodeObra" ReturnType="Collection(String)">
-          <Parameter Name="IDCuaderObra" Mode="In" Type="Int32" />
+            <Parameter Name="IDCuaderObra" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_CUADERNOPROFESIONAL" ReturnType="Collection(String)">
-          <Parameter Name="IDCuaderno_Profesional" Mode="In" Type="Int32" />
+            <Parameter Name="IDCuaderno_Profesional" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_DOCUMENTO" ReturnType="Collection(String)">
-          <Parameter Name="IDDoc" Mode="In" Type="Int32" />
+            <Parameter Name="IDDoc" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_PROFESIONAL" ReturnType="Collection(String)">
-          <Parameter Name="idProfesional" Mode="In" Type="Int32" />
+            <Parameter Name="idProfesional" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_ProfesionalActividad" ReturnType="Collection(String)">
-          <Parameter Name="IDProfActividad" Mode="In" Type="Int32" />
+            <Parameter Name="IDProfActividad" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_ProfesionalReunion" ReturnType="Collection(String)">
-          <Parameter Name="IDProfesional_reunion" Mode="In" Type="Int32" />
+            <Parameter Name="IDProfesional_reunion" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_PROYECTO" ReturnType="Collection(String)">
-          <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_RECURSO" ReturnType="Collection(String)">
-          <Parameter Name="IDRecurso" Mode="In" Type="Int32" />
+            <Parameter Name="IDRecurso" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_RECURSO_ACTIVIDAD" ReturnType="Collection(String)">
-          <Parameter Name="idRecursoActividad" Mode="In" Type="Int32" />
+            <Parameter Name="idRecursoActividad" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_Reporte" ReturnType="Collection(String)">
-          <Parameter Name="IDReport" Mode="In" Type="Int32" />
+            <Parameter Name="IDReport" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_REUNION" ReturnType="Collection(String)">
-          <Parameter Name="IDReunion" Mode="In" Type="Int32" />
+            <Parameter Name="IDReunion" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_E_USUARIO" ReturnType="Collection(String)">
-          <Parameter Name="DNI" Mode="In" Type="String" />
+            <Parameter Name="DNI" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_M_ACTIVIDAD" ReturnType="Collection(String)">
             <Parameter Name="IDActividad" Mode="In" Type="Int32" />
@@ -1620,6 +1623,7 @@
           <Property Type="Int32" Name="IDArea" Nullable="false" />
           <Property Type="Int32" Name="IdNomAreaPadre" Nullable="true" />
           <Property Type="String" Name="nomArea" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="encargado" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="SP_C_CARGO_Result">
           <Property Type="Int32" Name="IDCargo" Nullable="false" />
@@ -1777,6 +1781,7 @@
                 <ScalarProperty Name="IDArea" ColumnName="IDArea" />
                 <ScalarProperty Name="IdNomAreaPadre" ColumnName="IdNomAreaPadre" />
                 <ScalarProperty Name="nomArea" ColumnName="nomArea" />
+                <ScalarProperty Name="encargado" ColumnName="encargado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1964,6 +1969,7 @@
                 <ScalarProperty Name="IDArea" ColumnName="IDArea" />
                 <ScalarProperty Name="IdNomAreaPadre" ColumnName="IdNomAreaPadre" />
                 <ScalarProperty Name="nomArea" ColumnName="nomArea" />
+                <ScalarProperty Name="encargado" ColumnName="encargado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

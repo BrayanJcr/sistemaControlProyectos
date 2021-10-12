@@ -85,7 +85,8 @@ function ListarActividad() {
                 var serie = {
                     start: cambiarFecha(item.fechaInicio),
                     end: cambiarFecha(item.fechaFin),
-                    name: item.titActividad, y: parseInt(i),
+                    name: item.titActividad,
+                    y: parseInt(i),
                     completed: parseFloat(porcentajeDeAvance(item.fechaInicio, item.fechaFin).toFixed(4))
                 }
                 data.push(serie);

@@ -24,6 +24,7 @@ namespace sistemaControlProyectos.Models
         public int IDArea { get; set; }
         public Nullable<int> IdNomAreaPadre { get; set; }
         public string nomArea { get; set; }
+        public string encargado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblProfesional> tblProfesional { get; set; }

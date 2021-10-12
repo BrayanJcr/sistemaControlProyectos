@@ -20,7 +20,6 @@ namespace sistemaControlProyectos.Models
         public DBControlProyectoEntities()
             : base("name=DBControlProyectoEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -81,7 +80,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_ACTIVIDAD", tituloParameter, fechaIniParameter, fechaFinParameter, descriptionParameter, estadoParameter, creadorParameter, procesoParameter, iDProyectoParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_AREA(Nullable<int> idNomAreaPadre, string nomArea)
+        public virtual int SP_A_AREA(Nullable<int> idNomAreaPadre, string nomArea)
         {
             var idNomAreaPadreParameter = idNomAreaPadre.HasValue ?
                 new ObjectParameter("idNomAreaPadre", idNomAreaPadre) :
@@ -91,7 +90,7 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("nomArea", nomArea) :
                 new ObjectParameter("nomArea", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_AREA", idNomAreaPadreParameter, nomAreaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_A_AREA", idNomAreaPadreParameter, nomAreaParameter);
         }
     
         public virtual ObjectResult<string> SP_A_CARGO(string nombre)

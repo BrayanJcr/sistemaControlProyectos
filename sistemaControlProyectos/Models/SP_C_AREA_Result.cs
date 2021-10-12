@@ -16,5 +16,6 @@ namespace sistemaControlProyectos.Models
         public int IDArea { get; set; }
         public Nullable<int> IdNomAreaPadre { get; set; }
         public string nomArea { get; set; }
+        public string encargado { get; set; }
     }
 }
