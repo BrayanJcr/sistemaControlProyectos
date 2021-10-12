@@ -2,15 +2,20 @@
 @{
     ViewBag.Title = "Gantt";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
+<script src="https://code.highcharts.com/gantt/highcharts-gantt.js"></script>
+<script src="https://code.highcharts.com/gantt/modules/exporting.js"></script>
 
 <div class="scrolling-container">
     <button class="btn btn-primary" type="button" id="btnActividades">
         <i class="fas fa-list-ol"></i>
-    Mostrar Diagrama de Gantt</button>
+        Mostrar Diagrama de Gantt
+    </button>
     <div id="container"></div>
 </div>
 
 @section scripts{
+    <script src="~/Scripts/Views/Gantt.js"></script>
     <script src="@Url.Content("~/Scripts/Views/Gantt.js")" type="text/javascript"></script>
 }

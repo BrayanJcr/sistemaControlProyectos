@@ -2039,6 +2039,7 @@
     <Content Include="Content\login\css\campo.css" />
     <Content Include="Content\login\css\login.css" />
     <Content Include="Content\login\css\login2.css" />
+    <Content Include="Content\Organigrama\OrganigramaArea.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="imagenes\contruccion.jpg" />
@@ -2228,6 +2229,8 @@
     <Content Include="Scripts\Views\Crear_Profesional.js" />
     <Content Include="Scripts\Views\Crear_Usuario.js" />
     <Content Include="Scripts\Views\Gantt.js" />
+    <Content Include="Scripts\Views\OrganigramaArea.js" />
+    <Content Include="Scripts\Views\ValidarActividades.js" />
     <Content Include="Views\img\brayan.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -2258,6 +2261,8 @@
     <Content Include="Views\Login\Inicio.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Profesional\Profesional.cshtml" />
+    <Content Include="Views\Area\Organigrama.cshtml" />
+    <Content Include="Views\Area\Area.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Usuario\Usuario.cshtml" />
   </ItemGroup>

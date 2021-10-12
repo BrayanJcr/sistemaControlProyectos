@@ -1,4 +1,5 @@
 ﻿
+
 //Cambiar Fechas
 function Cambiarfecha(fechaEntra) {
     var fechaString = fechaEntra.substr(6);
@@ -80,6 +81,7 @@ $(document).ready(function () {
                     }
                 }
             },
+            { "data" : "proceso"},
         ],
         dom: 'Blfrtip',
         lengthMenu: [
@@ -99,7 +101,7 @@ $(document).ready(function () {
 })
 
 function abrirModal($IDActividad) {
-
+   
     $("#txtIdActividad").val($IDActividad);
     if ($IDActividad != 0) {
 
@@ -117,6 +119,7 @@ function abrirModal($IDActividad) {
                     $("#txtDescripcion").val(data.Descripcion);
                     $("#cboProyecto").val(data.IDProyecto);
                     $("#cboEstado").val(data.estado == true ? 1 : 0);
+                    $("#cboProceso").val(data.proceso);
                 }
             }
         });
@@ -127,6 +130,7 @@ function abrirModal($IDActividad) {
         $("#txtDescripcion").val("");
         $("#cboProyecto").val($("#cboProyecto option:first").val());
         $("#cboEstado").val(1);
+        $("#cboProceso").val("Nuevo");
     }
 
     $('#FormModal').modal('show');
@@ -148,13 +152,14 @@ function Guardar() {
     var $request = {
         objeto: {
             IDActividad: parseInt($("#txtIdActividad").val()),
-            titulo: $("#txtTitulo").val(),
+            titActividad: $("#txtTitulo").val(),
             fechaInicio: $("#txtFechaIni").val(),
             fechaFin: $("#txtFechaFin").val(),
             Descripcion: $("#txtDescripcion").val(),
             estado: $("#cboEstado").val() == "1" ? true : false,
             creador: ("Brayan"),
             IDProyecto: ($("#cboProyecto").val()),
+            proceso: ($("#cboProceso").val()),
         }
     }
     console.log($request);
@@ -165,6 +170,7 @@ function Guardar() {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
+            console.log(data.resultado);
             if (data.resultado) {
                 tablaActividad.ajax.reload();
                 $('#FormModal').modal('hide');

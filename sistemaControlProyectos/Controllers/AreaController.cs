@@ -10,7 +10,12 @@ namespace sistemaControlProyectos.Controllers
     public class AreaController : Controller
     {
         // GET: Area
-        public ActionResult Index()
+        public ActionResult Area()
+        {
+            return View();
+        }
+
+        public ActionResult Organigrama()
         {
             return View();
         }

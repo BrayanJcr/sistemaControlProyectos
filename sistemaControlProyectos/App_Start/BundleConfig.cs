@@ -30,8 +30,7 @@ namespace sistemaControlProyectos
             bundles.Add(new StyleBundle("~/Content/Plugins.css").Include(
                       "~/Content/datatable/css/jquery.dataTables.min.css",
                       "~/Content/datatable/css/buttons.dataTables.min.css",
-                      "~/Content/Actividades/Actividades.css",
-                      "~/Content/Actividades/Gantt.css"
+                      "~/Content/Actividades/Actividades.css"
                       ));
 
             bundles.Add(new StyleBundle("~/Content/Plugins.js").Include(

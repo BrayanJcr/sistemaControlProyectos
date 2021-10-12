@@ -5,6 +5,64 @@ function cambiarFecha(fecha) {
     return fechaActual;
 }
 
+function datos() {
+    let fechaIniD = new Date('10/5/2021');
+    let fechaFinD = new Date('10/14/2021');
+    let fechaFinP = new Date('10/5/2021');
+    porcentajeDeAvance(fechaIniD, fechaFinD)
+}
+
+//Cambiar Fechas
+function CambiarFormatofecha(fechaEntra) {
+    var fechaString = fechaEntra.substr(6);
+    var fechaActual = new Date(parseInt(fechaString));
+    var mes = fechaActual.getMonth() + 1;
+    var dia = fechaActual.getDate();
+    var anio = fechaActual.getFullYear();
+    var fecha = mes + "/" + dia + "/" + anio;
+    console.log(fecha);
+    let fechaCam = new Date(fecha);
+    console.log(fechaCam);
+    return fechaCam;
+}
+
+function porcentajeDeAvance(fechaIni, fechaFin) {
+    const fechaActual = new Date().getTime();
+    let miliSegDia = 24 * 60 * 60 * 1000;
+
+    console.log(fechaIni);
+    console.log(fechaFin);
+
+    let fechIni = CambiarFormatofecha(fechaIni).getTime();
+    let fechFin = CambiarFormatofecha(fechaFin).getTime();
+
+    var porc;
+    let miliTraAct;
+    console.log(fechaActual);
+    console.log(fechIni);
+    console.log(fechFin);
+
+    if (fechaActual <= fechIni && fechIni < fechFin) {
+        porc = 0.0001;
+    }
+    if (fechIni <= fechaActual && fechaActual < fechFin) {
+        let miliTraTot = fechFin - fechIni;
+        miliTraAct = fechFin - fechaActual;
+
+        let diaTraTot = Math.round(miliTraTot / miliSegDia);
+        let diaTraActu = Math.round(miliTraAct / miliSegDia);
+
+        console.log(diaTraActu);
+        console.log(diaTraTot);
+
+        var porc = (diaTraTot-diaTraActu) / diaTraTot;
+    } if (fechIni < fechFin && fechFin <= fechaActual) {
+        porc = 1;
+    }
+    console.log(porc);
+    return porc;
+}
+
 $(document).ready(function () {
     $("#btnActividades").click("click", function () {
         ListarActividad();
@@ -27,7 +85,8 @@ function ListarActividad() {
                 var serie = {
                     start: cambiarFecha(item.fechaInicio),
                     end: cambiarFecha(item.fechaFin),
-                    name: item.titActividad, y: parseInt(i)
+                    name: item.titActividad, y: parseInt(i),
+                    completed: parseFloat(porcentajeDeAvance(item.fechaInicio, item.fechaFin).toFixed(4))
                 }
                 data.push(serie);
                 console.log(data);
@@ -43,21 +102,6 @@ function ListarActividad() {
 function resultados(array) {
     var data = array;
     dibujarGrafico(data);
-}
-
-function prueba() {
-    //var serie = [];
-    //for (var i=0; i < 2; i++ ) {
-    var data = [{ end: 1623301200000, name: 'Nueva', y: 0, start: 1578459600000 },
-        { end: 1623301200000, name: 'Otra', y: 1, start: 1578459600000 }];
-    console.log(data);
-    return data;
-    //    serie.push(data);
-    //    return serie;
-    //    console.log(serie);
-        
-    //}
-    
 }
 
 function dibujarGrafico(serie) {
@@ -84,6 +128,32 @@ function dibujarGrafico(serie) {
         xAxis: {
             tickPixelInterval: 70
         },
+        yAxis: {
+            uniqueNames: true
+        },
+
+        navigator: {
+            enabled: true,
+            liveRedraw: true,
+            series: {
+                type: 'gantt',
+                pointPlacement: 0.5,
+                pointPadding: 0.25
+            },
+            yAxis: {
+                min: 0,
+                max: 3,
+                reversed: true,
+                categories: []
+            }
+        },
+        scrollbar: {
+            enabled: true
+        },
+        rangeSelector: {
+            enabled: true,
+            selected: 0
+        },
 
         yAxis: {
             type: 'category',
@@ -103,7 +173,7 @@ function dibujarGrafico(serie) {
                         text: 'Dias'
                     },
                     labels: {
-                        formatter: function () {
+                        formatter: function() {
                             var point = this.point,
                                 days = (1000 * 60 * 60 * 24),
                                 number = (point.x2 - point.x) / days;
@@ -115,11 +185,11 @@ function dibujarGrafico(serie) {
                         format: '{point.start:%e. %b}'
                     },
                     title: {
-                        text: 'Fecha Inicio'
+                        text: 'Inicio'
                     }
                 }, {
                     title: {
-                        text: 'Fecha Fin'
+                        text: 'Fin'
                     },
                     offset: 30,
                     labels: {
