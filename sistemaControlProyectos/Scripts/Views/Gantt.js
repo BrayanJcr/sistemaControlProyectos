@@ -86,6 +86,7 @@ function ListarActividad() {
                     start: cambiarFecha(item.fechaInicio),
                     end: cambiarFecha(item.fechaFin),
                     name: item.titActividad,
+                    assignee: item.creador,
                     y: parseInt(i),
                     completed: parseFloat(porcentajeDeAvance(item.fechaInicio, item.fechaFin).toFixed(4))
                 }
@@ -168,6 +169,13 @@ function dibujarGrafico(serie) {
                     },
                     labels: {
                         format: '{point.name}'
+                    }
+                }, {
+                    title: {
+                        text: 'Responsable'
+                    },
+                    labels: {
+                        format: '{point.assignee}'
                     }
                 }, {
                     title: {

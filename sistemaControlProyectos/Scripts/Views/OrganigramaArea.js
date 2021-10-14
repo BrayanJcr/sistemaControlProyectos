@@ -83,13 +83,15 @@ function dibujarOrganigrama(data,area) {
                 dataLabels: {
                     color: 'black'
                 },
+                color: '#980104',
                 height: 25
             }, {
                 level: 1,
                 color: 'silver',
                 dataLabels: {
-                    color: 'black'
+                color: 'black'
                 },
+                color: '#980104',
                 height: 25
             }, {
                 level: 2,

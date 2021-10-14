@@ -2226,6 +2226,7 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\Views\Crear_Actividad.js" />
+    <Content Include="Scripts\Views\Crear_Area.js" />
     <Content Include="Scripts\Views\Crear_Profesional.js" />
     <Content Include="Scripts\Views\Crear_Usuario.js" />
     <Content Include="Scripts\Views\Gantt.js" />

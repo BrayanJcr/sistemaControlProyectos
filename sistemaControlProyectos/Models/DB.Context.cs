@@ -20,6 +20,7 @@ namespace sistemaControlProyectos.Models
         public DBControlProyectoEntities()
             : base("name=DBControlProyectoEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -80,7 +81,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_ACTIVIDAD", tituloParameter, fechaIniParameter, fechaFinParameter, descriptionParameter, estadoParameter, creadorParameter, procesoParameter, iDProyectoParameter);
         }
     
-        public virtual int SP_A_AREA(Nullable<int> idNomAreaPadre, string nomArea)
+        public virtual ObjectResult<string> SP_A_AREA(Nullable<int> idNomAreaPadre, string nomArea, string encargado)
         {
             var idNomAreaPadreParameter = idNomAreaPadre.HasValue ?
                 new ObjectParameter("idNomAreaPadre", idNomAreaPadre) :
@@ -90,7 +91,11 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("nomArea", nomArea) :
                 new ObjectParameter("nomArea", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_A_AREA", idNomAreaPadreParameter, nomAreaParameter);
+            var encargadoParameter = encargado != null ?
+                new ObjectParameter("encargado", encargado) :
+                new ObjectParameter("encargado", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_AREA", idNomAreaPadreParameter, nomAreaParameter, encargadoParameter);
         }
     
         public virtual ObjectResult<string> SP_A_CARGO(string nombre)
@@ -693,7 +698,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_ACTIVIDAD", iDActividadParameter, tituloParameter, fechaIniParameter, fechaFinParameter, descriptionParameter, estadoParameter, creadorParameter, procesoParameter, iDProyectoParameter);
         }
     
-        public virtual ObjectResult<string> SP_M_AREA(Nullable<int> iDArea, Nullable<int> idNombreArea, string nomArea)
+        public virtual ObjectResult<string> SP_M_AREA(Nullable<int> iDArea, Nullable<int> idNombreArea, string nomArea, string encargado)
         {
             var iDAreaParameter = iDArea.HasValue ?
                 new ObjectParameter("IDArea", iDArea) :
@@ -707,7 +712,11 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("nomArea", nomArea) :
                 new ObjectParameter("nomArea", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_AREA", iDAreaParameter, idNombreAreaParameter, nomAreaParameter);
+            var encargadoParameter = encargado != null ?
+                new ObjectParameter("encargado", encargado) :
+                new ObjectParameter("encargado", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_AREA", iDAreaParameter, idNombreAreaParameter, nomAreaParameter, encargadoParameter);
         }
     
         public virtual ObjectResult<string> SP_M_CARGO(Nullable<int> iDCargo, string nomCargo)

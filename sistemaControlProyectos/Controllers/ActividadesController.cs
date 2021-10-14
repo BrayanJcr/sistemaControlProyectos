@@ -39,7 +39,6 @@ namespace sistemaControlProyectos.Controllers
 
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
-
                 ObtenerActividad = (from p in db.tblActividad.Where(x => x.IDActividad == idActividad)
                             select p).FirstOrDefault();
             }

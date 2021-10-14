@@ -416,6 +416,7 @@
         <Function Name="SP_A_AREA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idNomAreaPadre" Type="int" Mode="In" />
           <Parameter Name="nomArea" Type="varchar" Mode="In" />
+          <Parameter Name="encargado" Type="varchar" Mode="In" />
         </Function>
         <Function Name="SP_A_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="varchar" Mode="In" />
@@ -591,6 +592,7 @@
           <Parameter Name="IDArea" Type="int" Mode="In" />
           <Parameter Name="idNombreArea" Type="int" Mode="In" />
           <Parameter Name="nomArea" Type="varchar" Mode="In" />
+          <Parameter Name="encargado" Type="varchar" Mode="In" />
         </Function>
         <Function Name="SP_M_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDCargo" Type="int" Mode="In" />
@@ -1333,9 +1335,10 @@
             <Parameter Name="proceso" Mode="In" Type="String" />
             <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_A_AREA">
+          <FunctionImport Name="SP_A_AREA" ReturnType="Collection(String)">
             <Parameter Name="idNomAreaPadre" Mode="In" Type="Int32" />
             <Parameter Name="nomArea" Mode="In" Type="String" />
+            <Parameter Name="encargado" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_A_CARGO" ReturnType="Collection(String)">
             <Parameter Name="nombre" Mode="In" Type="String" />
@@ -1511,6 +1514,7 @@
             <Parameter Name="IDArea" Mode="In" Type="Int32" />
             <Parameter Name="idNombreArea" Mode="In" Type="Int32" />
             <Parameter Name="nomArea" Mode="In" Type="String" />
+            <Parameter Name="encargado" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_M_CARGO" ReturnType="Collection(String)">
             <Parameter Name="IDCargo" Mode="In" Type="Int32" />
