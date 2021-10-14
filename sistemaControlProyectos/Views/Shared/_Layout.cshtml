@@ -114,35 +114,35 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        @Html.ActionLink("Actividades", "Actividades", "Actividades")
+                                        <a href="/Actividades/Actividades">Actividades</a>
                                     </li>
                                     <li>
-                                        @Html.ActionLink("Gantt", "Gantt", "Gantt")
+                                        <a href="/Gantt/Gantt">Gantt</a>
                                     </li>
                                     <li>
-                                        @Html.ActionLink("Kanban", "Kanban", "Kanban")
+                                        <a href="http://localhost:4200/board">Kanban</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                     </ul>
-                <!-- sidebar-menu  -->
+                    <!-- sidebar-menu  -->
+                </div>
+                <!-- sidebar-content  -->
+                <div class="sidebar-footer">
+                    <a href="#">
+                        <i class="fa fa-bell"></i>
+                        <span class="badge badge-pill badge-warning notification">3</span>
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-cog"></i>
+                        <span class="badge-sonar"></span>
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-power-off"></i>
+                    </a>
+                </div>
             </div>
-            <!-- sidebar-content  -->
-            <div class="sidebar-footer">
-                <a href="#">
-                    <i class="fa fa-bell"></i>
-                    <span class="badge badge-pill badge-warning notification">3</span>
-                </a>
-                <a href="#">
-                    <i class="fa fa-cog"></i>
-                    <span class="badge-sonar"></span>
-                </a>
-                <a href="#">
-                    <i class="fa fa-power-off"></i>
-                </a>
-            </div>
-        </div>
         </nav>
         <!-- sidebar-wrapper  -->
         <main class="page-content">

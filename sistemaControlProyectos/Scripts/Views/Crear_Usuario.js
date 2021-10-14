@@ -39,7 +39,7 @@ $(document).ready(function () {
 });
 
 function abrirModal($DNI) {
-    $("txtDni").val($DNI)
+    $("#txtDni").val($DNI)
     if ($DNI != "") {
         
         jQuery.ajax({
@@ -56,8 +56,8 @@ function abrirModal($DNI) {
                     $("#txtPassword").val(data.contraseña);
                     $("#txtFirmaDigital").val(data.firma);
                     $("#txtProfesion").val(data.profesion);
-                    $("#txtTelefono").val(data.telefono);
                     $("#txtCorreo").val(data.correo);
+                    $("#txtTelefono").val(data.telefono);
                     $("#fileImagen").val(data.usrImagen);
 
                 }
