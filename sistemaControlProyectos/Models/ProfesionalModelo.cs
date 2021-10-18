@@ -118,16 +118,16 @@ namespace sistemaControlProyectos.Models
         }
       
 
-        public List<SP_C_PROFESIONALLOGIN_Result> ObtenerProfesional(string user,string pass)
+        public List<SP_C_PROFESIONAL_Result> ObtenerProfesional()
         {
 
-            List<SP_C_PROFESIONALLOGIN_Result> login = new List<SP_C_PROFESIONALLOGIN_Result>();
+            List<SP_C_PROFESIONAL_Result> login = new List<SP_C_PROFESIONAL_Result>();
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
 
                 try
                 {
-                    login = db.SP_C_PROFESIONALLOGIN(user, pass).ToList();
+                    login = db.SP_C_PROFESIONAL().ToList();
                     return login;
                 }
                 catch (Exception ex)

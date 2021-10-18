@@ -9,6 +9,7 @@ namespace sistemaControlProyectos.Controllers
 {
     public class LoginController : Controller
     {
+        private static tblUsuario SesionUsuario;
 
         // GET: Login
         public ActionResult Login()
@@ -20,9 +21,10 @@ namespace sistemaControlProyectos.Controllers
         {
             try
             {
-                List<SP_C_PROFESIONALLOGIN_Result> listar = ProfesionalModelo.instancia.ObtenerProfesional(username, password);
-                if (listar.Count() > 0)
+                SP_C_USUARIO_Result listar = UsuarioModelo.instancia.ListarUsuario().Where(u=>u.DNI=username && u.pas);
+                if (listar.Count() == 1)
                 {
+                    Session["usuario"] = username;
                     return Redirect("Inicio");
                 }
                 else
@@ -37,6 +39,10 @@ namespace sistemaControlProyectos.Controllers
         }
         public ActionResult Inicio()
         {
+            if (Session["usuario"] != null)
+            {
+                @ViewBag.usuario = Session["usuario"];
+            }
             return View();
         }
 
