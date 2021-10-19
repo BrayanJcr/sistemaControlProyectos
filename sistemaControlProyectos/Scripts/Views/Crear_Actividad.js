@@ -1,5 +1,4 @@
 ﻿
-
 //Cambiar Fechas
 function Cambiarfecha(fechaEntra) {
     var fechaString = fechaEntra.substr(6);
@@ -24,7 +23,7 @@ function Cambiarfecha(fechaEntra) {
 
 var tablaActividad;
 $(document).ready(function () {
-
+    
     //OBTENER PROYECTOS
     jQuery.ajax({
         url: "/Proyectos/Listar",
@@ -136,19 +135,9 @@ function abrirModal($IDActividad) {
     $('#FormModal').modal('show');
 }
 
-function ValidarCamVacios(texto,tipo) {
-
-    if (texto == "") {
-        console.log(texto);
-        alert("Debe ingresar un " + tipo + " para el proyecto");
-        return null;
-    } else {
-        return texto;
-    }
-}
-
 //Guardar Actividad
 function Guardar() {
+    
     var $request = {
         objeto: {
             IDActividad: parseInt($("#txtIdActividad").val()),
@@ -162,29 +151,46 @@ function Guardar() {
             proceso: ($("#cboProceso").val()),
         }
     }
-    console.log($request);
-    jQuery.ajax({
-        url: "/Actividades/Guardar",
-        type: "POST",
-        data: JSON.stringify($request),
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            console.log(data.resultado);
-            if (data.resultado) {
-                tablaActividad.ajax.reload();
-                $('#FormModal').modal('hide');
-            } else {
-                alert("Mensaje No se pudo guardar los cambios", "warning");
-            }
-        },
-        error: function (error) {
-            console.log(error)
-        },
-        beforeSend: function () {
 
-        },
-    });
+    if ($request.objeto.titActividad != "") {
+        if ($request.objeto.fechaInicio) {
+            if ($request.objeto.fechaFin) {
+                if ($request.objeto.fechaFin > $request.objeto.fechaInicio) {
+                    jQuery.ajax({
+                        url: "/Actividades/Guardar",
+                        type: "POST",
+                        data: JSON.stringify($request),
+                
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            console.log(data.resultado);
+                            if (data.resultado) {
+                                tablaActividad.ajax.reload();
+                                $('#FormModal').modal('hide');
+                            } else {
+                                alert("Mensaje No se pudo guardar los cambios", "warning");
+                            }
+                        },
+                        error: function (error) {
+                            console.log(error)
+                        },
+                        beforeSend: function () {
+
+                        },
+                    });
+                } else {
+                    alert("La fecha de FIN debe ser mayor a la de INICIO", "warning");
+                }
+            } else {
+                alert("Ingrese Fecha de Fin", "warning");
+            }
+        } else {
+            alert("Ingrese Fecha de Inicio", "warning");
+        }
+    } else {
+        alert("Ingrese Titulo", "warning");
+    }
 
 }
 

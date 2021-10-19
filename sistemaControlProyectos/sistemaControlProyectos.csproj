@@ -168,6 +168,9 @@
     <Compile Include="Models\SP_C_ACTIVIDAD_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_C_AREAPADRE_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_C_AREA_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>

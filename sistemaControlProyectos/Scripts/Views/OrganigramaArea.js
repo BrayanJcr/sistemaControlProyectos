@@ -21,7 +21,6 @@ function ListarArea() {
                 var serieA = [
                     item.IdNomAreaPadre, item.IDArea
                 ]
-
                 var serie = {
                     id: item.IDArea, 
                     title: item.nomArea,

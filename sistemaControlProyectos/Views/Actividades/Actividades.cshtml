@@ -4,6 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+
 <h2>ACTIVIDADES</h2>
 
 <div class="row">
@@ -50,32 +57,39 @@
                                 <input type="text" class="form-control" name="titulo" id="txtTitulo">
                             </div>
 
-                            <p class="formulario__input-error">Debe ingresar un titulo</p>
-
                             <div class="form-group" id="grupo__fechaIni">
                                 <label for="txtFechaIni">Fecha Inicio *</label>
                                 <input type="date" class="form-control" name="fechaInicio" id="txtFechaIni">
                             </div>
-
-                            <p class="formulario__input-error">Debe ingresar una fecha de inicio</p>
-                            <p class="formulario__input-error-Fecha">La fecha de inicio tiene que ser menor que la de inicio</p>
 
                             <div class="form-group" id="grupo__fechaFin">
                                 <label for="txtFechaFin">Fecha Fin *</label>
                                 <input type="date" class="form-control" name="fechaFin" id="txtFechaFin">
                             </div>
 
-                            <p class="formulario__input-error">Debe ingresar fecha de fin</p>
-
                             <div class="form-group" id="grupo__descripcion">
                                 <label for="txtDescripcion">Descripcion </label>
                                 <input type="text" class="form-control" name="descripcion" id="txtDescripcion">
                             </div>
 
-                            <p class="formulario__input-error">Debe ingresar una descripcion</p>
+                            <div class="form-group">
+                                <label for="txtResponsables">Responsables *</label>
+                                <select class="form-control" id="cboResponsables" name="Responsable:"></select>
+                                <button class="btn btn-primary" type="button" id="btnResponsables" onclick="Responsables()">
+                                    <i class="fas fa-user-plus"></i>
+                                </button>   
+                            </div>
 
-                            <div class="form-group" >
-                                <label for="txtEstado">Activo *</label>
+                            <div class="form-group">
+                                <label for="txtRecursos">Recursos *</label>
+                                <select class="form-control" id="cboRecurso" name="Activo"></select>
+                                <button class="btn btn-primary" type="button" id="btnRecursos" onclick="Recursos()">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtEstado">Estado *</label>
                                 <select class="form-control" id="cboEstado" name="Activo">
                                     <option value="1">Activo</option>
                                     <option value="0">No Activo</option>

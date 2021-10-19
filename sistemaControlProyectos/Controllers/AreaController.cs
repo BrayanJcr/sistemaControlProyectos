@@ -36,6 +36,12 @@ namespace sistemaControlProyectos.Controllers
             return Json(new { data = listar }, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult ListarAreaPadre()
+        {
+            List<SP_C_AREAPADRE_Result> listar = AreaModelo.Instancia.ListarAreaPadre();
+            return Json(new { data = listar }, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult Obtener(int idArea)
         {
             tblArea ObtenerArea = new tblArea();

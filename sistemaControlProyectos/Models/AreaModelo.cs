@@ -45,6 +45,25 @@ namespace sistemaControlProyectos.Models
 
             }
         }
+        public List<SP_C_AREAPADRE_Result> ListarAreaPadre()
+        {
+            List<SP_C_AREAPADRE_Result> listarArea = new List<SP_C_AREAPADRE_Result>();
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+
+                try
+                {
+                    listarArea = db.SP_C_AREAPADRE().ToList();
+                    return listarArea;
+                }
+                catch (Exception ex)
+                {
+                    listarArea = null;
+                    return listarArea;
+                }
+
+            }
+        }
 
         public bool RegistrarArea(tblArea objetoArea)
         {
@@ -56,7 +75,7 @@ namespace sistemaControlProyectos.Models
 
                     try
                     {
-                        db.SP_A_AREA(objetoArea.IdNomAreaPadre,objetoArea.nomArea,objetoArea.encargado);
+                        db.SP_A_AREA(objetoArea.IdNomAreaPadre,objetoArea.nomArea,objetoArea.encargado,objetoArea.IDProyecto);
 
                         db.SaveChanges();
                         return true;
@@ -108,7 +127,7 @@ namespace sistemaControlProyectos.Models
                     try
                     {
                         db.SP_M_AREA(objetoArea.IDArea,objetoArea.IdNomAreaPadre
-                            ,objetoArea.nomArea,objetoArea.encargado
+                            ,objetoArea.nomArea,objetoArea.encargado,objetoArea.IDProyecto
                             );
                         db.SaveChanges();
                         return true;

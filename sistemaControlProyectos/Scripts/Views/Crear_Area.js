@@ -3,22 +3,47 @@ var tablaArea;
 
 $(document).ready(function () {
 
-    //OBTENER PROYECTOS
+    //OBTENER AREA PADRE
     jQuery.ajax({
-        url: "/Proyectos/Listar",
+        url: "/Area/Listar",
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            $("#cboProyecto").html("");
+            $("#cboPadre").html("");
 
             if (data.data != null) {
                 $.each(data.data, function (i, item) {
 
-                    $("<option>").attr({ "value": item.IDProyecto }).text(item.titProyecto).appendTo("#cboProyecto");
+                    $("<option>").attr({ "value": item.IDArea }).text(item.nomArea).appendTo("#cboPadre");
 
                 })
-                $("#cboProyecto").val($("#cboProyecto option:first").val());
+                $("#cboPadre").val($("#cboPadre option:first").val());
+            }
+        },
+        error: function (error) {
+            console.log(error)
+        },
+        beforeSend: function () {
+        },
+    });
+
+    //OBTENER PROFESIONAL
+    jQuery.ajax({
+        url: "/Usuario/Listar",
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            $("#cboEncargado").html("");
+
+            if (data.data != null) {
+                $.each(data.data, function (i, item) {
+
+                    $("<option>").attr({ "value": item.DNI }).text(item.nombre).appendTo("#cboEncargado");
+
+                })
+                $("#cboEncargado").val($("#cboEncargado option:first").val());
             }
         },
         error: function (error) {
@@ -31,7 +56,7 @@ $(document).ready(function () {
     tablaArea = $('#tblArea').DataTable({
 
         "ajax": {
-            "url": "/Area/Listar",
+            "url": "/Area/ListarAreaPadre",
             "type": "GET",
             "datatype": "json"
         },
@@ -46,7 +71,9 @@ $(document).ready(function () {
                 "searchable": false,
                 "width": "150px"
             },
-            { "data": "titActividad" }
+            { "data": "nomArea" },
+            { "data": "encargado" },
+            { "data": "nomPadre" }
         ],
         dom: 'Blfrtip',
         lengthMenu: [
