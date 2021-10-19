@@ -9,6 +9,7 @@ namespace sistemaControlProyectos.Controllers
 {
     public class LoginController : Controller
     {
+        private static tblUsuario SesionUsuario;
 
         // GET: Login
         public ActionResult Login()
@@ -18,27 +19,19 @@ namespace sistemaControlProyectos.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            try
-            {
-                List<SP_C_PROFESIONALLOGIN_Result> listar = ProfesionalModelo.instancia.ObtenerProfesional(username, password);
-                if (listar.Count() > 0)
-                {
-                    return Redirect("Inicio");
-                }
-                else
-                {
-                    return View();
-                }
-                
-            }catch(Exception ex)
-            {
-                return Content("ocurrio un Error :(" + ex.Message);
-            }
+            
+             SP_C_USUARIO_Result listar = UsuarioModelo.instancia.ListarUsuario().Where(u=> u.DNI ==username && u.contraseña == password).FirstOrDefault();
+             if (listar == null)
+             {
+                return View();
+                    
+             }
+
+
+            Session["usuario"] = listar;
+            return RedirectToAction("Index","Home");
         }
-        public ActionResult Inicio()
-        {
-            return View();
-        }
+       
 
     }
 }

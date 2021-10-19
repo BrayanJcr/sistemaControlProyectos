@@ -43,5 +43,57 @@ namespace sistemaControlProyectos.Models
 
             }
         }
+        public bool RegistrarUsuario(tblUsuario usuario)
+        {
+
+
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+
+                try
+                {
+                    db.SP_A_USUARIO(usuario.DNI, usuario.nombre, usuario.apellidos, usuario.contraseña,usuario.firma,usuario.profesion,usuario.correo,usuario.telefono,usuario.usrImagen);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+
+                }
+
+            }
+        }
+        public bool ModificarProfesional(tblUsuario usuario)
+        {
+            bool respuesta = true;
+            try
+            {
+                using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                {
+
+                    try
+                    {
+                        db.SP_M_USUARIO(usuario.DNI, usuario.nombre, usuario.apellidos, usuario.contraseña, usuario.firma, usuario.profesion, usuario.correo, usuario.telefono, usuario.usrImagen);
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+
+                    }
+
+                }
+            }
+            catch
+            {
+                respuesta = false;
+
+            }
+
+            return respuesta;
+        }
+
     }
 }
