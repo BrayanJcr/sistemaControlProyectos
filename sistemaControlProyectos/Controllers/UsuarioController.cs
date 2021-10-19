@@ -40,18 +40,18 @@ namespace sistemaControlProyectos.Controllers
         }
 
         [HttpPost]
-        public JsonResult Guardar(tblProfesional objeto)
+        public JsonResult Guardar(tblUsuario objeto)
         {
             bool respuesta = true;
 
             if (objeto.DNI == "")
             {
 
-                respuesta = ProfesionalModelo.instancia.RegistrarProfesional(objeto);
+                respuesta = UsuarioModelo.instancia.RegistrarUsuario(objeto);
             }
             else
             {
-                respuesta = ProfesionalModelo.instancia.ModificarProfesional(objeto);
+                respuesta = UsuarioModelo.instancia.ModificarProfesional(objeto);
             }
 
 

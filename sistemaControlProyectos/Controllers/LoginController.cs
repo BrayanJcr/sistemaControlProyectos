@@ -19,32 +19,19 @@ namespace sistemaControlProyectos.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            try
-            {
-                SP_C_USUARIO_Result listar = UsuarioModelo.instancia.ListarUsuario().Where(u=>u.DNI=username && u.pas);
-                if (listar.Count() == 1)
-                {
-                    Session["usuario"] = username;
-                    return Redirect("Inicio");
-                }
-                else
-                {
-                    return View();
-                }
-                
-            }catch(Exception ex)
-            {
-                return Content("ocurrio un Error :(" + ex.Message);
-            }
+            
+             SP_C_USUARIO_Result listar = UsuarioModelo.instancia.ListarUsuario().Where(u=> u.DNI ==username && u.contraseña == password).FirstOrDefault();
+             if (listar == null)
+             {
+                return View();
+                    
+             }
+
+
+            Session["usuario"] = listar;
+            return RedirectToAction("Index","Home");
         }
-        public ActionResult Inicio()
-        {
-            if (Session["usuario"] != null)
-            {
-                @ViewBag.usuario = Session["usuario"];
-            }
-            return View();
-        }
+       
 
     }
 }

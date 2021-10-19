@@ -88,7 +88,7 @@ function guardar() {
     }
 
     jQuery.ajax({
-        url: "/Profesional/Guardar",
+        url: "/Usuario/Guardar",
         type: "POST",
         data: JSON.stringify($request),
         dataType: "json",

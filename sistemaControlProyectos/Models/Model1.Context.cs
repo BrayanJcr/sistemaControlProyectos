@@ -20,6 +20,7 @@ namespace sistemaControlProyectos.Models
         public DBControlProyectoEntities()
             : base("name=DBControlProyectoEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
