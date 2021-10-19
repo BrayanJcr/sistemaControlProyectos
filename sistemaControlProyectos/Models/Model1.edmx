@@ -435,18 +435,6 @@
         <Function Name="SP_A_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="SP_A_CuadernodeObra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="empresa" Type="varchar" Mode="In" />
-          <Parameter Name="contratista" Type="varchar" Mode="In" />
-          <Parameter Name="Asientos" Type="int" Mode="In" />
-          <Parameter Name="TituloAsi" Type="varchar" Mode="In" />
-          <Parameter Name="TipAsi" Type="varchar" Mode="In" />
-          <Parameter Name="fecha" Type="date" Mode="In" />
-          <Parameter Name="descripcion" Type="varchar" Mode="In" />
-          <Parameter Name="estado" Type="varchar" Mode="In" />
-          <Parameter Name="IDProyecto" Type="int" Mode="In" />
-          <Parameter Name="IDDocumento" Type="int" Mode="In" />
-        </Function>
         <Function Name="SP_A_CUADERNOPROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idProfesional" Type="int" Mode="In" />
           <Parameter Name="IDCuaderObra" Type="int" Mode="In" />
@@ -500,15 +488,6 @@
           <Parameter Name="Estado" Type="varchar" Mode="In" />
           <Parameter Name="IDDoc" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_A_REUNION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="IDReunion" Type="int" Mode="In" />
-          <Parameter Name="tipoDeReunion" Type="varchar" Mode="In" />
-          <Parameter Name="fecha" Type="date" Mode="In" />
-          <Parameter Name="ubicacion" Type="varchar" Mode="In" />
-          <Parameter Name="tema" Type="varchar" Mode="In" />
-          <Parameter Name="estado" Type="bit" Mode="In" />
-          <Parameter Name="IDProyecto" Type="int" Mode="In" />
-        </Function>
         <Function Name="SP_A_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DNI" Type="varchar" Mode="In" />
           <Parameter Name="nombre" Type="varchar" Mode="In" />
@@ -525,7 +504,6 @@
         <Function Name="SP_C_AREAPADRE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_C_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_C_CUADERNAPROPROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SP_C_CuadernodeObra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_C_DOCUMENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_C_PROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_C_ProfesionalActividad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -542,7 +520,6 @@
         <Function Name="SP_C_RECURSO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_C_RECURSO_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_C_REPORTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SP_C_REUNION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_C_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_C_USUARIODNI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DNI" Type="varchar" Mode="In" />
@@ -555,9 +532,6 @@
         </Function>
         <Function Name="SP_E_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDCargo" Type="int" Mode="In" />
-        </Function>
-        <Function Name="SP_E_CuadernodeObra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="IDCuaderObra" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_E_CUADERNOPROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDCuaderno_Profesional" Type="int" Mode="In" />
@@ -586,8 +560,8 @@
         <Function Name="SP_E_Reporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDReport" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_E_REUNION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="IDReunion" Type="int" Mode="In" />
+        <Function Name="SP_E_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DNI" Type="varchar" Mode="In" />
         </Function>
         <Function Name="SP_E_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DNI" Type="varchar" Mode="In" />
@@ -613,19 +587,6 @@
         <Function Name="SP_M_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDCargo" Type="int" Mode="In" />
           <Parameter Name="nomCargo" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="SP_M_CuadernodeObra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="IDCuaderObra" Type="int" Mode="In" />
-          <Parameter Name="empresa" Type="varchar" Mode="In" />
-          <Parameter Name="contratista" Type="varchar" Mode="In" />
-          <Parameter Name="Asientos" Type="int" Mode="In" />
-          <Parameter Name="TituloAsi" Type="varchar" Mode="In" />
-          <Parameter Name="TipAsi" Type="varchar" Mode="In" />
-          <Parameter Name="fecha" Type="date" Mode="In" />
-          <Parameter Name="descripcion" Type="varchar" Mode="In" />
-          <Parameter Name="estado" Type="varchar" Mode="In" />
-          <Parameter Name="IDProyecto" Type="int" Mode="In" />
-          <Parameter Name="IDDocumento" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_M_CuadernoProfesional" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDCuaderno_Profesional" Type="int" Mode="In" />
@@ -685,14 +646,16 @@
           <Parameter Name="IDDoc" Type="int" Mode="In" />
           <Parameter Name="IDProfesional" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_M_REUNION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="IDReunion" Type="int" Mode="In" />
-          <Parameter Name="tipoDeReunion" Type="varchar" Mode="In" />
-          <Parameter Name="fecha" Type="date" Mode="In" />
-          <Parameter Name="ubicacion" Type="varchar" Mode="In" />
-          <Parameter Name="tema" Type="varchar" Mode="In" />
-          <Parameter Name="estado" Type="bit" Mode="In" />
-          <Parameter Name="IDProyecto" Type="int" Mode="In" />
+        <Function Name="SP_M_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DNI" Type="varchar" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="apellidos" Type="varchar" Mode="In" />
+          <Parameter Name="contraseña" Type="varchar" Mode="In" />
+          <Parameter Name="firma" Type="varchar" Mode="In" />
+          <Parameter Name="profesion" Type="varchar" Mode="In" />
+          <Parameter Name="correo" Type="varchar" Mode="In" />
+          <Parameter Name="telefono" Type="varchar" Mode="In" />
+          <Parameter Name="usrImagen" Type="image" Mode="In" />
         </Function>
         <Function Name="SP_M_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DNI" Type="varchar" Mode="In" />
@@ -706,6 +669,7 @@
           <Parameter Name="usrImagen" Type="image" Mode="In" />
         </Function>
         <EntityContainer Name="DBControlProyectoModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblActividad" EntityType="Self.tblActividad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblArea" EntityType="Self.tblArea" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCargo" EntityType="Self.tblCargo" Schema="dbo" store:Type="Tables" />
@@ -811,6 +775,16 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBControlProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="tblActividad">
           <Key>
             <PropertyRef Name="IDActividad" />
@@ -1265,6 +1239,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DBControlProyectoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="tblActividad" EntityType="Self.tblActividad" />
           <EntitySet Name="tblArea" EntityType="Self.tblArea" />
           <EntitySet Name="tblCargo" EntityType="Self.tblCargo" />
@@ -1383,18 +1358,6 @@
           <FunctionImport Name="SP_A_CARGO" ReturnType="Collection(String)">
             <Parameter Name="nombre" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SP_A_CuadernodeObra" ReturnType="Collection(String)">
-            <Parameter Name="empresa" Mode="In" Type="String" />
-            <Parameter Name="contratista" Mode="In" Type="String" />
-            <Parameter Name="Asientos" Mode="In" Type="Int32" />
-            <Parameter Name="TituloAsi" Mode="In" Type="String" />
-            <Parameter Name="TipAsi" Mode="In" Type="String" />
-            <Parameter Name="fecha" Mode="In" Type="DateTime" />
-            <Parameter Name="descripcion" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-            <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
-            <Parameter Name="IDDocumento" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_A_CUADERNOPROFESIONAL" ReturnType="Collection(String)">
             <Parameter Name="idProfesional" Mode="In" Type="Int32" />
             <Parameter Name="IDCuaderObra" Mode="In" Type="Int32" />
@@ -1448,15 +1411,6 @@
             <Parameter Name="Estado" Mode="In" Type="String" />
             <Parameter Name="IDDoc" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_A_REUNION" ReturnType="Collection(String)">
-            <Parameter Name="IDReunion" Mode="In" Type="Int32" />
-            <Parameter Name="tipoDeReunion" Mode="In" Type="String" />
-            <Parameter Name="fecha" Mode="In" Type="DateTime" />
-            <Parameter Name="ubicacion" Mode="In" Type="String" />
-            <Parameter Name="tema" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="Boolean" />
-            <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_A_USUARIO" ReturnType="Collection(String)">
             <Parameter Name="DNI" Mode="In" Type="String" />
             <Parameter Name="nombre" Mode="In" Type="String" />
@@ -1473,7 +1427,6 @@
           <FunctionImport Name="SP_C_AREAPADRE" ReturnType="Collection(DBControlProyectoModel.SP_C_AREAPADRE_Result)" />
           <FunctionImport Name="SP_C_CARGO" ReturnType="Collection(DBControlProyectoModel.SP_C_CARGO_Result)" />
           <FunctionImport Name="SP_C_CUADERNAPROPROFESIONAL" ReturnType="Collection(DBControlProyectoModel.SP_C_CUADERNAPROPROFESIONAL_Result)" />
-          <FunctionImport Name="SP_C_CuadernodeObra" ReturnType="Collection(DBControlProyectoModel.SP_C_CuadernodeObra_Result)" />
           <FunctionImport Name="SP_C_DOCUMENTO" ReturnType="Collection(DBControlProyectoModel.SP_C_DOCUMENTO_Result)" />
           <FunctionImport Name="SP_C_PROFESIONAL" ReturnType="Collection(DBControlProyectoModel.SP_C_PROFESIONAL_Result)" />
           <FunctionImport Name="SP_C_ProfesionalActividad" ReturnType="Collection(DBControlProyectoModel.SP_C_ProfesionalActividad_Result)" />
@@ -1561,19 +1514,6 @@
           <FunctionImport Name="SP_M_CARGO" ReturnType="Collection(String)">
             <Parameter Name="IDCargo" Mode="In" Type="Int32" />
             <Parameter Name="nomCargo" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_M_CuadernodeObra" ReturnType="Collection(String)">
-            <Parameter Name="IDCuaderObra" Mode="In" Type="Int32" />
-            <Parameter Name="empresa" Mode="In" Type="String" />
-            <Parameter Name="contratista" Mode="In" Type="String" />
-            <Parameter Name="Asientos" Mode="In" Type="Int32" />
-            <Parameter Name="TituloAsi" Mode="In" Type="String" />
-            <Parameter Name="TipAsi" Mode="In" Type="String" />
-            <Parameter Name="fecha" Mode="In" Type="DateTime" />
-            <Parameter Name="descripcion" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-            <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
-            <Parameter Name="IDDocumento" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_M_CuadernoProfesional" ReturnType="Collection(String)">
             <Parameter Name="IDCuaderno_Profesional" Mode="In" Type="Int32" />
@@ -1688,19 +1628,6 @@
           <Property Type="Int32" Name="IDProfesional" Nullable="false" />
           <Property Type="Int32" Name="IDCuaderObra" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="SP_C_CuadernodeObra_Result">
-          <Property Type="Int32" Name="IDCuaderObra" Nullable="false" />
-          <Property Type="String" Name="empresa" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="contratista" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="Asientos" Nullable="false" />
-          <Property Type="String" Name="TituloAsi" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="TipAsi" Nullable="false" MaxLength="70" />
-          <Property Type="DateTime" Name="fecha" Nullable="false" />
-          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="250" />
-          <Property Type="String" Name="estado" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="IDProyecto" Nullable="false" />
-          <Property Type="Int32" Name="IDDocumento" Nullable="false" />
-        </ComplexType>
         <ComplexType Name="SP_C_DOCUMENTO_Result">
           <Property Type="Int32" Name="IDDoc" Nullable="false" />
           <Property Type="String" Name="NombreDoc" Nullable="false" MaxLength="50" />
@@ -1742,6 +1669,20 @@
           <Property Type="String" Name="correo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="nomCargo" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="nomArea" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_C_PROFESIONALLOGIN_Result">
+          <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="contraseña" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_C_PROFESIONALRESPONSABLE_Result">
+          <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellidos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="profesion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="telefono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="nomCargo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="nomArea" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="SP_C_ProfesionalReunion_Result">
           <Property Type="Int32" Name="IDProfesional_reunion" Nullable="false" />
@@ -1808,12 +1749,30 @@
           <Property Type="String" Name="telefono" Nullable="true" MaxLength="50" />
           <Property Type="Binary" Name="usrImagen" Nullable="true" MaxLength="Max" />
         </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DBControlProyectoModelStoreContainer" CdmEntityContainer="DBControlProyectoEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblActividad">
             <EntityTypeMapping TypeName="DBControlProyectoModel.tblActividad">
               <MappingFragment StoreEntitySet="tblActividad">
@@ -1991,7 +1950,6 @@
           <FunctionImportMapping FunctionImportName="SP_A_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_A_ACTIVIDAD" />
           <FunctionImportMapping FunctionImportName="SP_A_AREA" FunctionName="DBControlProyectoModel.Store.SP_A_AREA" />
           <FunctionImportMapping FunctionImportName="SP_A_CARGO" FunctionName="DBControlProyectoModel.Store.SP_A_CARGO" />
-          <FunctionImportMapping FunctionImportName="SP_A_CuadernodeObra" FunctionName="DBControlProyectoModel.Store.SP_A_CuadernodeObra" />
           <FunctionImportMapping FunctionImportName="SP_A_CUADERNOPROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_A_CUADERNOPROFESIONAL" />
           <FunctionImportMapping FunctionImportName="SP_A_DOCUMENTO" FunctionName="DBControlProyectoModel.Store.SP_A_DOCUMENTO" />
           <FunctionImportMapping FunctionImportName="SP_A_PROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_A_PROFESIONAL" />
@@ -2001,7 +1959,6 @@
           <FunctionImportMapping FunctionImportName="SP_A_RECURSO" FunctionName="DBControlProyectoModel.Store.SP_A_RECURSO" />
           <FunctionImportMapping FunctionImportName="SP_A_RECURSO_Actividad" FunctionName="DBControlProyectoModel.Store.SP_A_RECURSO_Actividad" />
           <FunctionImportMapping FunctionImportName="SP_A_REPORTE" FunctionName="DBControlProyectoModel.Store.SP_A_REPORTE" />
-          <FunctionImportMapping FunctionImportName="SP_A_REUNION" FunctionName="DBControlProyectoModel.Store.SP_A_REUNION" />
           <FunctionImportMapping FunctionImportName="SP_A_USUARIO" FunctionName="DBControlProyectoModel.Store.SP_A_USUARIO" />
           <FunctionImportMapping FunctionImportName="SP_C_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_C_ACTIVIDAD">
             <ResultMapping>
@@ -2057,23 +2014,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_C_CuadernodeObra" FunctionName="DBControlProyectoModel.Store.SP_C_CuadernodeObra">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_CuadernodeObra_Result">
-                <ScalarProperty Name="IDCuaderObra" ColumnName="IDCuaderObra" />
-                <ScalarProperty Name="empresa" ColumnName="empresa" />
-                <ScalarProperty Name="contratista" ColumnName="contratista" />
-                <ScalarProperty Name="Asientos" ColumnName="Asientos" />
-                <ScalarProperty Name="TituloAsi" ColumnName="TituloAsi" />
-                <ScalarProperty Name="TipAsi" ColumnName="TipAsi" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="IDProyecto" ColumnName="IDProyecto" />
-                <ScalarProperty Name="IDDocumento" ColumnName="IDDocumento" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_C_DOCUMENTO" FunctionName="DBControlProyectoModel.Store.SP_C_DOCUMENTO">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_DOCUMENTO_Result">
@@ -2107,6 +2047,28 @@
           <FunctionImportMapping FunctionImportName="SP_C_PROFESIONALID" FunctionName="DBControlProyectoModel.Store.SP_C_PROFESIONALID">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_PROFESIONALID_Result">
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="profesion" ColumnName="profesion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="nomCargo" ColumnName="nomCargo" />
+                <ScalarProperty Name="nomArea" ColumnName="nomArea" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_PROFESIONALLOGIN" FunctionName="DBControlProyectoModel.Store.SP_C_PROFESIONALLOGIN">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_PROFESIONALLOGIN_Result">
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_PROFESIONALRESPONSABLE" FunctionName="DBControlProyectoModel.Store.SP_C_PROFESIONALRESPONSABLE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_PROFESIONALRESPONSABLE_Result">
                 <ScalarProperty Name="DNI" ColumnName="DNI" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />
@@ -2196,16 +2158,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_C_REUNION" FunctionName="DBControlProyectoModel.Store.SP_C_REUNION">
+          <FunctionImportMapping FunctionImportName="SP_C_USUARIO" FunctionName="DBControlProyectoModel.Store.SP_C_USUARIO">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_REUNION_Result">
-                <ScalarProperty Name="IDReunion" ColumnName="IDReunion" />
-                <ScalarProperty Name="tipoDeReunion" ColumnName="tipoDeReunion" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
-                <ScalarProperty Name="tema" ColumnName="tema" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="IDProyecto" ColumnName="IDProyecto" />
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_USUARIO_Result">
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="profesion" ColumnName="profesion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="usrImagen" ColumnName="usrImagen" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2240,7 +2203,6 @@
           <FunctionImportMapping FunctionImportName="SP_E_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_E_ACTIVIDAD" />
           <FunctionImportMapping FunctionImportName="SP_E_AREA" FunctionName="DBControlProyectoModel.Store.SP_E_AREA" />
           <FunctionImportMapping FunctionImportName="SP_E_CARGO" FunctionName="DBControlProyectoModel.Store.SP_E_CARGO" />
-          <FunctionImportMapping FunctionImportName="SP_E_CuadernodeObra" FunctionName="DBControlProyectoModel.Store.SP_E_CuadernodeObra" />
           <FunctionImportMapping FunctionImportName="SP_E_CUADERNOPROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_E_CUADERNOPROFESIONAL" />
           <FunctionImportMapping FunctionImportName="SP_E_DOCUMENTO" FunctionName="DBControlProyectoModel.Store.SP_E_DOCUMENTO" />
           <FunctionImportMapping FunctionImportName="SP_E_PROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_E_PROFESIONAL" />
@@ -2255,7 +2217,6 @@
           <FunctionImportMapping FunctionImportName="SP_M_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_M_ACTIVIDAD" />
           <FunctionImportMapping FunctionImportName="SP_M_AREA" FunctionName="DBControlProyectoModel.Store.SP_M_AREA" />
           <FunctionImportMapping FunctionImportName="SP_M_CARGO" FunctionName="DBControlProyectoModel.Store.SP_M_CARGO" />
-          <FunctionImportMapping FunctionImportName="SP_M_CuadernodeObra" FunctionName="DBControlProyectoModel.Store.SP_M_CuadernodeObra" />
           <FunctionImportMapping FunctionImportName="SP_M_CuadernoProfesional" FunctionName="DBControlProyectoModel.Store.SP_M_CuadernoProfesional" />
           <FunctionImportMapping FunctionImportName="SP_M_DOCUMENTO" FunctionName="DBControlProyectoModel.Store.SP_M_DOCUMENTO" />
           <FunctionImportMapping FunctionImportName="SP_M_PROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_M_PROFESIONAL" />

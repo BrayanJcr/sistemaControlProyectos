@@ -24,34 +24,34 @@ namespace sistemaControlProyectos.Controllers
         public JsonResult Obtener(string dni)
         {
 
-            /*tblusuario oPersona = new tblusuario();
+            tblUsuario oPersona = new tblUsuario();
 
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
 
-                oPersona = (from p in db.tblusuario.Where(x => x.DNI == dni)
+                oPersona = (from p in db.tblUsuario.Where(x => x.DNI == dni)
                             select p).FirstOrDefault();
             }
 
-            return Json(oPersona, JsonRequestBehavior.AllowGet);*/
-            SP_C_USUARIODNI_Result list = ObtenerUsuario.instancia.ListarUsuarioid(dni);
+            return Json(oPersona, JsonRequestBehavior.AllowGet);
+            /*SP_C_USUARIODNI_Result list = ObtenerUsuario.instancia.ListarUsuarioid(dni);
 
-            return Json(new { data=list}, JsonRequestBehavior.AllowGet);
+            return Json(new { data=list}, JsonRequestBehavior.AllowGet);*/
         }
 
         [HttpPost]
-        public JsonResult Guardar(tblProfesional objeto)
+        public JsonResult Guardar(tblUsuario objeto)
         {
             bool respuesta = true;
 
             if (objeto.DNI == "")
             {
 
-                respuesta = ProfesionalModelo.instancia.RegistrarProfesional(objeto);
+                respuesta = UsuarioModelo.instancia.RegistrarUsuario(objeto);
             }
             else
             {
-                respuesta = ProfesionalModelo.instancia.ModificarProfesional(objeto);
+                respuesta = UsuarioModelo.instancia.ModificarProfesional(objeto);
             }
 
 

@@ -27,6 +27,7 @@ namespace sistemaControlProyectos.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tblActividad> tblActividad { get; set; }
         public virtual DbSet<tblArea> tblArea { get; set; }
         public virtual DbSet<tblCargo> tblCargo { get; set; }
@@ -108,51 +109,6 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("nombre", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_CARGO", nombreParameter);
-        }
-    
-        public virtual ObjectResult<string> SP_A_CuadernodeObra(string empresa, string contratista, Nullable<int> asientos, string tituloAsi, string tipAsi, Nullable<System.DateTime> fecha, string descripcion, string estado, Nullable<int> iDProyecto, Nullable<int> iDDocumento)
-        {
-            var empresaParameter = empresa != null ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(string));
-    
-            var contratistaParameter = contratista != null ?
-                new ObjectParameter("contratista", contratista) :
-                new ObjectParameter("contratista", typeof(string));
-    
-            var asientosParameter = asientos.HasValue ?
-                new ObjectParameter("Asientos", asientos) :
-                new ObjectParameter("Asientos", typeof(int));
-    
-            var tituloAsiParameter = tituloAsi != null ?
-                new ObjectParameter("TituloAsi", tituloAsi) :
-                new ObjectParameter("TituloAsi", typeof(string));
-    
-            var tipAsiParameter = tipAsi != null ?
-                new ObjectParameter("TipAsi", tipAsi) :
-                new ObjectParameter("TipAsi", typeof(string));
-    
-            var fechaParameter = fecha.HasValue ?
-                new ObjectParameter("fecha", fecha) :
-                new ObjectParameter("fecha", typeof(System.DateTime));
-    
-            var descripcionParameter = descripcion != null ?
-                new ObjectParameter("descripcion", descripcion) :
-                new ObjectParameter("descripcion", typeof(string));
-    
-            var estadoParameter = estado != null ?
-                new ObjectParameter("estado", estado) :
-                new ObjectParameter("estado", typeof(string));
-    
-            var iDProyectoParameter = iDProyecto.HasValue ?
-                new ObjectParameter("IDProyecto", iDProyecto) :
-                new ObjectParameter("IDProyecto", typeof(int));
-    
-            var iDDocumentoParameter = iDDocumento.HasValue ?
-                new ObjectParameter("IDDocumento", iDDocumento) :
-                new ObjectParameter("IDDocumento", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_CuadernodeObra", empresaParameter, contratistaParameter, asientosParameter, tituloAsiParameter, tipAsiParameter, fechaParameter, descripcionParameter, estadoParameter, iDProyectoParameter, iDDocumentoParameter);
         }
     
         public virtual ObjectResult<string> SP_A_CUADERNOPROFESIONAL(Nullable<int> idProfesional, Nullable<int> iDCuaderObra)
@@ -340,39 +296,6 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_REPORTE", fechaRepParameter, descripcionParameter, estadoParameter, iDDocParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_REUNION(Nullable<int> iDReunion, string tipoDeReunion, Nullable<System.DateTime> fecha, string ubicacion, string tema, Nullable<bool> estado, Nullable<int> iDProyecto)
-        {
-            var iDReunionParameter = iDReunion.HasValue ?
-                new ObjectParameter("IDReunion", iDReunion) :
-                new ObjectParameter("IDReunion", typeof(int));
-    
-            var tipoDeReunionParameter = tipoDeReunion != null ?
-                new ObjectParameter("tipoDeReunion", tipoDeReunion) :
-                new ObjectParameter("tipoDeReunion", typeof(string));
-    
-            var fechaParameter = fecha.HasValue ?
-                new ObjectParameter("fecha", fecha) :
-                new ObjectParameter("fecha", typeof(System.DateTime));
-    
-            var ubicacionParameter = ubicacion != null ?
-                new ObjectParameter("ubicacion", ubicacion) :
-                new ObjectParameter("ubicacion", typeof(string));
-    
-            var temaParameter = tema != null ?
-                new ObjectParameter("tema", tema) :
-                new ObjectParameter("tema", typeof(string));
-    
-            var estadoParameter = estado.HasValue ?
-                new ObjectParameter("estado", estado) :
-                new ObjectParameter("estado", typeof(bool));
-    
-            var iDProyectoParameter = iDProyecto.HasValue ?
-                new ObjectParameter("IDProyecto", iDProyecto) :
-                new ObjectParameter("IDProyecto", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_REUNION", iDReunionParameter, tipoDeReunionParameter, fechaParameter, ubicacionParameter, temaParameter, estadoParameter, iDProyectoParameter);
-        }
-    
         public virtual ObjectResult<string> SP_A_USUARIO(string dNI, string nombre, string apellidos, string contraseña, string firma, string profesion, string correo, string telefono, byte[] usrImagen)
         {
             var dNIParameter = dNI != null ?
@@ -437,11 +360,6 @@ namespace sistemaControlProyectos.Models
         public virtual ObjectResult<SP_C_CUADERNAPROPROFESIONAL_Result> SP_C_CUADERNAPROPROFESIONAL()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_CUADERNAPROPROFESIONAL_Result>("SP_C_CUADERNAPROPROFESIONAL");
-        }
-    
-        public virtual ObjectResult<SP_C_CuadernodeObra_Result> SP_C_CuadernodeObra()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_CuadernodeObra_Result>("SP_C_CuadernodeObra");
         }
     
         public virtual ObjectResult<SP_C_DOCUMENTO_Result> SP_C_DOCUMENTO()
@@ -511,9 +429,9 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_REPORTE_Result>("SP_C_REPORTE");
         }
     
-        public virtual ObjectResult<SP_C_REUNION_Result> SP_C_REUNION()
+        public virtual ObjectResult<SP_C_USUARIO_Result> SP_C_USUARIO()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_REUNION_Result>("SP_C_REUNION");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_USUARIO_Result>("SP_C_USUARIO");
         }
     
         public virtual ObjectResult<SP_C_USUARIO_Result> SP_C_USUARIO()
@@ -555,15 +473,6 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("IDCargo", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_E_CARGO", iDCargoParameter);
-        }
-    
-        public virtual ObjectResult<string> SP_E_CuadernodeObra(Nullable<int> iDCuaderObra)
-        {
-            var iDCuaderObraParameter = iDCuaderObra.HasValue ?
-                new ObjectParameter("IDCuaderObra", iDCuaderObra) :
-                new ObjectParameter("IDCuaderObra", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_E_CuadernodeObra", iDCuaderObraParameter);
         }
     
         public virtual ObjectResult<string> SP_E_CUADERNOPROFESIONAL(Nullable<int> iDCuaderno_Profesional)
@@ -647,13 +556,26 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_E_Reporte", iDReportParameter);
         }
     
-        public virtual ObjectResult<string> SP_E_REUNION(Nullable<int> iDReunion)
+        public virtual ObjectResult<string> SP_E_USUARIO(string dNI)
         {
-            var iDReunionParameter = iDReunion.HasValue ?
-                new ObjectParameter("IDReunion", iDReunion) :
-                new ObjectParameter("IDReunion", typeof(int));
+            var dNIParameter = dNI != null ?
+                new ObjectParameter("DNI", dNI) :
+                new ObjectParameter("DNI", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_E_REUNION", iDReunionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_E_USUARIO", dNIParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
         public virtual ObjectResult<string> SP_E_USUARIO(string dNI)
@@ -742,55 +664,6 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("nomCargo", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_CARGO", iDCargoParameter, nomCargoParameter);
-        }
-    
-        public virtual ObjectResult<string> SP_M_CuadernodeObra(Nullable<int> iDCuaderObra, string empresa, string contratista, Nullable<int> asientos, string tituloAsi, string tipAsi, Nullable<System.DateTime> fecha, string descripcion, string estado, Nullable<int> iDProyecto, Nullable<int> iDDocumento)
-        {
-            var iDCuaderObraParameter = iDCuaderObra.HasValue ?
-                new ObjectParameter("IDCuaderObra", iDCuaderObra) :
-                new ObjectParameter("IDCuaderObra", typeof(int));
-    
-            var empresaParameter = empresa != null ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(string));
-    
-            var contratistaParameter = contratista != null ?
-                new ObjectParameter("contratista", contratista) :
-                new ObjectParameter("contratista", typeof(string));
-    
-            var asientosParameter = asientos.HasValue ?
-                new ObjectParameter("Asientos", asientos) :
-                new ObjectParameter("Asientos", typeof(int));
-    
-            var tituloAsiParameter = tituloAsi != null ?
-                new ObjectParameter("TituloAsi", tituloAsi) :
-                new ObjectParameter("TituloAsi", typeof(string));
-    
-            var tipAsiParameter = tipAsi != null ?
-                new ObjectParameter("TipAsi", tipAsi) :
-                new ObjectParameter("TipAsi", typeof(string));
-    
-            var fechaParameter = fecha.HasValue ?
-                new ObjectParameter("fecha", fecha) :
-                new ObjectParameter("fecha", typeof(System.DateTime));
-    
-            var descripcionParameter = descripcion != null ?
-                new ObjectParameter("descripcion", descripcion) :
-                new ObjectParameter("descripcion", typeof(string));
-    
-            var estadoParameter = estado != null ?
-                new ObjectParameter("estado", estado) :
-                new ObjectParameter("estado", typeof(string));
-    
-            var iDProyectoParameter = iDProyecto.HasValue ?
-                new ObjectParameter("IDProyecto", iDProyecto) :
-                new ObjectParameter("IDProyecto", typeof(int));
-    
-            var iDDocumentoParameter = iDDocumento.HasValue ?
-                new ObjectParameter("IDDocumento", iDDocumento) :
-                new ObjectParameter("IDDocumento", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_CuadernodeObra", iDCuaderObraParameter, empresaParameter, contratistaParameter, asientosParameter, tituloAsiParameter, tipAsiParameter, fechaParameter, descripcionParameter, estadoParameter, iDProyectoParameter, iDDocumentoParameter);
         }
     
         public virtual ObjectResult<string> SP_M_CuadernoProfesional(Nullable<int> iDCuaderno_Profesional, Nullable<int> idProfesional, Nullable<int> iDCuaderObra)
@@ -998,7 +871,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_REPORTE", iDReportParameter, fechaRepParameter, descripcionParameter, estadoParameter, iDDocParameter, iDProfesionalParameter);
         }
     
-        public virtual ObjectResult<string> SP_M_REUNION(Nullable<int> iDReunion, string tipoDeReunion, Nullable<System.DateTime> fecha, string ubicacion, string tema, Nullable<bool> estado, Nullable<int> iDProyecto)
+        public virtual ObjectResult<string> SP_M_USUARIO(string dNI, string nombre, string apellidos, string contraseña, string firma, string profesion, string correo, string telefono, byte[] usrImagen)
         {
             var iDReunionParameter = iDReunion.HasValue ?
                 new ObjectParameter("IDReunion", iDReunion) :
@@ -1031,7 +904,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_REUNION", iDReunionParameter, tipoDeReunionParameter, fechaParameter, ubicacionParameter, temaParameter, estadoParameter, iDProyectoParameter);
         }
     
-        public virtual ObjectResult<string> SP_M_USUARIO(string dNI, string nombre, string apellidos, string contraseña, string firma, string profesion, string correo, string telefono, byte[] usrImagen)
+        public virtual ObjectResult<SP_C_PROFESIONALLOGIN_Result> SP_C_PROFESIONALLOGIN(string dNI, string contraseña)
         {
             var dNIParameter = dNI != null ?
                 new ObjectParameter("DNI", dNI) :
