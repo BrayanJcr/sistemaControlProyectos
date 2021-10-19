@@ -14,7 +14,7 @@ namespace sistemaControlProyectos.Models
 
         }
 
-        public static AreaModelo instancia
+        public static AreaModelo Instancia
         {
             get
             {
@@ -44,6 +44,109 @@ namespace sistemaControlProyectos.Models
                 }
 
             }
+        }
+        public List<SP_C_AREAPADRE_Result> ListarAreaPadre()
+        {
+            List<SP_C_AREAPADRE_Result> listarArea = new List<SP_C_AREAPADRE_Result>();
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+
+                try
+                {
+                    listarArea = db.SP_C_AREAPADRE().ToList();
+                    return listarArea;
+                }
+                catch (Exception ex)
+                {
+                    listarArea = null;
+                    return listarArea;
+                }
+
+            }
+        }
+
+        public bool RegistrarArea(tblArea objetoArea)
+        {
+            bool respuesta = true;
+            try
+            {
+                using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                {
+
+                    try
+                    {
+                        db.SP_A_AREA(objetoArea.IdNomAreaPadre,objetoArea.nomArea,objetoArea.encargado,objetoArea.IDProyecto);
+
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+
+                    }
+
+                }
+            }
+            catch
+            {
+                respuesta = false;
+
+            }
+
+            return respuesta;
+        }
+
+        public bool EliminarArea(int IDArea)
+        {
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+
+                try
+                {
+                    db.SP_E_AREA(IDArea);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+
+                }
+
+            }
+        }
+        public bool ModificarArea(tblArea objetoArea)
+        {
+            bool respuesta = true;
+            try
+            {
+                using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                {
+
+                    try
+                    {
+                        db.SP_M_AREA(objetoArea.IDArea,objetoArea.IdNomAreaPadre
+                            ,objetoArea.nomArea,objetoArea.encargado,objetoArea.IDProyecto
+                            );
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+
+                    }
+
+                }
+            }
+            catch
+            {
+                respuesta = false;
+
+            }
+
+            return respuesta;
         }
     }
 }

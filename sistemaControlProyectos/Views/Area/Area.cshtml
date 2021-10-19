@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Area";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Area</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-header">
+            AREA
+        </div>
+        <div class="card-body">
+            <table id="tblArea" class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Encargado</th>
+                        <th>Area Padre</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Area</h5>
+                <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form class="formulario" id="form">
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <input type="hidden" id="txtArea" />
+
+                            <div class="form-group" id="grupo__titulo">
+                                <label for="txtNombre" id="formulario__label">Nombre *</label>
+                                <input type="text" class="form-control" name="nombre" id="txtNombre">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtEncargado">Encargado *</label>
+                                <select class="form-control" id="cboEncargado" name="Encargado:"></select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtPadre">Area Padre *</label>
+                                <select class="form-control" id="cboPadre" name="Padre:"></select>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button id="guardar" type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/Views/Crear_Area.js")" type="text/javascript"></script>
+
+}

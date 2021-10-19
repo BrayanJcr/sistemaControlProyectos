@@ -20,7 +20,6 @@ namespace sistemaControlProyectos.Models
         public DBControlProyectoEntities()
             : base("name=DBControlProyectoEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -81,7 +80,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_ACTIVIDAD", tituloParameter, fechaIniParameter, fechaFinParameter, descriptionParameter, estadoParameter, creadorParameter, procesoParameter, iDProyectoParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_AREA(Nullable<int> idNomAreaPadre, string nomArea)
+        public virtual ObjectResult<string> SP_A_AREA(Nullable<int> idNomAreaPadre, string nomArea, string encargado, Nullable<int> iDProyecto)
         {
             var idNomAreaPadreParameter = idNomAreaPadre.HasValue ?
                 new ObjectParameter("idNomAreaPadre", idNomAreaPadre) :
@@ -91,7 +90,15 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("nomArea", nomArea) :
                 new ObjectParameter("nomArea", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_AREA", idNomAreaPadreParameter, nomAreaParameter);
+            var encargadoParameter = encargado != null ?
+                new ObjectParameter("encargado", encargado) :
+                new ObjectParameter("encargado", typeof(string));
+    
+            var iDProyectoParameter = iDProyecto.HasValue ?
+                new ObjectParameter("IDProyecto", iDProyecto) :
+                new ObjectParameter("IDProyecto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_AREA", idNomAreaPadreParameter, nomAreaParameter, encargadoParameter, iDProyectoParameter);
         }
     
         public virtual ObjectResult<string> SP_A_CARGO(string nombre)
@@ -237,12 +244,8 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_ProfesionalReunion", iDProfesional_reunionParameter, iDProfesionalParameter, iDReunionParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_PROYECTO(Nullable<int> iDProyecto, string titulo, Nullable<System.DateTime> fechaIniPro, Nullable<System.DateTime> fechaFinPro, string ubicacion, string distrito, string departamento, byte[] imagen, string seguimiento, Nullable<int> iDProfesional)
+        public virtual ObjectResult<string> SP_A_PROYECTO(string titulo, Nullable<System.DateTime> fechaIniPro, Nullable<System.DateTime> fechaFinPro, string ubicacion, string distrito, string departamento, byte[] imagen, string seguimiento, Nullable<int> iDProfesional)
         {
-            var iDProyectoParameter = iDProyecto.HasValue ?
-                new ObjectParameter("IDProyecto", iDProyecto) :
-                new ObjectParameter("IDProyecto", typeof(int));
-    
             var tituloParameter = titulo != null ?
                 new ObjectParameter("titulo", titulo) :
                 new ObjectParameter("titulo", typeof(string));
@@ -279,7 +282,7 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("IDProfesional", iDProfesional) :
                 new ObjectParameter("IDProfesional", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_PROYECTO", iDProyectoParameter, tituloParameter, fechaIniProParameter, fechaFinProParameter, ubicacionParameter, distritoParameter, departamentoParameter, imagenParameter, seguimientoParameter, iDProfesionalParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_PROYECTO", tituloParameter, fechaIniProParameter, fechaFinProParameter, ubicacionParameter, distritoParameter, departamentoParameter, imagenParameter, seguimientoParameter, iDProfesionalParameter);
         }
     
         public virtual ObjectResult<string> SP_A_RECURSO(Nullable<int> iDRecurso, string nombre)
@@ -295,12 +298,8 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_RECURSO", iDRecursoParameter, nombreParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_RECURSO_Actividad(Nullable<int> idRecursoActividad, Nullable<int> iDRecurso, Nullable<int> iDActividad, Nullable<int> cantidad, Nullable<decimal> costo)
+        public virtual ObjectResult<string> SP_A_RECURSO_Actividad(Nullable<int> iDRecurso, Nullable<int> iDActividad, Nullable<int> cantidad, Nullable<decimal> costo)
         {
-            var idRecursoActividadParameter = idRecursoActividad.HasValue ?
-                new ObjectParameter("idRecursoActividad", idRecursoActividad) :
-                new ObjectParameter("idRecursoActividad", typeof(int));
-    
             var iDRecursoParameter = iDRecurso.HasValue ?
                 new ObjectParameter("IDRecurso", iDRecurso) :
                 new ObjectParameter("IDRecurso", typeof(int));
@@ -317,7 +316,7 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("costo", costo) :
                 new ObjectParameter("costo", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_RECURSO_Actividad", idRecursoActividadParameter, iDRecursoParameter, iDActividadParameter, cantidadParameter, costoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_RECURSO_Actividad", iDRecursoParameter, iDActividadParameter, cantidadParameter, costoParameter);
         }
     
         public virtual ObjectResult<string> SP_A_REPORTE(Nullable<System.DateTime> fechaRep, string descripcion, string estado, Nullable<int> iDDoc)
@@ -425,6 +424,11 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_AREA_Result>("SP_C_AREA");
         }
     
+        public virtual ObjectResult<SP_C_AREAPADRE_Result> SP_C_AREAPADRE()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_AREAPADRE_Result>("SP_C_AREAPADRE");
+        }
+    
         public virtual ObjectResult<SP_C_CARGO_Result> SP_C_CARGO()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_CARGO_Result>("SP_C_CARGO");
@@ -464,6 +468,24 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROFESIONALID_Result>("SP_C_PROFESIONALID", iDProfesionalParameter);
         }
     
+        public virtual ObjectResult<SP_C_PROFESIONALLOGIN_Result> SP_C_PROFESIONALLOGIN(string dNI, string contraseña)
+        {
+            var dNIParameter = dNI != null ?
+                new ObjectParameter("DNI", dNI) :
+                new ObjectParameter("DNI", typeof(string));
+    
+            var contraseñaParameter = contraseña != null ?
+                new ObjectParameter("contraseña", contraseña) :
+                new ObjectParameter("contraseña", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROFESIONALLOGIN_Result>("SP_C_PROFESIONALLOGIN", dNIParameter, contraseñaParameter);
+        }
+    
+        public virtual ObjectResult<SP_C_PROFESIONALRESPONSABLE_Result> SP_C_PROFESIONALRESPONSABLE()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROFESIONALRESPONSABLE_Result>("SP_C_PROFESIONALRESPONSABLE");
+        }
+    
         public virtual ObjectResult<SP_C_ProfesionalReunion_Result> SP_C_ProfesionalReunion()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_ProfesionalReunion_Result>("SP_C_ProfesionalReunion");
@@ -492,6 +514,11 @@ namespace sistemaControlProyectos.Models
         public virtual ObjectResult<SP_C_REUNION_Result> SP_C_REUNION()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_REUNION_Result>("SP_C_REUNION");
+        }
+    
+        public virtual ObjectResult<SP_C_USUARIO_Result> SP_C_USUARIO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_USUARIO_Result>("SP_C_USUARIO");
         }
     
         public virtual ObjectResult<SP_C_USUARIODNI_Result> SP_C_USUARIODNI(string dNI)
@@ -629,6 +656,15 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_E_REUNION", iDReunionParameter);
         }
     
+        public virtual ObjectResult<string> SP_E_USUARIO(string dNI)
+        {
+            var dNIParameter = dNI != null ?
+                new ObjectParameter("DNI", dNI) :
+                new ObjectParameter("DNI", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_E_USUARIO", dNIParameter);
+        }
+    
         public virtual ObjectResult<string> SP_M_ACTIVIDAD(Nullable<int> iDActividad, string titulo, Nullable<System.DateTime> fechaIni, Nullable<System.DateTime> fechaFin, string description, Nullable<bool> estado, string creador, string proceso, Nullable<int> iDProyecto)
         {
             var iDActividadParameter = iDActividad.HasValue ?
@@ -670,7 +706,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_ACTIVIDAD", iDActividadParameter, tituloParameter, fechaIniParameter, fechaFinParameter, descriptionParameter, estadoParameter, creadorParameter, procesoParameter, iDProyectoParameter);
         }
     
-        public virtual ObjectResult<string> SP_M_AREA(Nullable<int> iDArea, Nullable<int> idNombreArea, string nomArea)
+        public virtual ObjectResult<string> SP_M_AREA(Nullable<int> iDArea, Nullable<int> idNombreArea, string nomArea, string encargado, Nullable<int> iDProyecto)
         {
             var iDAreaParameter = iDArea.HasValue ?
                 new ObjectParameter("IDArea", iDArea) :
@@ -684,7 +720,15 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("nomArea", nomArea) :
                 new ObjectParameter("nomArea", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_AREA", iDAreaParameter, idNombreAreaParameter, nomAreaParameter);
+            var encargadoParameter = encargado != null ?
+                new ObjectParameter("encargado", encargado) :
+                new ObjectParameter("encargado", typeof(string));
+    
+            var iDProyectoParameter = iDProyecto.HasValue ?
+                new ObjectParameter("IDProyecto", iDProyecto) :
+                new ObjectParameter("IDProyecto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_AREA", iDAreaParameter, idNombreAreaParameter, nomAreaParameter, encargadoParameter, iDProyectoParameter);
         }
     
         public virtual ObjectResult<string> SP_M_CARGO(Nullable<int> iDCargo, string nomCargo)
@@ -987,27 +1031,45 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_REUNION", iDReunionParameter, tipoDeReunionParameter, fechaParameter, ubicacionParameter, temaParameter, estadoParameter, iDProyectoParameter);
         }
     
-        public virtual ObjectResult<SP_C_PROFESIONALLOGIN_Result> SP_C_PROFESIONALLOGIN(string dNI, string contraseña)
+        public virtual ObjectResult<string> SP_M_USUARIO(string dNI, string nombre, string apellidos, string contraseña, string firma, string profesion, string correo, string telefono, byte[] usrImagen)
         {
             var dNIParameter = dNI != null ?
                 new ObjectParameter("DNI", dNI) :
                 new ObjectParameter("DNI", typeof(string));
     
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var apellidosParameter = apellidos != null ?
+                new ObjectParameter("apellidos", apellidos) :
+                new ObjectParameter("apellidos", typeof(string));
+    
             var contraseñaParameter = contraseña != null ?
                 new ObjectParameter("contraseña", contraseña) :
                 new ObjectParameter("contraseña", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROFESIONALLOGIN_Result>("SP_C_PROFESIONALLOGIN", dNIParameter, contraseñaParameter);
-        }
+            var firmaParameter = firma != null ?
+                new ObjectParameter("firma", firma) :
+                new ObjectParameter("firma", typeof(string));
     
-        public virtual ObjectResult<SP_C_PROFESIONALRESPONSABLE_Result> SP_C_PROFESIONALRESPONSABLE()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROFESIONALRESPONSABLE_Result>("SP_C_PROFESIONALRESPONSABLE");
-        }
+            var profesionParameter = profesion != null ?
+                new ObjectParameter("profesion", profesion) :
+                new ObjectParameter("profesion", typeof(string));
     
-        public virtual ObjectResult<SP_C_USUARIO_Result> SP_C_USUARIO()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_USUARIO_Result>("SP_C_USUARIO");
+            var correoParameter = correo != null ?
+                new ObjectParameter("correo", correo) :
+                new ObjectParameter("correo", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("telefono", telefono) :
+                new ObjectParameter("telefono", typeof(string));
+    
+            var usrImagenParameter = usrImagen != null ?
+                new ObjectParameter("usrImagen", usrImagen) :
+                new ObjectParameter("usrImagen", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_USUARIO", dNIParameter, nombreParameter, apellidosParameter, contraseñaParameter, firmaParameter, profesionParameter, correoParameter, telefonoParameter, usrImagenParameter);
         }
     }
 }

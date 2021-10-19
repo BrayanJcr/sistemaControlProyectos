@@ -3,3 +3,36 @@
     margin:3px;
 }
 
+.formulario__input-error{
+    font-size:12px;
+    margin-bottom: 0;
+    display: none;
+}
+
+.formulario__input-error-Fecha {
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+}
+
+.formulario__input-error-activo{
+    display: block;
+}
+
+.formulario__input-error-Fecha-activo{
+    display: block;
+}
+
+.form-control{
+    margin-bottom: 8px;
+}
+
+#cboResponsables, #cboRecurso {
+    float: right;
+    width: calc(90% - 2px);
+}
+
+#btnResponsables, #btnRecursos {
+    float: left;
+    width: calc(10% - 2px);
+}
