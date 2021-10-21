@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Reportes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Reportes</h1>
+
+
+
+<form action="/action_page.php">
+    <label for="date">Fecha:</label>
+    <input type="date" id="txtfecha" name="fecha">
+
+</form>
+<br />
+
+
+<form action="/action_page.php">
+    <p>
+        <label for="w3review">Reporte Personal</label><br />
+    </p>
+    <p>
+<textarea id="txtDescripcion" name="w3review" rows="4" cols="50">
+  Reporte.
+  </textarea>
+    </p>
+    <br><br>
+
+</form>
+<div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label col-form-label-sm">Actividades Realizadas</label>
+    <div class="col-sm-10">
+        <select style="width:200px" class="form-control form-control-sm model" id="cboCategoria" name="Actividad"></select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-header">
+            ACTIVIDAD
+        </div>
+        <div class="card-body">
+            <table id="tblActividad" class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="titulo">Titulo</th>
+                        <th class="fechaInicio">Fecha Inicio</th>
+                        <th class="fechaFin">Fecha Fin</th>
+                        <th>Descripcion</th>
+                        <th>Estado</th>
+                        <th>Proceso</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<form action="../../form-result.php" method="post" enctype="multipart/form-data" target="_blank">
+
+    <p>
+
+        <br> Sube un archivo:</br>
+        <br />
+
+        <input type="file" name="archivosubido">
+
+
+
+    </p>
+
+</form>
+
+
+
+
+
+<tr>
+    <td style="padding: 30px"></td>
+    <td style="padding: 30px">
+        <button class="btn btn-success" type="submit" name="btn1" id="btn1"><span class="glyphicon glyphicon-save"> Agregar</span></button>
+
+        <a class="btn btn-danger" href="~/Seccion/Index"><span class="glyphicon glyphicon-backward"> Regresar</span></a>
+    </td>
+</tr>
+
+<tr>
+    <asp:TextBox id="tb4" TextMode="multiline" runat="server" />
+</tr>
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/Views/Reporte.js")" type="text/javascript"></script>
+
+}
+
+
+
