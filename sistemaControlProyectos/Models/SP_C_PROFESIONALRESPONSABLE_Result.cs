@@ -13,6 +13,7 @@ namespace sistemaControlProyectos.Models
     
     public partial class SP_C_PROFESIONALRESPONSABLE_Result
     {
+        public int IDProfesional { get; set; }
         public string DNI { get; set; }
         public string nombre { get; set; }
         public string apellidos { get; set; }

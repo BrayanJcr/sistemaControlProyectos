@@ -116,6 +116,8 @@
           </Key>
           <Property Name="IDRecurso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nomRecurso" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cantidadStock" Type="int" Nullable="false" />
+          <Property Name="costo" Type="decimal" Precision="7" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="tblRecurso_Actividad">
           <Key>
@@ -125,7 +127,6 @@
           <Property Name="IDRecurso" Type="int" Nullable="false" />
           <Property Name="IDActividad" Type="int" Nullable="false" />
           <Property Name="cantidad" Type="int" Nullable="false" />
-          <Property Name="costo" Type="decimal" Precision="7" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="tblReporte">
           <Key>
@@ -464,7 +465,6 @@
           <Parameter Name="IDReporte" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_A_ProfesionalActividad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="IDProfActividad" Type="int" Mode="In" />
           <Parameter Name="IDProfesional" Type="int" Mode="In" />
           <Parameter Name="IDActividad" Type="int" Mode="In" />
         </Function>
@@ -485,14 +485,14 @@
           <Parameter Name="IDProfesional" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_A_RECURSO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="IDRecurso" Type="int" Mode="In" />
           <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="cantidadStock" Type="int" Mode="In" />
+          <Parameter Name="costo" Type="decimal" Mode="In" />
         </Function>
-        <Function Name="SP_A_RECURSO_Actividad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="SP_A_RECURSO_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDRecurso" Type="int" Mode="In" />
           <Parameter Name="IDActividad" Type="int" Mode="In" />
           <Parameter Name="cantidad" Type="int" Mode="In" />
-          <Parameter Name="costo" Type="decimal" Mode="In" />
         </Function>
         <Function Name="SP_A_REPORTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FechaRep" Type="date" Mode="In" />
@@ -669,13 +669,14 @@
         <Function Name="SP_M_RECURSO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDRecurso" Type="int" Mode="In" />
           <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="cantidadStock" Type="int" Mode="In" />
+          <Parameter Name="costo" Type="decimal" Mode="In" />
         </Function>
         <Function Name="SP_M_RECURSO_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idRecursoActividad" Type="int" Mode="In" />
           <Parameter Name="IDRecurso" Type="int" Mode="In" />
           <Parameter Name="IDActividad" Type="int" Mode="In" />
           <Parameter Name="cantidad" Type="int" Mode="In" />
-          <Parameter Name="costo" Type="decimal" Mode="In" />
         </Function>
         <Function Name="SP_M_REPORTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDReport" Type="int" Mode="In" />
@@ -955,6 +956,8 @@
           </Key>
           <Property Name="IDRecurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomRecurso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantidadStock" Type="Int32" Nullable="false" />
+          <Property Name="costo" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
           <NavigationProperty Name="tblRecurso_Actividad" Relationship="Self.FK__tblRecurs__IDRec__5070F446" FromRole="tblRecurso" ToRole="tblRecurso_Actividad" />
         </EntityType>
         <EntityType Name="tblRecurso_Actividad">
@@ -965,7 +968,6 @@
           <Property Name="IDRecurso" Type="Int32" Nullable="false" />
           <Property Name="IDActividad" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Int32" Nullable="false" />
-          <Property Name="costo" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
           <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblRecurs__IDAct__4F7CD00D" FromRole="tblRecurso_Actividad" ToRole="tblActividad" />
           <NavigationProperty Name="tblRecurso" Relationship="Self.FK__tblRecurs__IDRec__5070F446" FromRole="tblRecurso_Actividad" ToRole="tblRecurso" />
         </EntityType>
@@ -1412,7 +1414,6 @@
             <Parameter Name="IDReporte" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_A_ProfesionalActividad" ReturnType="Collection(String)">
-            <Parameter Name="IDProfActividad" Mode="In" Type="Int32" />
             <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
             <Parameter Name="IDActividad" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1433,14 +1434,14 @@
             <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_A_RECURSO" ReturnType="Collection(String)">
-            <Parameter Name="IDRecurso" Mode="In" Type="Int32" />
             <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="cantidadStock" Mode="In" Type="Int32" />
+            <Parameter Name="costo" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="SP_A_RECURSO_Actividad" ReturnType="Collection(String)">
+          <FunctionImport Name="SP_A_RECURSO_ACTIVIDAD" ReturnType="Collection(String)">
             <Parameter Name="IDRecurso" Mode="In" Type="Int32" />
             <Parameter Name="IDActividad" Mode="In" Type="Int32" />
             <Parameter Name="cantidad" Mode="In" Type="Int32" />
-            <Parameter Name="costo" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_A_REPORTE" ReturnType="Collection(String)">
             <Parameter Name="FechaRep" Mode="In" Type="DateTime" />
@@ -1617,13 +1618,14 @@
           <FunctionImport Name="SP_M_RECURSO" ReturnType="Collection(String)">
             <Parameter Name="IDRecurso" Mode="In" Type="Int32" />
             <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="cantidadStock" Mode="In" Type="Int32" />
+            <Parameter Name="costo" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_M_RECURSO_ACTIVIDAD" ReturnType="Collection(String)">
             <Parameter Name="idRecursoActividad" Mode="In" Type="Int32" />
             <Parameter Name="IDRecurso" Mode="In" Type="Int32" />
             <Parameter Name="IDActividad" Mode="In" Type="Int32" />
             <Parameter Name="cantidad" Mode="In" Type="Int32" />
-            <Parameter Name="costo" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_M_REPORTE" ReturnType="Collection(String)">
             <Parameter Name="IDReport" Mode="In" Type="Int32" />
@@ -1716,8 +1718,17 @@
         </ComplexType>
         <ComplexType Name="SP_C_ProfesionalActividad_Result">
           <Property Type="Int32" Name="IDProfActividad" Nullable="false" />
-          <Property Type="Int32" Name="IDProfesional" Nullable="false" />
           <Property Type="Int32" Name="IDActividad" Nullable="false" />
+          <Property Type="String" Name="titActividad" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="String" Name="creador" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="proceso" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDProfesional" Nullable="false" />
+          <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="nomCargo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="nomArea" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="SP_C_PROFESIONALID_Result">
           <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
@@ -1734,6 +1745,7 @@
           <Property Type="String" Name="contraseña" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="SP_C_PROFESIONALRESPONSABLE_Result">
+          <Property Type="Int32" Name="IDProfesional" Nullable="false" />
           <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
           <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="apellidos" Nullable="false" MaxLength="50" />
@@ -1763,13 +1775,14 @@
         <ComplexType Name="SP_C_RECURSO_Result">
           <Property Type="Int32" Name="IDRecurso" Nullable="false" />
           <Property Type="String" Name="nomRecurso" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="cantidadStock" Nullable="false" />
+          <Property Type="Decimal" Name="costo" Nullable="false" Precision="7" Scale="2" />
         </ComplexType>
         <ComplexType Name="SP_C_RECURSO_ACTIVIDAD_Result">
           <Property Type="Int32" Name="idRecursoActividad" Nullable="false" />
           <Property Type="Int32" Name="IDRecurso" Nullable="false" />
           <Property Type="Int32" Name="IDActividad" Nullable="false" />
           <Property Type="Int32" Name="cantidad" Nullable="false" />
-          <Property Type="Decimal" Name="costo" Nullable="false" Precision="7" Scale="2" />
         </ComplexType>
         <ComplexType Name="SP_C_REPORTE_Result">
           <Property Type="Int32" Name="IDReport" Nullable="false" />
@@ -1792,6 +1805,7 @@
           <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
           <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="apellidos" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="contraseña" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="correo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="profesion" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="telefono" Nullable="true" MaxLength="50" />
@@ -1934,6 +1948,8 @@
               <MappingFragment StoreEntitySet="tblRecurso">
                 <ScalarProperty Name="IDRecurso" ColumnName="IDRecurso" />
                 <ScalarProperty Name="nomRecurso" ColumnName="nomRecurso" />
+                <ScalarProperty Name="cantidadStock" ColumnName="cantidadStock" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1944,7 +1960,6 @@
                 <ScalarProperty Name="IDRecurso" ColumnName="IDRecurso" />
                 <ScalarProperty Name="IDActividad" ColumnName="IDActividad" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="costo" ColumnName="costo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1999,7 +2014,7 @@
           <FunctionImportMapping FunctionImportName="SP_A_ProfesionalReunion" FunctionName="DBControlProyectoModel.Store.SP_A_ProfesionalReunion" />
           <FunctionImportMapping FunctionImportName="SP_A_PROYECTO" FunctionName="DBControlProyectoModel.Store.SP_A_PROYECTO" />
           <FunctionImportMapping FunctionImportName="SP_A_RECURSO" FunctionName="DBControlProyectoModel.Store.SP_A_RECURSO" />
-          <FunctionImportMapping FunctionImportName="SP_A_RECURSO_Actividad" FunctionName="DBControlProyectoModel.Store.SP_A_RECURSO_Actividad" />
+          <FunctionImportMapping FunctionImportName="SP_A_RECURSO_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_A_RECURSO_ACTIVIDAD" />
           <FunctionImportMapping FunctionImportName="SP_A_REPORTE" FunctionName="DBControlProyectoModel.Store.SP_A_REPORTE" />
           <FunctionImportMapping FunctionImportName="SP_A_REUNION" FunctionName="DBControlProyectoModel.Store.SP_A_REUNION" />
           <FunctionImportMapping FunctionImportName="SP_A_USUARIO" FunctionName="DBControlProyectoModel.Store.SP_A_USUARIO" />
@@ -2099,8 +2114,17 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_ProfesionalActividad_Result">
                 <ScalarProperty Name="IDProfActividad" ColumnName="IDProfActividad" />
-                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
                 <ScalarProperty Name="IDActividad" ColumnName="IDActividad" />
+                <ScalarProperty Name="titActividad" ColumnName="titActividad" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="creador" ColumnName="creador" />
+                <ScalarProperty Name="proceso" ColumnName="proceso" />
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="nomCargo" ColumnName="nomCargo" />
+                <ScalarProperty Name="nomArea" ColumnName="nomArea" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2129,6 +2153,7 @@
           <FunctionImportMapping FunctionImportName="SP_C_PROFESIONALRESPONSABLE" FunctionName="DBControlProyectoModel.Store.SP_C_PROFESIONALRESPONSABLE">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_PROFESIONALRESPONSABLE_Result">
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
                 <ScalarProperty Name="DNI" ColumnName="DNI" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />
@@ -2170,6 +2195,8 @@
               <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_RECURSO_Result">
                 <ScalarProperty Name="IDRecurso" ColumnName="IDRecurso" />
                 <ScalarProperty Name="nomRecurso" ColumnName="nomRecurso" />
+                <ScalarProperty Name="cantidadStock" ColumnName="cantidadStock" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2180,7 +2207,6 @@
                 <ScalarProperty Name="IDRecurso" ColumnName="IDRecurso" />
                 <ScalarProperty Name="IDActividad" ColumnName="IDActividad" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="costo" ColumnName="costo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2215,6 +2241,7 @@
                 <ScalarProperty Name="DNI" ColumnName="DNI" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
                 <ScalarProperty Name="correo" ColumnName="correo" />
                 <ScalarProperty Name="profesion" ColumnName="profesion" />
                 <ScalarProperty Name="telefono" ColumnName="telefono" />

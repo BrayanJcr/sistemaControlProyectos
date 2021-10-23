@@ -105,16 +105,16 @@ function abrirModal($IDArea) {
             success: function (data) {
 
                 if (data != null) {
-                    $("#txtTitulo").val(data.titActividad);
-                    $("#cboProyecto").val(data.IDProyecto);
-                    $("#cboProyecto").val(data.IDProyecto);
+                    $("#txtNombre").val(data.nomArea);
+                    $("#cboEncargado").val(data.encargado);
+                    $("#cboPadre").val(data.IdNomAreaPadre);
                 }
             }
         });
     } else {
-        $("#txtTitulo").val("");
-        $("#cboProyecto").val($("#cboProyecto option:first").val());
-        $("#cboProyecto").val($("#cboProyecto option:first").val());
+        $("#txtNombre").val("");
+        $("#cboEncargado").val($("#cboEncargado option:first").val());
+        $("#cboPadre").val($("#cboPadre option:first").val());
     }
 
     $('#FormModal').modal('show');
@@ -124,10 +124,9 @@ function abrirModal($IDArea) {
 function Guardar() {
     var $request = {
         objeto: {
-            IDArea: parseInt($("#txtIdActividad").val()),
-            titActividad: $("#txtTitulo").val(),
-            IDProyecto: ($("#cboProyecto").val()),
-            IDProyecto: ($("#cboProyecto").val()),
+            nomArea: $("#txtNombre").val(),
+            encargado: $("#cboEncargado").text(),
+            IdNomAreaPadre: ($("#cboPadre").val()),
         }
     }
     console.log($request);
@@ -140,7 +139,7 @@ function Guardar() {
         success: function (data) {
             console.log(data.resultado);
             if (data.resultado) {
-                tablaActividad.ajax.reload();
+                tablaArea.ajax.reload();
                 $('#FormModal').modal('hide');
             } else {
                 alert("Mensaje No se pudo guardar los cambios", "warning");
@@ -156,16 +155,16 @@ function Guardar() {
 
 }
 
-function Eliminar($IDActividad) {
+function Eliminar($IDArea) {
     if (confirm("Estas seguro de Eliminar el Registro?")) {
         jQuery.ajax({
-            url: "/Actividades/Eliminar" + "?IDActividad=" + $IDActividad,
+            url: "/Area/Eliminar" + "?IDArea=" + $IDArea,
             type: "GET",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.resultado) {
-                    tablaActividad.ajax.reload();
+                    tablaArea.ajax.reload();
                 }
             }
         });

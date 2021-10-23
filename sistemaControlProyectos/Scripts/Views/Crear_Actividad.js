@@ -160,7 +160,6 @@ function Guardar() {
                         url: "/Actividades/Guardar",
                         type: "POST",
                         data: JSON.stringify($request),
-                
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
@@ -208,4 +207,42 @@ function Eliminar($IDActividad) {
             }
         });
     }
+}
+
+/////Responsable modal
+
+function modalResponsable($IDActividad) { 
+
+    $("#txtIdActividad").val($IDActividad);
+    if ($IDActividad != 0) {
+
+        jQuery.ajax({
+            url: "/Actividades/Obtener" + "?IDActividad=" + $IDActividad,
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                if (data != null) {
+                    $("#txtTitulo").val(data.titActividad);
+                    $("#txtFechaIni").val(Cambiarfecha(data.fechaInicio));
+                    $("#txtFechaFin").val(Cambiarfecha(data.fechaFin));
+                    $("#txtDescripcion").val(data.Descripcion);
+                    $("#cboProyecto").val(data.IDProyecto);
+                    $("#cboEstado").val(data.estado == true ? 1 : 0);
+                    $("#cboProceso").val(data.proceso);
+                }
+            }
+        });
+    } else {
+        $("#txtTitulo").val("");
+        $("#txtFechaIni").val("");
+        $("#txtFechaFin").val("");
+        $("#txtDescripcion").val("");
+        $("#cboProyecto").val($("#cboProyecto option:first").val());
+        $("#cboEstado").val(1);
+        $("#cboProceso").val("Nuevo");
+    }
+
+    $('#FormModal').modal('show');
 }

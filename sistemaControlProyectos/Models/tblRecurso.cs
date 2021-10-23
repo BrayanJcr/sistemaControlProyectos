@@ -22,6 +22,8 @@ namespace sistemaControlProyectos.Models
     
         public int IDRecurso { get; set; }
         public string nomRecurso { get; set; }
+        public int cantidadStock { get; set; }
+        public decimal costo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblRecurso_Actividad> tblRecurso_Actividad { get; set; }

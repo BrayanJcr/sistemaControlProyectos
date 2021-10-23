@@ -131,7 +131,78 @@ namespace sistemaControlProyectos.Models
 
             return respuesta;
         }
-        
+
+        //AsignarResponsable a Actividad
+
+        public List<SP_C_ProfesionalActividad_Result> ListarActividadResponsable()
+        {
+            List<SP_C_ProfesionalActividad_Result> listarActividadResponsable = new List<SP_C_ProfesionalActividad_Result>();
+
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                try
+                {
+                    listarActividadResponsable = db.SP_C_ProfesionalActividad().ToList();
+
+                    return listarActividadResponsable;
+
+                }
+                catch (Exception ex)
+                {
+                    listarActividadResponsable = null;
+                    return listarActividadResponsable;
+                }
+        }
+
+        public bool RegistrarActividadResponsable(tblProfesional_Actividad objetoActividadRes)
+        {
+            bool respuesta = true;
+            try
+            {
+                using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                {
+
+                    try
+                    {
+                        db.SP_A_ProfesionalActividad(objetoActividadRes.IDActividad,objetoActividadRes.IDProfesional);
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+
+                    }
+
+                }
+            }
+            catch
+            {
+                respuesta = false;
+
+            }
+
+            return respuesta;
+        }
+
+        public bool EliminarAsigResponsa(int IDProfActividad)
+        {
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+
+                try
+                {
+                    db.SP_E_ProfesionalActividad(IDProfActividad);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+
+                }
+
+            }
+        }
     }
 
 }

@@ -31,8 +31,7 @@
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-                        <img class="img-fluid img-rounded" src="https://media-exp1.licdn.com/dms/image/C4D03AQEp-syGZVer-g/profile-displayphoto-shrink_100_100/0/1563049618997?e=1634774400&v=beta&t=t0uRi3BSt4vfb1oBW1klWLHOHJWJE1pq5zG7yqFmpXY"
-                             alt="User picture">
+                        <img class="img-fluid img-rounded" >
                     </div>
                     <div class="user-info">
                         <span class="user-name">
@@ -84,6 +83,7 @@
                                 </ul>
                             </div>
                         </li>
+
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fa fa-users"></i>
@@ -103,6 +103,21 @@
                                 </ul>
                             </div>
                         </li>
+
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-list-alt"></i>
+                                <span>Recurso</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="/Recursos/Recursos">Recursos</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fa fa-list-alt"></i>
@@ -112,6 +127,12 @@
                                 <ul>
                                     <li>
                                         <a href="/Actividades/Actividades">Actividades</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Actividades/AsignarResponsable">Asignar Responsable</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Actividades/AsignarRecurso">Asignar Recurso</a>
                                     </li>
                                     <li>
                                         <a href="/Gantt/Gantt">Gantt</a>
@@ -130,10 +151,10 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        @Html.ActionLink("Area", "Area", "Area")
+                                        <a href="/Area/Area">Area</a>
                                     </li>
                                     <li>
-                                        @Html.ActionLink("Organigrama", "Organigrama", "Area")
+                                        <a href="/Area/Organigrama">Organigrama</a>
                                     </li>
                                 </ul>
                             </div>

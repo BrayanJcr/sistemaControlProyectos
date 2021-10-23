@@ -17,6 +17,5 @@ namespace sistemaControlProyectos.Models
         public int IDRecurso { get; set; }
         public int IDActividad { get; set; }
         public int cantidad { get; set; }
-        public decimal costo { get; set; }
     }
 }

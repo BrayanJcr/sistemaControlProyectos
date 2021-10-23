@@ -211,12 +211,8 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_PROFESIONAL", dNIParameter, iDCargoParameter, iDAreaParameter, iDReporteParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_ProfesionalActividad(Nullable<int> iDProfActividad, Nullable<int> iDProfesional, Nullable<int> iDActividad)
+        public virtual ObjectResult<string> SP_A_ProfesionalActividad(Nullable<int> iDProfesional, Nullable<int> iDActividad)
         {
-            var iDProfActividadParameter = iDProfActividad.HasValue ?
-                new ObjectParameter("IDProfActividad", iDProfActividad) :
-                new ObjectParameter("IDProfActividad", typeof(int));
-    
             var iDProfesionalParameter = iDProfesional.HasValue ?
                 new ObjectParameter("IDProfesional", iDProfesional) :
                 new ObjectParameter("IDProfesional", typeof(int));
@@ -225,7 +221,7 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("IDActividad", iDActividad) :
                 new ObjectParameter("IDActividad", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_ProfesionalActividad", iDProfActividadParameter, iDProfesionalParameter, iDActividadParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_ProfesionalActividad", iDProfesionalParameter, iDActividadParameter);
         }
     
         public virtual ObjectResult<string> SP_A_ProfesionalReunion(Nullable<int> iDProfesional_reunion, Nullable<int> iDProfesional, Nullable<int> iDReunion)
@@ -286,20 +282,24 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_PROYECTO", tituloParameter, fechaIniProParameter, fechaFinProParameter, ubicacionParameter, distritoParameter, departamentoParameter, imagenParameter, seguimientoParameter, iDProfesionalParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_RECURSO(Nullable<int> iDRecurso, string nombre)
+        public virtual ObjectResult<string> SP_A_RECURSO(string nombre, Nullable<int> cantidadStock, Nullable<decimal> costo)
         {
-            var iDRecursoParameter = iDRecurso.HasValue ?
-                new ObjectParameter("IDRecurso", iDRecurso) :
-                new ObjectParameter("IDRecurso", typeof(int));
-    
             var nombreParameter = nombre != null ?
                 new ObjectParameter("nombre", nombre) :
                 new ObjectParameter("nombre", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_RECURSO", iDRecursoParameter, nombreParameter);
+            var cantidadStockParameter = cantidadStock.HasValue ?
+                new ObjectParameter("cantidadStock", cantidadStock) :
+                new ObjectParameter("cantidadStock", typeof(int));
+    
+            var costoParameter = costo.HasValue ?
+                new ObjectParameter("costo", costo) :
+                new ObjectParameter("costo", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_RECURSO", nombreParameter, cantidadStockParameter, costoParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_RECURSO_Actividad(Nullable<int> iDRecurso, Nullable<int> iDActividad, Nullable<int> cantidad, Nullable<decimal> costo)
+        public virtual ObjectResult<string> SP_A_RECURSO_ACTIVIDAD(Nullable<int> iDRecurso, Nullable<int> iDActividad, Nullable<int> cantidad)
         {
             var iDRecursoParameter = iDRecurso.HasValue ?
                 new ObjectParameter("IDRecurso", iDRecurso) :
@@ -313,11 +313,7 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("cantidad", cantidad) :
                 new ObjectParameter("cantidad", typeof(int));
     
-            var costoParameter = costo.HasValue ?
-                new ObjectParameter("costo", costo) :
-                new ObjectParameter("costo", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_RECURSO_Actividad", iDRecursoParameter, iDActividadParameter, cantidadParameter, costoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_RECURSO_ACTIVIDAD", iDRecursoParameter, iDActividadParameter, cantidadParameter);
         }
     
         public virtual ObjectResult<string> SP_A_REPORTE(Nullable<System.DateTime> fechaRep, string descripcion, string estado, Nullable<int> iDDoc)
@@ -932,7 +928,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_PROYECTO", iDProyectoParameter, tituloParameter, fechaIniProParameter, fechaFinProParameter, ubicacionParameter, distritoParameter, departamentoParameter, imagenParameter, seguimientoParameter, iDProfesionalParameter);
         }
     
-        public virtual ObjectResult<string> SP_M_RECURSO(Nullable<int> iDRecurso, string nombre)
+        public virtual ObjectResult<string> SP_M_RECURSO(Nullable<int> iDRecurso, string nombre, Nullable<int> cantidadStock, Nullable<decimal> costo)
         {
             var iDRecursoParameter = iDRecurso.HasValue ?
                 new ObjectParameter("IDRecurso", iDRecurso) :
@@ -942,10 +938,18 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("nombre", nombre) :
                 new ObjectParameter("nombre", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_RECURSO", iDRecursoParameter, nombreParameter);
+            var cantidadStockParameter = cantidadStock.HasValue ?
+                new ObjectParameter("cantidadStock", cantidadStock) :
+                new ObjectParameter("cantidadStock", typeof(int));
+    
+            var costoParameter = costo.HasValue ?
+                new ObjectParameter("costo", costo) :
+                new ObjectParameter("costo", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_RECURSO", iDRecursoParameter, nombreParameter, cantidadStockParameter, costoParameter);
         }
     
-        public virtual ObjectResult<string> SP_M_RECURSO_ACTIVIDAD(Nullable<int> idRecursoActividad, Nullable<int> iDRecurso, Nullable<int> iDActividad, Nullable<int> cantidad, Nullable<decimal> costo)
+        public virtual ObjectResult<string> SP_M_RECURSO_ACTIVIDAD(Nullable<int> idRecursoActividad, Nullable<int> iDRecurso, Nullable<int> iDActividad, Nullable<int> cantidad)
         {
             var idRecursoActividadParameter = idRecursoActividad.HasValue ?
                 new ObjectParameter("idRecursoActividad", idRecursoActividad) :
@@ -963,11 +967,7 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("cantidad", cantidad) :
                 new ObjectParameter("cantidad", typeof(int));
     
-            var costoParameter = costo.HasValue ?
-                new ObjectParameter("costo", costo) :
-                new ObjectParameter("costo", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_RECURSO_ACTIVIDAD", idRecursoActividadParameter, iDRecursoParameter, iDActividadParameter, cantidadParameter, costoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_RECURSO_ACTIVIDAD", idRecursoActividadParameter, iDRecursoParameter, iDActividadParameter, cantidadParameter);
         }
     
         public virtual ObjectResult<string> SP_M_REPORTE(Nullable<int> iDReport, Nullable<System.DateTime> fechaRep, string descripcion, string estado, Nullable<int> iDDoc, Nullable<int> iDProfesional)

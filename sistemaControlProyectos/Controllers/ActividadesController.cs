@@ -16,6 +16,14 @@ namespace sistemaControlProyectos.Controllers
             return View();
         }
 
+        public ActionResult AsignarResponsable()
+        {
+            return View();
+        }
+        public ActionResult AsignarRecursos()
+        {
+            return View();
+        }
         public JsonResult Listar()
         {
             //List<SP_C_ACTIVIDAD_Result> listarActividad = new List<SP_C_ACTIVIDAD_Result>();
@@ -31,7 +39,6 @@ namespace sistemaControlProyectos.Controllers
             List<SP_C_ACTIVIDAD_Result> lista = Models.ActividadesModelo.Instancia.ListarActividad();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
-
 
         public JsonResult Obtener(int idActividad)
         {
@@ -68,6 +75,45 @@ namespace sistemaControlProyectos.Controllers
         {
             bool respuesta = true;
             respuesta = Models.ActividadesModelo.Instancia.EliminarActividad(IDActividad);
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult ObtenerActividadResponsable(int idActividad)
+        {
+            tblActividad ObtenerActividad = new tblActividad();
+
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+                ObtenerActividad = (from p in db.tblActividad.Where(x => x.IDActividad == idActividad)
+                                    select p).FirstOrDefault();
+            }
+
+            return Json(ObtenerActividad, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult ListarAsignacion()
+        {
+            List<SP_C_ProfesionalActividad_Result> lista = Models.ActividadesModelo.Instancia.ListarActividadResponsable();
+            return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarActividadResponsable(tblProfesional_Actividad objeto)
+        {
+            bool respuesta = false;
+
+            respuesta = Models.ActividadesModelo.Instancia.RegistrarActividadResponsable(objeto);
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult EliminarActividadResponsable(int idProfActividad)
+        {
+            bool respuesta = true;
+            respuesta = Models.ActividadesModelo.Instancia.EliminarAsigResponsa(idProfActividad);
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
     }
