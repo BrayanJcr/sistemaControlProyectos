@@ -2262,6 +2262,7 @@
     <Content Include="Scripts\Views\Crear_Profesional.js" />
     <Content Include="Scripts\Views\Crear_Usuario.js" />
     <Content Include="Scripts\Views\Gantt.js" />
+    <Content Include="imagenes\brayan.jpg" />
     <Content Include="Scripts\Views\OrganigramaArea.js" />
     <Content Include="Scripts\Views\ValidarActividades.js" />
     <Content Include="Views\img\brayan.jpg" />
