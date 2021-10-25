@@ -27,7 +27,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>3.9</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -169,134 +169,146 @@
     <Compile Include="Models\ActividadesModelo.cs" />
     <Compile Include="Models\AreaModelo.cs" />
     <Compile Include="Models\CargoModelo.cs" />
-    <Compile Include="Models\DB.Context.cs">
+    <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DB.Context.tt</DependentUpon>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DB.cs">
+    <Compile Include="Models\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DB.Designer.cs">
+    <Compile Include="Models\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DB.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ObtenerProfesional.cs" />
     <Compile Include="Models\ObtenerUsuario.cs" />
     <Compile Include="Models\ProfesionalModelo.cs" />
     <Compile Include="Models\ProyectosModelo.cs" />
     <Compile Include="Models\SP_C_ACTIVIDAD_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_AREAPADRE_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_AREA_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_CARGO_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_CUADERNAPROPROFESIONAL_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_CuadernodeObra_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_DOCUMENTO_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_ProfesionalActividad_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_PROFESIONALID_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_PROFESIONALLOGIN_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_PROFESIONALRESPONSABLE_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_ProfesionalReunion_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_PROFESIONAL_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_PROYECTO_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_RECURSO_ACTIVIDAD_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_RECURSO_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_REPORTE_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_REUNION_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_USUARIODNI_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_USUARIO_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblActividad.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblArea.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblCargo.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblCuadernoObra.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblCuadernoProfesional.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblDocumento.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProfesional.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProfesional_Actividad.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProfesional_Reunion.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProyecto.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblRecurso.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblRecurso_Actividad.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblReporte.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblReunion.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblUsuario.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UsuarioModelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="angular\karma.conf.js" />
+    <Content Include="angular\src\app\app.component.html" />
+    <Content Include="angular\src\app\board\board\board.component.html" />
+    <Content Include="angular\src\app\board\components\create-task\create-task.component.html" />
+    <Content Include="angular\src\app\board\components\list\list.component.html" />
+    <Content Include="angular\src\app\board\components\task\task.component.html" />
+    <Content Include="angular\src\app\home\home\home.component.html" />
+    <Content Include="angular\src\app\shared\components\footer\footer.component.html" />
+    <Content Include="angular\src\app\shared\components\header\header.component.html" />
+    <Content Include="angular\src\app\shared\components\modal\modal.component.html" />
+    <Content Include="angular\src\favicon.ico" />
+    <Content Include="angular\src\index.html" />
     <Content Include="Content\Actividades\Actividades.css" />
     <Content Include="Content\Actividades\Gantt.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -2069,15 +2081,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="imagenes\contruccion.jpg" />
-    <Content Include="Models\DB.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DB.edmx</DependentUpon>
-      <LastGenOutput>DB.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DB.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DB.edmx</DependentUpon>
-      <LastGenOutput>DB.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
@@ -2164,14 +2176,35 @@
     <Content Include="Content\fontawesome-free\webfonts\fa-solid-900.ttf" />
     <Content Include="Content\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="libman.json" />
-    <EntityDeploy Include="Models\DB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DB.edmx.diagram">
-      <DependentUpon>DB.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\angular.min.js.map" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="angular\.browserslistrc" />
+    <Content Include="angular\.editorconfig" />
+    <Content Include="angular\angular.json" />
+    <Content Include="angular\package-lock.json" />
+    <Content Include="angular\package.json" />
+    <Content Include="angular\README.md" />
+    <Content Include="angular\src\app\app.component.scss" />
+    <Content Include="angular\src\app\board\board\board.component.scss" />
+    <Content Include="angular\src\app\board\components\create-task\create-task.component.scss" />
+    <Content Include="angular\src\app\board\components\list\list.component.scss" />
+    <Content Include="angular\src\app\board\components\task\task.component.scss" />
+    <Content Include="angular\src\app\core\mock\list.json" />
+    <Content Include="angular\src\app\home\home\home.component.scss" />
+    <Content Include="angular\src\app\shared\components\footer\footer.component.scss" />
+    <Content Include="angular\src\app\shared\components\header\header.component.scss" />
+    <Content Include="angular\src\app\shared\components\modal\modal.component.scss" />
+    <Content Include="angular\src\assets\.gitkeep" />
+    <Content Include="angular\src\styles.scss" />
+    <Content Include="angular\tsconfig.app.json" />
+    <Content Include="angular\tsconfig.json" />
+    <Content Include="angular\tsconfig.spec.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2182,6 +2215,13 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\kanban\3rdpartylicenses.txt" />
+    <Content Include="Scripts\kanban\favicon.ico" />
+    <Content Include="Scripts\kanban\index.html" />
+    <Content Include="Scripts\kanban\main.6c71506d5ad26b3998e5.js" />
+    <Content Include="Scripts\kanban\polyfills.f4385a55b535ea7dc87b.js" />
+    <Content Include="Scripts\kanban\runtime.6cd3b110317062d2efdf.js" />
+    <Content Include="Scripts\kanban\styles.dbe0c2c08217256f6911.css" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Content\menu\css\menuSt.css" />
     <Content Include="Content\menu\js\menu.js" />
@@ -2309,6 +2349,49 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="angular\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="angular\src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="angular\src\app\app.component.ts" />
+    <TypeScriptCompile Include="angular\src\app\app.module.ts" />
+    <TypeScriptCompile Include="angular\src\app\board\board-routing.module.ts" />
+    <TypeScriptCompile Include="angular\src\app\board\board.module.ts" />
+    <TypeScriptCompile Include="angular\src\app\board\board\board.component.spec.ts" />
+    <TypeScriptCompile Include="angular\src\app\board\board\board.component.ts" />
+    <TypeScriptCompile Include="angular\src\app\board\components\create-task\create-task.component.spec.ts" />
+    <TypeScriptCompile Include="angular\src\app\board\components\create-task\create-task.component.ts" />
+    <TypeScriptCompile Include="angular\src\app\board\components\list\list.component.spec.ts" />
+    <TypeScriptCompile Include="angular\src\app\board\components\list\list.component.ts" />
+    <TypeScriptCompile Include="angular\src\app\board\components\task\task.component.spec.ts" />
+    <TypeScriptCompile Include="angular\src\app\board\components\task\task.component.ts" />
+    <TypeScriptCompile Include="angular\src\app\core\core.module.ts" />
+    <TypeScriptCompile Include="angular\src\app\core\index.ts" />
+    <TypeScriptCompile Include="angular\src\app\core\models\index.ts" />
+    <TypeScriptCompile Include="angular\src\app\core\models\listschema.ts" />
+    <TypeScriptCompile Include="angular\src\app\core\models\taskschema.ts" />
+    <TypeScriptCompile Include="angular\src\app\core\services\api.service.spec.ts" />
+    <TypeScriptCompile Include="angular\src\app\core\services\api.service.ts" />
+    <TypeScriptCompile Include="angular\src\app\core\services\index.ts" />
+    <TypeScriptCompile Include="angular\src\app\core\services\task.service.spec.ts" />
+    <TypeScriptCompile Include="angular\src\app\core\services\task.service.ts" />
+    <TypeScriptCompile Include="angular\src\app\home\home-routing.module.ts" />
+    <TypeScriptCompile Include="angular\src\app\home\home.module.ts" />
+    <TypeScriptCompile Include="angular\src\app\home\home\home.component.spec.ts" />
+    <TypeScriptCompile Include="angular\src\app\home\home\home.component.ts" />
+    <TypeScriptCompile Include="angular\src\app\material-cdk\material-cdk.module.ts" />
+    <TypeScriptCompile Include="angular\src\app\shared\components\footer\footer.component.spec.ts" />
+    <TypeScriptCompile Include="angular\src\app\shared\components\footer\footer.component.ts" />
+    <TypeScriptCompile Include="angular\src\app\shared\components\header\header.component.spec.ts" />
+    <TypeScriptCompile Include="angular\src\app\shared\components\header\header.component.ts" />
+    <TypeScriptCompile Include="angular\src\app\shared\components\modal\modal.component.spec.ts" />
+    <TypeScriptCompile Include="angular\src\app\shared\components\modal\modal.component.ts" />
+    <TypeScriptCompile Include="angular\src\app\shared\shared.module.ts" />
+    <TypeScriptCompile Include="angular\src\app\shared\utils\helpers.ts" />
+    <TypeScriptCompile Include="angular\src\app\shared\utils\index.ts" />
+    <TypeScriptCompile Include="angular\src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="angular\src\environments\environment.ts" />
+    <TypeScriptCompile Include="angular\src\main.ts" />
+    <TypeScriptCompile Include="angular\src\polyfills.ts" />
+    <TypeScriptCompile Include="angular\src\test.ts" />
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>

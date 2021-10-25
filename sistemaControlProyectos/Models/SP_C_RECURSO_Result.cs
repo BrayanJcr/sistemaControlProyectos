@@ -15,5 +15,7 @@ namespace sistemaControlProyectos.Models
     {
         public int IDRecurso { get; set; }
         public string nomRecurso { get; set; }
+        public int cantidadStock { get; set; }
+        public decimal costo { get; set; }
     }
 }

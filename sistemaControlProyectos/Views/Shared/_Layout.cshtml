@@ -4,12 +4,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <base href="/">
     <title>@ViewBag.Title - Grupo Bravajal</title>
-
+    <link href="~/Scripts/kanban/styles.dbe0c2c08217256f6911.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/Plugins.css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="~/Content/menu/css/menuSt.css" rel="stylesheet" />
@@ -110,10 +113,10 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="/Actividades/Actividades">Actividades</a>
+                                        @Html.ActionLink("Actividades", "Actividades", "Actividades")
                                     </li>
                                     <li>
-                                        <a href="/Gantt/Gantt">Gantt</a>
+                                        @Html.ActionLink("Gantt", "Gantt", "Gantt")
                                     </li>
                                     <li>
                                         @Html.ActionLink("Kanban", "Kanban", "Kanban")

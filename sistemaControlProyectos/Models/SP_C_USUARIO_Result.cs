@@ -16,6 +16,7 @@ namespace sistemaControlProyectos.Models
         public string DNI { get; set; }
         public string nombre { get; set; }
         public string apellidos { get; set; }
+        public string contraseña { get; set; }
         public string correo { get; set; }
         public string profesion { get; set; }
         public string telefono { get; set; }
