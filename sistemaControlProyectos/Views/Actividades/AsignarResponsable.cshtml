@@ -108,7 +108,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre Actividad</th>
-                                        <th>Encargado</th>
+                                        <th>Encargado de la Actividad</th>
                                         <th>Nombre Pofesional</th>
                                         <th>Cargo</th>
                                         <th>Area</th>
@@ -132,7 +132,7 @@
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h5 class="modal-title">Actividades</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn btn-close-white btn-info" data-dismiss="modal" aria-label="Close" onclick="CerrarActividad()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -154,7 +154,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" onclick="CerrarActividad()">Cerrar</button>
             </div>
         </div>
     </div>
@@ -164,8 +164,8 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title">Productos</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title">Responsables</h5>
+                <button type="button" class="btn btn-close-white btn-info" data-dismiss="modal" aria-label="Close" onclick="CerrarResponsable()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -188,7 +188,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" onclick="CerrarResponsable()">Cerrar</button>
             </div>
         </div>
     </div>

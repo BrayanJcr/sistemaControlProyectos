@@ -58,31 +58,32 @@
                             <input id="txtIdRecurso" type="hidden" value="0" />
                             <div class="col-sm-2">
                                 <div class="form-group mb-0">
-                                    <label for="txtDNI" class="col-form-label col-form-label-sm">DNI:</label>
-                                    <input type="text" class="form-control form-control-sm model" readonly id="txtDNI" name="DNI">
+                                    <label for="txtNombreRec" class="col-form-label col-form-label-sm">Nombre:</label>
+                                    <input type="text" class="form-control form-control-sm model" readonly id="txtNombreRec" name="Nombre">
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group mb-0">
-                                    <label for="txtNombreRes" class="col-form-label col-form-label-sm">Nombre:</label>
-                                    <input type="text" class="form-control form-control-sm model" readonly id="txtNombreRes" name="Nombre">
+                                    <label for="txtStock" class="col-form-label col-form-label-sm">Stock:</label>
+                                    <input type="text" class="form-control form-control-sm model" readonly id="txtStock" name="Stock">
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group mb-0">
-                                    <label for="txtCargo" class="col-form-label col-form-label-sm">Cargo:</label>
-                                    <input type="text" class="form-control form-control-sm model" readonly id="txtCargo" name="Cargo">
+                                    <label for="txtCosto" class="col-form-label col-form-label-sm">Precio:</label>
+                                    <input type="text" class="form-control form-control-sm model" readonly id="txtCosto" name="Precio">
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="form-group mb-0">
-                                    <button id="btnBuscarRespo" type="button" class="btn btn-sm btn-success btn-block" onclick="buscarResponsable()"><i class="fas fa-search"></i> Buscar</button>
+                                    <button id="btnBuscarRec" type="button" class="btn btn-sm btn-success btn-block" onclick="buscarRecurso()"><i class="fas fa-search"></i> Buscar</button>
                                 </div>
                             </div>
-                            <!--Boton Asignar Responsable-->
+                            <!--Boton Asignar Recurso-->
+
                             <div class="col-sm-2">
                                 <div class="form-group mb-0">
-                                    <button id="btnAsignar" type="button" class="btn btn-sm btn-primary" onclick="asignarResponsable()">
+                                    <button id="btnAsignar" type="button" class="btn btn-sm btn-primary" onclick="asignarCantidad()">
                                         <i class="fas fa-clipboard"></i>
                                         Asignar
                                     </button>
@@ -109,9 +110,9 @@
                                     <tr>
                                         <th>Nombre Actividad</th>
                                         <th>Encargado</th>
-                                        <th>Nombre Pofesional</th>
-                                        <th>Cargo</th>
-                                        <th>Area</th>
+                                        <th>Nombre Recurso</th>
+                                        <th>Precio</th>
+                                        <th>Stock</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -132,7 +133,7 @@
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h5 class="modal-title">Actividades</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn btn-close-white btn-info" data-dismiss="modal" aria-label="Close" onclick="CerrarActividad()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -154,32 +155,32 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" onclick="CerrarActividad()">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
-<!--Modal Resposable-->
-<div class="modal fade" id="modalResponsable" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<!--Modal Recurso-->
+<div class="modal fade" id="modalRecurso" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title">Productos</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title">Recursos</h5>
+                <button type="button" class="btn btn-close-white btn-info" data-dismiss="modal" aria-label="Close" onclick="CerrarRecurso()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <!--Tabla para Responsable-->
+            <!--Tabla para Recurso-->
             <div class="modal-body">
                 <div class="table-responsive">
-                    <table id="tbResponsable" class="table table-light border-1 nowrap compact" style="width:100%">
+                    <table id="tbRecurso" class="table table-light border-1 nowrap compact" style="width:100%">
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>DNI</th>
                                 <th>Nombre</th>
-                                <th>Area</th>
-                                <th>Cargo</th>
+                                <th>Stock</th>
+                                <th>Precio</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -188,7 +189,42 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" onclick="CerrarRecurso()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Cantidad -->
+<div class="modal fade" id="modalCantidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ingresar Cantidad</h5>
+                <button type="button" class="btn btn-close-white btn-info" data-dismiss="modal" aria-label="Close" onclick="CerrarCantidad()"></button>
+            </div>
+            <div class="modal-body">
+
+                <form class="formulario" id="form">
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <input type="hidden" id="txtCantidadval" />
+
+                            <div class="form-group" id="grupo__titulo">
+                                <label for="txtCantidad" id="formulario__label">Cantidad *</label>
+                                <input type="text" class="form-control" name="titulo" id="txtCantidad">
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="CerrarCantidad()">Cerrar</button>
+                <button id="guardar" type="button" class="btn btn-primary" onclick="asignarRecurso()">Guardar</button>
             </div>
         </div>
     </div>

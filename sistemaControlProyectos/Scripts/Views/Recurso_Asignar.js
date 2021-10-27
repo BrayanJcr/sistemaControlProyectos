@@ -1,7 +1,16 @@
 ﻿var tabladata;
 var tablaActividad;
-var tablaResponsable;
+var tablaRecurso;
 
+function CerrarActividad() {
+    $('#modalActividad').modal('hide');
+}
+function CerrarRecurso() {
+    $('#modalRecurso').modal('hide');
+}
+function CerrarCantidad() {
+    $('#modalCantidad').modal('hide');
+}
 
 $(document).ready(function () {
 
@@ -29,44 +38,43 @@ $(document).ready(function () {
         responsive: true
     });
 
-    //Tabla Responsable
-    tablaResponsable = $('#tbResponsable').DataTable({
+    //Tabla Recurso
+    tablaRecurso = $('#tbRecurso').DataTable({
         "ajax": {
-            "url": "/Profesional/Listar",
+            "url": "/Recursos/Listar",
             "type": "GET",
             "datatype": "json"
         },
         "columns": [
             {
-                "data": "IDProfesional", "render": function (data, type, row, meta) {
-                    return "<button class='btn btn-sm btn-primary ml-2' type='button' onclick='profesionalSelect(" + JSON.stringify(row) + ")'><i class='fas fa-check'></i></button>"
+                "data": "IDRecurso", "render": function (data, type, row, meta) {
+                    return "<button class='btn btn-sm btn-primary ml-2' type='button' onclick='recursoSelect(" + JSON.stringify(row) + ")'><i class='fas fa-check'></i></button>"
                 },
                 "orderable": false,
                 "searchable": false,
                 "width": "90px"
             },
-            { "data": "DNI" },
-            { "data": "nombre" },
-            { "data": "nomArea" },
-            { "data": "nomCargo" },
+            { "data": "nomRecurso" },
+            { "data": "cantidadStock" },
+            { "data": "costo" },
         ],
         responsive: true
     });
 
     tabladata = $('#tbdata').DataTable({
         "ajax": {
-            "url": "/Actividades/ListarAsignacion",
+            "url": "/Actividades/ListarAsignacionRecurso",
             "type": "GET",
             "datatype": "json"
         },
         "columns": [
             { "data": "titActividad" },
             { "data": "creador" },
-            { "data": "DNI" },
-            { "data": "nombre" },
-            { "data": "nomArea" },
+            { "data": "nomRecurso" },
+            { "data": "costo" },
+            { "data": "cantidad" },
             {
-                "data": "IDProfActividad", "render": function (data, type, row, meta) {
+                "data": "idRecursoActividad", "render": function (data, type, row, meta) {
                     return "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
                 },
                 "orderable": false,
@@ -85,9 +93,9 @@ function buscarActividad() {
     $('#modalActividad').modal('show');
 }
 
-function buscarResponsable() {
-    tablaResponsable.ajax.reload();
-    $('#modalResponsable').modal('show');
+function buscarRecurso() {
+    tablaRecurso.ajax.reload();
+    $('#modalRecurso').modal('show');
 }
 
 function actividadSelect(json) {
@@ -99,67 +107,108 @@ function actividadSelect(json) {
     $('#modalActividad').modal('hide');
 }
 
-function profesionalSelect(json) {
-    $("#txtIdResponsable").val(json.IDProfesional);
-    $("#txtDNI").val(json.DNI);
-    $("#txtNombreRes").val(json.nombre);
-    $("#txtCargo").val(json.nomCargo);
+function recursoSelect(json) {
+    $("#txtIdRecurso").val(json.IDRecurso);
+    $("#txtNombreRec").val(json.nomRecurso);
+    $("#txtStock").val(json.cantidadStock);
+    $("#txtCosto").val(json.costo);
 
-    $('#modalResponsable').modal('hide');
+    $('#modalRecurso').modal('hide');
 }
 
-function asignarResponsable() {
-
+function asignarCantidad() {
     var camposvacios = false;
-
-    if ($("#txtIdActividad").val() == "0" || $("#txtIdResponsable").val() == "0")
+    if ($("#txtIdActividad").val() == "0" || $("#txtIdRecurso").val() == "0")
         camposvacios = true;
-
     if (!camposvacios) {
-
-        var $request = {
-            objeto: {
-                IDActividad: parseInt($("#txtIdActividad").val()),
-                IDProfesional: parseInt($("#txtIdResponsable").val()),
-            }
-        }
-
-        jQuery.ajax({
-            url: "/Actividades/GuardarActividadResponsable",
-            type: "POST",
-            data: JSON.stringify($request),
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                console.log($request);
-                if (data.resultado) {
-                    tabladata.ajax.reload();
-                    $("#txtIdProducto").val("0");
-                    $("#txtCodigo").val("");
-                    $("#txtNombre").val("");
-                    $("#txtDescripcion").val("");
-                } else {
-                    alert("No se pudo registrar la asignación", "warning")
-                }
-            },
-            error: function (error) {
-                console.log(error)
-            },
-            beforeSend: function () {
-
-            },
-        });
-
+        $('#modalCantidad').modal('show');
     } else {
         alert("Es necesario completar escojer Actividad y Responsable", "warning")
     }
-
 }
 
-function eliminar($IDProfActividad) {
+function asignarRecurso() {
+    
+    if ($("#txtCantidad").val() != "") {
+        if ($("#txtCantidad").val() <= $("#txtStock").val()) {
+            $('#modalCantidad').modal('hide');
+
+            //JQuery Guardar Recurso_Actividad
+            var $requestRe = {
+                objeto: {
+                    IDRecurso: parseInt($("#txtIdRecurso").val()),
+                    nomRecurso: $("#txtNombreRec").val(),
+                    cantidadStock: $("#txtStock").val() - $("#txtCantidad").val(),
+                    costo: ($("#txtCosto").val()),
+                }
+            }
+            console.log($requestRe);
+
+            jQuery.ajax({
+                url: "/Recursos/Guardar",
+                type: "POST",
+                data: JSON.stringify($requestRe),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    console.log(data.resultado);
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                beforeSend: function () {
+
+                },
+            });
+
+            //JQuery Guardar Recurso_Actividad
+            var $request = {
+                objeto: {
+                    IDActividad: parseInt($("#txtIdActividad").val()),
+                    IDRecurso: parseInt($("#txtIdRecurso").val()),
+                    cantidad: parseInt($("#txtCantidad").val()),
+                }
+            }
+
+            jQuery.ajax({
+                url: "/Actividades/GuardarActividadRecurso",
+                type: "POST",
+                data: JSON.stringify($request),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    console.log($request);
+                    console.log(data);
+                    if (data.resultado) {
+                        tabladata.ajax.reload();
+                        $("#txtIdRecurso").val("0");
+                        $("#txtNombreRec").val("");
+                        $("#txtStock").val("");
+                        $("#txtCosto").val("");
+                    } else {
+                        alert("No se pudo registrar la asignación", "warning")
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                beforeSend: function () {
+
+                },
+            });
+
+        } else {
+            alert("La cantidad debe de ser menor al stock", "warning")
+        }
+    } else {
+        alert("Ingrese una cantidad", "warning")
+    }
+}
+
+function eliminar($IDRecActividad) {
     if (confirm("Estas seguro de Eliminar el Registro?")) {
         jQuery.ajax({
-            url: "/Actividades/EliminarActividadResponsable" + "?IDProfActividad=" + $IDProfActividad,
+            url: "/Actividades/EliminarActividadRecurso" + "?IDRecActividad=" + $IDRecActividad,
             type: "GET",
             dataType: "json",
             contentType: "application/json; charset=utf-8",

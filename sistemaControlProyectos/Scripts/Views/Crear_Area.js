@@ -1,6 +1,10 @@
 ﻿
 var tablaArea;
 
+function Cerrar() {
+    $('#FormModal').modal('hide');
+}
+
 $(document).ready(function () {
 
     //OBTENER AREA PADRE
@@ -124,6 +128,7 @@ function abrirModal($IDArea) {
 function Guardar() {
     var $request = {
         objeto: {
+            IDRecurso: parseInt($("#txtIDArea").val()),
             nomArea: $("#txtNombre").val(),
             encargado: $("#cboEncargado").text(),
             IdNomAreaPadre: ($("#cboPadre").val()),

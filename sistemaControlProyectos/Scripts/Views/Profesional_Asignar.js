@@ -3,6 +3,15 @@ var tablaActividad;
 var tablaResponsable;
 
 
+function CerrarActividad() {
+    $('#modalActividad').modal('hide');
+}
+
+function CerrarResponsable() {
+    $('#modalResponsable').modal('hide');
+}
+
+
 $(document).ready(function () {
 
     //Actividad Tabla
@@ -62,8 +71,8 @@ $(document).ready(function () {
         "columns": [
             { "data": "titActividad"},
             { "data": "creador" },
-            { "data": "DNI"},
             { "data": "nombre"},
+            { "data": "nomCargo"},
             { "data": "nomArea" },
             {
                 "data": "IDProfActividad", "render": function (data, type, row, meta) {
@@ -134,10 +143,10 @@ function asignarResponsable() {
                 console.log($request);
                 if (data.resultado) {
                     tabladata.ajax.reload();
-                    $("#txtIdProducto").val("0");
-                    $("#txtCodigo").val("");
-                    $("#txtNombre").val("");
-                    $("#txtDescripcion").val("");
+                    $("#txtIdResponsable").val("0");
+                    $("#txtDNI").val("");
+                    $("#txtNombreRes").val("");
+                    $("#txtCargo").val("");
                 } else {
                     alert("No se pudo registrar la asignación", "warning")
                 }

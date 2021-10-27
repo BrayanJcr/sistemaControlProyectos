@@ -15,7 +15,6 @@ namespace sistemaControlProyectos.Controllers
             return View();
         }
 
-
         public JsonResult Listar()
         {
             List<SP_C_RECURSO_Result> listar = RecursoModelo.Instancia.ListarRecurso();
@@ -53,6 +52,7 @@ namespace sistemaControlProyectos.Controllers
 
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
+
 
         public JsonResult Eliminar(int IDRecurso)
         {

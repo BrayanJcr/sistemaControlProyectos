@@ -2327,6 +2327,7 @@
     <Content Include="Scripts\Views\Crear_Actividad.js" />
     <Content Include="Scripts\Views\Crear_Area.js" />
     <Content Include="Scripts\Views\Crear_Profesional.js" />
+    <Content Include="Scripts\Views\Crear_Recurso.js" />
     <Content Include="Scripts\Views\Crear_Usuario.js" />
     <Content Include="Scripts\Views\Gantt.js" />
     <Content Include="Scripts\Views\OrganigramaArea.js" />

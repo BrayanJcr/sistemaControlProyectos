@@ -1781,7 +1781,18 @@
         <ComplexType Name="SP_C_RECURSO_ACTIVIDAD_Result">
           <Property Type="Int32" Name="idRecursoActividad" Nullable="false" />
           <Property Type="Int32" Name="IDRecurso" Nullable="false" />
+          <Property Type="String" Name="nomRecurso" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="cantidadStock" Nullable="false" />
+          <Property Type="Decimal" Name="costo" Nullable="false" Precision="7" Scale="2" />
           <Property Type="Int32" Name="IDActividad" Nullable="false" />
+          <Property Type="String" Name="titActividad" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="fechaFin" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="String" Name="creador" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="proceso" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDProyecto" Nullable="false" />
           <Property Type="Int32" Name="cantidad" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SP_C_REPORTE_Result">
@@ -2205,7 +2216,18 @@
               <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_RECURSO_ACTIVIDAD_Result">
                 <ScalarProperty Name="idRecursoActividad" ColumnName="idRecursoActividad" />
                 <ScalarProperty Name="IDRecurso" ColumnName="IDRecurso" />
+                <ScalarProperty Name="nomRecurso" ColumnName="nomRecurso" />
+                <ScalarProperty Name="cantidadStock" ColumnName="cantidadStock" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
                 <ScalarProperty Name="IDActividad" ColumnName="IDActividad" />
+                <ScalarProperty Name="titActividad" ColumnName="titActividad" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="creador" ColumnName="creador" />
+                <ScalarProperty Name="proceso" ColumnName="proceso" />
+                <ScalarProperty Name="IDProyecto" ColumnName="IDProyecto" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
               </ComplexTypeMapping>
             </ResultMapping>

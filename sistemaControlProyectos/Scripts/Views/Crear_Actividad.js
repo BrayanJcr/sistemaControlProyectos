@@ -21,6 +21,10 @@ function Cambiarfecha(fechaEntra) {
     return fecha;
 }
 
+function Cerrar() {
+    $('#FormModal').modal('hide');
+}
+
 var tablaActividad;
 $(document).ready(function () {
     

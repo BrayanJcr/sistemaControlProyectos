@@ -78,19 +78,7 @@ namespace sistemaControlProyectos.Controllers
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
 
-
-        public JsonResult ObtenerActividadResponsable(int idActividad)
-        {
-            tblActividad ObtenerActividad = new tblActividad();
-
-            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
-            {
-                ObtenerActividad = (from p in db.tblActividad.Where(x => x.IDActividad == idActividad)
-                                    select p).FirstOrDefault();
-            }
-
-            return Json(ObtenerActividad, JsonRequestBehavior.AllowGet);
-        }
+        // Asignacion de Responsable
 
         [HttpGet]
         public JsonResult ListarAsignacion()
@@ -114,6 +102,33 @@ namespace sistemaControlProyectos.Controllers
         {
             bool respuesta = true;
             respuesta = Models.ActividadesModelo.Instancia.EliminarAsigResponsa(idProfActividad);
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+
+        // Asignacion de Recursos
+
+        [HttpGet]
+        public JsonResult ListarAsignacionRecurso()
+        {
+            List<SP_C_RECURSO_ACTIVIDAD_Result> lista = Models.ActividadesModelo.Instancia.ListarActividadRescurso();
+            return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarActividadRecurso(tblRecurso_Actividad objeto)
+        {
+            bool respuesta = false;
+
+            respuesta = Models.ActividadesModelo.Instancia.RegistrarActividadRecurso(objeto);
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult EliminarActividadRecurso(int idRecActividad)
+        {
+            bool respuesta = true;
+            respuesta = Models.ActividadesModelo.Instancia.EliminarAsigRecurso(idRecActividad);
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
     }
