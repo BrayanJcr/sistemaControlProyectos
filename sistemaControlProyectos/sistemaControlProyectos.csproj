@@ -294,6 +294,12 @@
     <Compile Include="Models\SP_C_PROFESIONAL_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_C_PROYECTOLISTA_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_C_PROYECTOPROFESIONAL_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_C_PROYECTO_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -333,10 +339,19 @@
     <Compile Include="Models\tblDocumento.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblMenu.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblPermisos.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblProfesional.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProfesional_Actividad.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProfesional_Proyecto.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProfesional_Reunion.cs">
@@ -354,7 +369,13 @@
     <Compile Include="Models\tblReporte.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblReporte_Actividad.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblReunion.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSubMenu.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblUsuario.cs">
@@ -2133,6 +2154,7 @@
     <Content Include="Content\login\css\login.css" />
     <Content Include="Content\login\css\login2.css" />
     <Content Include="Content\Organigrama\OrganigramaArea.css" />
+    <Content Include="Content\Proyectos\Proyectos.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="imagenes\contruccion.jpg" />
@@ -2324,6 +2346,8 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\Views\Angulasjs.js" />
+    <Content Include="Scripts\Views\Crear_Cargo.js" />
+    <Content Include="Scripts\Views\Crear_Proyectos.js" />
     <Content Include="Scripts\Views\Crear_Actividad.js" />
     <Content Include="Scripts\Views\Crear_Area.js" />
     <Content Include="Scripts\Views\Crear_Profesional.js" />
@@ -2332,6 +2356,7 @@
     <Content Include="Scripts\Views\Gantt.js" />
     <Content Include="Scripts\Views\OrganigramaArea.js" />
     <Content Include="Scripts\Views\Profesional_Asignar.js" />
+    <Content Include="Scripts\Views\Profesional_AsignarProye.js" />
     <Content Include="Scripts\Views\Recurso_Asignar.js" />
     <Content Include="Scripts\Views\ValidarActividades.js" />
     <Content Include="Views\img\brayan.jpg" />
@@ -2368,13 +2393,15 @@
     <Content Include="Views\Actividades\AsignarResponsable.cshtml" />
     <Content Include="Views\Actividades\AsignarRecursos.cshtml" />
     <Content Include="Views\Recursos\Recursos.cshtml" />
+    <Content Include="Views\Proyectos\Proyectos.cshtml" />
+    <Content Include="Views\Proyectos\AsignarProfesional.cshtml" />
+    <Content Include="Views\Cargo\Cargo.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Usuario\Usuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\ActividadProfesional\" />
-    <Folder Include="Views\Proyectos\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

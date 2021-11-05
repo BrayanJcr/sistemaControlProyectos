@@ -20,6 +20,6 @@ namespace sistemaControlProyectos.Models
         public string correo { get; set; }
         public string profesion { get; set; }
         public string telefono { get; set; }
-        public byte[] usrImagen { get; set; }
+        public string usrImagen { get; set; }
     }
 }

@@ -1,4 +1,48 @@
-﻿
+﻿const input = document.querySelector('#image_uploads');
+const list = document.getElementById('list');
+
+input.addEventListener('change', updateImageDisplay);
+
+function updateImageDisplay() {
+    const curFiles = input.files;
+
+    if (curFiles.length === 0) {
+        list.innerHTML = "<p>Actualmente no hay archivos seleccionados para cargar.</p>";
+    } else {
+        list.innerHTML = "";
+
+        for (const file of curFiles) {
+            if (file.type.match(/image.*/i)) {
+                var reader = new FileReader();
+                reader.addEventListener("load", (event) => {
+                    list.innerHTML += `<li>
+                    <p id="name">Nombre: ${file.name}</p>
+                    <p id="size">Tamaño: ${returnFileSize(file.size)}</p>
+                    <img id="imagenPro" src="${event.target.result}">
+                    </li>`;
+                });
+                reader.readAsDataURL(file);
+                
+            } else {
+                var content = `File name (${file.name}): Not a valid file type.`;
+                content += " Update your selection.";
+
+                list.innerHTML += `<li><p>${content}</p></li>`;
+            }
+        }
+    }
+}
+
+function returnFileSize(number) {
+    if (number < 1024) {
+        return number + 'bytes';
+    } else if (number >= 1024 && number < 1048576) {
+        return (number / 1024).toFixed(1) + 'KB';
+    } else if (number >= 1048576) {
+        return (number / 1048576).toFixed(1) + 'MB';
+    }
+}
+
 //Cambiar Fechas
 function Cambiarfecha(fechaEntra) {
     var fechaString = fechaEntra.substr(6);
@@ -25,25 +69,25 @@ function Cerrar() {
     $('#FormModal').modal('hide');
 }
 
-var tablaActividad;
+var tablaProyectos;
 $(document).ready(function () {
     
-    //OBTENER PROYECTOS
+    //OBTENER PROFESIONALES
     jQuery.ajax({
-        url: "/Proyectos/Listar",
+        url: "/Profesional/Listar",
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            $("#cboProyecto").html("");
+            $("#cboEncargado").html("");
 
             if (data.data != null) {
                 $.each(data.data, function (i, item) {
 
-                    $("<option>").attr({ "value": item.IDProyecto }).text(item.titProyecto).appendTo("#cboProyecto");
+                    $("<option>").attr({ "value": item.IDProfesional }).text(item.nombre).appendTo("#cboEncargado");
 
                 })
-                $("#cboProyecto").val($("#cboProyecto option:first").val());
+                $("#cboEncargado").val($("#cboEncargado option:first").val());
             }
         },
         error: function (error) {
@@ -53,17 +97,17 @@ $(document).ready(function () {
         },
     });
     
-    tablaActividad = $('#tblActividad').DataTable({
+    tablaProyectos = $('#tblProyectos').DataTable({
 
         "ajax": {
-            "url": "/Actividades/Listar",
+            "url": "/Proyectos/Listar",
             "type": "GET",
             "datatype": "json"
         },
 
         "columns": [
             {
-                "data": "IDActividad", "render": function (data) {
+                "data": "IDProyecto", "render": function (data) {
                     return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirModal(" + data + ")'><i class='fas fa-pencil-alt'></i></button>" +
                         "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='Eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
                 },
@@ -71,10 +115,9 @@ $(document).ready(function () {
                 "searchable": false,
                 "width": "150px"
             },
-            { "data": "titActividad"},
-            { "data": "fechaInicio", "render": function (data) {return Cambiarfecha(data);}},
-            { "data": "fechaFin", "render": function (data) {return Cambiarfecha(data);}},
-            { "data": "Descripcion" },
+            { "data": "titProyecto"},
+            { "data": "fechaIniPro", "render": function (data) {return Cambiarfecha(data);}},
+            { "data": "fechaFinPro", "render": function (data) {return Cambiarfecha(data);}},
             {
                 "data": "estado", "render": function (data) {
                     if (data) {
@@ -84,7 +127,11 @@ $(document).ready(function () {
                     }
                 }
             },
-            { "data" : "proceso"},
+            { "data": "Ubicacion" },
+            { "data": "distrito" },
+            { "data": "departamento" },
+            { "data": "seguimiento" },
+            { "data": "nombre" },
         ],
         dom: 'Blfrtip',
         lengthMenu: [
@@ -103,26 +150,30 @@ $(document).ready(function () {
     });
 })
 
-function abrirModal($IDActividad) {
+function abrirModal($IDProyectos) {
    
-    $("#txtIdActividad").val($IDActividad);
-    if ($IDActividad != 0) {
+    $("#txtIdProyectos").val($IDProyectos);
+    if ($IDProyectos != 0) {
 
         jQuery.ajax({
-            url: "/Actividades/Obtener" + "?IDActividad=" + $IDActividad,
+            url: "/Proyectos/Obtener" + "?IDProyecto=" + $IDProyectos,
             type: "GET",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-
+                console.log(data);
                 if (data != null) {
-                    $("#txtTitulo").val(data.titActividad);
-                    $("#txtFechaIni").val(Cambiarfecha(data.fechaInicio));
-                    $("#txtFechaFin").val(Cambiarfecha(data.fechaFin));
-                    $("#txtDescripcion").val(data.Descripcion);
-                    $("#cboProyecto").val(data.IDProyecto);
+                    $("#txtTitulo").val(data.titProyecto);
+                    $("#txtFechaIni").val(Cambiarfecha(data.fechaIniPro));
+                    $("#txtFechaFin").val(Cambiarfecha(data.fechaFinPro));
+                    $("#txtDescripcion").val(data.descripcion);
                     $("#cboEstado").val(data.estado == true ? 1 : 0);
-                    $("#cboProceso").val(data.proceso);
+                    $("#txtUbicacion").val(data.Ubicacion);
+                    $("#txtDistrito").val(data.distrito);
+                    $("#txtDepartamento").val(data.departamento);
+                    $("#imagenPro").attr("src", data.imagen);
+                    $("#txtSeguimiento").val(data.seguimiento);
+                    $("#cboEncargado").val(data.IDProfesional);
                 }
             }
         });
@@ -131,9 +182,14 @@ function abrirModal($IDActividad) {
         $("#txtFechaIni").val("");
         $("#txtFechaFin").val("");
         $("#txtDescripcion").val("");
-        $("#cboProyecto").val($("#cboProyecto option:first").val());
         $("#cboEstado").val(1);
-        $("#cboProceso").val("Nuevo");
+        $("#txtUbicacion").val("");
+        $("#txtDistrito").val("");
+        $("#txtDepartamento").val("");
+        $("#image_uploads").val("");
+        $("#imagenPro").attr("src", "");
+        $("#txtSeguimiento").val("");
+        $("#cboEncargado").val($("#cboEncargado option:first").val());
     }
 
     $('#FormModal').modal('show');
@@ -141,27 +197,30 @@ function abrirModal($IDActividad) {
 
 //Guardar Actividad
 function Guardar() {
-    
+
     var $request = {
         objeto: {
-            IDActividad: parseInt($("#txtIdActividad").val()),
-            titActividad: $("#txtTitulo").val(),
-            fechaInicio: $("#txtFechaIni").val(),
-            fechaFin: $("#txtFechaFin").val(),
-            Descripcion: $("#txtDescripcion").val(),
+            IDProyecto: parseInt($("#txtIdProyectos").val()),
+            titProyecto: $("#txtTitulo").val(),
+            fechaIniPro: $("#txtFechaIni").val(),
+            fechaFinPro: $("#txtFechaFin").val(),
+            descripcion: $("#txtDescripcion").val(),
             estado: $("#cboEstado").val() == "1" ? true : false,
-            creador: ("Brayan"),
-            IDProyecto: ($("#cboProyecto").val()),
-            proceso: ($("#cboProceso").val()),
+            Ubicacion: ($("#txtUbicacion").val()),
+            distrito: ($("#txtDistrito").val()),
+            departamento: ($("#txtDepartamento").val()),
+            imagen: document.getElementById("imagenPro").src,
+            seguimiento: ($("#txtSeguimiento").val()),
+            IDProfesional: ($("#cboEncargado").val()),
         }
     }
-
-    if ($request.objeto.titActividad != "") {
-        if ($request.objeto.fechaInicio) {
-            if ($request.objeto.fechaFin) {
-                if ($request.objeto.fechaFin > $request.objeto.fechaInicio) {
+    console.log($request);
+    if ($request.objeto.titProyecto != "") {
+        if ($request.objeto.fechaIniPro) {
+            if ($request.objeto.fechaFinPro) {
+                if ($request.objeto.fechaFinPro > $request.objeto.fechaIniPro) {
                     jQuery.ajax({
-                        url: "/Actividades/Guardar",
+                        url: "/Proyectos/Guardar",
                         type: "POST",
                         data: JSON.stringify($request),
                         dataType: "json",
@@ -169,8 +228,10 @@ function Guardar() {
                         success: function (data) {
                             console.log(data.resultado);
                             if (data.resultado) {
-                                tablaActividad.ajax.reload();
+                                tablaProyectos.ajax.reload();
                                 $('#FormModal').modal('hide');
+                                $("#name").val(" ");
+                                $("#size").val(" ");
                             } else {
                                 alert("Mensaje No se pudo guardar los cambios", "warning");
                             }
@@ -197,16 +258,16 @@ function Guardar() {
 
 }
 
-function Eliminar($IDActividad) {
+function Eliminar($IDProyecto) {
     if (confirm("Estas seguro de Eliminar el Registro?")) {
         jQuery.ajax({
-            url: "/Actividades/Eliminar" + "?IDActividad=" + $IDActividad,
+            url: "/Proyectos/Eliminar" + "?IDProyecto=" + $IDProyecto,
             type: "GET",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.resultado) {
-                    tablaActividad.ajax.reload();
+                    tablaProyectos.ajax.reload();
                 }
             }
         });

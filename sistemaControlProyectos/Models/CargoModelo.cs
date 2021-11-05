@@ -13,7 +13,7 @@ namespace sistemaControlProyectos.Models
 
         }
 
-        public static CargoModelo instancia
+        public static CargoModelo Instancia
         {
             get
             {
@@ -44,7 +44,85 @@ namespace sistemaControlProyectos.Models
 
             }
         }
+        public bool RegistrarCargo(tblCargo objeto)
+        {
+            bool respuesta = true;
+            try
+            {
+                using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                {
+                    try
+                    {
+                        db.SP_A_CARGO(objeto.nomCargo);
 
-        
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+
+                    }
+                }
+            }
+            catch
+            {
+                respuesta = false;
+
+            }
+
+            return respuesta;
+        }
+
+        public bool EliminarCargo(int IDCargo)
+        {
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+
+                try
+                {
+                    db.SP_E_CARGO(IDCargo);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+
+                }
+
+            }
+        }
+        public bool ModificarCargo(tblCargo objeto)
+        {
+            bool respuesta = true;
+            try
+            {
+                using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                {
+
+                    try
+                    {
+                        db.SP_M_CARGO(objeto.IDCargo, objeto.nomCargo);
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+
+                    }
+
+                }
+            }
+            catch
+            {
+                respuesta = false;
+
+            }
+
+            return respuesta;
+        }
+
     }
 }

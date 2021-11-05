@@ -11,8 +11,14 @@ namespace sistemaControlProyectos.Models
 {
     using System;
     
-    public partial class SP_C_PROYECTO_Result
+    public partial class SP_C_PROYECTOPROFESIONAL_Result
     {
+        public int IDProfeProyecto { get; set; }
+        public int IDProfesional { get; set; }
+        public string DNI { get; set; }
+        public string nomProfe { get; set; }
+        public string nomCargo { get; set; }
+        public string nomArea { get; set; }
         public int IDProyecto { get; set; }
         public string titProyecto { get; set; }
         public System.DateTime fechaIniPro { get; set; }
@@ -22,15 +28,8 @@ namespace sistemaControlProyectos.Models
         public string Ubicacion { get; set; }
         public string distrito { get; set; }
         public string departamento { get; set; }
-        public string imagen { get; set; }
         public string seguimiento { get; set; }
-        public int IDProfesional { get; set; }
-        public string nombre { get; set; }
-        public string apellidos { get; set; }
-        public string contraseña { get; set; }
-        public string DNI { get; set; }
-        public int IDCargo { get; set; }
-        public int IDArea { get; set; }
-        public Nullable<int> IDReporte { get; set; }
+        public int encarProyecto { get; set; }
+        public string nomEncarga { get; set; }
     }
 }

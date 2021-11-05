@@ -10,14 +10,17 @@
 namespace sistemaControlProyectos.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class SP_C_REPORTE_Result
+    public partial class tblPermisos
     {
-        public int IDReport { get; set; }
-        public System.DateTime FechaRep { get; set; }
-        public string Descripcion { get; set; }
-        public string Estado { get; set; }
-        public Nullable<int> IDDoc { get; set; }
-        public int IDProfesional { get; set; }
+        public int IDPermiso { get; set; }
+        public int IDCargo { get; set; }
+        public Nullable<int> IDSubMenu { get; set; }
+        public Nullable<bool> Activo { get; set; }
+        public Nullable<System.DateTime> FechaRegistro { get; set; }
+    
+        public virtual tblCargo tblCargo { get; set; }
+        public virtual tblSubMenu tblSubMenu { get; set; }
     }
 }

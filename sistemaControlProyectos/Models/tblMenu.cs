@@ -12,25 +12,20 @@ namespace sistemaControlProyectos.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblUsuario
+    public partial class tblMenu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblUsuario()
+        public tblMenu()
         {
-            this.tblProfesional = new HashSet<tblProfesional>();
+            this.tblSubMenu = new HashSet<tblSubMenu>();
         }
     
-        public string DNI { get; set; }
-        public string nombre { get; set; }
-        public string apellidos { get; set; }
-        public string contraseña { get; set; }
-        public string firma { get; set; }
-        public string profesion { get; set; }
-        public string correo { get; set; }
-        public string telefono { get; set; }
-        public string usrImagen { get; set; }
+        public int IDMenu { get; set; }
+        public string Nombre { get; set; }
+        public bool Activo { get; set; }
+        public Nullable<System.DateTime> FechaRegistro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblProfesional> tblProfesional { get; set; }
+        public virtual ICollection<tblSubMenu> tblSubMenu { get; set; }
     }
 }

@@ -18,18 +18,21 @@ namespace sistemaControlProyectos.Models
         public tblReporte()
         {
             this.tblProfesional = new HashSet<tblProfesional>();
+            this.tblReporte_Actividad = new HashSet<tblReporte_Actividad>();
         }
     
         public int IDReport { get; set; }
         public System.DateTime FechaRep { get; set; }
         public string Descripcion { get; set; }
-        public bool Estado { get; set; }
-        public int IDDoc { get; set; }
+        public string Estado { get; set; }
+        public Nullable<int> IDDoc { get; set; }
         public int IDProfesional { get; set; }
     
         public virtual tblDocumento tblDocumento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblProfesional> tblProfesional { get; set; }
         public virtual tblProfesional tblProfesional1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblReporte_Actividad> tblReporte_Actividad { get; set; }
     }
 }

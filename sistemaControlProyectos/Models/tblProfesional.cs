@@ -18,6 +18,7 @@ namespace sistemaControlProyectos.Models
         public tblProfesional()
         {
             this.tblCuadernoProfesional = new HashSet<tblCuadernoProfesional>();
+            this.tblProfesional_Proyecto = new HashSet<tblProfesional_Proyecto>();
             this.tblProfesional_Reunion = new HashSet<tblProfesional_Reunion>();
             this.tblProfesional_Actividad = new HashSet<tblProfesional_Actividad>();
             this.tblProyecto = new HashSet<tblProyecto>();
@@ -29,11 +30,14 @@ namespace sistemaControlProyectos.Models
         public int IDCargo { get; set; }
         public int IDArea { get; set; }
         public Nullable<int> IDReporte { get; set; }
+        public Nullable<int> IDProyectoActual { get; set; }
     
         public virtual tblArea tblArea { get; set; }
         public virtual tblCargo tblCargo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCuadernoProfesional> tblCuadernoProfesional { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblProfesional_Proyecto> tblProfesional_Proyecto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblProfesional_Reunion> tblProfesional_Reunion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

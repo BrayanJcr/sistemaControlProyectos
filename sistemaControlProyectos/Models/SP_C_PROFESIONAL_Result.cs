@@ -15,8 +15,15 @@ namespace sistemaControlProyectos.Models
     {
         public int IDProfesional { get; set; }
         public string DNI { get; set; }
-        public int IDCargo { get; set; }
-        public int IDArea { get; set; }
-        public Nullable<int> IDReporte { get; set; }
+        public string nombre { get; set; }
+        public string apellidos { get; set; }
+        public string nomCargo { get; set; }
+        public string nomArea { get; set; }
+        public string contraseña { get; set; }
+        public string firma { get; set; }
+        public string profesion { get; set; }
+        public string correo { get; set; }
+        public string telefono { get; set; }
+        public Nullable<int> IDProyectoActual { get; set; }
     }
 }
