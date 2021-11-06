@@ -50,11 +50,58 @@ namespace sistemaControlProyectos.Controllers
             List<SP_C_PROYECTO_Result> lista = ProyectosModelo.Instancia.ListarProyecto();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult getImage()
-        {
 
-            return null;
+        [HttpPost]
+        public JsonResult Guardar(tblProyecto objeto)
+        {
+            bool respuesta = false;
+
+            if (objeto.IDProyecto == 0)
+            {
+                respuesta = Models.ProyectosModelo.Instancia.RegistrarProyecto(objeto);
+            }
+            else
+            {
+                respuesta = Models.ProyectosModelo.Instancia.ModificarProyecto(objeto);
+            }
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult Eliminar(int IDProyecto)
+        {
+            bool respuesta = true;
+            respuesta = Models.ProyectosModelo.Instancia.EliminarProyecto(IDProyecto);
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+
+        // Asignacion de Profesional
+
+        [HttpGet]
+        public JsonResult ListarAsignacion()
+        {
+            List<SP_C_PROYECTOPROFESIONAL_Result> lista = Models.ProyectosModelo.Instancia.ListarProyectoProfesional();
+            return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarProyectoProfes(tblProfesional_Proyecto objeto)
+        {
+            bool respuesta = false;
+
+            respuesta = Models.ProyectosModelo.Instancia.RegistrarProyectoProfesional(objeto);
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult EliminarProyectoProfes(int idProfeProyecto)
+        {
+            bool respuesta = true;
+            respuesta = Models.ProyectosModelo.Instancia.EliminarAsigProfesional(idProfeProyecto);
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+
 
         
 

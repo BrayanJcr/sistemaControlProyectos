@@ -2437,6 +2437,8 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\Views\Crear_Cargo.js" />
+    <Content Include="Scripts\Views\Crear_Proyectos.js" />
     <Content Include="Scripts\Views\Crear_Actividad.js" />
     <Content Include="Scripts\Views\Crear_Area.js" />
     <Content Include="Scripts\Views\Crear_Profesional.js" />
