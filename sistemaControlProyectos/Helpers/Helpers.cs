@@ -22,7 +22,7 @@ namespace sistemaControlProyectos.Helpers
                 foreach (SP_C_PROYECTOPROFESIONALIMAGEN_Result item in listar)
                 {
                     sb.AppendLine("<div class='col-md-4 col-sm-6 col-xs-6 col-xxs-12 work-item' >");
-                    sb.AppendLine("<a onClick='GuardarProyectoActual(" + sUsuario.IDProfesional + "," + sUsuario.DNI + "," + sUsuario.IDCargo + "," + sUsuario.IDArea+","+item.IDProyecto + ")'>");
+                    sb.AppendLine("<a onClick='GuardarProyectoActual(" + sUsuario.IDProfesional + "," + sUsuario.DNI + "," + sUsuario.IDCargo + "," + sUsuario.IDArea+","+item.IDProyecto + ")' href='javascript:;'> ");
                     sb.AppendLine("<input type='hidden' id='txtIDProyecto' value=" + item.IDProyecto + "/>");
                     sb.AppendLine("<img src='"+item.imagen+ "' alt='Free HTML5 Website Template by FreeHTML5.co' class='img-responsive' height=50px  id='data''>");
                     sb.AppendLine("<h3 class='fh5co - work - title'>"+item.titProyecto+"</h3>");

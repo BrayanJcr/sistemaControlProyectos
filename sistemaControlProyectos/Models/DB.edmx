@@ -938,14 +938,6 @@
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblProfesional_Proyecto" EntitySet="tblProfesional_Proyecto" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDPro__5812160E" Association="Self.FK__tblProfes__IDPro__5812160E">
-            <End Role="tblProyecto" EntitySet="tblProyecto" />
-            <End Role="tblProfesional_Proyecto" EntitySet="tblProfesional_Proyecto" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDPro__59063A47" Association="Self.FK__tblProfes__IDPro__59063A47">
-            <End Role="tblProfesional" EntitySet="tblProfesional" />
-            <End Role="tblProfesional_Proyecto" EntitySet="tblProfesional_Proyecto" />
-          </AssociationSet>
           <AssociationSet Name="FK__tblProfes__IDPro__5AEE82B9" Association="Self.FK__tblProfes__IDPro__5AEE82B9">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblProfesional_Reunion" EntitySet="tblProfesional_Reunion" />
@@ -989,10 +981,6 @@
           <AssociationSet Name="FK__tblReport__IDPro__5441852A" Association="Self.FK__tblReport__IDPro__5441852A">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblReporte" EntitySet="tblReporte" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tblReport__IDRep__5BE2A6F2" Association="Self.FK__tblReport__IDRep__5BE2A6F2">
-            <End Role="tblReporte" EntitySet="tblReporte" />
-            <End Role="tblReporte_Actividad" EntitySet="tblReporte_Actividad" />
           </AssociationSet>
           <AssociationSet Name="FK__tblReport__IDRep__5BE2A6F2" Association="Self.FK__tblReport__IDRep__5BE2A6F2">
             <End Role="tblReporte" EntitySet="tblReporte" />
@@ -1160,16 +1148,6 @@
           <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDPro__59063A47" FromRole="tblProfesional_Proyecto" ToRole="tblProfesional" />
           <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblProfes__IDPro__5812160E" FromRole="tblProfesional_Proyecto" ToRole="tblProyecto" />
         </EntityType>
-        <EntityType Name="tblProfesional_Proyecto">
-          <Key>
-            <PropertyRef Name="IDProfeProyecto" />
-          </Key>
-          <Property Name="IDProfeProyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDProfesional" Type="Int32" Nullable="false" />
-          <Property Name="IDProyecto" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDPro__59063A47" FromRole="tblProfesional_Proyecto" ToRole="tblProfesional" />
-          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblProfes__IDPro__5812160E" FromRole="tblProfesional_Proyecto" ToRole="tblProyecto" />
-        </EntityType>
         <EntityType Name="tblProfesional_Reunion">
           <Key>
             <PropertyRef Name="IDProfesional_reunion" />
@@ -1249,16 +1227,6 @@
           <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblReport__IDAct__5CD6CB2B" FromRole="tblReporte_Actividad" ToRole="tblActividad" />
           <NavigationProperty Name="tblReporte" Relationship="Self.FK__tblReport__IDRep__5BE2A6F2" FromRole="tblReporte_Actividad" ToRole="tblReporte" />
         </EntityType>
-        <EntityType Name="tblReporte_Actividad">
-          <Key>
-            <PropertyRef Name="IDRepActividad" />
-          </Key>
-          <Property Name="IDRepActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDReporte" Type="Int32" Nullable="false" />
-          <Property Name="IDActividad" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblReport__IDAct__5CD6CB2B" FromRole="tblReporte_Actividad" ToRole="tblActividad" />
-          <NavigationProperty Name="tblReporte" Relationship="Self.FK__tblReport__IDRep__5BE2A6F2" FromRole="tblReporte_Actividad" ToRole="tblReporte" />
-        </EntityType>
         <EntityType Name="tblReunion">
           <Key>
             <PropertyRef Name="IDReunion" />
@@ -1272,20 +1240,6 @@
           <Property Name="IDProyecto" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tblProfesional_Reunion" Relationship="Self.FK__tblProfes__IDReu__59FA5E80" FromRole="tblReunion" ToRole="tblProfesional_Reunion" />
           <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblReunio__IDPro__5535A963" FromRole="tblReunion" ToRole="tblProyecto" />
-        </EntityType>
-        <EntityType Name="tblSubMenu">
-          <Key>
-            <PropertyRef Name="IDSubMenu" />
-          </Key>
-          <Property Name="IDSubMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDMenu" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Controlador" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Vista" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
-          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tblMenu" Relationship="Self.FK__tblSubMen__IDMen__5629CD9C" FromRole="tblSubMenu" ToRole="tblMenu" />
-          <NavigationProperty Name="tblPermisos" Relationship="Self.FK__tblPermis__IDSub__5070F446" FromRole="tblSubMenu" ToRole="tblPermisos" />
         </EntityType>
         <EntityType Name="tblSubMenu">
           <Key>
@@ -1917,6 +1871,9 @@
           <FunctionImport Name="SP_C_PROYECTO" ReturnType="Collection(DBControlProyectoModel.SP_C_PROYECTO_Result)" />
           <FunctionImport Name="SP_C_PROYECTOLISTA" ReturnType="Collection(DBControlProyectoModel.SP_C_PROYECTOLISTA_Result)" />
           <FunctionImport Name="SP_C_PROYECTOPROFESIONAL" ReturnType="Collection(DBControlProyectoModel.SP_C_PROYECTOPROFESIONAL_Result)" />
+          <FunctionImport Name="SP_C_PROYECTOPROFESIONALIMAGEN" ReturnType="Collection(DBControlProyectoModel.SP_C_PROYECTOPROFESIONALIMAGEN_Result)">
+            <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="SP_C_RECURSO" ReturnType="Collection(DBControlProyectoModel.SP_C_RECURSO_Result)" />
           <FunctionImport Name="SP_C_RECURSO_ACTIVIDAD" ReturnType="Collection(DBControlProyectoModel.SP_C_RECURSO_ACTIVIDAD_Result)" />
           <FunctionImport Name="SP_C_REPORTE" ReturnType="Collection(DBControlProyectoModel.SP_C_REPORTE_Result)" />
@@ -2155,7 +2112,9 @@
           <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
           <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="apellidos" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDCargo" Nullable="false" />
           <Property Type="String" Name="nomCargo" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDArea" Nullable="false" />
           <Property Type="String" Name="nomArea" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="contraseña" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="firma" Nullable="true" MaxLength="50" />
@@ -2255,6 +2214,27 @@
           <Property Type="String" Name="nomArea" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="IDProyecto" Nullable="false" />
           <Property Type="String" Name="titProyecto" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaIniPro" Nullable="false" />
+          <Property Type="DateTime" Name="fechaFinPro" Nullable="false" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="Boolean" Name="estado" Nullable="true" />
+          <Property Type="String" Name="Ubicacion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="distrito" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="departamento" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="seguimiento" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="encarProyecto" Nullable="false" />
+          <Property Type="String" Name="nomEncarga" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_C_PROYECTOPROFESIONALIMAGEN_Result">
+          <Property Type="Int32" Name="IDProfeProyecto" Nullable="false" />
+          <Property Type="Int32" Name="IDProfesional" Nullable="false" />
+          <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="nomProfe" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="nomCargo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="nomArea" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDProyecto" Nullable="false" />
+          <Property Type="String" Name="titProyecto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="imagen" Nullable="true" />
           <Property Type="DateTime" Name="fechaIniPro" Nullable="false" />
           <Property Type="DateTime" Name="fechaFinPro" Nullable="false" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
@@ -2667,7 +2647,9 @@
                 <ScalarProperty Name="DNI" ColumnName="DNI" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="IDCargo" ColumnName="IDCargo" />
                 <ScalarProperty Name="nomCargo" ColumnName="nomCargo" />
+                <ScalarProperty Name="IDArea" ColumnName="IDArea" />
                 <ScalarProperty Name="nomArea" ColumnName="nomArea" />
                 <ScalarProperty Name="contraseña" ColumnName="contraseña" />
                 <ScalarProperty Name="firma" ColumnName="firma" />
@@ -2799,6 +2781,31 @@
                 <ScalarProperty Name="nomArea" ColumnName="nomArea" />
                 <ScalarProperty Name="IDProyecto" ColumnName="IDProyecto" />
                 <ScalarProperty Name="titProyecto" ColumnName="titProyecto" />
+                <ScalarProperty Name="fechaIniPro" ColumnName="fechaIniPro" />
+                <ScalarProperty Name="fechaFinPro" ColumnName="fechaFinPro" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="distrito" ColumnName="distrito" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="seguimiento" ColumnName="seguimiento" />
+                <ScalarProperty Name="encarProyecto" ColumnName="encarProyecto" />
+                <ScalarProperty Name="nomEncarga" ColumnName="nomEncarga" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_C_PROYECTOPROFESIONALIMAGEN" FunctionName="DBControlProyectoModel.Store.SP_C_PROYECTOPROFESIONALIMAGEN">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_PROYECTOPROFESIONALIMAGEN_Result">
+                <ScalarProperty Name="IDProfeProyecto" ColumnName="IDProfeProyecto" />
+                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="nomProfe" ColumnName="nomProfe" />
+                <ScalarProperty Name="nomCargo" ColumnName="nomCargo" />
+                <ScalarProperty Name="nomArea" ColumnName="nomArea" />
+                <ScalarProperty Name="IDProyecto" ColumnName="IDProyecto" />
+                <ScalarProperty Name="titProyecto" ColumnName="titProyecto" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
                 <ScalarProperty Name="fechaIniPro" ColumnName="fechaIniPro" />
                 <ScalarProperty Name="fechaFinPro" ColumnName="fechaFinPro" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />

@@ -66,19 +66,7 @@ namespace sistemaControlProyectos.Controllers
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Obtener(int idProyecto)
-        {
-            tblProyecto ObtenerProyecto = new tblProyecto();
-
-            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
-            {
-                ObtenerProyecto = (from p in db.tblProyecto.Where(x => x.IDProyecto == idProyecto)
-                                    select p).FirstOrDefault();
-            }
-
-            return Json(ObtenerProyecto, JsonRequestBehavior.AllowGet);
-        }
-
+       
         [HttpPost]
         public JsonResult Guardar(tblProyecto objeto)
         {

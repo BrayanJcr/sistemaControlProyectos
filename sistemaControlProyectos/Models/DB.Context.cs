@@ -536,16 +536,6 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROYECTOPROFESIONAL_Result>("SP_C_PROYECTOPROFESIONAL");
         }
     
-        public virtual ObjectResult<SP_C_PROYECTOLISTA_Result> SP_C_PROYECTOLISTA()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROYECTOLISTA_Result>("SP_C_PROYECTOLISTA");
-        }
-    
-        public virtual ObjectResult<SP_C_PROYECTOPROFESIONAL_Result> SP_C_PROYECTOPROFESIONAL()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROYECTOPROFESIONAL_Result>("SP_C_PROYECTOPROFESIONAL");
-        }
-    
         public virtual ObjectResult<SP_C_PROYECTOPROFESIONALIMAGEN_Result> SP_C_PROYECTOPROFESIONALIMAGEN(Nullable<int> iDProfesional)
         {
             var iDProfesionalParameter = iDProfesional.HasValue ?
@@ -1007,23 +997,6 @@ namespace sistemaControlProyectos.Models
             var seguimientoParameter = seguimiento != null ?
                 new ObjectParameter("seguimiento", seguimiento) :
                 new ObjectParameter("seguimiento", typeof(string));
-    
-            var iDProfesionalParameter = iDProfesional.HasValue ?
-                new ObjectParameter("IDProfesional", iDProfesional) :
-                new ObjectParameter("IDProfesional", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_PROYECTO", iDProyectoParameter, tituloParameter, fechaIniProParameter, fechaFinProParameter, descripcionParameter, estadoParameter, ubicacionParameter, distritoParameter, departamentoParameter, imagenParameter, seguimientoParameter, iDProfesionalParameter);
-        }
-    
-        public virtual ObjectResult<string> SP_M_PROYECTOPROFESIONAL(Nullable<int> iDProfeProyecto, Nullable<int> iDProyecto, Nullable<int> iDProfesional)
-        {
-            var iDProfeProyectoParameter = iDProfeProyecto.HasValue ?
-                new ObjectParameter("IDProfeProyecto", iDProfeProyecto) :
-                new ObjectParameter("IDProfeProyecto", typeof(int));
-    
-            var iDProyectoParameter = iDProyecto.HasValue ?
-                new ObjectParameter("IDProyecto", iDProyecto) :
-                new ObjectParameter("IDProyecto", typeof(int));
     
             var iDProfesionalParameter = iDProfesional.HasValue ?
                 new ObjectParameter("IDProfesional", iDProfesional) :
