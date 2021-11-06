@@ -55,7 +55,7 @@ function ListarActividad() {
     $.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
-        url: "Listar",
+        url: "/Actividades/Listar",
         data: "{}",
         dataType: "json",
         success: function (Result) {

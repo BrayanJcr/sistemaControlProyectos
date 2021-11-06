@@ -7,18 +7,41 @@ using System.Web.Mvc;
 
 namespace sistemaControlProyectos.Controllers
 {
+    [Route("/api/[controller]")]
     public class ActividadesController : Controller
     {
         // GET: Actividades
 
-        private static SP_C_PROFESIONAL_Result SesionProfesional;
+        private static SP_C_PROFESIONAL_Result SesionUsuario;
 
         public ActionResult Actividades()
         {
-            SesionProfesional = (SP_C_PROFESIONAL_Result)Session["profesional"];
-            ViewBag.NombreUsuario = SesionProfesional.nombre + " " + SesionProfesional.apellidos;
-            ViewBag.Cargo = SesionProfesional.nomCargo;
-            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionProfesional.IDProyectoActual).FirstOrDefault();
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
+            ViewBag.Cargo = SesionUsuario.nomCargo;
+            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
+
+            ViewBag.proyecto = proyecto.titProyecto;
+            return View();
+        }
+
+        public ActionResult Gantt()
+        {
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
+            ViewBag.Cargo = SesionUsuario.nomCargo;
+            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
+
+            ViewBag.proyecto = proyecto.titProyecto;
+            return View();
+        }
+
+        public ActionResult Kanban()
+        {
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
+            ViewBag.Cargo = SesionUsuario.nomCargo;
+            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
 
             ViewBag.proyecto = proyecto.titProyecto;
             return View();

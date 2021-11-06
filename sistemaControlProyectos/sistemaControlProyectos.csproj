@@ -28,7 +28,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.9</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -221,9 +221,7 @@
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\CargoController.cs" />
     <Compile Include="Controllers\CerrarSessionController.cs" />
-    <Compile Include="Controllers\GanttController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\KanbanController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfesionalController.cs" />
     <Compile Include="Controllers\ProyectosController.cs" />
@@ -2544,8 +2542,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Reunion\Reunion.cshtml" />
     <Content Include="Views\Shared\Loguearse.cshtml" />
-    <Content Include="Views\Kanban\Kanban.cshtml" />
-    <Content Include="Views\Gantt\Gantt.cshtml" />
+    <Content Include="Views\Actividades\Kanban.cshtml" />
     <Content Include="Views\Actividades\Actividades.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Profesional\Profesional.cshtml" />
@@ -2559,13 +2556,13 @@
     <Content Include="Views\Proyectos\AsignarProfesional.cshtml" />
     <Content Include="Views\Cargo\Cargo.cshtml" />
     <Content Include="Views\Proyectos\ProyectosInicio.cshtml" />
+    <Content Include="Views\Actividades\Gantt.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Usuario\Usuario.cshtml" />
     <Content Include="Views\Shared\Proyecto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ActividadProfesional\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
