@@ -32,6 +32,11 @@ namespace sistemaControlProyectos.Controllers
             return View();
         }
 
+        public ActionResult AsignarProfesional()
+        {
+            return View();
+        }
+
         public JsonResult Obtener(int idProyecto)
         {
             tblProyecto ObtenerProyecto = new tblProyecto();
@@ -47,10 +52,21 @@ namespace sistemaControlProyectos.Controllers
 
         public JsonResult Listar()
         {
-            List<SP_C_PROYECTO_Result> lista = ProyectosModelo.Instancia.ListarProyecto();
+            //List<SP_C_PROYECTOLISTA_Result> listarActividad = new List<SP_C_PROYECTOLISTA_Result>();
+
+            //using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            //{
+
+            //    listarActividad = db.SP_C_PROYECTOLISTA().ToList();
+            //    //listarActividad = (from p in db.tblActividad select p).ToList();
+            //}
+            //return Json(new { data = listarActividad }, JsonRequestBehavior.AllowGet);
+
+            List<SP_C_PROYECTOLISTA_Result> lista = Models.ProyectosModelo.Instancia.ListarTabla();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
 
+       
         [HttpPost]
         public JsonResult Guardar(tblProyecto objeto)
         {
@@ -103,7 +119,7 @@ namespace sistemaControlProyectos.Controllers
         }
 
 
-        
+
 
     }
 }

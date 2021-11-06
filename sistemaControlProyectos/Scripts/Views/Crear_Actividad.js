@@ -21,6 +21,10 @@ function Cambiarfecha(fechaEntra) {
     return fecha;
 }
 
+function Cerrar() {
+    $('#FormModal').modal('hide');
+}
+
 var tablaActividad;
 $(document).ready(function () {
     
@@ -160,7 +164,6 @@ function Guardar() {
                         url: "/Actividades/Guardar",
                         type: "POST",
                         data: JSON.stringify($request),
-                
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {

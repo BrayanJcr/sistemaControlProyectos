@@ -21,13 +21,13 @@
 </head>
 <body>
     <div class="page-wrapper chiller-theme toggled">
-        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+        <a id="show-sidebar" class="btn btn-sm btn-dark" href="javascript:;">
             <i class="fas fa-bars"></i>
         </a>
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
                 <div class="sidebar-brand">
-                    <a href="#">Grupo Bravajal</a>
+                    <a href="javascript:;">Grupo Bravajal</a>
                     <div id="close-sidebar">
                         <i class="fas fa-times"></i>
                     </div>
@@ -45,20 +45,13 @@
                             <i class="fa fa-circle"></i>
                             <span>@ViewBag.proyecto</span>
                         </span>
-                    </div>
-                </div>
-                <!-- sidebar-header  -->
-                <div class="sidebar-search">
-                    <div>
                         <div class="input-group">
-                            <input type="text" class="form-control search-menu" placeholder="Search...">
-                            <div class="input-group-append">
-                                <span class="input-group-text">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </span>
-                            </div>
+                            <a href="/CerrarSession/Cerrar">
+                                <i class="fa fa-power-off"></i>
+                            </a>
                         </div>
                     </div>
+
                 </div>
                 <!-- sidebar-search  -->
                 <div class="sidebar-menu">
@@ -85,6 +78,7 @@
                                 </ul>
                             </div>
                         </li>
+
                         <li class="sidebar-dropdown">
                             <a href="javascript:;">
                                 <i class="fa fa-users"></i>
@@ -113,7 +107,7 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="~/Views/Recursos/Recursos.cshtml">Recursos</a>
+                                        <a href="/Recursos/Recursos">Recursos</a>
                                     </li>
                                 </ul>
                             </div>
@@ -161,10 +155,16 @@
                                         @Html.ActionLink("Actividades", "Actividades", "Actividades")
                                     </li>
                                     <li>
-                                        @Html.ActionLink("Gantt", "Gantt", "Gantt")
+                                        <a href="/Actividades/AsignarResponsable">Asignar Responsable</a>
                                     </li>
                                     <li>
-                                        @Html.ActionLink("Kanban", "Kanban", "Kanban")
+                                        <a href="/Actividades/AsignarRecursos">Asignar Recurso</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Actividades/Gantt">Gantt</a>
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Kanban", "Kanban", "Actividades")
 
                                     </li>
                                 </ul>
@@ -178,30 +178,16 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        @Html.ActionLink("Area", "Area", "Area")
+                                        <a href="/Area/Area">Area</a>
                                     </li>
                                     <li>
-                                        @Html.ActionLink("Organigrama", "Organigrama", "Area")
+                                        <a href="/Area/Organigrama">Organigrama</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                     </ul>
                     <!-- sidebar-menu  -->
-                </div>
-                <!-- sidebar-content  -->
-                <div class="sidebar-footer">
-                    <a href="#">
-                        <i class="fa fa-bell"></i>
-                        <span class="badge badge-pill badge-warning notification">3</span>
-                    </a>
-                    <a href="#">
-                        <i class="fa fa-cog"></i>
-                        <span class="badge-sonar"></span>
-                    </a>
-                    <a href="/CerrarSession/Cerrar">
-                        <i class="fa fa-power-off"></i>
-                    </a>
                 </div>
             </div>
         </nav>

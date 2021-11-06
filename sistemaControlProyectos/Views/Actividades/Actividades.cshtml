@@ -4,34 +4,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-<script src="~/Scripts/jquery.validate.js"></script>
-<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
-
 <h2>ACTIVIDADES</h2>
 
 <div class="row">
     <div class="col-sm-12">
-        <div class="card-header">
-            ACTIVIDAD
-        </div>
-        <div class="card-body">
-            <table id="tblActividad" class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th class="titulo">Titulo</th>
-                        <th class="fechaInicio">Fecha Inicio</th>
-                        <th class="fechaFin">Fecha Fin</th>
-                        <th>Descripcion</th>
-                        <th>Estado</th>
-                        <th>Proceso</th>
-                    </tr>
-                </thead>
-            </table>
+        <div class="card">
+            <div class="card-header p-2 bg-dark text-white">
+              ACTIVIDAD
+            </div>
+
+            <div class="card-body p-3">
+                <table id="tblActividad" class="table table-light nowrap compact" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Titulo</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Fin</th>
+                            <th>Descripcion</th>
+                            <th>Estado</th>
+                            <th>Proceso</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -42,7 +38,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Agregar Actividad</h5>
-                <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close" onclick="Cerrar()"></button>
             </div>
             <div class="modal-body">
 
@@ -73,22 +69,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="txtResponsables">Responsables *</label>
-                                <select class="form-control" id="cboResponsables" name="Responsable:"></select>
-                                <button class="btn btn-primary" type="button" id="btnResponsables" onclick="Responsables()">
-                                    <i class="fas fa-user-plus"></i>
-                                </button>   
-                            </div>
-
-                            <div class="form-group">
-                                <label for="txtRecursos">Recursos *</label>
-                                <select class="form-control" id="cboRecurso" name="Activo"></select>
-                                <button class="btn btn-primary" type="button" id="btnRecursos" onclick="Recursos()">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-
-                            <div class="form-group">
                                 <label for="txtEstado">Estado *</label>
                                 <select class="form-control" id="cboEstado" name="Activo">
                                     <option value="1">Activo</option>
@@ -116,7 +96,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="Cerrar()">Cerrar</button>
                 <button id="guardar" type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
             </div>
         </div>

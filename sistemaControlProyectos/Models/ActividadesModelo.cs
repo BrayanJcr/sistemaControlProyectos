@@ -131,7 +131,150 @@ namespace sistemaControlProyectos.Models
 
             return respuesta;
         }
-        
+
+        //AsignarResponsable a Actividad
+
+        public List<SP_C_ProfesionalActividad_Result> ListarActividadResponsable()
+        {
+            List<SP_C_ProfesionalActividad_Result> listarActividadResponsable = new List<SP_C_ProfesionalActividad_Result>();
+
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                try
+                {
+                    listarActividadResponsable = db.SP_C_ProfesionalActividad().ToList();
+
+                    return listarActividadResponsable;
+
+                }
+                catch (Exception ex)
+                {
+                    listarActividadResponsable = null;
+                    return listarActividadResponsable;
+                }
+        }
+
+        public bool RegistrarActividadResponsable(tblProfesional_Actividad objetoActividadRes)
+        {
+            bool respuesta = true;
+            try
+            {
+                using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                {
+
+                    try
+                    {
+                        db.SP_A_ProfesionalActividad(objetoActividadRes.IDActividad,objetoActividadRes.IDProfesional);
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+
+                    }
+
+                }
+            }
+            catch
+            {
+                respuesta = false;
+
+            }
+
+            return respuesta;
+        }
+
+        public bool EliminarAsigResponsa(int IDProfActividad)
+        {
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+
+                try
+                {
+                    db.SP_E_ProfesionalActividad(IDProfActividad);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+
+                }
+
+            }
+        }
+
+        //Asignar Recurso a Actividad
+
+        public List<SP_C_RECURSO_ACTIVIDAD_Result> ListarActividadRescurso()
+        {
+            List<SP_C_RECURSO_ACTIVIDAD_Result> listarActividadRecurso = new List<SP_C_RECURSO_ACTIVIDAD_Result>();
+
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                try
+                {
+                    listarActividadRecurso = db.SP_C_RECURSO_ACTIVIDAD().ToList();
+
+                    return listarActividadRecurso;
+
+                }
+                catch (Exception ex)
+                {
+                    listarActividadRecurso = null;
+                    return listarActividadRecurso;
+                }
+        }
+
+        public bool RegistrarActividadRecurso(tblRecurso_Actividad objetoActividadRec)
+        {
+            bool respuesta = true;
+            try
+            {
+                using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                {
+
+                    try
+                    {
+                        db.SP_A_RECURSO_ACTIVIDAD( objetoActividadRec.IDRecurso, objetoActividadRec.IDActividad, objetoActividadRec.cantidad);
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+
+                    }
+
+                }
+            }
+            catch
+            {
+                respuesta = false;
+
+            }
+
+            return respuesta;
+        }
+
+        public bool EliminarAsigRecurso(int IDRecActividad)
+        {
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+
+                try
+                {
+                    db.SP_E_RECURSO_ACTIVIDAD(IDRecActividad);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+
+                }
+
+            }
+        }
     }
 
 }

@@ -8,20 +8,23 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <div class="card-header">
-            AREA
-        </div>
-        <div class="card-body">
-            <table id="tblArea" class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nombre</th>
-                        <th>Encargado</th>
-                        <th>Area Padre</th>
-                    </tr>
-                </thead>
-            </table>
+        <div class="card">
+            <div class="card-header p-2 bg-dark text-white">
+                AREA
+            </div>
+
+            <div class="card-body">
+                <table id="tblArea" class="table table-light nowrap compact" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Encargado</th>
+                            <th>Area Padre</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -32,7 +35,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Agregar Area</h5>
-                <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close" onclick="Cerrar()"></button>
             </div>
             <div class="modal-body">
 
@@ -63,7 +66,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="Cerrar()">Cerrar</button>
                 <button id="guardar" type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
             </div>
         </div>

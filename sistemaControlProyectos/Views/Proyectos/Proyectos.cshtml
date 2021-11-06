@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "Proyectos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Proyectos</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header p-2 bg-dark text-white">
+                PROYECTOS
+            </div>
+
+            <div class="card-body p-3">
+                <table id="tblProyectos" class="table table-light nowrap compact" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Titulo</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Fin</th>
+                            <th>Estado</th>
+                            <th>Ubicacion</th>
+                            <th>Distrito</th>
+                            <th>Departamento</th>
+                            <th>Seguimiento</th>
+                            <th>Profesional</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Proyectos</h5>
+                <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close" onclick="Cerrar()"></button>
+            </div>
+            <div class="modal-body">
+
+                <form class="formulario" id="form">
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <input type="hidden" id="txtIdProyectos" />
+
+                            <div class="form-group">
+                                <label for="txtTitulo" id="formulario__label">Titulo *</label>
+                                <input type="text" class="form-control" name="titulo" id="txtTitulo">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtFechaIni">Fecha Inicio *</label>
+                                <input type="date" class="form-control" name="fechaInicio" id="txtFechaIni">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtFechaFin">Fecha Fin *</label>
+                                <input type="date" class="form-control" name="fechaFin" id="txtFechaFin">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtDescripcion">Descripcion </label>
+                                <input type="text" class="form-control" name="descripcion" id="txtDescripcion">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtEstado">Estado *</label>
+                                <select class="form-control" id="cboEstado" name="Activo">
+                                    <option value="1">Activo</option>
+                                    <option value="0">No Activo</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtUbicacion">Ubicacion </label>
+                                <input type="text" class="form-control" name="descripcion" id="txtUbicacion">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtDistrito">Distrito </label>
+                                <input type="text" class="form-control" name="descripcion" id="txtDistrito">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtDepartamento">Departamento </label>
+                                <input type="text" class="form-control" name="descripcion" id="txtDepartamento">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image_uploads">Imagen:</label>
+                                <input type="file" class="form-control" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png">
+                            </div>
+
+                            <div class="form-group">
+                                <ol id="list">
+                                    <p>Actualmente no hay archivos seleccionados para cargar.</p>
+                                    <li>
+                                        <p id="name">Nombre </p>
+                                        <p id="size">Tamaño </p>
+                                        <img id="imagenPro" src="">
+                                    </li>
+                                </ol>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtSeguimiento">Seguiminento </label>
+                                <input type="text" class="form-control" name="descripcion" id="txtSeguimiento">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtEncargado">Profesional Encargado *</label>
+                                <select class="form-control" id="cboEncargado" name="Profesional:"></select>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="Cerrar()">Cerrar</button>
+                <button id="guardar" type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/Views/Crear_Proyectos.js")" type="text/javascript"></script>
+
+}

@@ -7,23 +7,54 @@ using System.Web.Mvc;
 
 namespace sistemaControlProyectos.Controllers
 {
+    [Route("/api/[controller]")]
     public class ActividadesController : Controller
     {
         // GET: Actividades
 
-        private static SP_C_PROFESIONAL_Result SesionProfesional;
+        private static SP_C_PROFESIONAL_Result SesionUsuario;
 
         public ActionResult Actividades()
         {
-            SesionProfesional = (SP_C_PROFESIONAL_Result)Session["profesional"];
-            ViewBag.NombreUsuario = SesionProfesional.nombre + " " + SesionProfesional.apellidos;
-            ViewBag.Cargo = SesionProfesional.nomCargo;
-            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionProfesional.IDProyectoActual).FirstOrDefault();
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
+            ViewBag.Cargo = SesionUsuario.nomCargo;
+            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
 
             ViewBag.proyecto = proyecto.titProyecto;
             return View();
         }
 
+        public ActionResult Gantt()
+        {
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
+            ViewBag.Cargo = SesionUsuario.nomCargo;
+            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
+
+            ViewBag.proyecto = proyecto.titProyecto;
+            return View();
+        }
+
+        public ActionResult Kanban()
+        {
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
+            ViewBag.Cargo = SesionUsuario.nomCargo;
+            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
+
+            ViewBag.proyecto = proyecto.titProyecto;
+            return View();
+        }
+
+        public ActionResult AsignarResponsable()
+        {
+            return View();
+        }
+        public ActionResult AsignarRecursos()
+        {
+            return View();
+        }
         public JsonResult Listar()
         {
             //List<SP_C_ACTIVIDAD_Result> listarActividad = new List<SP_C_ACTIVIDAD_Result>();
@@ -39,7 +70,6 @@ namespace sistemaControlProyectos.Controllers
             List<SP_C_ACTIVIDAD_Result> lista = Models.ActividadesModelo.Instancia.ListarActividad();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
-
 
         public JsonResult Obtener(int idActividad)
         {
@@ -76,6 +106,60 @@ namespace sistemaControlProyectos.Controllers
         {
             bool respuesta = true;
             respuesta = Models.ActividadesModelo.Instancia.EliminarActividad(IDActividad);
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+
+        // Asignacion de Responsable
+
+        [HttpGet]
+        public JsonResult ListarAsignacion()
+        {
+            List<SP_C_ProfesionalActividad_Result> lista = Models.ActividadesModelo.Instancia.ListarActividadResponsable();
+            return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarActividadResponsable(tblProfesional_Actividad objeto)
+        {
+            bool respuesta = false;
+
+            respuesta = Models.ActividadesModelo.Instancia.RegistrarActividadResponsable(objeto);
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult EliminarActividadResponsable(int idProfActividad)
+        {
+            bool respuesta = true;
+            respuesta = Models.ActividadesModelo.Instancia.EliminarAsigResponsa(idProfActividad);
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+
+        // Asignacion de Recursos
+
+        [HttpGet]
+        public JsonResult ListarAsignacionRecurso()
+        {
+            List<SP_C_RECURSO_ACTIVIDAD_Result> lista = Models.ActividadesModelo.Instancia.ListarActividadRescurso();
+            return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarActividadRecurso(tblRecurso_Actividad objeto)
+        {
+            bool respuesta = false;
+
+            respuesta = Models.ActividadesModelo.Instancia.RegistrarActividadRecurso(objeto);
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult EliminarActividadRecurso(int idRecActividad)
+        {
+            bool respuesta = true;
+            respuesta = Models.ActividadesModelo.Instancia.EliminarAsigRecurso(idRecActividad);
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
     }

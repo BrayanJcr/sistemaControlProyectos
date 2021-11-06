@@ -79,7 +79,7 @@ namespace sistemaControlProyectos.Controllers
             }
             else
             {
-                respuesta = Models.AreaModelo.Instancia.RegistrarArea(objeto);
+                respuesta = Models.AreaModelo.Instancia.ModificarArea(objeto);
             }
 
 

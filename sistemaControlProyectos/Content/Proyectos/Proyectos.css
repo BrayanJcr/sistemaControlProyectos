@@ -1,0 +1,30 @@
+﻿form ol {
+    padding-left: 0;
+}
+
+form ol #name {
+    position: absolute;
+    padding-top: 25px;
+    padding-left: 34px;
+}
+
+form ol #size {
+    position: relative;
+    padding-top: 85px;
+    padding-left: 34px;
+}
+
+form img {
+    height: 140px;
+    width: 140px;
+    order: 3;
+}
+
+form li, div > p {
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    list-style-type: none;
+    border: 1px solid black;
+}

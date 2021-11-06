@@ -222,6 +222,58 @@ namespace sistemaControlProyectos.Models
 
        
 
+        public bool RegistrarProyectoProfesional(tblProfesional_Proyecto objeto)
+        {
+            bool respuesta = true;
+            try
+            {
+                using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                {
+
+                    try
+                    {
+                        db.SP_A_PROYECTOPROFESIONAL(objeto.IDProfesional, objeto.IDProyecto);
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+
+                    }
+
+                }
+            }
+            catch
+            {
+                respuesta = false;
+
+            }
+
+            return respuesta;
+        }
+
+        public bool EliminarAsigProfesional(int IDProfeProyecto)
+        {
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+
+                try
+                {
+                    db.SP_E_PROYECTOPROFESIONAL(IDProfeProyecto);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+
+                }
+
+            }
+        }
+
+      
         public List<SP_C_PROYECTOPROFESIONALIMAGEN_Result> ListarProyectoProfesionalImagen(int IDProfesional)
         {
             List<SP_C_PROYECTOPROFESIONALIMAGEN_Result> listarProyectoProfesional = new List<SP_C_PROYECTOPROFESIONALIMAGEN_Result>();
