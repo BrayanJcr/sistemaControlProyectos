@@ -10,14 +10,15 @@
 namespace sistemaControlProyectos.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class SP_C_REPORTE_Result
+    public partial class tblReporte_Actividad
     {
-        public int IDReport { get; set; }
-        public System.DateTime FechaRep { get; set; }
-        public string Descripcion { get; set; }
-        public string Estado { get; set; }
-        public Nullable<int> IDDoc { get; set; }
-        public int IDProfesional { get; set; }
+        public int IDRepActividad { get; set; }
+        public int IDReporte { get; set; }
+        public int IDActividad { get; set; }
+    
+        public virtual tblActividad tblActividad { get; set; }
+        public virtual tblReporte tblReporte { get; set; }
     }
 }

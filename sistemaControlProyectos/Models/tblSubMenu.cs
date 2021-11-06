@@ -12,20 +12,24 @@ namespace sistemaControlProyectos.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblRecurso
+    public partial class tblSubMenu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblRecurso()
+        public tblSubMenu()
         {
-            this.tblRecurso_Actividad = new HashSet<tblRecurso_Actividad>();
+            this.tblPermisos = new HashSet<tblPermisos>();
         }
     
-        public int IDRecurso { get; set; }
-        public string nomRecurso { get; set; }
-        public int cantidadStock { get; set; }
-        public decimal costo { get; set; }
+        public int IDSubMenu { get; set; }
+        public int IDMenu { get; set; }
+        public string Nombre { get; set; }
+        public string Controlador { get; set; }
+        public string Vista { get; set; }
+        public bool Activo { get; set; }
+        public Nullable<System.DateTime> FechaRegistro { get; set; }
     
+        public virtual tblMenu tblMenu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblRecurso_Actividad> tblRecurso_Actividad { get; set; }
+        public virtual ICollection<tblPermisos> tblPermisos { get; set; }
     }
 }

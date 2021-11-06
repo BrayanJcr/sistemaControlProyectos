@@ -19,6 +19,7 @@ namespace sistemaControlProyectos.Models
         {
             this.tblProfesional_Actividad = new HashSet<tblProfesional_Actividad>();
             this.tblRecurso_Actividad = new HashSet<tblRecurso_Actividad>();
+            this.tblReporte_Actividad = new HashSet<tblReporte_Actividad>();
         }
     
         public int IDActividad { get; set; }
@@ -36,5 +37,7 @@ namespace sistemaControlProyectos.Models
         public virtual ICollection<tblProfesional_Actividad> tblProfesional_Actividad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblRecurso_Actividad> tblRecurso_Actividad { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblReporte_Actividad> tblReporte_Actividad { get; set; }
     }
 }

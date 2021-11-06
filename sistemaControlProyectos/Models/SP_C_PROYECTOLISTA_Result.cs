@@ -11,19 +11,18 @@ namespace sistemaControlProyectos.Models
 {
     using System;
     
-    public partial class SP_C_ProfesionalActividad_Result
+    public partial class SP_C_PROYECTOLISTA_Result
     {
-        public int IDProfActividad { get; set; }
-        public int IDActividad { get; set; }
-        public string titActividad { get; set; }
-        public string Descripcion { get; set; }
-        public bool estado { get; set; }
-        public string creador { get; set; }
-        public string proceso { get; set; }
-        public int IDProfesional { get; set; }
-        public string DNI { get; set; }
+        public int IDProyecto { get; set; }
+        public string titProyecto { get; set; }
+        public System.DateTime fechaIniPro { get; set; }
+        public System.DateTime fechaFinPro { get; set; }
+        public Nullable<bool> estado { get; set; }
+        public string descripcion { get; set; }
+        public string Ubicacion { get; set; }
+        public string distrito { get; set; }
+        public string departamento { get; set; }
+        public string seguimiento { get; set; }
         public string nombre { get; set; }
-        public string nomCargo { get; set; }
-        public string nomArea { get; set; }
     }
 }

@@ -27,12 +27,6 @@
     margin-bottom: 8px;
 }
 
-#cboResponsables, #cboRecurso {
-    float: right;
-    width: calc(90% - 2px);
-}
-
-#btnResponsables, #btnRecursos {
-    float: left;
-    width: calc(10% - 2px);
+#tblActividad{
+    padding-top:10px;
 }

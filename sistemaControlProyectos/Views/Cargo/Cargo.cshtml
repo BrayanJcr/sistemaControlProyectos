@@ -1,26 +1,24 @@
 ﻿
 @{
-    ViewBag.Title = "Area";
+    ViewBag.Title = "Cargo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Area</h2>
+<h2>Cargo</h2>
 
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header p-2 bg-dark text-white">
-                AREA
+                CARGO
             </div>
 
-            <div class="card-body">
-                <table id="tblArea" class="table table-light nowrap compact" style="width:100%">
+            <div class="card-body p-3">
+                <table id="tblCargo" class="table table-light nowrap compact" style="width:100%">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Nombre</th>
-                            <th>Encargado</th>
-                            <th>Area Padre</th>
                         </tr>
                     </thead>
                 </table>
@@ -34,7 +32,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Area</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Cargo</h5>
                 <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close" onclick="Cerrar()"></button>
             </div>
             <div class="modal-body">
@@ -43,21 +41,11 @@
                     <div class="row">
 
                         <div class="col-sm-12">
-                            <input type="hidden" id="txtArea" />
+                            <input type="hidden" id="txtIDCargo" />
 
                             <div class="form-group" id="grupo__titulo">
                                 <label for="txtNombre" id="formulario__label">Nombre *</label>
                                 <input type="text" class="form-control" name="nombre" id="txtNombre">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="txtEncargado">Encargado *</label>
-                                <select class="form-control" id="cboEncargado" name="Encargado:"></select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="txtPadre">Area Padre *</label>
-                                <select class="form-control" id="cboPadre" name="Padre:"></select>
                             </div>
 
                         </div>
@@ -74,6 +62,7 @@
 </div>
 
 @section scripts{
-    <script src="@Url.Content("~/Scripts/Views/Crear_Area.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Views/Crear_Cargo.js")" type="text/javascript"></script>
 
 }
+

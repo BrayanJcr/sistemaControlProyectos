@@ -18,7 +18,6 @@ namespace sistemaControlProyectos.Models
         public int IDRecurso { get; set; }
         public int IDActividad { get; set; }
         public int cantidad { get; set; }
-        public decimal costo { get; set; }
     
         public virtual tblActividad tblActividad { get; set; }
         public virtual tblRecurso tblRecurso { get; set; }

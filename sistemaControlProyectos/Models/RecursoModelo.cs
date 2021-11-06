@@ -5,46 +5,47 @@ using System.Web;
 
 namespace sistemaControlProyectos.Models
 {
-    public class CargoModelo
+    public class RecursoModelo
     {
-        public static CargoModelo _instancia = null;
-        private CargoModelo()
+        public static RecursoModelo _instancia = null;
+        private RecursoModelo()
         {
 
         }
 
-        public static CargoModelo Instancia
+        public static RecursoModelo Instancia
         {
             get
             {
                 if (_instancia == null)
                 {
-                    _instancia = new CargoModelo();
+                    _instancia = new RecursoModelo();
                 }
                 return _instancia;
             }
         }
 
-        public List<SP_C_CARGO_Result> ListarCargo()
+        public List<SP_C_RECURSO_Result> ListarRecurso()
         {
-            List<SP_C_CARGO_Result> listarCargo = new List<SP_C_CARGO_Result>();
+            List<SP_C_RECURSO_Result> listar = new List<SP_C_RECURSO_Result>();
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
 
                 try
                 {
-                    listarCargo = db.SP_C_CARGO().ToList();
-                    return listarCargo;
+                    listar = db.SP_C_RECURSO().ToList();
+                    return listar;
                 }
                 catch (Exception ex)
                 {
-                    listarCargo = null;
-                    return listarCargo;
+                    listar = null;
+                    return listar;
                 }
 
             }
         }
-        public bool RegistrarCargo(tblCargo objeto)
+
+        public bool RegistrarRecurso(tblRecurso objeto)
         {
             bool respuesta = true;
             try
@@ -53,7 +54,7 @@ namespace sistemaControlProyectos.Models
                 {
                     try
                     {
-                        db.SP_A_CARGO(objeto.nomCargo);
+                        db.SP_A_RECURSO(objeto.nomRecurso, objeto.cantidadStock, objeto.costo);
 
                         db.SaveChanges();
                         return true;
@@ -74,14 +75,14 @@ namespace sistemaControlProyectos.Models
             return respuesta;
         }
 
-        public bool EliminarCargo(int IDCargo)
+        public bool EliminarRecurso(int IDRecurso)
         {
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
 
                 try
                 {
-                    db.SP_E_CARGO(IDCargo);
+                    db.SP_E_RECURSO(IDRecurso);
                     db.SaveChanges();
                     return true;
                 }
@@ -93,7 +94,7 @@ namespace sistemaControlProyectos.Models
 
             }
         }
-        public bool ModificarCargo(tblCargo objeto)
+        public bool ModificarRecurso(tblRecurso objeto)
         {
             bool respuesta = true;
             try
@@ -103,7 +104,9 @@ namespace sistemaControlProyectos.Models
 
                     try
                     {
-                        db.SP_M_CARGO(objeto.IDCargo, objeto.nomCargo);
+                        db.SP_M_RECURSO(objeto.IDRecurso, objeto.nomRecurso
+                            , objeto.cantidadStock, objeto.costo
+                            );
                         db.SaveChanges();
                         return true;
                     }
@@ -123,6 +126,5 @@ namespace sistemaControlProyectos.Models
 
             return respuesta;
         }
-
     }
 }

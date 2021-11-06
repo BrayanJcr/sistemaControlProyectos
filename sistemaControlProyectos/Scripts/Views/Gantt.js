@@ -5,13 +5,6 @@ function cambiarFecha(fecha) {
     return fechaActual;
 }
 
-function datos() {
-    let fechaIniD = new Date('10/5/2021');
-    let fechaFinD = new Date('10/14/2021');
-    let fechaFinP = new Date('10/5/2021');
-    porcentajeDeAvance(fechaIniD, fechaFinD)
-}
-
 //Cambiar Fechas
 function CambiarFormatofecha(fechaEntra) {
     var fechaString = fechaEntra.substr(6);
@@ -20,9 +13,7 @@ function CambiarFormatofecha(fechaEntra) {
     var dia = fechaActual.getDate();
     var anio = fechaActual.getFullYear();
     var fecha = mes + "/" + dia + "/" + anio;
-    console.log(fecha);
     let fechaCam = new Date(fecha);
-    console.log(fechaCam);
     return fechaCam;
 }
 
@@ -30,17 +21,11 @@ function porcentajeDeAvance(fechaIni, fechaFin) {
     const fechaActual = new Date().getTime();
     let miliSegDia = 24 * 60 * 60 * 1000;
 
-    console.log(fechaIni);
-    console.log(fechaFin);
-
     let fechIni = CambiarFormatofecha(fechaIni).getTime();
     let fechFin = CambiarFormatofecha(fechaFin).getTime();
 
     var porc;
     let miliTraAct;
-    console.log(fechaActual);
-    console.log(fechIni);
-    console.log(fechFin);
 
     if (fechaActual <= fechIni && fechIni < fechFin) {
         porc = 0.0001;
@@ -51,9 +36,6 @@ function porcentajeDeAvance(fechaIni, fechaFin) {
 
         let diaTraTot = Math.round(miliTraTot / miliSegDia);
         let diaTraActu = Math.round(miliTraAct / miliSegDia);
-
-        console.log(diaTraActu);
-        console.log(diaTraTot);
 
         var porc = (diaTraTot-diaTraActu) / diaTraTot;
     } if (fechIni < fechFin && fechFin <= fechaActual) {

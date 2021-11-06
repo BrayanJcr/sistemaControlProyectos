@@ -1,51 +1,52 @@
-﻿using System;
+﻿using sistemaControlProyectos.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using sistemaControlProyectos.Models;
+
 namespace sistemaControlProyectos.Controllers
 {
-    public class CargoController : Controller
+    public class RecursosController : Controller
     {
-        // GET: Cargo
-        public ActionResult Cargo()
+        // GET: Recursos
+        public ActionResult Recursos()
         {
             return View();
         }
 
         public JsonResult Listar()
         {
-            List<SP_C_CARGO_Result> listar = CargoModelo.Instancia.ListarCargo();
+            List<SP_C_RECURSO_Result> listar = RecursoModelo.Instancia.ListarRecurso();
             return Json(new { data = listar }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Obtener(int idCargo)
+        public JsonResult Obtener(int idRecurso)
         {
-            tblCargo Obtener = new tblCargo();
+            tblRecurso Obtener = new tblRecurso();
 
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
 
-                Obtener = (from p in db.tblCargo.Where(x => x.IDCargo == idCargo)
-                           select p).FirstOrDefault();
+                Obtener = (from p in db.tblRecurso.Where(x => x.IDRecurso == idRecurso)
+                               select p).FirstOrDefault();
             }
 
             return Json(Obtener, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult Guardar(tblCargo objeto)
+        public JsonResult Guardar(tblRecurso objeto)
         {
             bool respuesta = false;
 
-            if (objeto.IDCargo == 0)
+            if (objeto.IDRecurso == 0)
             {
-                respuesta = Models.CargoModelo.Instancia.RegistrarCargo(objeto);
+                respuesta = Models.RecursoModelo.Instancia.RegistrarRecurso(objeto);
             }
             else
             {
-                respuesta = Models.CargoModelo.Instancia.ModificarCargo(objeto);
+                respuesta = Models.RecursoModelo.Instancia.ModificarRecurso(objeto);
             }
 
 
@@ -53,10 +54,10 @@ namespace sistemaControlProyectos.Controllers
         }
 
 
-        public JsonResult Eliminar(int IDCargo)
+        public JsonResult Eliminar(int IDRecurso)
         {
             bool respuesta = true;
-            respuesta = Models.CargoModelo.Instancia.EliminarCargo(IDCargo);
+            respuesta = Models.RecursoModelo.Instancia.EliminarRecurso(IDRecurso);
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
     }
