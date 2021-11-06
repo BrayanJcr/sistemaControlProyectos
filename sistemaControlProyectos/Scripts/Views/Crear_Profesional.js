@@ -1,59 +1,59 @@
 ﻿var tablaProfesional
-//Obtener Area
-jQuery.ajax({
-    url: "/Area/Listar",
-    type: "GET",
-    dataType: "json",
-    contentType: "application/json; charset=utf-8",
-    success: function (data) {
-        console.log(data.data);
-        $("#cboArea").html("");
-
-        if (data.data != null) {
-            $.each(data.data, function (i, item) {
-
-                $("<option>").attr({ "value": item.IDArea }).text(item.nomArea).appendTo("#cboArea");
-
-            })
-            $("#cboArea").val($("#cboArea option:first").val());
-        }
-    },
-    error: function (error) {
-        console.log(error)
-    },
-    beforeSend: function () {
-    },
-});
-//Obtener Cargo
-jQuery.ajax({
-    url: "/Cargo/Listar",
-    type: "GET",
-    dataType: "json",
-    contentType: "application/json; charset=utf-8",
-    success: function (data) {
-        $("#cboCargo").html("");
-
-        if (data.data != null) {
-            $.each(data.data, function (i, item) {
-
-                $("<option>").attr({ "value": item.IDCargo }).text(item.nomCargo).appendTo("#cboCargo");
-
-            })
-            $("#cboCargo").val($("#cboCargo option:first").val());
-        }
-    },
-    error: function (error) {
-        console.log(error)
-    },
-    beforeSend: function () {
-    },
-});
 
 
 
 //Listar Profesionales
 $(document).ready(function () {
-    
+    //Obtener Area
+    jQuery.ajax({
+        url: "/Area/Listar",
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            console.log(data.data);
+            $("#cboArea").html("");
+
+            if (data.data != null) {
+                $.each(data.data, function (i, item) {
+
+                    $("<option>").attr({ "value": item.IDArea }).text(item.nomArea).appendTo("#cboArea");
+
+                })
+                $("#cboArea").val($("#cboArea option:first").val());
+            }
+        },
+        error: function (error) {
+            console.log(error)
+        },
+        beforeSend: function () {
+        },
+    });
+    //Obtener Cargo
+    jQuery.ajax({
+        url: "/Cargo/Listar",
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            $("#cboCargo").html("");
+
+            if (data.data != null) {
+                $.each(data.data, function (i, item) {
+
+                    $("<option>").attr({ "value": item.IDCargo }).text(item.nomCargo).appendTo("#cboCargo");
+
+                })
+                $("#cboCargo").val($("#cboCargo option:first").val());
+            }
+        },
+        error: function (error) {
+            console.log(error)
+        },
+        beforeSend: function () {
+        },
+    });
+
     tablaProfesional = $('#tblProfesional').DataTable({
         
         "ajax": {

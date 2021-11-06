@@ -9,8 +9,16 @@ namespace sistemaControlProyectos.Controllers
     public class ProfesionalController : Controller
     {
         // GET: Profesional
+        private static SP_C_PROFESIONAL_Result SesionUsuario;
+
         public ActionResult Profesional()
         {
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
+            ViewBag.Cargo = SesionUsuario.nomCargo;
+            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
+
+            ViewBag.proyecto = proyecto.titProyecto;
             return View();
         }
         public JsonResult Listar()
@@ -26,7 +34,7 @@ namespace sistemaControlProyectos.Controllers
             //return Json(new { data = listarActividad }, JsonRequestBehavior.AllowGet);
 
           
-            List<SP_C_PROFESIONALRESPONSABLE_Result> listar =ProfesionalModelo.instancia.ListarProfesional();
+            List<SP_C_PROFESIONAL_Result> listar =ProfesionalModelo.instancia.ListarProfesional();
             return Json(new { data = listar }, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Obtener(string dni)

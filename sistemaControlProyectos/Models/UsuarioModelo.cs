@@ -25,14 +25,14 @@ namespace sistemaControlProyectos.Models
             }
         }
 
-        public List<SP_C_USUARIO_Result> ListarUsuario()
+        public List<SP_C_PROFESIONALRESPONSABLE_Result> ListarUsuario()
         {        
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
-                List<SP_C_USUARIO_Result> listarProfesional = new List<SP_C_USUARIO_Result>();
+                List<SP_C_PROFESIONALRESPONSABLE_Result> listarProfesional = new List<SP_C_PROFESIONALRESPONSABLE_Result>();
                 try
                 {
-                    listarProfesional = db.SP_C_USUARIO().ToList();
+                    listarProfesional = db.SP_C_PROFESIONALRESPONSABLE().ToList();
                     return listarProfesional;
                 }
                 catch (Exception ex)

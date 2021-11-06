@@ -24,26 +24,26 @@ namespace sistemaControlProyectos.Models
                 return _instancia;
             }
         }
-
-        public List<SP_C_PROFESIONALRESPONSABLE_Result> ListarProfesional()
+        public List<SP_C_PROFESIONAL_Result> ListarProfesional()
         {
-            List<SP_C_PROFESIONALRESPONSABLE_Result> listarProfesional = new List<SP_C_PROFESIONALRESPONSABLE_Result>();
-            using (DBControlProyectoEntities db=new DBControlProyectoEntities())
+            List<SP_C_PROFESIONAL_Result> listarProfesional = new List<SP_C_PROFESIONAL_Result>();
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
 
                 try
                 {
-                    listarProfesional = db.SP_C_PROFESIONALRESPONSABLE().ToList();
+                    listarProfesional = db.SP_C_PROFESIONAL().ToList();
                     return listarProfesional;
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     listarProfesional = null;
                     return listarProfesional;
                 }
-               
+
             }
         }
-
+       
         public bool RegistrarProfesional(tblProfesional profesional)
         {
             
@@ -53,7 +53,7 @@ namespace sistemaControlProyectos.Models
 
                 try
                 {
-                    db.SP_A_PROFESIONAL(profesional.DNI,profesional.IDCargo,profesional.IDArea,profesional.IDReporte);
+                    db.SP_A_PROFESIONAL(profesional.DNI,profesional.IDCargo,profesional.IDArea,profesional.IDReporte,profesional.IDProyectoActual);
                     db.SaveChanges();
                     return true;
                 }
@@ -96,7 +96,7 @@ namespace sistemaControlProyectos.Models
 
                     try
                     {
-                        db.SP_M_PROFESIONAL(profesional.DNI, profesional.IDCargo, profesional.IDArea, profesional.IDReporte);
+                        db.SP_M_PROFESIONAL(profesional.IDProfesional,profesional.DNI, profesional.IDCargo, profesional.IDArea, profesional.IDReporte,profesional.IDProyectoActual);
                         db.SaveChanges();
                         return true;
                     }

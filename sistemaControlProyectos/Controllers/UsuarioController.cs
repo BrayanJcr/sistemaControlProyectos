@@ -10,15 +10,23 @@ namespace sistemaControlProyectos.Controllers
     public class UsuarioController : Controller
     {
         // GET: Usuario
+        private static SP_C_PROFESIONAL_Result SesionUsuario;
+
         public ActionResult Usuario()
         {
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
+            ViewBag.Cargo = SesionUsuario.nomCargo;
+            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
+
+            ViewBag.proyecto = proyecto.titProyecto;
             return View();
         }
         public JsonResult Listar()
         {
             
 
-            List<SP_C_USUARIO_Result> listar = UsuarioModelo.instancia.ListarUsuario();
+            List<SP_C_PROFESIONAL_Result> listar = ProfesionalModelo.instancia.ListarProfesional();
             return Json(new { data = listar }, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Obtener(string dni)
@@ -44,15 +52,26 @@ namespace sistemaControlProyectos.Controllers
         {
             bool respuesta = true;
 
-            if (objeto.DNI == "")
+            if (objeto.DNI != null)
             {
 
                 respuesta = UsuarioModelo.instancia.RegistrarUsuario(objeto);
             }
-            else
+            
+
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult Modificar(tblUsuario objeto)
+        {
+            bool respuesta = true;
+
+            if (objeto.DNI == null)
             {
-                respuesta = UsuarioModelo.instancia.ModificarProfesional(objeto);
-            }
+                        respuesta = UsuarioModelo.instancia.ModificarProfesional(objeto);
+                    }
+
 
 
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);

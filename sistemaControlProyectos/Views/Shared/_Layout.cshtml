@@ -4,12 +4,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <base href="/">
     <title>@ViewBag.Title - Grupo Bravajal</title>
-
+    <link href="~/Scripts/kanban/styles.dbe0c2c08217256f6911.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/Plugins.css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="~/Content/menu/css/menuSt.css" rel="stylesheet" />
@@ -31,17 +34,16 @@
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-                        <img class="img-fluid img-rounded" >
+                        <img class="img-fluid img-rounded" src="~/imagenes/brayan.jpg" alt="User picture"/>
                     </div>
                     <div class="user-info">
                         <span class="user-name">
-                            Brayan
-                            <strong>Javier</strong>
+                            @ViewBag.NombreUsuario
                         </span>
-                        <span class="user-role">Administrator</span>
+                        <span class="user-role">@ViewBag.Cargo</span>
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
-                            <span>Online</span>
+                            <span>@ViewBag.proyecto</span>
                         </span>
                     </div>
                 </div>
@@ -68,7 +70,7 @@
                             <a href="javascript:;">
                                 <i class="fa fa-tachometer-alt"></i>
                                 <span>Tablero</span>
-                            </a>
+                            </a >
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
@@ -85,7 +87,7 @@
                         </li>
 
                         <li class="sidebar-dropdown">
-                            <a href="#">
+                            <a href="javascript:;">
                                 <i class="fa fa-users"></i>
                                 <span>Usuarios</span>
                             </a>
@@ -133,7 +135,7 @@
                         </li>
 
                         <li class="sidebar-dropdown">
-                            <a href="#">
+                            <a href="javascript:;">
                                 <i class="fa fa-list-alt"></i>
                                 <span>Proyectos</span>
                             </a>
@@ -157,7 +159,7 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="/Actividades/Actividades">Actividades</a>
+                                        @Html.ActionLink("Actividades", "Actividades", "Actividades")
                                     </li>
                                     <li>
                                         <a href="/Actividades/AsignarResponsable">Asignar Responsable</a>
@@ -176,7 +178,7 @@
                             </div>
                         </li>
                         <li class="sidebar-dropdown">
-                            <a href="#">
+                            <a href="javascript:;">
                                 <i class="fa fa-list-alt"></i>
                                 <span>Area</span>
                             </a>
@@ -204,7 +206,7 @@
                         <i class="fa fa-cog"></i>
                         <span class="badge-sonar"></span>
                     </a>
-                    <a href="#">
+                    <a href="/CerrarSession/Cerrar">
                         <i class="fa fa-power-off"></i>
                     </a>
                 </div>

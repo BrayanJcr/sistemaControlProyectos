@@ -16,7 +16,7 @@ namespace sistemaControlProyectos
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Actividades", action = "Actividades", id = UrlParameter.Optional }
+                defaults: new { controller = "Login", action = "Login", id = UrlParameter.Optional }
                 ); 
         }
     }

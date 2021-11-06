@@ -11,8 +11,16 @@ namespace sistemaControlProyectos.Controllers
     {
         // GET: Actividades
 
+        private static SP_C_PROFESIONAL_Result SesionProfesional;
+
         public ActionResult Actividades()
         {
+            SesionProfesional = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            ViewBag.NombreUsuario = SesionProfesional.nombre + " " + SesionProfesional.apellidos;
+            ViewBag.Cargo = SesionProfesional.nomCargo;
+            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionProfesional.IDProyectoActual).FirstOrDefault();
+
+            ViewBag.proyecto = proyecto.titProyecto;
             return View();
         }
 
