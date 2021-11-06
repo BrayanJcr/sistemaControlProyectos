@@ -76,7 +76,6 @@ function guardar() {
             DNI: parseInt($("#txtDni").val()),
             nombre: ($("#txtNombre").val()),
             apellidos: ($("#txtApellidos").val()),
-            usuario: ($("#txUsuario").val()),
             contraseña: ($("#txtPassword").val()),
             firma: ($("#txtFirmaDigital").val()),
             profesion: ($("#txtProfesion").val()),
@@ -96,7 +95,47 @@ function guardar() {
         success: function (data) {
             console.log(data)
             if (data.resultado) {
-                tablaProfesional.ajax.reload();
+                tblUsuario.ajax.reload();
+                $('#FormModal').modal('hide');
+            } else {
+
+                alert("No se pudo guardar los cambios");
+            }
+        },
+        error: function (error) {
+            console.log(error)
+        },
+        beforeSend: function () {
+
+        },
+    });
+}
+function modificar() {
+    var $request = {
+        objeto: {
+            DNI: parseInt($("#txtDni").val()),
+            nombre: ($("#txtNombre").val()),
+            apellidos: ($("#txtApellidos").val()),
+            contraseña: ($("#txtPassword").val()),
+            firma: ($("#txtFirmaDigital").val()),
+            profesion: ($("#txtProfesion").val()),
+            telefono: ($("#txtTelefono").val()),
+            correo: ($("#txtCorreo").val()),
+            usrImagen: ($("#fileImagen").val()),
+        }
+
+    }
+
+    jQuery.ajax({
+        url: "/Usuario/Modificar",
+        type: "POST",
+        data: JSON.stringify($request),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            console.log(data)
+            if (data.resultado) {
+                tblUsuario.ajax.reload();
                 $('#FormModal').modal('hide');
             } else {
 

@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'Kanban/Kanban',
-    component:AppComponent
+    component: AppComponent
   }
 ];
 @NgModule({

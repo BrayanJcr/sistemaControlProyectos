@@ -15,7 +15,18 @@ namespace sistemaControlProyectos.Models
     {
         public int idRecursoActividad { get; set; }
         public int IDRecurso { get; set; }
+        public string nomRecurso { get; set; }
+        public int cantidadStock { get; set; }
+        public decimal costo { get; set; }
         public int IDActividad { get; set; }
+        public string titActividad { get; set; }
+        public System.DateTime fechaInicio { get; set; }
+        public System.DateTime fechaFin { get; set; }
+        public string Descripcion { get; set; }
+        public bool estado { get; set; }
+        public string creador { get; set; }
+        public string proceso { get; set; }
+        public int IDProyecto { get; set; }
         public int cantidad { get; set; }
     }
 }

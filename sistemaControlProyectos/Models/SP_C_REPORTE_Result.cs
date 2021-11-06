@@ -16,8 +16,8 @@ namespace sistemaControlProyectos.Models
         public int IDReport { get; set; }
         public System.DateTime FechaRep { get; set; }
         public string Descripcion { get; set; }
-        public bool Estado { get; set; }
-        public int IDDoc { get; set; }
+        public string Estado { get; set; }
+        public Nullable<int> IDDoc { get; set; }
         public int IDProfesional { get; set; }
     }
 }

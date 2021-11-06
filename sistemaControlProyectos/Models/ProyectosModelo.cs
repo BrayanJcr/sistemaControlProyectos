@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace sistemaControlProyectos.Models
 {
@@ -43,5 +42,44 @@ namespace sistemaControlProyectos.Models
                     return listarProyecto;
                 }
         }
+
+        public List<SP_C_PROYECTOPROFESIONAL_Result> ListarProyectoProfesional()
+        {
+            List<SP_C_PROYECTOPROFESIONAL_Result> listarProyectoProfesional = new List<SP_C_PROYECTOPROFESIONAL_Result>();
+
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                try
+                {
+                    listarProyectoProfesional = db.SP_C_PROYECTOPROFESIONAL().ToList();
+
+                    return listarProyectoProfesional;
+
+                }
+                catch (Exception ex)
+                {
+                    listarProyectoProfesional = null;
+                    return listarProyectoProfesional;
+                }
+        }
+
+        public List<SP_C_PROYECTOPROFESIONALIMAGEN_Result> ListarProyectoProfesionalImagen(int IDProfesional)
+        {
+            List<SP_C_PROYECTOPROFESIONALIMAGEN_Result> listarProyectoProfesional = new List<SP_C_PROYECTOPROFESIONALIMAGEN_Result>();
+
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                try
+                {
+                    listarProyectoProfesional = db.SP_C_PROYECTOPROFESIONALIMAGEN(IDProfesional).ToList();
+
+                    return listarProyectoProfesional;
+
+                }
+                catch (Exception ex)
+                {
+                    listarProyectoProfesional = null;
+                    return listarProyectoProfesional;
+                }
+        }
+
     }
 }
