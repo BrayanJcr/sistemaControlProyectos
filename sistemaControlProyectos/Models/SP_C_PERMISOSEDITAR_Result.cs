@@ -11,12 +11,13 @@ namespace sistemaControlProyectos.Models
 {
     using System;
     
-    public partial class SP_C_AREA_Result
+    public partial class SP_C_PERMISOSEDITAR_Result
     {
-        public int IDArea { get; set; }
-        public Nullable<int> IdNomAreaPadre { get; set; }
-        public string nomArea { get; set; }
-        public int IDProfesional { get; set; }
-        public Nullable<int> IDProyecto { get; set; }
+        public int IDPermiso { get; set; }
+        public string Menu { get; set; }
+        public string SubMenu { get; set; }
+        public Nullable<bool> Activo { get; set; }
+        public int IDSubMenu { get; set; }
+        public bool Edicion { get; set; }
     }
 }

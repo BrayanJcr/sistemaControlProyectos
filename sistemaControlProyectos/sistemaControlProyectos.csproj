@@ -305,6 +305,9 @@
     <Compile Include="Models\SP_C_MENU_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_C_PERMISOSEDITAR_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_C_PERMISOS_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>

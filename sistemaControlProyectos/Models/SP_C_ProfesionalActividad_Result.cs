@@ -24,6 +24,5 @@ namespace sistemaControlProyectos.Models
         public string DNI { get; set; }
         public string nombre { get; set; }
         public string nomCargo { get; set; }
-        public string nomArea { get; set; }
     }
 }

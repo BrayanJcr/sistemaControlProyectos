@@ -86,7 +86,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_ACTIVIDAD", tituloParameter, fechaIniParameter, fechaFinParameter, descriptionParameter, estadoParameter, creadorParameter, procesoParameter, iDProyectoParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_AREA(Nullable<int> idNomAreaPadre, string nomArea, string encargado, Nullable<int> iDProyecto)
+        public virtual ObjectResult<string> SP_A_AREA(Nullable<int> idNomAreaPadre, string nomArea, Nullable<int> iDProfesional, Nullable<int> iDProyecto)
         {
             var idNomAreaPadreParameter = idNomAreaPadre.HasValue ?
                 new ObjectParameter("idNomAreaPadre", idNomAreaPadre) :
@@ -96,15 +96,15 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("nomArea", nomArea) :
                 new ObjectParameter("nomArea", typeof(string));
     
-            var encargadoParameter = encargado != null ?
-                new ObjectParameter("encargado", encargado) :
-                new ObjectParameter("encargado", typeof(string));
+            var iDProfesionalParameter = iDProfesional.HasValue ?
+                new ObjectParameter("IDProfesional", iDProfesional) :
+                new ObjectParameter("IDProfesional", typeof(int));
     
             var iDProyectoParameter = iDProyecto.HasValue ?
                 new ObjectParameter("IDProyecto", iDProyecto) :
                 new ObjectParameter("IDProyecto", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_AREA", idNomAreaPadreParameter, nomAreaParameter, encargadoParameter, iDProyectoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_AREA", idNomAreaPadreParameter, nomAreaParameter, iDProfesionalParameter, iDProyectoParameter);
         }
     
         public virtual ObjectResult<string> SP_A_CARGO(string nomCargo, Nullable<bool> activo)
@@ -212,7 +212,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_MENU", nombreMenuParameter, iconoParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_PROFESIONAL(string dNI, Nullable<int> iDCargo, Nullable<int> iDArea, Nullable<int> iDProyectoActual, Nullable<int> iDReporte)
+        public virtual ObjectResult<string> SP_A_PROFESIONAL(string dNI, Nullable<int> iDCargo, Nullable<int> iDProyectoActual, Nullable<int> iDReporte)
         {
             var dNIParameter = dNI != null ?
                 new ObjectParameter("DNI", dNI) :
@@ -222,10 +222,6 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("IDCargo", iDCargo) :
                 new ObjectParameter("IDCargo", typeof(int));
     
-            var iDAreaParameter = iDArea.HasValue ?
-                new ObjectParameter("IDArea", iDArea) :
-                new ObjectParameter("IDArea", typeof(int));
-    
             var iDProyectoActualParameter = iDProyectoActual.HasValue ?
                 new ObjectParameter("IDProyectoActual", iDProyectoActual) :
                 new ObjectParameter("IDProyectoActual", typeof(int));
@@ -234,7 +230,7 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("IDReporte", iDReporte) :
                 new ObjectParameter("IDReporte", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_PROFESIONAL", dNIParameter, iDCargoParameter, iDAreaParameter, iDProyectoActualParameter, iDReporteParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_PROFESIONAL", dNIParameter, iDCargoParameter, iDProyectoActualParameter, iDReporteParameter);
         }
     
         public virtual ObjectResult<string> SP_A_ProfesionalActividad(Nullable<int> iDProfesional, Nullable<int> iDActividad)
@@ -541,6 +537,19 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PERMISOS_Result>("SP_C_PERMISOS", iDCargoParameter);
         }
     
+        public virtual ObjectResult<SP_C_PERMISOSEDITAR_Result> SP_C_PERMISOSEDITAR(Nullable<int> iDCargo, string nombreSubMenu)
+        {
+            var iDCargoParameter = iDCargo.HasValue ?
+                new ObjectParameter("IDCargo", iDCargo) :
+                new ObjectParameter("IDCargo", typeof(int));
+    
+            var nombreSubMenuParameter = nombreSubMenu != null ?
+                new ObjectParameter("NombreSubMenu", nombreSubMenu) :
+                new ObjectParameter("NombreSubMenu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PERMISOSEDITAR_Result>("SP_C_PERMISOSEDITAR", iDCargoParameter, nombreSubMenuParameter);
+        }
+    
         public virtual ObjectResult<SP_C_PROFESIONAL_Result> SP_C_PROFESIONAL()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROFESIONAL_Result>("SP_C_PROFESIONAL");
@@ -835,7 +844,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_M_ActualizarPermisos_Result>("SP_M_ActualizarPermisos", detalleParameter);
         }
     
-        public virtual ObjectResult<string> SP_M_AREA(Nullable<int> iDArea, Nullable<int> idNombreArea, string nomArea, string encargado, Nullable<int> iDProyecto)
+        public virtual ObjectResult<string> SP_M_AREA(Nullable<int> iDArea, Nullable<int> idNombreArea, string nomArea, Nullable<int> iDProfesional, Nullable<int> iDProyecto)
         {
             var iDAreaParameter = iDArea.HasValue ?
                 new ObjectParameter("IDArea", iDArea) :
@@ -849,15 +858,15 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("nomArea", nomArea) :
                 new ObjectParameter("nomArea", typeof(string));
     
-            var encargadoParameter = encargado != null ?
-                new ObjectParameter("encargado", encargado) :
-                new ObjectParameter("encargado", typeof(string));
+            var iDProfesionalParameter = iDProfesional.HasValue ?
+                new ObjectParameter("IDProfesional", iDProfesional) :
+                new ObjectParameter("IDProfesional", typeof(int));
     
             var iDProyectoParameter = iDProyecto.HasValue ?
                 new ObjectParameter("IDProyecto", iDProyecto) :
                 new ObjectParameter("IDProyecto", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_AREA", iDAreaParameter, idNombreAreaParameter, nomAreaParameter, encargadoParameter, iDProyectoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_AREA", iDAreaParameter, idNombreAreaParameter, nomAreaParameter, iDProfesionalParameter, iDProyectoParameter);
         }
     
         public virtual ObjectResult<string> SP_M_CARGO(Nullable<int> iDCargo, string nomCargo, Nullable<bool> activo)
@@ -964,20 +973,24 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_DOCUMENTO", iDDocParameter, nombreDocParameter, realNombParameter, dOCParameter);
         }
     
-        public virtual ObjectResult<string> SP_M_PERMISOS(Nullable<int> iDPermiso, Nullable<bool> activo)
+        public virtual int SP_M_Permisos(Nullable<int> iDPermisos, Nullable<bool> activo, Nullable<bool> edicion)
         {
-            var iDPermisoParameter = iDPermiso.HasValue ?
-                new ObjectParameter("IDPermiso", iDPermiso) :
-                new ObjectParameter("IDPermiso", typeof(int));
+            var iDPermisosParameter = iDPermisos.HasValue ?
+                new ObjectParameter("IDPermisos", iDPermisos) :
+                new ObjectParameter("IDPermisos", typeof(int));
     
             var activoParameter = activo.HasValue ?
                 new ObjectParameter("Activo", activo) :
                 new ObjectParameter("Activo", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_PERMISOS", iDPermisoParameter, activoParameter);
+            var edicionParameter = edicion.HasValue ?
+                new ObjectParameter("Edicion", edicion) :
+                new ObjectParameter("Edicion", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_M_Permisos", iDPermisosParameter, activoParameter, edicionParameter);
         }
     
-        public virtual ObjectResult<string> SP_M_PROFESIONAL(Nullable<int> iDProfesional, string dNI, Nullable<int> iDCargo, Nullable<int> iDArea, Nullable<int> iDReporte, Nullable<int> iDProyectoActual)
+        public virtual ObjectResult<string> SP_M_PROFESIONAL(Nullable<int> iDProfesional, string dNI, Nullable<int> iDCargo, Nullable<int> iDReporte, Nullable<int> iDProyectoActual)
         {
             var iDProfesionalParameter = iDProfesional.HasValue ?
                 new ObjectParameter("IDProfesional", iDProfesional) :
@@ -991,10 +1004,6 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("IDCargo", iDCargo) :
                 new ObjectParameter("IDCargo", typeof(int));
     
-            var iDAreaParameter = iDArea.HasValue ?
-                new ObjectParameter("IDArea", iDArea) :
-                new ObjectParameter("IDArea", typeof(int));
-    
             var iDReporteParameter = iDReporte.HasValue ?
                 new ObjectParameter("IDReporte", iDReporte) :
                 new ObjectParameter("IDReporte", typeof(int));
@@ -1003,7 +1012,7 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("IDProyectoActual", iDProyectoActual) :
                 new ObjectParameter("IDProyectoActual", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_PROFESIONAL", iDProfesionalParameter, dNIParameter, iDCargoParameter, iDAreaParameter, iDReporteParameter, iDProyectoActualParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_PROFESIONAL", iDProfesionalParameter, dNIParameter, iDCargoParameter, iDReporteParameter, iDProyectoActualParameter);
         }
     
         public virtual ObjectResult<string> SP_M_ProfesionalActividad(Nullable<int> iDProfActividad, Nullable<int> iDProfesional, Nullable<int> iDActividad)

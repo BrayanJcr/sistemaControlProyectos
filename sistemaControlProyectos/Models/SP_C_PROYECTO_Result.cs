@@ -30,7 +30,6 @@ namespace sistemaControlProyectos.Models
         public string contraseña { get; set; }
         public string DNI { get; set; }
         public int IDCargo { get; set; }
-        public int IDArea { get; set; }
         public Nullable<int> IDReporte { get; set; }
     }
 }

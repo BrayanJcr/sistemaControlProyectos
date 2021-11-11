@@ -56,7 +56,6 @@ $(document).ready(function () {
             },
             { "data": "DNI" },
             { "data": "nombre" },
-            { "data": "nomArea" },
             { "data": "nomCargo" },
         ],
         responsive: true
@@ -73,7 +72,6 @@ $(document).ready(function () {
             { "data": "nomEncarga" },
             { "data": "nomProfe" },
             { "data": "nomCargo" },
-            { "data": "nomArea" },
             {
                 "data": "IDProfeProyecto", "render": function (data, type, row, meta) {
                     return "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"

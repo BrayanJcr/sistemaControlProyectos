@@ -1,9 +1,8 @@
-﻿function GuardarProyectoActual($IDProfesional, $DNI, $IDCargo, IDArea,$IDProyectoActual) {
+﻿function GuardarProyectoActual($IDProfesional, $DNI, $IDCargo,$IDProyectoActual) {
     var $request = {
         IDProfesional: $IDProfesional,
         DNI: $DNI,
         IDCargo: $IDCargo,
-        IDArea: IDArea,
         IDProyectoActual: $IDProyectoActual,
 
     }

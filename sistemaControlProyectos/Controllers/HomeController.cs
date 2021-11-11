@@ -11,7 +11,7 @@ namespace sistemaControlProyectos.Controllers
     {
 
         private static SP_C_PROFESIONAL_Result SesionUsuario;
-        private static SP_C_PROFESIONAL_Result SesionProfesional;
+        private static SP_C_PROFESIONAL_Result SessionProfesional;
 
 
         // GET: Home
@@ -28,9 +28,14 @@ namespace sistemaControlProyectos.Controllers
                 SessionProfesional = (SP_C_PROFESIONAL_Result)Session["profesional"];
                 ViewBag.NombreUsuario = SessionProfesional.nombre + " " + SessionProfesional.apellidos;
                 ViewBag.IDCargo = SessionProfesional.IDCargo;
-                ViewBag.Cargo = SessionProfesional.nomCargo;    
-                SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p=>p.IDProyecto== SessionProfesional.IDProyectoActual).FirstOrDefault();
+                ViewBag.Cargo = SessionProfesional.nomCargo;
+                SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SessionProfesional.IDProyectoActual).FirstOrDefault();
+                ViewBag.proyecto = proyecto.titProyecto;
+            }
+            catch (Exception e)
+            {
 
+            }
             return View();
         }
         public ActionResult Cerrar()

@@ -20,6 +20,5 @@ namespace sistemaControlProyectos.Models
         public string telefono { get; set; }
         public string correo { get; set; }
         public string nomCargo { get; set; }
-        public string nomArea { get; set; }
     }
 }
