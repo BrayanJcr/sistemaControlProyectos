@@ -2,24 +2,17 @@
     "list": [
       {
         "id": "1",
-        "name": "Nuevo?",
-        "tasks": [
-          {
-            "id": "1",
-            "description": "Tarea 1",
-            "date": "10/26/20",
-            "priority": "urgent"
-          }
-        ]
+        "name": "Nuevo",
+        "tasks": []         
       },
       {
         "id": "2",
-        "name": "¡En progreso!",
+        "name": "¡En proceso",
         "tasks": []
       },
       {
         "id": "3",
-        "name": "¡Está hecho!",
+        "name": "¡Terminados!",
         "tasks": []
       }
     ]

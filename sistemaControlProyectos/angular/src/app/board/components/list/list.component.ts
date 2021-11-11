@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ListSchema,TaskSchema } from "./../../../core";
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskService } from 'src/app/core/services/task.service';
+import { Actividad } from '../../../core/models/Actividad';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -9,8 +10,9 @@ import { TaskService } from 'src/app/core/services/task.service';
 })
 export class ListComponent implements OnInit {
   @Input() list: ListSchema;
+
   @Output() editTask: EventEmitter<TaskSchema> = new EventEmitter();
-  constructor(public tasksService: TaskService) {}
+  constructor(public tasksService: TaskService) { }
   ngOnInit(): void {
   }
   drop(event: CdkDragDrop<string[]>) {

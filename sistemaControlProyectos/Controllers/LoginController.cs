@@ -28,7 +28,7 @@ namespace sistemaControlProyectos.Controllers
             Session["usuario"] = listar;
             return RedirectToAction("ProyectosInicio", "Proyectos");
         }
-       
+        
 
     }
 }

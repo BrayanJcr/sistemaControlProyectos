@@ -21,9 +21,10 @@ namespace sistemaControlProyectos.Models
         }
     
         public int IDMenu { get; set; }
-        public string Nombre { get; set; }
+        public string NombreMenu { get; set; }
         public bool Activo { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
+        public string Icono { get; set; }  
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSubMenu> tblSubMenu { get; set; }

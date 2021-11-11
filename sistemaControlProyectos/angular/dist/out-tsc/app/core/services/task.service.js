@@ -37,10 +37,15 @@ let TaskService = class TaskService {
         if (data) {
             const elementsIndex = this.list.findIndex((element) => element.id === listId);
             const task = this.list[elementsIndex].tasks.map((element) => {
-                if (element.id === data.id) {
-                    element.date = new Date(data.date);
-                    element.description = data.description;
-                    element.priority = data.priority;
+                if (element.IDActividad === data.IDActividad) {
+                    element.FechaFin = new Date(data.FechaFin);
+                    element.FechaInicio = new Date(data.FechaInicio);
+                    element.Descripcion = data.Descripcion;
+                    element.Estado = data.Estado;
+                    element.titActividad = data.titActividad;
+                    element.proceso = data.proceso;
+                    element.IDProyecto = data.IDProyecto;
+                    element.creador = data.creador;
                 }
                 return element;
             });
@@ -49,7 +54,7 @@ let TaskService = class TaskService {
     /* Remove a card of board list */
     removeTask(dataId, list) {
         const elementsIndex = this.list.findIndex((element) => element.id == list.id);
-        const tasks = this.list[elementsIndex].tasks.filter((task) => task.id !== dataId);
+        const tasks = this.list[elementsIndex].tasks.filter((task) => task.IDActividad !== dataId);
         this.list[elementsIndex].tasks = tasks;
     }
 };

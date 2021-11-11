@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService, ListSchema, TaskSchema } from './../../core';
+import { Actividad, ApiService, ListSchema } from './../../core';
 import { TaskService } from 'src/app/core/services/task.service';
 @Component({
   selector: 'app-home',
@@ -7,7 +7,7 @@ import { TaskService } from 'src/app/core/services/task.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  taskList: TaskSchema[];
+  taskList: Actividad[];
 
   constructor(private apiService: ApiService, private taskService: TaskService) {}
 
@@ -20,10 +20,10 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (response: ListSchema[]) => {
           const lists = response;
-          let tasks: TaskSchema[] = [];
+          let tasks: Actividad[] = [];
           lists.map((element: ListSchema )=> {
-            element.tasks.map((task: TaskSchema) => {
-              if(task.priority == PriorityType){
+            element.tasks.map((task: Actividad) => {
+              if(task.proceso == PriorityType){
                 tasks.push(task)
               }
             });

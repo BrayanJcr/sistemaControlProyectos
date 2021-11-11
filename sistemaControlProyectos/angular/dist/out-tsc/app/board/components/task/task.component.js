@@ -2,22 +2,26 @@ import { __decorate } from "tslib";
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 let TaskComponent = class TaskComponent {
-    constructor(dialog, tasksService) {
+    constructor(dialog, tasksService, service) {
         this.dialog = dialog;
         this.tasksService = tasksService;
+        this.service = service;
         this.editTask = new EventEmitter();
-    }
-    ngOnInit() {
     }
     handleEditTask(task) {
         this.editTask.emit(task);
+    }
+    ngOnInit() {
+        this.service.getActividad().subscribe(data => {
+            this.actividad = data;
+        });
     }
     removeTask(taskId) {
         console.log('Eliminar Tarea', taskId);
         const dialogRef = this.dialog.open(ModalComponent);
         dialogRef.afterClosed().subscribe(result => {
             if (this.list) {
-                this.tasksService.removeTask(taskId, this.list);
+                this.service.removeTask(taskId, this.list);
             }
         });
     }

@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="db8b010786c6411785f0d77d19ee3459" Name="Diagram1">
+      <Diagram DiagramId="c4416767240248a19d6f059b78a92b3b" Name="Diagram1">
         <EntityTypeShape EntityType="DBControlProyectoModel.tblActividad" Width="1.5" PointX="15.75" PointY="17.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBControlProyectoModel.tblArea" Width="1.5" PointX="15.75" PointY="21.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBControlProyectoModel.tblCargo" Width="1.5" PointX="9" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBControlProyectoModel.tblCargo" Width="1.5" PointX="9" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBControlProyectoModel.tblCuadernoObra" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DBControlProyectoModel.tblCuadernoProfesional" Width="1.5" PointX="8.25" PointY="13.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBControlProyectoModel.tblDocumento" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
@@ -24,35 +24,35 @@
         <EntityTypeShape EntityType="DBControlProyectoModel.tblReporte_Actividad" Width="1.5" PointX="18" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DBControlProyectoModel.tblReunion" Width="1.5" PointX="15.75" PointY="25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBControlProyectoModel.tblSubMenu" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBControlProyectoModel.tblUsuario" Width="1.5" PointX="9" PointY="16.125" IsExpanded="true" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblActivi__IDPro__571DF1D5" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDAct__5EBF139D" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblRecurs__IDAct__5FB337D6" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblReport__IDAct__5CD6CB2B" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblArea__IDProye__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDAre__52593CB8" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DBControlProyectoModel.tblUsuario" Width="1.5" PointX="9" PointY="16.25" IsExpanded="true" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblActivi__IDPro__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDAct__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblRecurs__IDAct__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblReport__IDAct__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblArea__IDProye__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDAre__571DF1D5" ManuallyRouted="false" />
         <AssociationConnector Association="DBControlProyectoModel.FK_IdNomAreaPadre" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblPermis__IDCar__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDCar__5165187F" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblCuader__IDCua__628FA481" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblCuader__IDDoc__4BAC3F29" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblCuader__IDPro__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblCuader__IDPro__619B8048" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblReport__IDDoc__4CA06362" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblSubMen__IDMen__5629CD9C" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblPermis__IDSub__5070F446" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDPro__59063A47" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDPro__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblPermis__IDCar__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDCar__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblCuader__IDCua__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblCuader__IDDoc__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblCuader__IDPro__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblCuader__IDPro__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblReport__IDDoc__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblSubMen__IDMen__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblPermis__IDSub__5535A963" ManuallyRouted="false" />
         <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDPro__5DCAEF64" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDRep__534D60F1" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfesio__DNI__30F848ED" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblProyec__IDPro__4E88ABD4" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblReport__IDPro__5441852A" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDPro__5812160E" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDReu__59FA5E80" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblReunio__IDPro__5535A963" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblRecurs__IDRec__60A75C0F" ManuallyRouted="false" />
-        <AssociationConnector Association="DBControlProyectoModel.FK__tblReport__IDRep__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDPro__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDPro__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDRep__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfesio__DNI__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblProyec__IDPro__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblReport__IDPro__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDPro__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblProfes__IDReu__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblReunio__IDPro__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblRecurs__IDRec__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="DBControlProyectoModel.FK__tblReport__IDRep__60A75C0F" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

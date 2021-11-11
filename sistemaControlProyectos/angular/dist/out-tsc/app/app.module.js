@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { BoardModule } from './board/board.module';
 import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -25,6 +26,7 @@ AppModule = __decorate([
             BoardModule,
             HomeModule,
             HttpClientModule,
+            FormsModule
         ],
         providers: [],
         bootstrap: [AppComponent]

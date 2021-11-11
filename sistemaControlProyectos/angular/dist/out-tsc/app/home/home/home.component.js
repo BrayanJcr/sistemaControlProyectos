@@ -14,7 +14,7 @@ let HomeComponent = class HomeComponent {
             let tasks = [];
             lists.map((element) => {
                 element.tasks.map((task) => {
-                    if (task.priority == PriorityType) {
+                    if (task.proceso == PriorityType) {
                         tasks.push(task);
                     }
                 });

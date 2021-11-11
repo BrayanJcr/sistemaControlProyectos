@@ -22,10 +22,11 @@ namespace sistemaControlProyectos.Models
     
         public int IDSubMenu { get; set; }
         public int IDMenu { get; set; }
-        public string Nombre { get; set; }
+        public string NombreSubMenu { get; set; }
         public string Controlador { get; set; }
         public string Vista { get; set; }
         public bool Activo { get; set; }
+        public bool Edicion { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
     
         public virtual tblMenu tblMenu { get; set; }

@@ -53,7 +53,7 @@ namespace sistemaControlProyectos.Models
                 {
                     try
                     {
-                        db.SP_A_CARGO(objeto.nomCargo);
+                        db.SP_A_CARGO(objeto.nomCargo,objeto.Activo);
 
                         db.SaveChanges();
                         return true;
@@ -103,7 +103,7 @@ namespace sistemaControlProyectos.Models
 
                     try
                     {
-                        db.SP_M_CARGO(objeto.IDCargo, objeto.nomCargo);
+                        db.SP_M_CARGO(objeto.IDCargo, objeto.nomCargo,objeto.Activo);
                         db.SaveChanges();
                         return true;
                     }

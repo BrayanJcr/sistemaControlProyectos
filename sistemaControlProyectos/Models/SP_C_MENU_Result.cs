@@ -11,11 +11,12 @@ namespace sistemaControlProyectos.Models
 {
     using System;
     
-    public partial class SP_C_CARGO_Result
+    public partial class SP_C_MENU_Result
     {
-        public int IDCargo { get; set; }
-        public string nomCargo { get; set; }
-        public Nullable<bool> Activo { get; set; }
-        public Nullable<System.DateTime> FechaRegistro { get; set; }
+        public int IDMenu { get; set; }
+        public string NombreMenu { get; set; }
+        public bool Activo { get; set; }
+        public string fechaRegistro { get; set; }
+        public string icono { get; set; }
     }
 }

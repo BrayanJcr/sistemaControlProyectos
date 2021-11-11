@@ -1,20 +1,25 @@
 <div 
   class="task"
-  id="task_{{task.id}}"
-  [ngClass]="{'task--urgent': task.priority === 'urgent', 'task--moderate': task.priority === 'moderate', 'task--low': task.priority === 'low'}"
+  id="task_{{task.IDActividad}}"
+  [ngClass]="{'task--nuevo': task.proceso === 'nuevo', 'task--proceso': task.proceso === 'proceso', 'task--terminado': task.proceso === 'terminado'}"
   >
   <div class="task__icon">
-    <mat-icon aria-hidden="false" aria-label="urgent icon" *ngIf="task.priority === 'urgent'">alarm</mat-icon>
-    <mat-icon aria-hidden="false" aria-label="medium icon" *ngIf="task.priority === 'moderate'">autorenew</mat-icon>
-    <mat-icon aria-hidden="false" aria-label="medium icon" *ngIf="task.priority === 'low'">assignment_returned</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="urgent icon" *ngIf="task.proceso === 'nuevo'">alarm</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="medium icon" *ngIf="task.proceso === 'proceso'">autorenew</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="medium icon" *ngIf="task.proceso === 'terminado'">assignment_returned</mat-icon>
   </div>
   <h3 class="task__title">Tarea</h3>
   <button  matTooltip="Editar tarea" matTooltipClass="custom-tooltip-blue" matTooltipPosition="above" mat-icon-button (click)="handleEditTask(task)">
     <mat-icon aria-label="icon-button to edit">edit</mat-icon>
   </button>
-  <button  matTooltip="Eliminar tarea" matTooltipPosition="above" mat-icon-button (click)="removeTask(task.id)">
+  <button  matTooltip="Eliminar tarea" matTooltipPosition="above" mat-icon-button (click)="removeTask(task.IDActividad)">
     <mat-icon aria-label="icon-button to remove">delete</mat-icon>
   </button>
-  <p class="task__date"><strong>Fecha de finalización:</strong> {{ task.date | date }}</p>
-  <p class="task__description">{{task.description}}</p>
+  <p class="task__date"><strong>Fecha de finalización:</strong> {{ task.FechaFin | date }}</p>
+  <p class="task__description">{{task.Descripcion}}</p>
+  <tr *ngFor="let list of actividad" [list]="list">
+    <td>{{ac.IDActividad}}</td>
+    <td>{{ac.IDActividad}}</td>
+    <td>{{ac.IDActividad}}</td>
+  </tr>
 </div>

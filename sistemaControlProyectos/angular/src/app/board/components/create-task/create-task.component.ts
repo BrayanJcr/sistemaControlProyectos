@@ -2,9 +2,8 @@ import { Component, Input, NgZone, OnInit, ViewChild } from '@angular/core';impo
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
 import { CdkConnectedOverlay } from '@angular/cdk/overlay';
-import { ListSchema, TaskSchema } from 'src/app/core';
+import { ListSchema, Actividad } from 'src/app/core';
 import { TaskService } from 'src/app/core/services/task.service';
-import { generateUniqueId } from 'src/app/shared/utils/';
 type DropdownObject={
   value: string;
   viewValue: string;
@@ -22,7 +21,7 @@ export class CreateTaskComponent implements OnInit {
   @Input() listId?: string;
   createTask: FormGroup;
   selectedPriority: string;
-  @Input() task?: TaskSchema;
+  @Input() task?: Actividad;
   @Input() connectedOverlay: CdkConnectedOverlay;
   formText: string;
 
@@ -39,10 +38,10 @@ export class CreateTaskComponent implements OnInit {
   ) {}  ngOnInit(): void {
     this.setForm();
     this.selectedPriority = '';
-    if (this.task && this.task.id &&this.task.id.length > 0) {
+    if (this.task && this.task.IDActividad &&this.task.IDActividad> 0) {
       this.setValuesOnForm(this.task);
       this.formText = 'Editar';
-      this.selectedPriority = this.task.priority;
+      this.selectedPriority = this.task.proceso;
     }else{
       this.formText = 'Crear';
     }
@@ -57,20 +56,19 @@ export class CreateTaskComponent implements OnInit {
 
   }
 
-  onFormAdd(form: TaskSchema): void {
+  onFormAdd(form: Actividad): void {
 
-    if (this.createTask.valid && this.task && !this.task.id) {
-      form.id = generateUniqueId();
+    if (this.createTask.valid && this.task && !this.task.IDActividad) {
       this.tasksService.addTask(form);
       this.close();
     } else if (this.task && this.listId){
       const findPriority = this.priorities.find(
-        (element) => form.priority === element.value
+        (element) => form.proceso === element.value
       );
-      form.id = this.task.id;
-      form.priority = !findPriority ? this.task.priority : form.priority;
-      form.date = new Date(form.date);
-      if (form.priority) {
+      form.IDActividad = this.task.IDActividad;
+      form.proceso = !findPriority ? this.task.proceso : form.proceso;
+      form.FechaFin = new Date(form.FechaFin);
+      if (form.proceso) {
         this.tasksService.updateTask(form, this.listId);
       }
       this.close();
@@ -83,11 +81,11 @@ export class CreateTaskComponent implements OnInit {
     .subscribe(() => this.autosize.resizeToFitContent(true));
   }
 
-  setValuesOnForm(form: TaskSchema): void{
+  setValuesOnForm(form: Actividad): void{
     this.createTask.setValue({
-      date:new Date(form.date),
-      priority:form.priority,
-      description:form.description
+      date:new Date(form.FechaFin),
+      priority:form.proceso,
+      description:form.Descripcion
     });
   }
   close():void{

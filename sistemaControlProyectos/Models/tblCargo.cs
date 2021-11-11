@@ -23,6 +23,8 @@ namespace sistemaControlProyectos.Models
     
         public int IDCargo { get; set; }
         public string nomCargo { get; set; }
+        public Nullable<bool> Activo { get; set; }
+        public Nullable<System.DateTime> FechaRegistro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPermisos> tblPermisos { get; set; }
