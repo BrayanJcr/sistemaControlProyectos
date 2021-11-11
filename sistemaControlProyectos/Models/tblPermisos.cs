@@ -18,6 +18,7 @@ namespace sistemaControlProyectos.Models
         public int IDCargo { get; set; }
         public Nullable<int> IDSubMenu { get; set; }
         public Nullable<bool> Activo { get; set; }
+        public bool Edicion { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
     
         public virtual tblCargo tblCargo { get; set; }

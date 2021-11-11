@@ -25,6 +25,15 @@ $(document).ready(function () {
                 "width": "150px"
             },
             { "data": "nomCargo" },
+            {
+                "data": "Activo", "render": function (data) {
+                    if (data) {
+                        return '<span class="badge bg-success">Activo</span>';
+                    } else {
+                        return '<span class="badge bg-danger">No Activo</span>';
+                    }
+                }
+            }
         ],
         dom: 'Blfrtip',
         lengthMenu: [
@@ -57,11 +66,13 @@ function abrirModal($IDCargo) {
 
                 if (data != null) {
                     $("#txtNombre").val(data.nomCargo);
+                    $("#cboEstado").val(data.Activo == true ? 1 : 0);
                 }
             }
         });
     } else {
         $("#txtNombre").val("");
+        $("#cboEstado").val(1);
     }
 
     $('#FormModal').modal('show');
@@ -73,6 +84,7 @@ function Guardar() {
         objeto: {
             IDCargo: parseInt($("#txtIDCargo").val()),
             nomCargo: $("#txtNombre").val(),
+            Activo: $("#cboEstado").val() == "1" ? true : false,
         }
     }
     console.log($request);

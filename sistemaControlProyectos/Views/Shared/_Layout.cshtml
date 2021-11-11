@@ -37,10 +37,14 @@
                         <img class="img-fluid img-rounded" src="~/imagenes/brayan.jpg" alt="User picture"/>
                     </div>
                     <div class="user-info">
+                        <input id="txtIDUsuarioSession" type="hidden" value="@ViewBag.IDUsuario" />
+                        <input id="txtNombreUsuario" type="hidden" value="@ViewBag.NombreUsuario" />
                         <span class="user-name">
                             @ViewBag.NombreUsuario
                         </span>
+                        <input id="txtIDCargo" type="hidden" value="@ViewBag.IDCargo" />
                         <span class="user-role">@ViewBag.Cargo</span>
+                        <input id="txtIDProyectoActual" type="hidden" value="@ViewBag.IDProyectoActual" />
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
                             <span>@ViewBag.proyecto</span>
@@ -63,7 +67,7 @@
                             <a href="javascript:;">
                                 <i class="fa fa-tachometer-alt"></i>
                                 <span>Tablero</span>
-                            </a >
+                            </a>
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
@@ -117,6 +121,20 @@
                             <a href="javascript:;">
                                 <i class="fa fa-list-alt"></i>
                                 <span>Permisos</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="/Permisos/Permisos">Permisos</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:;">
+                                <i class="fa fa-list-alt"></i>
+                                <span>Cargo</span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>

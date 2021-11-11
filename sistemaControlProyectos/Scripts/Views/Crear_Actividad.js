@@ -1,4 +1,30 @@
-﻿
+﻿var permisoEdi = false;
+console.log($("#txtIDCargo").val());
+//Obtener Permisos 
+jQuery.ajax({
+    url: "/Permisos/Listar" + "?IDCargo=" + $("#txtIDCargo").val(),
+    type: "GET",
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
+    success: function (data) {
+        $("#cboProyecto").html("");
+
+        if (data.data != null) {
+            $.each(data.data, function (i, item) {
+                console.log(item.);
+                permisoEdi = item;
+            })
+        }
+    },
+    error: function (error) {
+        console.log(error)
+    },
+    beforeSend: function () {
+    },
+});
+
+console.log(permisoEdi);
+
 //Cambiar Fechas
 function Cambiarfecha(fechaEntra) {
     var fechaString = fechaEntra.substr(6);
@@ -150,7 +176,7 @@ function Guardar() {
             fechaFin: $("#txtFechaFin").val(),
             Descripcion: $("#txtDescripcion").val(),
             estado: $("#cboEstado").val() == "1" ? true : false,
-            creador: ("Brayan"),
+            creador: $("#txtNombreUsuario").val(),
             IDProyecto: ($("#cboProyecto").val()),
             proceso: ($("#cboProceso").val()),
         }

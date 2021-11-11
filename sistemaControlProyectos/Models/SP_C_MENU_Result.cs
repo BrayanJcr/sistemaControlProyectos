@@ -10,23 +10,13 @@
 namespace sistemaControlProyectos.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tblMenu
+    public partial class SP_C_MENU_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblMenu()
-        {
-            this.tblSubMenu = new HashSet<tblSubMenu>();
-        }
-    
         public int IDMenu { get; set; }
         public string NombreMenu { get; set; }
         public bool Activo { get; set; }
-        public Nullable<System.DateTime> FechaRegistro { get; set; }
-        public string Icono { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblSubMenu> tblSubMenu { get; set; }
+        public string fechaRegistro { get; set; }
+        public string icono { get; set; }
     }
 }

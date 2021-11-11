@@ -10,26 +10,15 @@ namespace sistemaControlProyectos.Controllers
     public class AreaController : Controller
     {
         // GET: Area
-        private static SP_C_PROFESIONAL_Result SesionUsuario;
+        private LoginController p = new LoginController();
         public ActionResult Area()
         {
-            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
-            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
-            ViewBag.Cargo = SesionUsuario.nomCargo;
-            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
-
-            ViewBag.proyecto = proyecto.titProyecto;
-            return View();
+            return p.MenuSession(View());
         }
 
         public ActionResult Organigrama()
         {
-            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
-            ViewBag.Cargo = SesionUsuario.nomCargo;
-            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
-
-            ViewBag.proyecto = proyecto.titProyecto;
-            return View();
+            return p.MenuSession(View());
         }
 
         public JsonResult Listar()

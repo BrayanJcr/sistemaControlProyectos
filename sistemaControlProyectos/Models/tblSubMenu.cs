@@ -22,7 +22,7 @@ namespace sistemaControlProyectos.Models
     
         public int IDSubMenu { get; set; }
         public int IDMenu { get; set; }
-        public string Nombre { get; set; }
+        public string NombreSubMenu { get; set; }
         public string Controlador { get; set; }
         public string Vista { get; set; }
         public bool Activo { get; set; }

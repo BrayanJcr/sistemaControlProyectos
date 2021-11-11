@@ -10,9 +10,10 @@ namespace sistemaControlProyectos.Controllers
     public class RecursosController : Controller
     {
         // GET: Recursos
+        private LoginController p = new LoginController();
         public ActionResult Recursos()
         {
-            return View();
+            return p.MenuSession(View());
         }
 
         public JsonResult Listar()

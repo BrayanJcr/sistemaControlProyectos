@@ -31,12 +31,15 @@ namespace sistemaControlProyectos
                       "~/Content/datatable/css/jquery.dataTables.min.css",
                       "~/Content/datatable/css/buttons.dataTables.min.css",
                       "~/Content/Actividades/Actividades.css",
-                      "~/Content/Proyectos/Proyectos.css"
+                      "~/Content/Proyectos/Proyectos.css",
+                      "~/Content/sweetalert2/css/sweetalert.css"
                       ));
 
             bundles.Add(new StyleBundle("~/Content/Plugins.js").Include(
                       "~/Content/datatable/js/jquery.dataTables.min.js",
-                      "~/Content/datatable/js/dataTables.buttons.min.js"
+                      "~/Content/datatable/js/dataTables.buttons.min.js",
+                      "~/Content/jquery-loading-overlay/loadingoverlay.min.js",
+                      "~/Content/sweetalert2/js/sweetalert.js"
                       ));
 
                bundles.Add(new Bundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap.js"));

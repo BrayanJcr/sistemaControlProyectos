@@ -11,11 +11,10 @@ namespace sistemaControlProyectos.Models
 {
     using System;
     
-    public partial class SP_C_CARGO_Result
+    public partial class SP_M_ActualizarPermisos_Result
     {
-        public int IDCargo { get; set; }
-        public string nomCargo { get; set; }
+        public Nullable<int> IDPermiso { get; set; }
         public Nullable<bool> Activo { get; set; }
-        public Nullable<System.DateTime> FechaRegistro { get; set; }
+        public Nullable<bool> Edicion { get; set; }
     }
 }

@@ -27,6 +27,7 @@ namespace sistemaControlProyectos.Models
         public string firma { get; set; }
         public string profesion { get; set; }
         public string correo { get; set; }
+        public Nullable<bool> Activo { get; set; }
         public string telefono { get; set; }
         public string usrImagen { get; set; }
     

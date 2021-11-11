@@ -10,22 +10,14 @@ namespace sistemaControlProyectos.Controllers
     public class UsuarioController : Controller
     {
         // GET: Usuario
-        private static SP_C_PROFESIONAL_Result SesionUsuario;
+        private LoginController p = new LoginController();
 
         public ActionResult Usuario()
         {
-            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
-            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
-            ViewBag.Cargo = SesionUsuario.nomCargo;
-            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
-
-            ViewBag.proyecto = proyecto.titProyecto;
-            return View();
+            return p.MenuSession(View());
         }
         public JsonResult Listar()
         {
-            
-
             List<SP_C_PROFESIONAL_Result> listar = ProfesionalModelo.instancia.ListarProfesional();
             return Json(new { data = listar }, JsonRequestBehavior.AllowGet);
         }

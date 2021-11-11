@@ -223,6 +223,7 @@
     <Compile Include="Controllers\CerrarSessionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PermisosController.cs" />
     <Compile Include="Controllers\ProfesionalController.cs" />
     <Compile Include="Controllers\ProyectosController.cs" />
     <Compile Include="Controllers\RecursosController.cs" />
@@ -254,6 +255,7 @@
     <Compile Include="Models\ObtenerProfesional.cs" />
     <Compile Include="Models\ObtenerRol.cs" />
     <Compile Include="Models\ObtenerUsuario.cs" />
+    <Compile Include="Models\PermisosModelo.cs" />
     <Compile Include="Models\ProfesionalModelo.cs" />
     <Compile Include="Models\ProyectosModelo.cs" />
     <Compile Include="Models\RecursoModelo.cs" />
@@ -276,6 +278,12 @@
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_DOCUMENTO_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_C_MENU_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_C_PERMISOS_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_ProfesionalActividad_Result.cs">
@@ -324,6 +332,9 @@
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_USUARIO_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_M_ActualizarPermisos_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblActividad.cs">
@@ -2167,10 +2178,12 @@
     <Content Include="Content\fontawesome-free\svgs\solid\yen-sign.svg" />
     <Content Include="Content\fontawesome-free\svgs\solid\yin-yang.svg" />
     <Content Include="Content\fontawesome-free\svgs\solid\z.svg" />
+    <Content Include="Content\jquery-loading-overlay\loadingoverlay.min.js" />
     <Content Include="Content\login\css\campo.css" />
     <Content Include="Content\login\css\login.css" />
     <Content Include="Content\login\css\login2.css" />
     <Content Include="Content\Organigrama\OrganigramaArea.css" />
+    <Content Include="Content\Permisos\Permisos.css" />
     <Content Include="Content\Proyectos\Proyectos.css" />
     <Content Include="Content\proyectos\css\animate.css" />
     <Content Include="Content\proyectos\css\bootstrap.css" />
@@ -2178,6 +2191,8 @@
     <Content Include="Content\proyectos\css\owl.carousel.min.css" />
     <Content Include="Content\proyectos\css\owl.theme.default.min.css" />
     <Content Include="Content\proyectos\css\style.css" />
+    <Content Include="Content\sweetalert2\css\sweetalert.css" />
+    <Content Include="Content\sweetalert2\js\sweetalert.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\icomoon\icomoon.svg" />
@@ -2505,6 +2520,7 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\Views\Angulasjs.js" />
     <Content Include="Scripts\Views\Crear_Cargo.js" />
+    <Content Include="Scripts\Views\Crear_Permisos.js" />
     <Content Include="Scripts\Views\Crear_Proyectos.js" />
     <Content Include="Scripts\Views\Crear_Actividad.js" />
     <Content Include="Scripts\Views\Crear_Area.js" />
@@ -2557,6 +2573,7 @@
     <Content Include="Views\Cargo\Cargo.cshtml" />
     <Content Include="Views\Proyectos\ProyectosInicio.cshtml" />
     <Content Include="Views\Actividades\Gantt.cshtml" />
+    <Content Include="Views\Permisos\Permisos.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Usuario\Usuario.cshtml" />
     <Content Include="Views\Shared\Proyecto.cshtml" />

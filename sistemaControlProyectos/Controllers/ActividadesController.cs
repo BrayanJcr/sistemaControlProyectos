@@ -11,63 +11,36 @@ namespace sistemaControlProyectos.Controllers
     public class ActividadesController : Controller
     {
         // GET: Actividades
-
         private static SP_C_PROFESIONAL_Result SesionUsuario;
+        private LoginController p = new LoginController();
 
         public ActionResult Actividades()
         {
-            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
-            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
-            ViewBag.Cargo = SesionUsuario.nomCargo;
-            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
-
-            ViewBag.proyecto = proyecto.titProyecto;
-            return View();
+            return p.MenuSession(View());
         }
 
         public ActionResult Gantt()
         {
-            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
-            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
-            ViewBag.Cargo = SesionUsuario.nomCargo;
-            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
-
-            ViewBag.proyecto = proyecto.titProyecto;
-            return View();
+            return p.MenuSession(View());
         }
 
         public ActionResult Kanban()
         {
-            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
-            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
-            ViewBag.Cargo = SesionUsuario.nomCargo;
-            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
-
-            ViewBag.proyecto = proyecto.titProyecto;
-            return View();
+            return p.MenuSession(View());
         }
 
         public ActionResult AsignarResponsable()
         {
-            return View();
+            return p.MenuSession(View());
         }
         public ActionResult AsignarRecursos()
         {
-            return View();
+            return p.MenuSession(View());
         }
         public JsonResult Listar()
         {
-            //List<SP_C_ACTIVIDAD_Result> listarActividad = new List<SP_C_ACTIVIDAD_Result>();
-
-            //using (DBControlProyectoEntities db = new DBControlProyectoEntities())
-            //{
-
-                //listarActividad = db.SP_C_ACTIVIDAD().ToList();
-                //listarActividad = (from p in db.tblActividad select p).ToList();
-            //}
-            //return Json(new { data = listarActividad }, JsonRequestBehavior.AllowGet);
-
-            List<SP_C_ACTIVIDAD_Result> lista = Models.ActividadesModelo.Instancia.ListarActividad();
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            List<SP_C_ACTIVIDAD_Result> lista = Models.ActividadesModelo.Instancia.ListarActividad().Where(a => a.IDProyecto== SesionUsuario.IDProyectoActual).ToList();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
 
