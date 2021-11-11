@@ -75,7 +75,7 @@ namespace sistemaControlProyectos.Models
 
                     try
                     {
-                        db.SP_A_AREA(objetoArea.IdNomAreaPadre,objetoArea.nomArea,objetoArea.encargado,objetoArea.IDProyecto);
+                        db.SP_A_AREA(objetoArea.IdNomAreaPadre,objetoArea.nomArea,objetoArea.IDProfesional,objetoArea.IDProyecto);
 
                         db.SaveChanges();
                         return true;
@@ -127,7 +127,7 @@ namespace sistemaControlProyectos.Models
                     try
                     {
                         db.SP_M_AREA(objetoArea.IDArea,objetoArea.IdNomAreaPadre
-                            ,objetoArea.nomArea,objetoArea.encargado,objetoArea.IDProyecto
+                            ,objetoArea.nomArea,objetoArea.IDProfesional,objetoArea.IDProyecto
                             );
                         db.SaveChanges();
                         return true;

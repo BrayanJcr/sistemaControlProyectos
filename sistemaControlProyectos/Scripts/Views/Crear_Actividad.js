@@ -11,7 +11,7 @@ jQuery.ajax({
 
         if (data.data != null) {
             $.each(data.data, function (i, item) {
-                console.log(item.);
+                console.log(item);
                 permisoEdi = item;
             })
         }

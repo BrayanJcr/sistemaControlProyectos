@@ -17,6 +17,7 @@ namespace sistemaControlProyectos.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblProfesional()
         {
+            this.tblArea = new HashSet<tblArea>();
             this.tblCuadernoProfesional = new HashSet<tblCuadernoProfesional>();
             this.tblProfesional_Proyecto = new HashSet<tblProfesional_Proyecto>();
             this.tblProfesional_Reunion = new HashSet<tblProfesional_Reunion>();
@@ -28,11 +29,12 @@ namespace sistemaControlProyectos.Models
         public int IDProfesional { get; set; }
         public string DNI { get; set; }
         public int IDCargo { get; set; }
-        public int IDArea { get; set; }
+        public List<tblMenu> OListaMenu { get; set; }
         public Nullable<int> IDReporte { get; set; }
         public Nullable<int> IDProyectoActual { get; set; }
-        public List<tblMenu> OListaMenu { get; set; }
-        public virtual tblArea tblArea { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblArea> tblArea { get; set; }
         public virtual tblCargo tblCargo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCuadernoProfesional> tblCuadernoProfesional { get; set; }

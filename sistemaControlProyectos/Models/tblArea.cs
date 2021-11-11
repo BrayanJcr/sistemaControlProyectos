@@ -17,19 +17,17 @@ namespace sistemaControlProyectos.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblArea()
         {
-            this.tblProfesional = new HashSet<tblProfesional>();
             this.tblArea1 = new HashSet<tblArea>();
         }
     
         public int IDArea { get; set; }
         public Nullable<int> IdNomAreaPadre { get; set; }
         public string nomArea { get; set; }
-        public string encargado { get; set; }
+        public int IDProfesional { get; set; }
         public Nullable<int> IDProyecto { get; set; }
     
+        public virtual tblProfesional tblProfesional { get; set; }
         public virtual tblProyecto tblProyecto { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblProfesional> tblProfesional { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblArea> tblArea1 { get; set; }
         public virtual tblArea tblArea2 { get; set; }

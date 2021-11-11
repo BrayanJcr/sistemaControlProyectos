@@ -19,8 +19,6 @@ namespace sistemaControlProyectos.Models
         public string apellidos { get; set; }
         public int IDCargo { get; set; }
         public string nomCargo { get; set; }
-        public int IDArea { get; set; }
-        public string nomArea { get; set; }
         public string contraseña { get; set; }
         public string firma { get; set; }
         public string profesion { get; set; }

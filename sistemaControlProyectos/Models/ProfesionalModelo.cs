@@ -54,7 +54,7 @@ namespace sistemaControlProyectos.Models
             {
                 try
                 {
-                    db.SP_A_PROFESIONAL(profesional.DNI,profesional.IDCargo,profesional.IDArea,profesional.IDReporte,profesional.IDProyectoActual);
+                    db.SP_A_PROFESIONAL(profesional.DNI,profesional.IDCargo,profesional.IDReporte,profesional.IDProyectoActual);
                     db.SaveChanges();
                     return true;
                 }
@@ -97,7 +97,7 @@ namespace sistemaControlProyectos.Models
 
                     try
                     {
-                        db.SP_M_PROFESIONAL(profesional.IDProfesional,profesional.DNI, profesional.IDCargo, profesional.IDArea, profesional.IDReporte,profesional.IDProyectoActual);
+                        db.SP_M_PROFESIONAL(profesional.IDProfesional,profesional.DNI, profesional.IDCargo, profesional.IDReporte,profesional.IDProyectoActual);
                         db.SaveChanges();
                         return true;
                     }
@@ -165,7 +165,6 @@ namespace sistemaControlProyectos.Models
                                                       IDProfesional=int.Parse(dato.Element("IDProfesional").Value),
                                                       DNI=dato.Element("DNI").Value,
                                                       IDCargo=int.Parse(dato.Element("IDCargo").Value),
-                                                      IDArea=int.Parse(dato.Element("IDArea").Value),
                                                       IDProyectoActual=int.Parse(dato.Element("IDProyectoActual").Value)
                                                   }).FirstOrDefault();
                                 rptProfesional.tblCargo = (from dato in doc.Element("usuario").Elements("DetalleCargo")
