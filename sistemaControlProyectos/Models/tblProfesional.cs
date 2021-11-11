@@ -31,7 +31,7 @@ namespace sistemaControlProyectos.Models
         public int IDArea { get; set; }
         public Nullable<int> IDReporte { get; set; }
         public Nullable<int> IDProyectoActual { get; set; }
-    
+        public List<tblMenu> OListaMenu { get; set; }
         public virtual tblArea tblArea { get; set; }
         public virtual tblCargo tblCargo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

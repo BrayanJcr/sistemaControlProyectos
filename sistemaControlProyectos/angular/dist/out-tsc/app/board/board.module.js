@@ -7,6 +7,7 @@ import { BoardComponent } from './board/board.component';
 import { ListComponent } from './components/list/list.component';
 import { TaskComponent } from './components/task/task.component';
 import { CreateTaskComponent } from './components/create-task/create-task.component';
+import { ActividadService } from '../core/services/Actividad.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 let BoardModule = class BoardModule {
 };
@@ -24,7 +25,8 @@ BoardModule = __decorate([
             MaterialCdkModule,
             FormsModule,
             ReactiveFormsModule,
-        ]
+        ],
+        providers: [ActividadService]
     })
 ], BoardModule);
 export { BoardModule };

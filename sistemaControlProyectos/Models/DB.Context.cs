@@ -964,6 +964,19 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_DOCUMENTO", iDDocParameter, nombreDocParameter, realNombParameter, dOCParameter);
         }
     
+        public virtual ObjectResult<string> SP_M_PERMISOS(Nullable<int> iDPermiso, Nullable<bool> activo)
+        {
+            var iDPermisoParameter = iDPermiso.HasValue ?
+                new ObjectParameter("IDPermiso", iDPermiso) :
+                new ObjectParameter("IDPermiso", typeof(int));
+    
+            var activoParameter = activo.HasValue ?
+                new ObjectParameter("Activo", activo) :
+                new ObjectParameter("Activo", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_PERMISOS", iDPermisoParameter, activoParameter);
+        }
+    
         public virtual ObjectResult<string> SP_M_PROFESIONAL(Nullable<int> iDProfesional, string dNI, Nullable<int> iDCargo, Nullable<int> iDArea, Nullable<int> iDReporte, Nullable<int> iDProyectoActual)
         {
             var iDProfesionalParameter = iDProfesional.HasValue ?

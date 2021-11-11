@@ -26,6 +26,7 @@ namespace sistemaControlProyectos.Models
         public string Controlador { get; set; }
         public string Vista { get; set; }
         public bool Activo { get; set; }
+        public bool Edicion { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
     
         public virtual tblMenu tblMenu { get; set; }

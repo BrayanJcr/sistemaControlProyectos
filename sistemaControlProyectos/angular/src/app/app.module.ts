@@ -9,7 +9,8 @@ import { SharedModule } from './shared/shared.module';
 import { BoardModule } from './board/board.module';
 import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import{FormsModule} from '@angular/forms';
+import {ActividadService} from './core/services/Actividad.service'
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     BoardModule,
     HomeModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

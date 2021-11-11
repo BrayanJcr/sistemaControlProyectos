@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApiService, TaskSchema, ListSchema } from '../';
+import { ApiService, Actividad, ListSchema } from '../';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +35,7 @@ export class TaskService {
   }
 
   /* Add new card to board list */
-  addTask(data: TaskSchema): void {
+  addTask(data: Actividad): void {
     const card = data;
     const elementsIndex = this.list.findIndex(
       (element) => element.id === '1'
@@ -44,16 +44,21 @@ export class TaskService {
   }
 
   /* Edit card on list */
-  updateTask(data: TaskSchema, listId: string): void {
+  updateTask(data: Actividad, listId: string): void {
     if (data) {
       const elementsIndex = this.list.findIndex(
         (element) => element.id === listId
       );
       const task = this.list[elementsIndex].tasks.map((element) => {
-        if (element.id === data.id) {
-          element.date = new Date(data.date);
-          element.description = data.description;
-          element.priority = data.priority;
+        if (element.IDActividad === data.IDActividad) {
+          element.FechaFin = new Date(data.FechaFin);
+          element.FechaInicio = new Date(data.FechaInicio);
+          element.Descripcion = data.Descripcion;
+          element.Estado = data.Estado;
+          element.titActividad = data.titActividad;
+          element.proceso = data.proceso;
+          element.IDProyecto=data.IDProyecto;
+          element.creador=data.creador;
         }
         return element;
       });
@@ -61,12 +66,12 @@ export class TaskService {
   }
 
   /* Remove a card of board list */
-  removeTask(dataId: string, list: ListSchema): void {
+  removeTask(dataId: number, list: ListSchema): void {
     const elementsIndex = this.list.findIndex(
       (element) => element.id == list.id
     );
     const tasks = this.list[elementsIndex].tasks.filter(
-      (task) => task.id !== dataId
+      (task) => task.IDActividad !== dataId
     );
     this.list[elementsIndex].tasks = tasks;
   }

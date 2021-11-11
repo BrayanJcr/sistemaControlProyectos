@@ -168,7 +168,7 @@ namespace sistemaControlProyectos.Models
                     return listarProyectoProfesional;
                 }
         }
-
+       
         public bool RegistrarProyectoProfesional(tblProfesional_Proyecto objeto)
         {
             bool respuesta = true;
@@ -219,6 +219,10 @@ namespace sistemaControlProyectos.Models
 
             }
         }
+
+       
+
+      
 
       
         public List<SP_C_PROYECTOPROFESIONALIMAGEN_Result> ListarProyectoProfesionalImagen(int IDProfesional)

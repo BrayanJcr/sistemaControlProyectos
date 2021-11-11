@@ -7,7 +7,7 @@ import { BoardComponent } from './board/board.component';
 import { ListComponent } from './components/list/list.component';
 import { TaskComponent } from './components/task/task.component';
 import { CreateTaskComponent } from './components/create-task/create-task.component';
-
+import { ActividadService } from '../core/services/Actividad.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialCdkModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ],
+  providers: [ActividadService]
 })
 export class BoardModule { }

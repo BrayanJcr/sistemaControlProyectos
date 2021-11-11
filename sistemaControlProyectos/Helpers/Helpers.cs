@@ -37,6 +37,48 @@ namespace sistemaControlProyectos.Helpers
 
             return new MvcHtmlString(sb.ToString());
         }
+        public static MvcHtmlString ActionLinkAllowPermisos(this HtmlHelper helper)
+        {
 
+            StringBuilder sb = new StringBuilder();
+
+            if (HttpContext.Current.Session["usuario"] != null)
+            {
+                SP_C_PROFESIONAL_Result sUsuario = (SP_C_PROFESIONAL_Result)HttpContext.Current.Session["usuario"];
+
+                tblProfesional rptprofesional = ProfesionalModelo.instancia.DetalleProfesional(sUsuario.IDProfesional);
+                foreach (tblMenu item in rptprofesional.OListaMenu)
+                {
+
+                    sb.AppendLine("<li class='sidebar-dropdown'>");
+                    sb.AppendLine("<a href = 'javascript:;' >");
+                    sb.AppendLine("<i class='"+item.Icono+"'></i>");
+                    sb.AppendLine("<span>"+item.NombreMenu+"</span>");
+                    sb.AppendLine("</a>");
+                    sb.AppendLine("<div class='sidebar-submenu'>");
+                    sb.AppendLine("<ul>");
+                    foreach (tblSubMenu subitem in item.tblSubMenu)
+                    {
+                        
+                        sb.AppendLine("<li>");
+                        if (subitem.Activo == true)
+                        {
+                            sb.AppendLine("<a href='/"+subitem.Controlador+"/"+subitem.Vista+"'>"+subitem.NombreSubMenu+"</a>");
+
+                        }
+                        sb.AppendLine("</li>");                   
+                    }
+                    sb.AppendLine("</ul>");
+                    sb.AppendLine("</div>");
+                    sb.AppendLine("</li>");
+
+                }
+
+
+            }
+
+
+            return new MvcHtmlString(sb.ToString());
+        }
     }
 }

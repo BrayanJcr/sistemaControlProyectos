@@ -203,6 +203,7 @@
           <Property Name="Controlador" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Vista" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Edicion" Type="bit" Nullable="false" />
           <Property Name="FechaRegistro" Type="datetime" />
         </EntityType>
         <EntityType Name="tblUsuario">
@@ -815,6 +816,10 @@
           <Parameter Name="RealNomb" Type="varchar" Mode="In" />
           <Parameter Name="DOC" Type="varbinary(max)" Mode="In" />
         </Function>
+        <Function Name="SP_M_PERMISOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDPermiso" Type="int" Mode="In" />
+          <Parameter Name="Activo" Type="bit" Mode="In" />
+        </Function>
         <Function Name="SP_M_PROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDProfesional" Type="int" Mode="In" />
           <Parameter Name="DNI" Type="varchar" Mode="In" />
@@ -1282,6 +1287,7 @@
           <Property Name="Controlador" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Vista" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Edicion" Type="Boolean" Nullable="false" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tblMenu" Relationship="Self.FK__tblSubMen__IDMen__5BE2A6F2" FromRole="tblSubMenu" ToRole="tblMenu" />
           <NavigationProperty Name="tblPermisos" Relationship="Self.FK__tblPermis__IDSub__5629CD9C" FromRole="tblSubMenu" ToRole="tblPermisos" />
@@ -2030,6 +2036,10 @@
             <Parameter Name="RealNomb" Mode="In" Type="String" />
             <Parameter Name="DOC" Mode="In" Type="Binary" />
           </FunctionImport>
+          <FunctionImport Name="SP_M_PERMISOS" ReturnType="Collection(String)">
+            <Parameter Name="IDPermiso" Mode="In" Type="Int32" />
+            <Parameter Name="Activo" Mode="In" Type="Boolean" />
+          </FunctionImport>
           <FunctionImport Name="SP_M_PROFESIONAL" ReturnType="Collection(String)">
             <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
             <Parameter Name="DNI" Mode="In" Type="String" />
@@ -2606,6 +2616,7 @@
                 <ScalarProperty Name="Controlador" ColumnName="Controlador" />
                 <ScalarProperty Name="Vista" ColumnName="Vista" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Edicion" ColumnName="Edicion" />
                 <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3048,6 +3059,7 @@
           <FunctionImportMapping FunctionImportName="SP_M_CuadernodeObra" FunctionName="DBControlProyectoModel.Store.SP_M_CuadernodeObra" />
           <FunctionImportMapping FunctionImportName="SP_M_CuadernoProfesional" FunctionName="DBControlProyectoModel.Store.SP_M_CuadernoProfesional" />
           <FunctionImportMapping FunctionImportName="SP_M_DOCUMENTO" FunctionName="DBControlProyectoModel.Store.SP_M_DOCUMENTO" />
+          <FunctionImportMapping FunctionImportName="SP_M_PERMISOS" FunctionName="DBControlProyectoModel.Store.SP_M_PERMISOS" />
           <FunctionImportMapping FunctionImportName="SP_M_PROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_M_PROFESIONAL" />
           <FunctionImportMapping FunctionImportName="SP_M_ProfesionalActividad" FunctionName="DBControlProyectoModel.Store.SP_M_ProfesionalActividad" />
           <FunctionImportMapping FunctionImportName="SP_M_ProfesionalReunion" FunctionName="DBControlProyectoModel.Store.SP_M_ProfesionalReunion" />
