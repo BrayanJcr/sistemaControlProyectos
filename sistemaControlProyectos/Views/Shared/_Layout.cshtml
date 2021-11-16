@@ -12,6 +12,7 @@
     @Styles.Render("~/Content/Plugins.css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="preconnect" href="https://fonts.gstatic.com">
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -41,7 +42,7 @@
                     <div class="user-info">
                         <input id="txtIDUsuarioSession" type="hidden" value="@ViewBag.IDUsuario" />
                         <input id="txtNombreUsuario" type="hidden" value="@ViewBag.NombreUsuario" />
-                        <span class="user-name">
+                        <span class="user-name" >
                             @ViewBag.NombreUsuario
                         </span>
                         <input id="txtIDCargo" type="hidden" value="@ViewBag.IDCargo" />

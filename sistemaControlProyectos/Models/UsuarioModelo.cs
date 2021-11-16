@@ -25,14 +25,14 @@ namespace sistemaControlProyectos.Models
             }
         }
 
-        public List<SP_C_PROFESIONALRESPONSABLE_Result> ListarUsuario()
+        public List<SP_C_USUARIO_Result> ListarUsuario()
         {        
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
-                List<SP_C_PROFESIONALRESPONSABLE_Result> listarProfesional = new List<SP_C_PROFESIONALRESPONSABLE_Result>();
+                List<SP_C_USUARIO_Result> listarProfesional = new List<SP_C_USUARIO_Result>();
                 try
                 {
-                    listarProfesional = db.SP_C_PROFESIONALRESPONSABLE().ToList();
+                    listarProfesional = db.SP_C_USUARIO().ToList();
                     return listarProfesional;
                 }
                 catch (Exception ex)
@@ -94,6 +94,24 @@ namespace sistemaControlProyectos.Models
 
             return respuesta;
         }
+        public bool EliminarUsuario(string DNI)
+        {
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
 
+                try
+                {
+                    db.SP_E_USUARIO(DNI);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+
+                }
+
+            }
+        }
     }
 }

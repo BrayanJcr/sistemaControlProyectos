@@ -1,26 +1,28 @@
 ﻿var tablaProfesional
 
-
+function Cerrar() {
+    $('#FormModal').modal('hide');
+}
 
 //Listar Profesionales
 $(document).ready(function () {
-    //Obtener Area
+    //Obtener Usuario
     jQuery.ajax({
-        url: "/Area/Listar",
+        url: "/Usuario/Listar",
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
             console.log(data.data);
-            $("#cboArea").html("");
+            $("#cboUsuario").html("");
 
             if (data.data != null) {
                 $.each(data.data, function (i, item) {
 
-                    $("<option>").attr({ "value": item.IDArea }).text(item.nomArea).appendTo("#cboArea");
+                    $("<option>").attr({ "value": item.DNI }).text(item.nombre + " " + item.apellidos).appendTo("#cboUsuario");
 
                 })
-                $("#cboArea").val($("#cboArea option:first").val());
+                $("#cboUsuario").val($("#cboUsuario option:first").val());
             }
         },
         error: function (error) {
@@ -29,6 +31,7 @@ $(document).ready(function () {
         beforeSend: function () {
         },
     });
+
     //Obtener Cargo
     jQuery.ajax({
         url: "/Cargo/Listar",
@@ -62,14 +65,6 @@ $(document).ready(function () {
             "dataType": "json"
         },
         "columns": [
-            { "data": "DNI" },
-            { "data": "nombre" },
-            { "data": "apellidos" },
-            { "data": "profesion" },
-            { "data": "telefono" },
-            { "data": "correo" },
-            { "data": "nomCargo" },
-            { "data": "nomArea" },
             {
                 "data": "DNI", "render": function (data) {
                     return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirModal(" + data + ")'><i class='fas fa-pencil-alt'></i></button>" +
@@ -79,6 +74,13 @@ $(document).ready(function () {
                 "searchable": false,
                 "width": "150px"
             },
+            { "data": "DNI" },
+            { "data": "nombre" },
+            { "data": "apellidos" },
+            { "data": "profesion" },
+            { "data": "telefono" },
+            { "data": "correo" },
+            { "data": "nomCargo" },
         ],
         dom: 'Bfrtip',
         buttons: [
@@ -137,7 +139,6 @@ function guardar() {
                 usrImagen: ($("#fileImagen").val()),
                 IDReporte: ($("#fileReporte").val())
             }
-            
         }
 
         jQuery.ajax({

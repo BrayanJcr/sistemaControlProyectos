@@ -2374,11 +2374,9 @@
           <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
           <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="apellidos" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="contraseña" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="correo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="profesion" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="telefono" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="usrImagen" Nullable="true" />
         </ComplexType>
         <ComplexType Name="SP_C_USUARIODNI_Result">
           <Property Type="String" Name="DNI" Nullable="false" MaxLength="8" />
@@ -3008,11 +3006,9 @@
                 <ScalarProperty Name="DNI" ColumnName="DNI" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />
-                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
                 <ScalarProperty Name="correo" ColumnName="correo" />
                 <ScalarProperty Name="profesion" ColumnName="profesion" />
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="usrImagen" ColumnName="usrImagen" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

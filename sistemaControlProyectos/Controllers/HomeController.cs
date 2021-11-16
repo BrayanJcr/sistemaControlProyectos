@@ -26,7 +26,7 @@ namespace sistemaControlProyectos.Controllers
             try
             {
                 SessionProfesional = (SP_C_PROFESIONAL_Result)Session["profesional"];
-                ViewBag.NombreUsuario = SessionProfesional.nombre + " " + SessionProfesional.apellidos;
+                ViewBag.NombreUsuario = SessionProfesional.nombre.Substring(0, 6) + " " + SessionProfesional.apellidos.Substring(0, 9).ToUpper();
                 ViewBag.IDCargo = SessionProfesional.IDCargo;
                 ViewBag.Cargo = SessionProfesional.nomCargo;
                 SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SessionProfesional.IDProyectoActual).FirstOrDefault();

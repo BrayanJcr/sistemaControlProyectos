@@ -35,7 +35,7 @@ namespace sistemaControlProyectos.Controllers
         internal ActionResult MenuSession(ViewResult viewResult)
         {
             SesionUsuario = (SP_C_PROFESIONAL_Result)System.Web.HttpContext.Current.Session["profesional"];
-            viewResult.ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
+            viewResult.ViewBag.NombreUsuario = SesionUsuario.nombre.Substring(0, 6) + " " + SesionUsuario.apellidos.ToUpper().Substring(0,9);
             viewResult.ViewBag.IDCargo = SesionUsuario.IDCargo;
             viewResult.ViewBag.Cargo = SesionUsuario.nomCargo;
             SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();

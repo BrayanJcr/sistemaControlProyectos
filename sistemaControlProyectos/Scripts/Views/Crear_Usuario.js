@@ -1,6 +1,11 @@
-﻿var tblUsuario
+﻿function Cerrar() {
+    $('#FormModal').modal('hide');
+}
+
+var tblUsuario
 //Listar Profesionales
 $(document).ready(function () {
+
     tblUsuario = $('#tblUsuario').DataTable({
 
         "ajax": {
@@ -9,12 +14,6 @@ $(document).ready(function () {
             "dataType": "json"
         },
         "columns": [
-            { "data": "DNI" },
-            { "data": "nombre" },
-            { "data": "apellidos" },
-            { "data": "correo" },
-            { "data": "profesion" },
-            { "data": "telefono" },  
             {
                 "data": "DNI", "render": function (data) {
                     return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirModal(" + data + ")'><i class='fas fa-pencil-alt'></i></button>" +
@@ -24,6 +23,12 @@ $(document).ready(function () {
                 "searchable": false,
                 "width": "150px"
             },
+            { "data": "DNI" },
+            { "data": "nombre" },
+            { "data": "apellidos" },
+            { "data": "correo" },
+            { "data": "profesion" },
+            { "data": "telefono" },  
         ],
         dom: 'Bfrtip',
         buttons: [
@@ -64,13 +69,22 @@ function abrirModal($DNI) {
             }
         });
     } else {
-
+        $("#txtDni").val("");
+        $("#txtNombre").val("");
+        $("#txtApellidos").val("");
+        $("#txtPassword").val("");
+        $("#txtFirmaDigital").val("");
+        $("#txtProfesion").val("");
+        $("#txtCorreo").val("");
+        $("#txtTelefono").val("");
+        $("#fileImagen").val("");
     }
 
     $('#FormModal').modal('show');
 
 }
 function guardar() {
+
     var $request = {
         objeto: {
             DNI: parseInt($("#txtDni").val()),
@@ -83,7 +97,6 @@ function guardar() {
             correo: ($("#txtCorreo").val()),
             usrImagen: ($("#fileImagen").val()),
         }
-
     }
 
     jQuery.ajax({
@@ -98,48 +111,8 @@ function guardar() {
                 tblUsuario.ajax.reload();
                 $('#FormModal').modal('hide');
             } else {
+                swal("Mensaje", "No se pudo guardar los cambios", "warning")
 
-                alert("No se pudo guardar los cambios");
-            }
-        },
-        error: function (error) {
-            console.log(error)
-        },
-        beforeSend: function () {
-
-        },
-    });
-}
-function modificar() {
-    var $request = {
-        objeto: {
-            DNI: parseInt($("#txtDni").val()),
-            nombre: ($("#txtNombre").val()),
-            apellidos: ($("#txtApellidos").val()),
-            contraseña: ($("#txtPassword").val()),
-            firma: ($("#txtFirmaDigital").val()),
-            profesion: ($("#txtProfesion").val()),
-            telefono: ($("#txtTelefono").val()),
-            correo: ($("#txtCorreo").val()),
-            usrImagen: ($("#fileImagen").val()),
-        }
-
-    }
-
-    jQuery.ajax({
-        url: "/Usuario/Modificar",
-        type: "POST",
-        data: JSON.stringify($request),
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            console.log(data)
-            if (data.resultado) {
-                tblUsuario.ajax.reload();
-                $('#FormModal').modal('hide');
-            } else {
-
-                alert("No se pudo guardar los cambios");
             }
         },
         error: function (error) {
@@ -154,13 +127,13 @@ function modificar() {
 function Eliminar($DNI) {
     if (confirm("Estas seguro de Eliminar el Registro?")) {
         jQuery.ajax({
-            url: "/Profesional/Eliminar" + "?DNI=" + $DNI,
+            url: "/Usuario/Eliminar" + "?DNI=" + $DNI,
             type: "GET",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.resultado) {
-                    tablaProfesional.ajax.reload();
+                    tblUsuario.ajax.reload();
                 }
             }
         });

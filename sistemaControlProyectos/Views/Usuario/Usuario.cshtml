@@ -4,26 +4,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Usuarios</h2>
+<h2>USUARIOS</h2>
+
 <div class="row">
     <div class="col-sm-12">
-        <div class="card-header">
-            USUARIO
-        </div>
-        <div class="card-body">
-            <table id="tblUsuario" class="table">
-                <thead>
-                    <tr>
-                        <th class="dni">DNI</th>
-                        <th class="nombre">Nombres</th>
-                        <th class="apellidos">Apellidos</th>                       
-                        <th class="correo">Correo</th>
-                        <th class="profesion">Profesion</th>
-                        <th class="telefono">Telefono</th>
-                        <th class="action">Action</th>
-                    </tr>
-                </thead>
-            </table>
+        <div class="card">
+            <div class="card-header p-2 bg-dark text-white">
+                USUARIO
+            </div>
+            <div class="card-body">
+                <table id="tblUsuario" class="table table-light nowrap compact" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th class="action">#</th>
+                            <th class="dni">DNI</th>
+                            <th class="nombre">Nombres</th>
+                            <th class="apellidos">Apellidos</th>
+                            <th class="correo">Correo</th>
+                            <th class="profesion">Profesion</th>
+                            <th class="telefono">Telefono</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -33,10 +36,9 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Rol</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario</h5>
+                <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close" onclick="Cerrar()"></button>
+
             </div>
             <div class="modal-body">
 
@@ -45,15 +47,15 @@
                         <div class="form">
                             <div>
                                 <label for="txtDNI">Dni:</label>
-                                <input type="text" class="form-control" id="txtDni" />
+                                <input type="number" class="form-control" id="txtDni" placeholder="Ejm. 87654321">
                             </div>
                             <div class="form-group">
                                 <label for="txtNombre">Nombre:</label>
-                                <input type="text" class="form-control" id="txtNombre">
+                                <input type="text" class="form-control" id="txtNombre" placeholder="Ejm. Brayan">
                             </div>
                             <div class="form-group">
                                 <label for="txtApellidos">Apellidos:</label>
-                                <input type="text" class="form-control" id="txtApellidos">
+                                <input type="text" class="form-control" id="txtApellidos" placeholder="Ejm. Carhuamaca">
                             </div>
                             <div class="form-group">
                                 <label for="txtPassword">Password:</label>
@@ -66,15 +68,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="txtProfesion">Profesion:</label>
-                                <input type="text" class="form-control" id="txtProfesion">
+                                <input type="text" class="form-control" id="txtProfesion" placeholder="Ejm. Ing. Sistemas">
                             </div>
                             <div class="form-group">
                                 <label for="txtTelefono">Telefono:</label>
-                                <input type="number" class="form-control" id="txtTelefono">
+                                <input type="number" class="form-control" id="txtTelefono" placeholder="Ejm. 987654321">
                             </div>
                             <div class="form-group">
                                 <label for="txtCorreo">correo:</label>
-                                <input type="text" class="form-control" id="txtCorreo">
+                                <input type="text" class="form-control" id="txtCorreo" placeholder="Ejm. TuCorreo@gmail.com">
                             </div>                           
                             <div class="form-group">
                                 <label for="fileImagen">Imagen:</label>
@@ -88,7 +90,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="Cerrar()">Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
             </div>
         </div>

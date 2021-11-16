@@ -18,9 +18,20 @@ namespace sistemaControlProyectos.Controllers
         }
         public JsonResult Listar()
         {
-            List<SP_C_PROFESIONAL_Result> listar = ProfesionalModelo.instancia.ListarProfesional();
-            return Json(new { data = listar }, JsonRequestBehavior.AllowGet);
+            List<tblUsuario> listarActividad = new List<tblUsuario>();
+
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+
+                //listarActividad = db.SP_C_AREA().ToList();
+                listarActividad = (from p in db.tblUsuario select p).ToList();
+            }
+            return Json(new { data = listarActividad }, JsonRequestBehavior.AllowGet);
+            //List<SP_C_USUARIO_Result> listar = UsuarioModelo.instancia.ListarUsuario()
+            ;
+            //return Json(new { data = listar }, JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult Obtener(string dni)
         {
 
@@ -34,44 +45,31 @@ namespace sistemaControlProyectos.Controllers
             }
 
             return Json(oPersona, JsonRequestBehavior.AllowGet);
-            /*SP_C_USUARIODNI_Result list = ObtenerUsuario.instancia.ListarUsuarioid(dni);
-
-            return Json(new { data=list}, JsonRequestBehavior.AllowGet);*/
         }
 
         [HttpPost]
         public JsonResult Guardar(tblUsuario objeto)
         {
+
+            JsonResult listar = Obtener(objeto.DNI);
+
             bool respuesta = true;
 
-            if (objeto.DNI != null)
+            if (listar.Data == null)
             {
-
                 respuesta = UsuarioModelo.instancia.RegistrarUsuario(objeto);
             }
-            
-
-
-            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
-        }
-        [HttpPost]
-        public JsonResult Modificar(tblUsuario objeto)
-        {
-            bool respuesta = true;
-
-            if (objeto.DNI == null)
+            else
             {
-                        respuesta = UsuarioModelo.instancia.ModificarProfesional(objeto);
-                    }
-
-
-
+                respuesta = UsuarioModelo.instancia.ModificarProfesional(objeto);
+            }
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Eliminar(int idprofesional)
+
+        public JsonResult Eliminar(string DNI)
         {
             bool respuesta = true;
-            respuesta = ProfesionalModelo.instancia.EliminarProfesional(idprofesional);
+            respuesta = UsuarioModelo.instancia.EliminarUsuario(DNI);
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
     }
