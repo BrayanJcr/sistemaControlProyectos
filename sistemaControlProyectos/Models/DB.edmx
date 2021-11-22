@@ -99,8 +99,8 @@
           <Property Name="IDProfesional" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DNI" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="IDCargo" Type="int" Nullable="false" />
-          <Property Name="IDProyectoActual" Type="int" />
           <Property Name="IDReporte" Type="int" />
+          <Property Name="IDProyectoActual" Type="int" />
         </EntityType>
         <EntityType Name="tblProfesional_Actividad">
           <Key>
@@ -778,6 +778,10 @@
           <Parameter Name="proceso" Type="varchar" Mode="In" />
           <Parameter Name="IDProyecto" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_M_ACTIVIDADPROCESO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDActividad" Type="int" Mode="In" />
+          <Parameter Name="proceso" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="SP_M_ActualizarPermisos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Detalle" Type="xml" Mode="In" />
         </Function>
@@ -1151,8 +1155,8 @@
           <Property Name="IDProfesional" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DNI" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDCargo" Type="Int32" Nullable="false" />
-          <Property Name="IDProyectoActual" Type="Int32" />
           <Property Name="IDReporte" Type="Int32" />
+          <Property Name="IDProyectoActual" Type="Int32" />
           <NavigationProperty Name="tblArea" Relationship="Self.FK__tblArea__IDProfe__5AEE82B9" FromRole="tblProfesional" ToRole="tblArea" />
           <NavigationProperty Name="tblCargo" Relationship="Self.FK__tblProfes__IDCar__571DF1D5" FromRole="tblProfesional" ToRole="tblCargo" />
           <NavigationProperty Name="tblCuadernoProfesional" Relationship="Self.FK__tblCuader__IDPro__6754599E" FromRole="tblProfesional" ToRole="tblCuadernoProfesional" />
@@ -1999,6 +2003,10 @@
             <Parameter Name="proceso" Mode="In" Type="String" />
             <Parameter Name="IDProyecto" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_M_ACTIVIDADPROCESO" ReturnType="Collection(String)">
+            <Parameter Name="IDActividad" Mode="In" Type="Int32" />
+            <Parameter Name="proceso" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="SP_M_ActualizarPermisos" ReturnType="Collection(DBControlProyectoModel.SP_M_ActualizarPermisos_Result)">
             <Parameter Name="Detalle" Mode="In" Type="String" />
           </FunctionImport>
@@ -2502,8 +2510,8 @@
                 <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
                 <ScalarProperty Name="DNI" ColumnName="DNI" />
                 <ScalarProperty Name="IDCargo" ColumnName="IDCargo" />
-                <ScalarProperty Name="IDProyectoActual" ColumnName="IDProyectoActual" />
                 <ScalarProperty Name="IDReporte" ColumnName="IDReporte" />
+                <ScalarProperty Name="IDProyectoActual" ColumnName="IDProyectoActual" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3045,6 +3053,7 @@
           <FunctionImportMapping FunctionImportName="SP_E_REUNION" FunctionName="DBControlProyectoModel.Store.SP_E_REUNION" />
           <FunctionImportMapping FunctionImportName="SP_E_USUARIO" FunctionName="DBControlProyectoModel.Store.SP_E_USUARIO" />
           <FunctionImportMapping FunctionImportName="SP_M_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_M_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="SP_M_ACTIVIDADPROCESO" FunctionName="DBControlProyectoModel.Store.SP_M_ACTIVIDADPROCESO" />
           <FunctionImportMapping FunctionImportName="SP_M_ActualizarPermisos" FunctionName="DBControlProyectoModel.Store.SP_M_ActualizarPermisos">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_M_ActualizarPermisos_Result">

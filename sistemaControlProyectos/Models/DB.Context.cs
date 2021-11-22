@@ -20,6 +20,7 @@ namespace sistemaControlProyectos.Models
         public DBControlProyectoEntities()
             : base("name=DBControlProyectoEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -832,6 +833,19 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("IDProyecto", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_ACTIVIDAD", iDActividadParameter, tituloParameter, fechaIniParameter, fechaFinParameter, descriptionParameter, estadoParameter, creadorParameter, procesoParameter, iDProyectoParameter);
+        }
+    
+        public virtual ObjectResult<string> SP_M_ACTIVIDADPROCESO(Nullable<int> iDActividad, string proceso)
+        {
+            var iDActividadParameter = iDActividad.HasValue ?
+                new ObjectParameter("IDActividad", iDActividad) :
+                new ObjectParameter("IDActividad", typeof(int));
+    
+            var procesoParameter = proceso != null ?
+                new ObjectParameter("proceso", proceso) :
+                new ObjectParameter("proceso", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_ACTIVIDADPROCESO", iDActividadParameter, procesoParameter);
         }
     
         public virtual ObjectResult<SP_M_ActualizarPermisos_Result> SP_M_ActualizarPermisos(string detalle)
