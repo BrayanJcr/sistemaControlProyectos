@@ -426,18 +426,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="angular\karma.conf.js" />
-    <Content Include="angular\src\app\app.component.html" />
-    <Content Include="angular\src\app\board\board\board.component.html" />
-    <Content Include="angular\src\app\board\components\create-task\create-task.component.html" />
-    <Content Include="angular\src\app\board\components\list\list.component.html" />
-    <Content Include="angular\src\app\board\components\task\task.component.html" />
-    <Content Include="angular\src\app\home\home\home.component.html" />
-    <Content Include="angular\src\app\shared\components\footer\footer.component.html" />
-    <Content Include="angular\src\app\shared\components\header\header.component.html" />
-    <Content Include="angular\src\app\shared\components\modal\modal.component.html" />
-    <Content Include="angular\src\favicon.ico" />
-    <Content Include="angular\src\index.html" />
     <Content Include="Content\Actividades\Actividades.css" />
     <Content Include="Content\Actividades\Gantt.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -2204,6 +2192,7 @@
     <Content Include="Content\fontawesome-free\svgs\solid\yin-yang.svg" />
     <Content Include="Content\fontawesome-free\svgs\solid\z.svg" />
     <Content Include="Content\jquery-loading-overlay\loadingoverlay.min.js" />
+    <Content Include="Content\kanban\index.js" />
     <Content Include="Content\login\css\campo.css" />
     <Content Include="Content\login\css\login.css" />
     <Content Include="Content\login\css\login2.css" />
@@ -2328,27 +2317,6 @@
     <Content Include="Content\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="libman.json" />
     <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="angular\.browserslistrc" />
-    <Content Include="angular\.editorconfig" />
-    <Content Include="angular\angular.json" />
-    <Content Include="angular\package-lock.json" />
-    <Content Include="angular\package.json" />
-    <Content Include="angular\README.md" />
-    <Content Include="angular\src\app\app.component.scss" />
-    <Content Include="angular\src\app\board\board\board.component.scss" />
-    <Content Include="angular\src\app\board\components\create-task\create-task.component.scss" />
-    <Content Include="angular\src\app\board\components\list\list.component.scss" />
-    <Content Include="angular\src\app\board\components\task\task.component.scss" />
-    <Content Include="angular\src\app\core\mock\list.json" />
-    <Content Include="angular\src\app\home\home\home.component.scss" />
-    <Content Include="angular\src\app\shared\components\footer\footer.component.scss" />
-    <Content Include="angular\src\app\shared\components\header\header.component.scss" />
-    <Content Include="angular\src\app\shared\components\modal\modal.component.scss" />
-    <Content Include="angular\src\assets\.gitkeep" />
-    <Content Include="angular\src\styles.scss" />
-    <Content Include="angular\tsconfig.app.json" />
-    <Content Include="angular\tsconfig.json" />
-    <Content Include="angular\tsconfig.spec.json" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.woff" />
@@ -2434,6 +2402,7 @@
     <Content Include="Content\proyectos\sass\_bootstrap-compass.scss" />
     <Content Include="Content\proyectos\sass\_bootstrap-mincer.scss" />
     <Content Include="Content\proyectos\sass\_bootstrap-sprockets.scss" />
+    <Content Include="Content\kanban\lis.css" />
     <EntityDeploy Include="Models\DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DB.Designer.cs</LastGenOutput>
@@ -2612,50 +2581,6 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="angular\src\app\app-routing.module.ts" />
-    <TypeScriptCompile Include="angular\src\app\app.component.spec.ts" />
-    <TypeScriptCompile Include="angular\src\app\app.component.ts" />
-    <TypeScriptCompile Include="angular\src\app\app.module.ts" />
-    <TypeScriptCompile Include="angular\src\app\board\board-routing.module.ts" />
-    <TypeScriptCompile Include="angular\src\app\board\board.module.ts" />
-    <TypeScriptCompile Include="angular\src\app\board\board\board.component.spec.ts" />
-    <TypeScriptCompile Include="angular\src\app\board\board\board.component.ts" />
-    <TypeScriptCompile Include="angular\src\app\board\components\create-task\create-task.component.spec.ts" />
-    <TypeScriptCompile Include="angular\src\app\board\components\create-task\create-task.component.ts" />
-    <TypeScriptCompile Include="angular\src\app\board\components\list\list.component.spec.ts" />
-    <TypeScriptCompile Include="angular\src\app\board\components\list\list.component.ts" />
-    <TypeScriptCompile Include="angular\src\app\core\models\Actividad.ts" />
-    <TypeScriptCompile Include="angular\src\app\board\components\task\task.component.spec.ts" />
-    <TypeScriptCompile Include="angular\src\app\board\components\task\task.component.ts" />
-    <TypeScriptCompile Include="angular\src\app\core\core.module.ts" />
-    <TypeScriptCompile Include="angular\src\app\core\index.ts" />
-    <TypeScriptCompile Include="angular\src\app\core\models\index.ts" />
-    <TypeScriptCompile Include="angular\src\app\core\models\listschema.ts" />
-    <TypeScriptCompile Include="angular\src\app\core\models\taskschema.ts" />
-    <TypeScriptCompile Include="angular\src\app\core\services\api.service.spec.ts" />
-    <TypeScriptCompile Include="angular\src\app\core\services\api.service.ts" />
-    <TypeScriptCompile Include="angular\src\app\core\services\index.ts" />
-    <TypeScriptCompile Include="angular\src\app\core\services\task.service.spec.ts" />
-    <TypeScriptCompile Include="angular\src\app\core\services\task.service.ts" />
-    <TypeScriptCompile Include="angular\src\app\home\home-routing.module.ts" />
-    <TypeScriptCompile Include="angular\src\app\home\home.module.ts" />
-    <TypeScriptCompile Include="angular\src\app\home\home\home.component.spec.ts" />
-    <TypeScriptCompile Include="angular\src\app\home\home\home.component.ts" />
-    <TypeScriptCompile Include="angular\src\app\material-cdk\material-cdk.module.ts" />
-    <TypeScriptCompile Include="angular\src\app\shared\components\footer\footer.component.spec.ts" />
-    <TypeScriptCompile Include="angular\src\app\shared\components\footer\footer.component.ts" />
-    <TypeScriptCompile Include="angular\src\app\shared\components\header\header.component.spec.ts" />
-    <TypeScriptCompile Include="angular\src\app\shared\components\header\header.component.ts" />
-    <TypeScriptCompile Include="angular\src\app\shared\components\modal\modal.component.spec.ts" />
-    <TypeScriptCompile Include="angular\src\app\shared\components\modal\modal.component.ts" />
-    <TypeScriptCompile Include="angular\src\app\shared\shared.module.ts" />
-    <TypeScriptCompile Include="angular\src\app\shared\utils\helpers.ts" />
-    <TypeScriptCompile Include="angular\src\app\shared\utils\index.ts" />
-    <TypeScriptCompile Include="angular\src\environments\environment.prod.ts" />
-    <TypeScriptCompile Include="angular\src\environments\environment.ts" />
-    <TypeScriptCompile Include="angular\src\main.ts" />
-    <TypeScriptCompile Include="angular\src\polyfills.ts" />
-    <TypeScriptCompile Include="angular\src\test.ts" />
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>

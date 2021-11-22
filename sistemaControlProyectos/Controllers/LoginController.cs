@@ -1,9 +1,5 @@
 ﻿using sistemaControlProyectos.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Text;
 using System.Web.Mvc;
 
 namespace sistemaControlProyectos.Controllers
@@ -21,13 +17,13 @@ namespace sistemaControlProyectos.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            
-             SP_C_PROFESIONAL_Result listar = ProfesionalModelo.instancia.ListarProfesional().Where(u=> u.DNI ==username && u.contraseña == password).FirstOrDefault();
-             if (listar == null)
-             {
+
+            SP_C_PROFESIONAL_Result listar = ProfesionalModelo.instancia.ListarProfesional().Where(u => u.DNI == username && u.contraseña == password).FirstOrDefault();
+            if (listar == null)
+            {
                 ViewBag.Error = "Usuario o contraseña Invalida";
-                return View();     
-             }
+                return View();
+            }
             Session["usuario"] = listar;
             return RedirectToAction("ProyectosInicio", "Proyectos");
         }
@@ -35,7 +31,8 @@ namespace sistemaControlProyectos.Controllers
         internal ActionResult MenuSession(ViewResult viewResult)
         {
             SesionUsuario = (SP_C_PROFESIONAL_Result)System.Web.HttpContext.Current.Session["profesional"];
-            viewResult.ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
+            string CortarNombre = SesionUsuario.nombre.Substring(0,3);
+            viewResult.ViewBag.NombreUsuario = CortarNombre + " " + SesionUsuario.apellidos;
             viewResult.ViewBag.IDCargo = SesionUsuario.IDCargo;
             viewResult.ViewBag.Cargo = SesionUsuario.nomCargo;
             SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
