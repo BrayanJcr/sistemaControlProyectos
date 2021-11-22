@@ -35,6 +35,8 @@ namespace sistemaControlProyectos.Controllers
             catch (Exception e)
             {
 
+            }
+            return p.MenuSession(View());
         }
         public ActionResult Cerrar()
         {
