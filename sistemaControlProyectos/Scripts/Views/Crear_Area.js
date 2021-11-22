@@ -76,7 +76,7 @@ $(document).ready(function () {
                 "width": "150px"
             },
             { "data": "nomArea" },
-            { "data": "encargado" },
+            { "data": "IDProfesional" },
             { "data": "nomPadre" }
         ],
         dom: 'Blfrtip',

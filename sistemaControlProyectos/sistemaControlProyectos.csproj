@@ -241,6 +241,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Models\Conexion.cs" />
     <Compile Include="Controllers\ActividadesController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
@@ -281,6 +282,8 @@
     <Compile Include="Models\ProfesionalModelo.cs" />
     <Compile Include="Models\ProyectosModelo.cs" />
     <Compile Include="Models\RecursoModelo.cs" />
+    <Compile Include="Models\ReporteModelo.cs" />
+    <Compile Include="Models\ReunionModelo.cs" />
     <Compile Include="Models\SP_C_ACTIVIDAD_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -2224,6 +2227,9 @@
     <Content Include="Global.asax" />
     <Content Include="imagenes\contruccion.jpg" />
     <Content Include="imagenes\favicon.ico" />
+    <Content Include="imagenes\fondoBravajal.jpg" />
+    <Content Include="imagenes\fondoLogin.jpg" />
+    <Content Include="imagenes\logo-bravajal.svg" />
     <Content Include="imagenes\work_1.jpg" />
     <Content Include="imagenes\work_2.jpg" />
     <Content Include="imagenes\work_3.jpg" />
@@ -2550,6 +2556,7 @@
     <Content Include="Scripts\Views\Crear_Area.js" />
     <Content Include="Scripts\Views\Crear_Profesional.js" />
     <Content Include="Scripts\Views\Crear_Recurso.js" />
+    <Content Include="Scripts\Views\Crear_Reunion.js" />
     <Content Include="Scripts\Views\Crear_Usuario.js" />
     <Content Include="Scripts\Views\Gantt.js" />
     <Content Include="imagenes\brayan.jpg" />
@@ -2558,6 +2565,8 @@
     <Content Include="Scripts\Views\Profesional_Asignar.js" />
     <Content Include="Scripts\Views\Profesional_AsignarProye.js" />
     <Content Include="Scripts\Views\Recurso_Asignar.js" />
+    <Content Include="Scripts\Views\Crear_Reporte.js" />
+    <Content Include="Scripts\Views\Reporte_Tabla.js" />
     <Content Include="Scripts\Views\ValidarActividades.js" />
     <Content Include="Views\img\brayan.jpg" />
     <Content Include="Web.config" />
@@ -2580,7 +2589,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Reunion\Reunion.cshtml" />
     <Content Include="Views\Shared\Loguearse.cshtml" />
     <Content Include="Views\Actividades\Kanban.cshtml" />
     <Content Include="Views\Actividades\Actividades.cshtml" />
@@ -2598,6 +2606,9 @@
     <Content Include="Views\Proyectos\ProyectosInicio.cshtml" />
     <Content Include="Views\Actividades\Gantt.cshtml" />
     <Content Include="Views\Permisos\Permisos.cshtml" />
+    <Content Include="Views\Reporte\Reporte.cshtml" />
+    <Content Include="Views\Reporte\TablaRepo.cshtml" />
+    <Content Include="Views\Reunion\Reunion.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Usuario\Usuario.cshtml" />
     <Content Include="Views\Shared\Proyecto.cshtml" />

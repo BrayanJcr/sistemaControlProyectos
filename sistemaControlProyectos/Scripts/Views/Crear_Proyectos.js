@@ -1,5 +1,7 @@
 ﻿const input = document.querySelector('#image_uploads');
 const list = document.getElementById('list');
+const name = document.getElementById('name');
+const size = document.getElementById('size');
 
 input.addEventListener('change', updateImageDisplay);
 
@@ -187,7 +189,8 @@ function abrirModal($IDProyectos) {
         $("#txtDistrito").val("");
         $("#txtDepartamento").val("");
         $("#image_uploads").val("");
-        $("#imagenPro").attr("src", "");
+        name.innerHTML = "";
+        size.innerHTML = "";
         $("#txtSeguimiento").val("");
         $("#cboEncargado").val($("#cboEncargado option:first").val());
     }
@@ -229,9 +232,10 @@ function Guardar() {
                             console.log(data.resultado);
                             if (data.resultado) {
                                 tablaProyectos.ajax.reload();
+                                $("#size").text('Nombre: null');
+                                $("#name").text('Tamaño: null');
+                                $("#imagenPro").removeAttr('src');
                                 $('#FormModal').modal('hide');
-                                $("#name").val(" ");
-                                $("#size").val(" ");
                             } else {
                                 alert("Mensaje No se pudo guardar los cambios", "warning");
                             }

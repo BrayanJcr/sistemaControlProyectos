@@ -12,16 +12,16 @@
 *
 * ======================================================= */
 body {
-  font-family: "Roboto", Arial, sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 1.6;
-  color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(213, 218, 233);
+    height: 100%;
+    width: 100%;
+    font-family: 'Numans', sans-serif;
 }
+
 @media screen and (max-width: 992px) {
-  body {
-    font-size: 16px;
-  }
+    body {
+        font-size: 16px;
+    }
 }
 
 a {
@@ -68,7 +68,7 @@ figure {
 }
 
 #fh5co-page {
-  width: 100%;
+  width: auto;
   overflow: hidden;
   position: relative;
 }
@@ -220,11 +220,12 @@ figure {
 }
 
 #fh5co-main {
-  width: 85%;
-  float: right;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
+    padding: 50px;
+    float: right;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    width: 100%;
 }
 @media screen and (max-width: 1200px) {
   #fh5co-main {
@@ -238,9 +239,7 @@ figure {
 }
 #fh5co-main .fh5co-narrow-content {
   position: relative;
-  width: 80%;
   margin: 0 auto;
-  padding: 4em 0;
 }
 @media screen and (max-width: 768px) {
   #fh5co-main .fh5co-narrow-content {
@@ -273,30 +272,37 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 }
 
 .work-item {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
+    margin:20px;
+    margin-left: 20px;
+    width: 380px;
+    height: 340px;
 }
+
 .work-item a {
   border: none;
   text-align: center;
 }
-.work-item a img {
-  margin-bottom: 10px;
-  float: left;
-  border: 10px solid transparent;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-}
+    .work-item a img {
+        margin-bottom: 10px;
+        float: left;
+        border: 10px solid transparent;
+        -webkit-transition: 0.5s;
+        -o-transition: 0.5s;
+        transition: 0.5s;
+        width: 420px;
+        height: 280px;
+    }
 .work-item a h3 {
   font-size: 20px;
   color: #000;
   margin-bottom: 10px;
 }
-.work-item a p {
-  font-size: 14px;
-  color: #cccccc;
-  margin-bottom: 0;
-}
+    .work-item a p {
+        font-size: 14px;
+        color: #410200;
+        margin-bottom: 0;
+    }
 .work-item a:hover, .work-item a:active, .work-item a:focus {
   text-decoration: none;
 }

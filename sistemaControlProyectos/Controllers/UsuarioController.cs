@@ -28,7 +28,7 @@ namespace sistemaControlProyectos.Controllers
             }
             return Json(new { data = listarActividad }, JsonRequestBehavior.AllowGet);
             //List<SP_C_USUARIO_Result> listar = UsuarioModelo.instancia.ListarUsuario()
-            ;
+            
             //return Json(new { data = listar }, JsonRequestBehavior.AllowGet);
         }
 

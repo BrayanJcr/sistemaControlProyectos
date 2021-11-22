@@ -43,6 +43,12 @@ namespace sistemaControlProyectos.Controllers
             List<SP_C_ACTIVIDAD_Result> lista = Models.ActividadesModelo.Instancia.ListarActividad().Where(a => a.IDProyecto== SesionUsuario.IDProyectoActual).ToList();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult ListarEsta(bool estado)
+        {
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            List<SP_C_ACTIVIDAD_Result> lista = Models.ActividadesModelo.Instancia.ListarActividad().Where(a => a.IDProyecto == SesionUsuario.IDProyectoActual && a.estado == estado).ToList();
+            return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
+        }
 
         public JsonResult Obtener(int idActividad)
         {
