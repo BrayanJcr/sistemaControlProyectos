@@ -80,5 +80,95 @@ namespace sistemaControlProyectos.Helpers
 
             return new MvcHtmlString(sb.ToString());
         }
+        public static MvcHtmlString ActionLinkNuevo(this HtmlHelper helper)
+        {
+
+            StringBuilder sb = new StringBuilder();
+
+            if (HttpContext.Current.Session["usuario"] != null)
+            {
+                SP_C_PROFESIONAL_Result sUsuario = (SP_C_PROFESIONAL_Result)HttpContext.Current.Session["usuario"];
+
+                List<SP_C_ACTIVIDAD_Result> lista = ActividadesModelo.Instancia.ListarActividad().Where(a => a.IDProyecto == sUsuario.IDProyectoActual).ToList();
+                int i =1;
+                foreach (SP_C_ACTIVIDAD_Result item in lista)
+                {
+                  
+                    if (item.proceso == "Nuevo")
+                    {
+                        sb.AppendLine("<div class='list-item' id='taskNuevo-"+i+ "' draggable='true' ondragstart='start(event)' ondragend='end(event)'>" + item.titActividad);
+                        sb.AppendLine("<input id=" + item.IDActividad + " type='hidden'/>");
+                        sb.AppendLine("<p>" + item.Descripcion + "</p>"); 
+                        sb.AppendLine("</div>");
+                        i++;
+                    }
+
+                }
+
+            }
+
+
+            return new MvcHtmlString(sb.ToString());
+        }
+        public static MvcHtmlString ActionLinkProceso(this HtmlHelper helper)
+        {
+
+            StringBuilder sb = new StringBuilder();
+
+            if (HttpContext.Current.Session["usuario"] != null)
+            {
+                SP_C_PROFESIONAL_Result sUsuario = (SP_C_PROFESIONAL_Result)HttpContext.Current.Session["usuario"];
+
+                List<SP_C_ACTIVIDAD_Result> lista =ActividadesModelo.Instancia.ListarActividad().Where(a => a.IDProyecto == sUsuario.IDProyectoActual).ToList();
+                int i = 1;
+                foreach (SP_C_ACTIVIDAD_Result item in lista)
+                {
+
+                    if (item.proceso == "Proceso")
+                    {
+                        sb.AppendLine("<div class='list-item' id='taskProceso-" + i + "' draggable='true' ondragstart='start(event)' ondragend='end(event)'>" + item.titActividad);
+                        sb.AppendLine("<input id=" + item.IDActividad + " type='hidden'/>");
+                        sb.AppendLine("<p>" + item.Descripcion + "</p>");
+                        sb.AppendLine("</div>");
+                        i++;
+                    }   
+
+                }
+
+            }
+
+            return new MvcHtmlString(sb.ToString());
+        }
+        public static MvcHtmlString ActionLinkTerminado(this HtmlHelper helper)
+        {
+
+            StringBuilder sb = new StringBuilder();
+
+            if (HttpContext.Current.Session["usuario"] != null)
+            {
+                SP_C_PROFESIONAL_Result sUsuario = (SP_C_PROFESIONAL_Result)HttpContext.Current.Session["usuario"];
+
+                List<SP_C_ACTIVIDAD_Result> lista = ActividadesModelo.Instancia.ListarActividad().Where(a => a.IDProyecto == sUsuario.IDProyectoActual).ToList();
+                int i = 1;
+                foreach (SP_C_ACTIVIDAD_Result item in lista)
+                {
+                    if (item.proceso == "Terminado")
+                    {
+                        sb.AppendLine("<div class='list-item' id='taskTerminado-" + i + "' draggable='true' ondragstart='start(event)' ondragend='end(event)'>" + item.titActividad);
+                        sb.AppendLine("<input id=" + item.IDActividad + " type='hidden'/>");
+                        sb.AppendLine("<p>" + item.Descripcion + "</p>"); 
+                        sb.AppendLine("</div>");
+                        i++;
+                    }
+
+                }
+
+            }
+
+
+            return new MvcHtmlString(sb.ToString());
+        }
     }
+   
 }
+

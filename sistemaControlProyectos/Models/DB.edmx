@@ -99,8 +99,8 @@
           <Property Name="IDProfesional" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DNI" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="IDCargo" Type="int" Nullable="false" />
-          <Property Name="IDReporte" Type="int" />
           <Property Name="IDProyectoActual" Type="int" />
+          <Property Name="IDReporte" Type="int" />
         </EntityType>
         <EntityType Name="tblProfesional_Actividad">
           <Key>
@@ -1151,8 +1151,8 @@
           <Property Name="IDProfesional" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DNI" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDCargo" Type="Int32" Nullable="false" />
-          <Property Name="IDReporte" Type="Int32" />
           <Property Name="IDProyectoActual" Type="Int32" />
+          <Property Name="IDReporte" Type="Int32" />
           <NavigationProperty Name="tblArea" Relationship="Self.FK__tblArea__IDProfe__5AEE82B9" FromRole="tblProfesional" ToRole="tblArea" />
           <NavigationProperty Name="tblCargo" Relationship="Self.FK__tblProfes__IDCar__571DF1D5" FromRole="tblProfesional" ToRole="tblCargo" />
           <NavigationProperty Name="tblCuadernoProfesional" Relationship="Self.FK__tblCuader__IDPro__6754599E" FromRole="tblProfesional" ToRole="tblCuadernoProfesional" />
@@ -2502,8 +2502,8 @@
                 <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
                 <ScalarProperty Name="DNI" ColumnName="DNI" />
                 <ScalarProperty Name="IDCargo" ColumnName="IDCargo" />
-                <ScalarProperty Name="IDReporte" ColumnName="IDReporte" />
                 <ScalarProperty Name="IDProyectoActual" ColumnName="IDProyectoActual" />
+                <ScalarProperty Name="IDReporte" ColumnName="IDReporte" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

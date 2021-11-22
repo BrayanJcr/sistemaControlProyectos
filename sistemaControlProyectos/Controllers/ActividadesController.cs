@@ -134,6 +134,12 @@ namespace sistemaControlProyectos.Controllers
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult ModificarProceso(int IDActividad,string Proceso)
+        {
+            bool respuesta = true;
+            respuesta = ActividadesModelo.Instancia.ModificarProceso(IDActividad, Proceso);
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
         [HttpGet]
         public JsonResult EliminarActividadRecurso(int idRecActividad)
         {

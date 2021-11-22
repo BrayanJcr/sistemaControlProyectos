@@ -1,8 +1,25 @@
-﻿@{
+﻿@using sistemaControlProyectos.Helpers
+@{
     ViewBag.Title = "Kanban";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<app-root></app-root>
-<script type="text/javascript" src="~/Scripts/kanban/main.1d382ceec76c971a4671.js"></script>
-<script type="text/javascript" src="~/Scripts/kanban/polyfills.f4385a55b535ea7dc87b.js"></script>
-<script type="text/javascript" src="~/Scripts/kanban/runtime.6cd3b110317062d2efdf.js"></script>
+<link href="~/Content/kanban/lis.css" rel="stylesheet" />
+<h1>Tablero Kanban</h1>
+<div class="app">
+    <div class="lists">
+        <div class="list" id="Nuevo" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)">
+            <h1>Nuevo</h1>
+            @Html.ActionLinkNuevo()
+        </div>
+        <div class="list" id="Proceso" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)">
+            <h1>Proceso</h1>
+            @Html.ActionLinkProceso()
+        </div>
+        <div class="list" id="Terminado" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)">
+            <h1>Terminado</h1>
+            @Html.ActionLinkTerminado()
+        </div>
+    </div>
+</div>
+<script src="~/Content/kanban/index.js"></script>
+

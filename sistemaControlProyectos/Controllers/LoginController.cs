@@ -1,9 +1,5 @@
 ﻿using sistemaControlProyectos.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Text;
 using System.Web.Mvc;
 
 namespace sistemaControlProyectos.Controllers
@@ -21,13 +17,13 @@ namespace sistemaControlProyectos.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            
-             SP_C_PROFESIONAL_Result listar = ProfesionalModelo.instancia.ListarProfesional().Where(u=> u.DNI ==username && u.contraseña == password).FirstOrDefault();
-             if (listar == null)
-             {
+
+            SP_C_PROFESIONAL_Result listar = ProfesionalModelo.instancia.ListarProfesional().Where(u => u.DNI == username && u.contraseña == password).FirstOrDefault();
+            if (listar == null)
+            {
                 ViewBag.Error = "Usuario o contraseña Invalida";
-                return View();     
-             }
+                return View();
+            }
             Session["usuario"] = listar;
             return RedirectToAction("ProyectosInicio", "Proyectos");
         }

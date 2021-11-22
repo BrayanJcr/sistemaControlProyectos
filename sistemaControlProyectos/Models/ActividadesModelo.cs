@@ -44,6 +44,22 @@ namespace sistemaControlProyectos.Models
                 return listarActividad;
             }
         }
+        public bool ModificarProceso(int IDActividad,string Proceso)
+        {
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                try
+                {
+                    db.SP_M_ACTIVIDADPROCESO(IDActividad, Proceso);
+                    db.SaveChanges();
+
+                    return true;
+
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+        }
 
         public bool RegistrarActividad(tblActividad objetoActividad)
         {
@@ -52,7 +68,6 @@ namespace sistemaControlProyectos.Models
             {
                 using (DBControlProyectoEntities db = new DBControlProyectoEntities())
                 {
-
                     try
                     {
                         db.SP_A_ACTIVIDAD(objetoActividad.titActividad, objetoActividad.fechaInicio, 

@@ -3,6 +3,51 @@
 }
 
 var tblUsuario
+const input = document.querySelector('#fileImagen');
+const list = document.getElementById('list');
+
+input.addEventListener('change', updateImageDisplay);
+
+function updateImageDisplay() {
+    const curFiles = input.files;
+
+    if (curFiles.length === 0) {
+        list.innerHTML = "<p>Actualmente no hay archivos seleccionados para cargar.</p>";
+    } else {
+        list.innerHTML = "";
+
+        for (const file of curFiles) {
+            if (file.type.match(/image.*/i)) {
+                var reader = new FileReader();
+                reader.addEventListener("load", (event) => {
+                    list.innerHTML += `<li>
+                    <p id="name">Nombre: ${file.name}</p>
+                    <p id="size">Tamaño: ${returnFileSize(file.size)}</p>
+                    <img id="imagenUser" src="${event.target.result}">
+                    </li>`;
+                });
+                reader.readAsDataURL(file);
+
+            } else {
+                var content = `File name (${file.name}): Not a valid file type.`;
+                content += " Update your selection.";
+
+                list.innerHTML += `<li><p>${content}</p></li>`;
+            }
+        }
+    }
+}
+
+function returnFileSize(number) {
+    if (number < 1024) {
+        return number + 'bytes';
+    } else if (number >= 1024 && number < 1048576) {
+        return (number / 1024).toFixed(1) + 'KB';
+    } else if (number >= 1048576) {
+        return (number / 1048576).toFixed(1) + 'MB';
+    }
+}
+
 //Listar Profesionales
 $(document).ready(function () {
 
@@ -63,7 +108,7 @@ function abrirModal($DNI) {
                     $("#txtProfesion").val(data.profesion);
                     $("#txtCorreo").val(data.correo);
                     $("#txtTelefono").val(data.telefono);
-                    $("#fileImagen").val(data.usrImagen);
+                    $("#imagenUser").attr("src", data.usrImagen);
 
                 }
             }
@@ -95,10 +140,10 @@ function guardar() {
             profesion: ($("#txtProfesion").val()),
             telefono: ($("#txtTelefono").val()),
             correo: ($("#txtCorreo").val()),
-            usrImagen: ($("#fileImagen").val()),
+            usrImagen: document.getElementById("imagenUser").src,
         }
     }
-
+    console.log($request)
     jQuery.ajax({
         url: "/Usuario/Guardar",
         type: "POST",

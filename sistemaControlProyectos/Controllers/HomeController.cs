@@ -12,7 +12,7 @@ namespace sistemaControlProyectos.Controllers
 
         private static SP_C_PROFESIONAL_Result SesionUsuario;
         private static SP_C_PROFESIONAL_Result SessionProfesional;
-
+        private LoginController p = new LoginController();
 
         // GET: Home
         public ActionResult Index()
@@ -35,8 +35,6 @@ namespace sistemaControlProyectos.Controllers
             catch (Exception e)
             {
 
-            }
-            return View();
         }
         public ActionResult Cerrar()
         {
