@@ -85,16 +85,16 @@ namespace sistemaControlProyectos.Helpers
 
             StringBuilder sb = new StringBuilder();
 
-            if (HttpContext.Current.Session["usuario"] != null)
+            if (HttpContext.Current.Session["profesional"] != null)
             {
-                SP_C_PROFESIONAL_Result sUsuario = (SP_C_PROFESIONAL_Result)HttpContext.Current.Session["usuario"];
+                SP_C_PROFESIONAL_Result sUsuario = (SP_C_PROFESIONAL_Result)HttpContext.Current.Session["profesional"];
 
                 List<SP_C_ACTIVIDAD_Result> lista = ActividadesModelo.Instancia.ListarActividad().Where(a => a.IDProyecto == sUsuario.IDProyectoActual).ToList();
                 int i =1;
                 foreach (SP_C_ACTIVIDAD_Result item in lista)
                 {
                   
-                    if (item.proceso == "Nuevo")
+                    if (item.proceso == "Nuevo" && item.estado==true)
                     {
                         sb.AppendLine("<div class='list-item' id='taskNuevo-"+i+ "' draggable='true' ondragstart='start(event)' ondragend='end(event)'>" + item.titActividad);
                         sb.AppendLine("<input id=" + item.IDActividad + " type='hidden'/>");
@@ -115,16 +115,16 @@ namespace sistemaControlProyectos.Helpers
 
             StringBuilder sb = new StringBuilder();
 
-            if (HttpContext.Current.Session["usuario"] != null)
+            if (HttpContext.Current.Session["profesional"] != null)
             {
-                SP_C_PROFESIONAL_Result sUsuario = (SP_C_PROFESIONAL_Result)HttpContext.Current.Session["usuario"];
+                SP_C_PROFESIONAL_Result sUsuario = (SP_C_PROFESIONAL_Result)HttpContext.Current.Session["profesional"];
 
                 List<SP_C_ACTIVIDAD_Result> lista =ActividadesModelo.Instancia.ListarActividad().Where(a => a.IDProyecto == sUsuario.IDProyectoActual).ToList();
                 int i = 1;
                 foreach (SP_C_ACTIVIDAD_Result item in lista)
                 {
 
-                    if (item.proceso == "Proceso")
+                    if (item.proceso == "Proceso" && item.estado == true)
                     {
                         sb.AppendLine("<div class='list-item' id='taskProceso-" + i + "' draggable='true' ondragstart='start(event)' ondragend='end(event)'>" + item.titActividad);
                         sb.AppendLine("<input id=" + item.IDActividad + " type='hidden'/>");
@@ -144,15 +144,15 @@ namespace sistemaControlProyectos.Helpers
 
             StringBuilder sb = new StringBuilder();
 
-            if (HttpContext.Current.Session["usuario"] != null)
+            if (HttpContext.Current.Session["profesional"] != null)
             {
-                SP_C_PROFESIONAL_Result sUsuario = (SP_C_PROFESIONAL_Result)HttpContext.Current.Session["usuario"];
+                SP_C_PROFESIONAL_Result sUsuario = (SP_C_PROFESIONAL_Result)HttpContext.Current.Session["profesional"];
 
                 List<SP_C_ACTIVIDAD_Result> lista = ActividadesModelo.Instancia.ListarActividad().Where(a => a.IDProyecto == sUsuario.IDProyectoActual).ToList();
                 int i = 1;
                 foreach (SP_C_ACTIVIDAD_Result item in lista)
                 {
-                    if (item.proceso == "Terminado")
+                    if (item.proceso == "Terminado" && item.estado == true)
                     {
                         sb.AppendLine("<div class='list-item' id='taskTerminado-" + i + "' draggable='true' ondragstart='start(event)' ondragend='end(event)'>" + item.titActividad);
                         sb.AppendLine("<input id=" + item.IDActividad + " type='hidden'/>");
