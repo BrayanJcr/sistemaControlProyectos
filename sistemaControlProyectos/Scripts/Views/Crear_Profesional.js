@@ -13,7 +13,6 @@ $(document).ready(function () {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            console.log(data.data);
             $("#cboUsuario").html("");
 
             if (data.data != null) {
@@ -66,7 +65,7 @@ $(document).ready(function () {
         },
         "columns": [
             {
-                "data": "DNI", "render": function (data) {
+                "data": "IDProfesional", "render": function (data) {
                     return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirModal(" + data + ")'><i class='fas fa-pencil-alt'></i></button>" +
                         "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='Eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
                 },
@@ -106,41 +105,31 @@ function abrirModal($DNI) {
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                console.log(data.profesion)
                 if (data != null) {
-                    
+                    $("#cboUsuario").val(data.proceso);
+                    $("#cboCargo").val(data.proceso);
+
                     
 
                 }
             }
         });
     } else {
-       
+        $("#cboUsuario").val($("#cboUsuario option:first").val());
+        $("#cboCargo").val("#cboCargo option:first");
     }
 
     $('#FormModal').modal('show');
 
 }
-
-function guardar() {
+function Guardar() {
         var $request = {
             objeto: {
-                DNI: parseInt($("#txtDni").val()),
-                nombre: ($("#txtNombre").val()),
-                apellidos: ($("#txtApellidos").val()),
-                usuario: ($("#txUsuario").val()),
-                contraseña: ($("#txtPassword").val()),
-                firma: ($("#txtFirmaDigital").val()),
-                profesion: ($("#txtProfesion").val()),
-                telefono: ($("#txtTelefono").val()),
-                correo: ($("#txtCorreo").val()),
-                IDCargo: ($("#cboCargo").val()),
-                IDArea: ($("#cboArea").val()),
-                usrImagen: ($("#fileImagen").val()),
-                IDReporte: ($("#fileReporte").val())
+                DNI: $("#cboUsuario").val(),
+                IDCargo: ($("#cboCargo").val())
             }
         }
-
+    console.log($request)
         jQuery.ajax({
             url: "/Profesional/Guardar",
             type: "POST",
@@ -148,13 +137,11 @@ function guardar() {
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                console.log(data)
                 if (data.resultado) {
-                    tablaProfesional.ajax.reload();
+                    tablaProfesional.ajax.reload()
                     $('#FormModal').modal('hide');
                 } else {
-
-                    alert("No se pudo guardar los cambios");
+                    swal("Mensaje", "No se pudo guardar los cambios", "warning")
                 }
             },
             error: function (error) {
@@ -162,24 +149,51 @@ function guardar() {
             },
             beforeSend: function () {
 
-            },
+            }
         });
 }
 
 function Eliminar($DNI) {
-    if (confirm("Estas seguro de Eliminar el Registro?")) {
-        jQuery.ajax({
-            url: "/Profesional/Eliminar" + "?DNI=" + $DNI,
-            type: "GET",
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                if (data.resultado) {
-                    tablaProfesional.ajax.reload();
+    Swal.fire({
+        title: 'Estas seguro de Eliminar el Registro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Eliminado!',
+                'Su archivo ha sido eliminado.',
+                'success'
+            )
+            jQuery.ajax({
+                url: "/Profesional/Eliminar" + "?IDProfesional=" + $DNI,
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.resultado) {
+                        Swal.fire('Reunion Eliminado', '', 'success')
+                        tablaProfesional.ajax.reload();
+                    } else {
+                        swal("Mensaje", "No se pudo eliminar la reunion", "warning");
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                },
+                beforeSend: function () {
+
                 }
-            }
-        });
-    }
+            });
+        }
+    })
+    
+            
+
 }
 
 

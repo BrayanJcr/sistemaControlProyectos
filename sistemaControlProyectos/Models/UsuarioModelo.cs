@@ -113,5 +113,23 @@ namespace sistemaControlProyectos.Models
 
             }
         }
+        public List<SP_C_PROFESIONALIMAGENUSUARIO_Result> ListarUsuarioImagen(String DNI)
+        {
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+                List<SP_C_PROFESIONALIMAGENUSUARIO_Result> listarProfesional = new List<SP_C_PROFESIONALIMAGENUSUARIO_Result>();
+                try
+                {
+                    listarProfesional = db.SP_C_PROFESIONALIMAGENUSUARIO(DNI).ToList();
+                    return listarProfesional;
+                }
+                catch (Exception ex)
+                {
+                    listarProfesional = null;
+                    return listarProfesional;
+                }
+
+            }
+        }
     }
 }

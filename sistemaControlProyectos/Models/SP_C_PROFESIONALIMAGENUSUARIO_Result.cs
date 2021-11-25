@@ -11,14 +11,10 @@ namespace sistemaControlProyectos.Models
 {
     using System;
     
-    public partial class SP_C_USUARIO_Result
+    public partial class SP_C_PROFESIONALIMAGENUSUARIO_Result
     {
         public string DNI { get; set; }
         public string nombre { get; set; }
-        public string apellidos { get; set; }
-        public string correo { get; set; }
-        public string profesion { get; set; }
-        public string telefono { get; set; }
         public string usrImagen { get; set; }
     }
 }

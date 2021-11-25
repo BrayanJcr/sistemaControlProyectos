@@ -57,7 +57,7 @@ namespace sistemaControlProyectos.Controllers
 
             if (listar.Data == null)
             {
-                respuesta = UsuarioModelo.instancia.RegistrarUsuario(objeto);
+                    respuesta = UsuarioModelo.instancia.RegistrarUsuario(objeto);
             }
             else
             {

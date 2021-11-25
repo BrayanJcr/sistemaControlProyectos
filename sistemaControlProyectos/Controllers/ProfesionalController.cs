@@ -50,7 +50,7 @@ namespace sistemaControlProyectos.Controllers
         {
             bool respuesta = true;
 
-            if (objeto.DNI == "")
+            if (objeto.IDProfesional == 0)
             {
                 
                 respuesta = ProfesionalModelo.instancia.RegistrarProfesional(objeto);
