@@ -54,7 +54,7 @@ namespace sistemaControlProyectos.Models
             {
                 try
                 {
-                    db.SP_A_PROFESIONAL(profesional.DNI,profesional.IDCargo,profesional.IDReporte,profesional.IDProyectoActual);
+                    db.SP_A_PROFESIONAL(profesional.DNI,profesional.IDCargo);
                     db.SaveChanges();
                     return true;
                 }

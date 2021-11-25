@@ -38,6 +38,15 @@ namespace sistemaControlProyectos.Controllers
             viewResult.ViewBag.IDUsuario = SesionUsuario.IDProfesional;
             viewResult.ViewBag.proyecto = proyecto.titProyecto;
             viewResult.ViewBag.IDProyectoActual = proyecto.IDProyecto;
+            SP_C_PROFESIONALIMAGENUSUARIO_Result usuario = UsuarioModelo.instancia.ListarUsuarioImagen(SesionUsuario.DNI).FirstOrDefault();
+            if (usuario.usrImagen == null)
+            {
+                viewResult.ViewBag.ImagenUsuario = usuario.usrImagen;
+            }
+            else
+            {
+                viewResult.ViewBag.ImagenUsuario = usuario.usrImagen;
+            }
 
             return viewResult;
         }

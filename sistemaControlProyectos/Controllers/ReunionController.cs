@@ -17,6 +17,11 @@ namespace sistemaControlProyectos.Controllers
             return p.MenuSession(View());
         }
 
+        public ActionResult Actas()
+        {
+            return p.MenuSession(View());
+        }
+
         public JsonResult Listar()
         {
             //List<SP_C_Reunion_Result> listarReunion = new List<SP_C_Reunion_Result>();

@@ -12,7 +12,7 @@
                 Profesional
             </div>
             <div class="card-body">
-                <table id="tblProfesional"  class="table table-light nowrap compact" style="width:100%">
+                <table id="tblProfesional" class="table table-light nowrap compact" style="width:100%">
                     <thead>
                         <tr>
                             <th class="action">#</th>
@@ -52,6 +52,7 @@
                                 <label for="txtCargo">Cargo:</label>
                                 <select class="form-control" id="cboCargo" name="Cargo"></select>
                             </div>
+
                         </div>
 
                     </div>
@@ -59,9 +60,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="Cerrar()">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
             </div>
         </div>
     </div>
 </div>
-<script src="~/Scripts/Views/Crear_Profesional.js"></script>
+<script src="@Url.Content("~/Scripts/Views/Crear_Profesional.js")" type="text/javascript"></script>
+

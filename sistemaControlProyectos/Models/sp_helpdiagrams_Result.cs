@@ -11,14 +11,12 @@ namespace sistemaControlProyectos.Models
 {
     using System;
     
-    public partial class SP_C_USUARIO_Result
+    public partial class sp_helpdiagrams_Result
     {
-        public string DNI { get; set; }
-        public string nombre { get; set; }
-        public string apellidos { get; set; }
-        public string correo { get; set; }
-        public string profesion { get; set; }
-        public string telefono { get; set; }
-        public string usrImagen { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

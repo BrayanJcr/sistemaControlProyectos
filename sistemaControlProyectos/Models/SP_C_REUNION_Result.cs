@@ -19,6 +19,6 @@ namespace sistemaControlProyectos.Models
         public string ubicacion { get; set; }
         public string tema { get; set; }
         public bool estado { get; set; }
-        public int IDProyecto { get; set; }
+        public string titProyecto { get; set; }
     }
 }

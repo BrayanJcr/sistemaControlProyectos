@@ -5,6 +5,8 @@
 var tblUsuario
 const input = document.querySelector('#fileImagen');
 const list = document.getElementById('list');
+const name = document.getElementById('name');
+const size = document.getElementById('size');
 
 input.addEventListener('change', updateImageDisplay);
 
