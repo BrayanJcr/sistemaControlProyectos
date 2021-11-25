@@ -43,9 +43,6 @@ namespace sistemaControlProyectos.Models
                     return listarReporte;
                 }
         }
-
-
-
         public bool EliminarReporte(int iDReporte)
         {
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
@@ -65,6 +62,37 @@ namespace sistemaControlProyectos.Models
 
             }
         }
+        public bool RegistrarReporte(tblReporte objeto, string detalle)
+        {
+            bool respuesta = true;
+            try
+            {
+                using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                {
+
+                    try
+                    {
+                        db.SP_A_REPORTE(objeto.FechaRep, objeto.Descripcion, null, objeto.IDProfesional, detalle);
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+
+                    }
+
+                }
+            }
+            catch
+            {
+                respuesta = false;
+
+            }
+
+            return respuesta;
+        }
+
         public bool ModificarReporte(tblReporte objetoReporte)
         {
             bool respuesta = true;

@@ -27,7 +27,7 @@ namespace sistemaControlProyectos.Controllers
         {
             bool respuesta = false;
 
-                respuesta = Models.PermisosModelo.Instancia.ModificarPermiso(xml);
+            respuesta = Models.PermisosModelo.Instancia.ModificarPermiso(xml);
             
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }

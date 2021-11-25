@@ -99,8 +99,8 @@
           <Property Name="IDProfesional" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DNI" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="IDCargo" Type="int" Nullable="false" />
-          <Property Name="IDReporte" Type="int" />
           <Property Name="IDProyectoActual" Type="int" />
+          <Property Name="IDReporte" Type="int" />
         </EntityType>
         <EntityType Name="tblProfesional_Actividad">
           <Key>
@@ -646,9 +646,9 @@
         <Function Name="SP_A_REPORTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FechaRep" Type="date" Mode="In" />
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
-          <Parameter Name="Estado" Type="varchar" Mode="In" />
           <Parameter Name="IDDoc" Type="int" Mode="In" />
           <Parameter Name="IDProfesional" Type="int" Mode="In" />
+          <Parameter Name="Detalle" Type="xml" Mode="In" />
         </Function>
         <Function Name="SP_A_REUNION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDReunion" Type="int" Mode="In" />
@@ -1155,8 +1155,8 @@
           <Property Name="IDProfesional" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DNI" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDCargo" Type="Int32" Nullable="false" />
-          <Property Name="IDReporte" Type="Int32" />
           <Property Name="IDProyectoActual" Type="Int32" />
+          <Property Name="IDReporte" Type="Int32" />
           <NavigationProperty Name="tblArea" Relationship="Self.FK__tblArea__IDProfe__5AEE82B9" FromRole="tblProfesional" ToRole="tblArea" />
           <NavigationProperty Name="tblCargo" Relationship="Self.FK__tblProfes__IDCar__571DF1D5" FromRole="tblProfesional" ToRole="tblCargo" />
           <NavigationProperty Name="tblCuadernoProfesional" Relationship="Self.FK__tblCuader__IDPro__6754599E" FromRole="tblProfesional" ToRole="tblCuadernoProfesional" />
@@ -1868,12 +1868,12 @@
             <Parameter Name="IDActividad" Mode="In" Type="Int32" />
             <Parameter Name="cantidad" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_A_REPORTE" ReturnType="Collection(String)">
+          <FunctionImport Name="SP_A_REPORTE" ReturnType="Collection(DBControlProyectoModel.SP_A_REPORTE_Result)">
             <Parameter Name="FechaRep" Mode="In" Type="DateTime" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
-            <Parameter Name="Estado" Mode="In" Type="String" />
             <Parameter Name="IDDoc" Mode="In" Type="Int32" />
             <Parameter Name="IDProfesional" Mode="In" Type="Int32" />
+            <Parameter Name="Detalle" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_A_REUNION" ReturnType="Collection(String)">
             <Parameter Name="IDReunion" Mode="In" Type="Int32" />
@@ -2128,6 +2128,10 @@
             <Parameter Name="usrImagen" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="SP_A_REPORTE_Result">
+          <Property Type="Int32" Name="IDActividad" Nullable="true" />
+          <Property Type="Int32" Name="IDReporte" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="SP_C_ACTIVIDAD_Result">
           <Property Type="Int32" Name="IDActividad" Nullable="false" />
           <Property Type="String" Name="titActividad" Nullable="false" MaxLength="50" />
@@ -2510,8 +2514,8 @@
                 <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
                 <ScalarProperty Name="DNI" ColumnName="DNI" />
                 <ScalarProperty Name="IDCargo" ColumnName="IDCargo" />
-                <ScalarProperty Name="IDReporte" ColumnName="IDReporte" />
                 <ScalarProperty Name="IDProyectoActual" ColumnName="IDProyectoActual" />
+                <ScalarProperty Name="IDReporte" ColumnName="IDReporte" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2657,7 +2661,14 @@
           <FunctionImportMapping FunctionImportName="SP_A_PROYECTOPROFESIONAL" FunctionName="DBControlProyectoModel.Store.SP_A_PROYECTOPROFESIONAL" />
           <FunctionImportMapping FunctionImportName="SP_A_RECURSO" FunctionName="DBControlProyectoModel.Store.SP_A_RECURSO" />
           <FunctionImportMapping FunctionImportName="SP_A_RECURSO_ACTIVIDAD" FunctionName="DBControlProyectoModel.Store.SP_A_RECURSO_ACTIVIDAD" />
-          <FunctionImportMapping FunctionImportName="SP_A_REPORTE" FunctionName="DBControlProyectoModel.Store.SP_A_REPORTE" />
+          <FunctionImportMapping FunctionImportName="SP_A_REPORTE" FunctionName="DBControlProyectoModel.Store.SP_A_REPORTE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_A_REPORTE_Result">
+                <ScalarProperty Name="IDActividad" ColumnName="IDActividad" />
+                <ScalarProperty Name="IDReporte" ColumnName="IDReporte" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_A_REUNION" FunctionName="DBControlProyectoModel.Store.SP_A_REUNION" />
           <FunctionImportMapping FunctionImportName="SP_A_SUBMENU" FunctionName="DBControlProyectoModel.Store.SP_A_SUBMENU" />
           <FunctionImportMapping FunctionImportName="SP_A_USUARIO" FunctionName="DBControlProyectoModel.Store.SP_A_USUARIO" />

@@ -123,8 +123,8 @@ function Guardar() {
             if (data.resultado) {
                 $("#cboRol").val(0);
                 $("#tbpermiso tbody").html("");
+                swal("Mensaje", "Se guardo los cambios", "success");
             } else {
-
                 swal("Mensaje", "No se pudo guardar los cambios", "warning")
             }
         },

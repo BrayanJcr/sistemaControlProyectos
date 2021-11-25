@@ -359,7 +359,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_RECURSO_ACTIVIDAD", iDRecursoParameter, iDActividadParameter, cantidadParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_REPORTE(Nullable<System.DateTime> fechaRep, string descripcion, string estado, Nullable<int> iDDoc, Nullable<int> iDProfesional)
+        public virtual ObjectResult<SP_A_REPORTE_Result> SP_A_REPORTE(Nullable<System.DateTime> fechaRep, string descripcion, Nullable<int> iDDoc, Nullable<int> iDProfesional, string detalle)
         {
             var fechaRepParameter = fechaRep.HasValue ?
                 new ObjectParameter("FechaRep", fechaRep) :
@@ -369,10 +369,6 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("Descripcion", descripcion) :
                 new ObjectParameter("Descripcion", typeof(string));
     
-            var estadoParameter = estado != null ?
-                new ObjectParameter("Estado", estado) :
-                new ObjectParameter("Estado", typeof(string));
-    
             var iDDocParameter = iDDoc.HasValue ?
                 new ObjectParameter("IDDoc", iDDoc) :
                 new ObjectParameter("IDDoc", typeof(int));
@@ -381,7 +377,11 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("IDProfesional", iDProfesional) :
                 new ObjectParameter("IDProfesional", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_REPORTE", fechaRepParameter, descripcionParameter, estadoParameter, iDDocParameter, iDProfesionalParameter);
+            var detalleParameter = detalle != null ?
+                new ObjectParameter("Detalle", detalle) :
+                new ObjectParameter("Detalle", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_A_REPORTE_Result>("SP_A_REPORTE", fechaRepParameter, descripcionParameter, iDDocParameter, iDProfesionalParameter, detalleParameter);
         }
     
         public virtual ObjectResult<string> SP_A_REUNION(Nullable<int> iDReunion, string tipoDeReunion, Nullable<System.DateTime> fecha, string ubicacion, string tema, Nullable<bool> estado, Nullable<int> iDProyecto)

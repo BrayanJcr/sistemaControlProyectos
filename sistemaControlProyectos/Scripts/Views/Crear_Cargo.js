@@ -87,44 +87,63 @@ function Guardar() {
             Activo: $("#cboEstado").val() == "1" ? true : false,
         }
     }
-    console.log($request);
-    jQuery.ajax({
-        url: "/Cargo/Guardar",
-        type: "POST",
-        data: JSON.stringify($request),
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            console.log(data.resultado);
-            if (data.resultado) {
-                tablaCargo.ajax.reload();
-                $('#FormModal').modal('hide');
-            } else {
-                alert("Mensaje No se pudo guardar los cambios", "warning");
-            }
-        },
-        error: function (error) {
-            console.log(error)
-        },
-        beforeSend: function () {
-
-        },
-    });
-
-}
-
-function Eliminar($IDCargo) {
-    if (confirm("Estas seguro de Eliminar el Registro?")) {
+    if ($request.objeto.nomCargo != "") {
+        console.log($request);
         jQuery.ajax({
-            url: "/Cargo/Eliminar" + "?IDCargo=" + $IDCargo,
-            type: "GET",
+            url: "/Cargo/Guardar",
+            type: "POST",
+            data: JSON.stringify($request),
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
+                console.log(data.resultado);
                 if (data.resultado) {
                     tablaCargo.ajax.reload();
+                    $('#FormModal').modal('hide');
+                    swal("Mensaje", "Se Guardaron los cambios", "success");
+                } else {
+                    swal("Mensaje","No se pudo guardar los cambios", "error");
                 }
-            }
+            },
+            error: function (error) {
+                console.log(error)
+            },
+            beforeSend: function () {
+
+            },
         });
-    }
+    } else
+        swal("Mensaje", "No se pudo guardar los cambios", "warning");
+}
+
+function Eliminar($IDCargo) {
+    Swal.fire({
+        title: 'Estas seguro de Eliminar el Registro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Eliminado!',
+                'Su archivo ha sido eliminado.',
+                'success'
+            )
+            jQuery.ajax({
+                url: "/Cargo/Eliminar" + "?IDCargo=" + $IDCargo,
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.resultado) {
+                        tablaCargo.ajax.reload();
+                    } else
+                        swal("Mensaje", "No se pudo eliminar los cambios", "warning")
+                }
+            });
+        }
+    })
 }

@@ -11,12 +11,15 @@
 
             <div class="form-group">
                 <label for="date">Fecha:</label>
-                <input type="date" id="txtfecha" name="fecha" disabled>
+                <input type="date" id="txtFecha" name="fecha" disabled>
             </div>
             <br>
             <div class="form-group">
                 <label>Reporte Personal</label>
-                <textarea id="txtDescripcion" name="w3review" rows="4" cols="150">Reporte.</textarea>
+            </div>
+            <br>
+            <div>
+                <textarea id="txtDescripcion" rows="4" cols="150" placeholder="Ejm. Descripcion de reporte">Detalles.</textarea>
             </div>
             <br>
             <div class="row">
@@ -45,7 +48,9 @@
             <div class="form-group">
                 <label>Sube un archivo: *</label>
                 <input type="file" id="format" />
-
+            </div>
+            <br>
+            <div>
                 <button id="guardar" type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
             </div>
         </div>

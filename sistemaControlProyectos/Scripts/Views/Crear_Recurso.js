@@ -83,29 +83,40 @@ function Guardar() {
             costo: ($("#txtPrecio").val()),
         }
     }
-    console.log($request);
-    jQuery.ajax({
-        url: "/Recursos/Guardar",
-        type: "POST",
-        data: JSON.stringify($request),
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            console.log(data.resultado);
-            if (data.resultado) {
-                tablaRecurso.ajax.reload();
-                $('#FormModal').modal('hide');
-            } else {
-                alert("Mensaje No se pudo guardar los cambios", "warning");
-            }
-        },
-        error: function (error) {
-            console.log(error)
-        },
-        beforeSend: function () {
+    if ($request.objeto.nomRecurso != "") {
+        if ($request.objeto.cantidadStock != "") {
+            if ($request.objeto.costo != "") {
 
-        },
-    });
+                console.log($request);
+                jQuery.ajax({
+                    url: "/Recursos/Guardar",
+                    type: "POST",
+                    data: JSON.stringify($request),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        console.log(data.resultado);
+                        if (data.resultado) {
+                            tablaRecurso.ajax.reload();
+                            $('#FormModal').modal('hide');
+                            swal("Mensaje", "Se guardo los cambios", "success");
+                        } else {
+                            swal("Mensaje", "No se pudo guardar los cambios", "error");
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    },
+                    beforeSend: function () {
+
+                    },
+                });
+            } else
+                swal("Mensaje", "Ingrese un Precio", "warning");
+        } else
+            swal("Mensaje", "Ingrese una Cantidad", "warning");
+    } else
+        swal("Mensaje", "Ingrese un Nombre", "warning");
 
 }
 

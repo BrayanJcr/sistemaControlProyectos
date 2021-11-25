@@ -170,17 +170,40 @@ function guardar() {
 }
 
 function Eliminar($DNI) {
-    if (confirm("Estas seguro de Eliminar el Registro?")) {
-        jQuery.ajax({
-            url: "/Usuario/Eliminar" + "?DNI=" + $DNI,
-            type: "GET",
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                if (data.resultado) {
-                    tblUsuario.ajax.reload();
+
+    Swal.fire({
+        title: 'Estas seguro de Eliminar el Registro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Eliminado!',
+                'Su archivo ha sido eliminado.',
+                'success'
+            )
+            jQuery.ajax({
+                url: "/Usuario/Eliminar" + "?DNI=" + $DNI,
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.resultado) {
+                        tblUsuario.ajax.reload();
+                    } else
+                        swal("Mensaje", "No se pudo eliminar los cambios", "warning")
+                },
+                error: function (error) {
+                    console.log(error);
+                },
+                beforeSend: function () {
+
                 }
-            }
-        });
-    }
+            });
+        }
+    })
 }

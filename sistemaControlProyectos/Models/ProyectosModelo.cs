@@ -220,11 +220,6 @@ namespace sistemaControlProyectos.Models
             }
         }
 
-       
-
-      
-
-      
         public List<SP_C_PROYECTOPROFESIONALIMAGEN_Result> ListarProyectoProfesionalImagen(int IDProfesional)
         {
             List<SP_C_PROYECTOPROFESIONALIMAGEN_Result> listarProyectoProfesional = new List<SP_C_PROYECTOPROFESIONALIMAGEN_Result>();

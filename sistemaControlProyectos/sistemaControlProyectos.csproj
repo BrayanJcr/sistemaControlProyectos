@@ -284,6 +284,9 @@
     <Compile Include="Models\RecursoModelo.cs" />
     <Compile Include="Models\ReporteModelo.cs" />
     <Compile Include="Models\ReunionModelo.cs" />
+    <Compile Include="Models\SP_A_REPORTE_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_C_ACTIVIDAD_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>

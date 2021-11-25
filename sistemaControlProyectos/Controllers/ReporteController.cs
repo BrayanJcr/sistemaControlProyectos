@@ -61,7 +61,14 @@ namespace sistemaControlProyectos.Controllers
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
 
-        //Controlador de documentos
+        [HttpPost]
+        public JsonResult Guardar(tblReporte objeto ,string xml)
+        {
+            bool respuesta = false;
 
+            respuesta = Models.ReporteModelo.Instancia.RegistrarReporte(objeto,xml);
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -8,7 +8,7 @@ window.onload = function () {
         dia = '0' + dia; //agrega cero si el menor de 10
     if (mes < 10)
         mes = '0' + mes //agrega cero si el menor de 10
-    document.getElementById('txtfecha').value = ano + "-" + mes + "-" + dia;
+    document.getElementById('txtFecha').value = ano + "-" + mes + "-" + dia;
 }
 
 //Cambiar Fechas
@@ -65,57 +65,63 @@ $(document).ready(function () {
 })
 
 //Guardar Actividad
-function Guardar() {
+function Guardar() { 
 
-    var activiSelec = [];
-    var $xml = "<DETALLE>"
-    var resultado = "";
-
+    var $xml = "<DETALLE>";
+    var actividad = "";
+    var estado;
     $('input[id="IDActividad"]').each(function () {
         var idActividad = $(this).val();
-        activiSelec.push(idActividad, $(this).prop("checked") == true ? "1" : "0");
-
-        permiso = permiso +
-            "<PERMISO>"
-            + "<IDActividad>" + IDPermiso + "</IDActividad>"
-            + "<FechaRep>" + Activo + "</FechaRep>"
-            + "</PERMISO>";
-
+        estado = ($(this).prop("checked") == true ? "1" : "0"); 
+        if (estado == 1) {
+            actividad = actividad +
+                "<ACTIVIDAD>"
+                + "<IDActividad>" + idActividad + "</IDActividad>"
+                + "</ACTIVIDAD>";
+        }
     });
 
-    $xml = $xml + permiso;
+    $xml = $xml + actividad;
     $xml = $xml + "</DETALLE>"
-
-
-    var request = {
-        xml: $xml
-    };
     console.log($xml);
 
-    jQuery.ajax({
-        url: "/Reporte/Guardar",
-        type: "POST",
-        data: JSON.stringify(request),
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            $(".card-load").LoadingOverlay("hide");
+    var $request = {
+        objeto: {
+            FechaRep :  ($("#txtFecha").val()),
+            Descripcion: $("#txtDescripcion").val(),
+            IDProfesional: $('#txtIDUsuarioSession').val(),
+        },
+        xml: $xml,
+    };
+    console.log($request);
+    if ($request.xml != "<DETALLE></DETALLE>") {
+        jQuery.ajax({
+            url: "/Reporte/Guardar",
+            type: "POST",
+            data: JSON.stringify($request),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $(".card-load").LoadingOverlay("hide");
 
-            if (data.resultado) {
-                $("#cboRol").val(0);
-                $("#tbpermiso tbody").html("");
-            } else {
+                if (data.resultado) {
+                    $("#txtDescripcion").val("Detalles.");
+                    tablaActividad.ajax.reload();
+                    swal("Mensaje", "Guardado con Exito", "success")
+                } else {
 
-                swal("Mensaje", "No se pudo guardar los cambios", "warning")
-            }
-        },
-        error: function (error) {
-            console.log(error)
-        },
-        beforeSend: function () {
-            $(".card-load").LoadingOverlay("show");
-        },
-    });
+                    swal("Mensaje", "No se pudo guardar los cambios", "error")
+                }
+            },
+            error: function (error) {
+                console.log(error)
+            },
+            beforeSend: function () {
+                $(".card-load").LoadingOverlay("show");
+            },
+        });
+    } else
+       swal("Mensaje", "Seleccione una actividad", "warning");
 }
 
 //Descargar documentos
