@@ -2198,7 +2198,7 @@
     <Content Include="Content\fontawesome-free\svgs\solid\yin-yang.svg" />
     <Content Include="Content\fontawesome-free\svgs\solid\z.svg" />
     <Content Include="Content\jquery-loading-overlay\loadingoverlay.min.js" />
-    <Content Include="Content\kanban\index.js" />
+    <Content Include="Scripts\Views\DragAndDrop.js" />
     <Content Include="Content\login\css\campo.css" />
     <Content Include="Content\login\css\login.css" />
     <Content Include="Content\login\css\login2.css" />
