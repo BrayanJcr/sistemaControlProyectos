@@ -49,7 +49,6 @@ namespace sistemaControlProyectos.Models
         public bool RegistrarProfesional(tblProfesional profesional)
         {
             
-            
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
                 try
@@ -97,7 +96,7 @@ namespace sistemaControlProyectos.Models
 
                     try
                     {
-                        db.SP_M_PROFESIONAL(profesional.IDProfesional,profesional.DNI, profesional.IDCargo, profesional.IDReporte,profesional.IDProyectoActual);
+                        db.SP_M_PROFESIONAL(profesional.IDProfesional,profesional.DNI, profesional.IDCargo,profesional.IDProyectoActual);
                         db.SaveChanges();
                         return true;
                     }

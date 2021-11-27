@@ -45,42 +45,50 @@ function ObtenerFecha() {
 }
 
 
-var tablaReporte;
-$(document).ready(function () {
+function buscar() { 
+    var tablaReporte;
+
+    $("#tblReporte").dataTable().fnDestroy();
+
+    var estado = $("#txtEstado").val();
+    console.log(estado);
 
     tablaReporte = $('#tblReporte').DataTable({
 
         "ajax": {
-            "url": "/Reporte/Listar",
+            "url": "/Reporte/Listar?Estado=" + estado,
             "type": "GET",
             "datatype": "json"
         },
 
         "columns": [
             {
-                "data": "IDReporte", "render": function (data) {
-                    return 
-                        "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='Eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
+                "data": "IDReport", "render": function (data) {
+                    return "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='Eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
                 },
                 "orderable": false,
                 "searchable": false,
                 "width": "150px"
             },
-            { "data": "proceso" },
+            { "data": "nombre" },
             { "data": "FechaRep", "render": function (data) { return Cambiarfecha(data); } },
             {
                 "data": "Estado", "render": function (data) {
-                    if (data) {
-                        return '<span class="badge bg-success">Activo</span>';
+                    if (data == "Rechazado") {
+                        return '<span class="badge bg-danger">Rechazado</span>';
                     } else {
-                        return '<span class="badge bg-danger">No Activo</span>';
+                        if (data == "Aceptado") {
+                            return '<span class="badge bg-success">Aceptado</span>';
+                        }
+                        else {
+                            return '<span class="badge bg-warning">Pendiente</span>';
+                        }
                     }
                 }
             },
             {
-                "data": "IDReporte", "render": function (data) {
-                    return
-                    "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='Detalle(" + data + ")'><i class='fa fa-trash'></i></button>"
+                "data": "IDReport", "render": function (data) {
+                    return "<button class='btn btn-primary btn-sm ml-2' type='button' onclick='Detalle(" + data + ")'><i class='fa fa-info-circle'></i>  Revisar</button>"
                 },
                 "orderable": false,
                 "searchable": false,
@@ -93,4 +101,4 @@ $(document).ready(function () {
         ],
         responsive: true
     });
-})
+}

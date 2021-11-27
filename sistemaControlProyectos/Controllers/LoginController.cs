@@ -41,7 +41,7 @@ namespace sistemaControlProyectos.Controllers
             SP_C_PROFESIONALIMAGENUSUARIO_Result usuario = UsuarioModelo.instancia.ListarUsuarioImagen(SesionUsuario.DNI).FirstOrDefault();
             if (usuario.usrImagen == null)
             {
-                viewResult.ViewBag.ImagenUsuario = usuario.usrImagen;
+                viewResult.ViewBag.ImagenUsuario = "../imagenes/user.jpg";
             }
             else
             {

@@ -17,6 +17,8 @@ namespace sistemaControlProyectos.Models
         public string nomPadre { get; set; }
         public string nomArea { get; set; }
         public int IDProfesional { get; set; }
+        public string nombre { get; set; }
+        public string apellidos { get; set; }
         public Nullable<int> IDProyecto { get; set; }
     }
 }

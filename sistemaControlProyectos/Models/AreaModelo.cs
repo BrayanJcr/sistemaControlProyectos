@@ -65,7 +65,7 @@ namespace sistemaControlProyectos.Models
             }
         }
 
-        public bool RegistrarArea(tblArea objetoArea)
+        public bool RegistrarArea(tblArea objetoArea, int IDProyecto)
         {
             bool respuesta = true;
             try
@@ -75,7 +75,7 @@ namespace sistemaControlProyectos.Models
 
                     try
                     {
-                        db.SP_A_AREA(objetoArea.IdNomAreaPadre,objetoArea.nomArea,objetoArea.IDProfesional,objetoArea.IDProyecto);
+                        db.SP_A_AREA(objetoArea.IdNomAreaPadre,objetoArea.nomArea,objetoArea.IDProfesional,IDProyecto);
 
                         db.SaveChanges();
                         return true;
@@ -116,7 +116,7 @@ namespace sistemaControlProyectos.Models
 
             }
         }
-        public bool ModificarArea(tblArea objetoArea)
+        public bool ModificarArea(tblArea objetoArea, int IDProyecto)
         {
             bool respuesta = true;
             try
@@ -127,7 +127,7 @@ namespace sistemaControlProyectos.Models
                     try
                     {
                         db.SP_M_AREA(objetoArea.IDArea,objetoArea.IdNomAreaPadre
-                            ,objetoArea.nomArea,objetoArea.IDProfesional,objetoArea.IDProyecto
+                            ,objetoArea.nomArea,objetoArea.IDProfesional,IDProyecto
                             );
                         db.SaveChanges();
                         return true;

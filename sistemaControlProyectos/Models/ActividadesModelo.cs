@@ -44,6 +44,26 @@ namespace sistemaControlProyectos.Models
                 return listarActividad;
             }
         }
+
+        public List<SP_C_ACTIVIDADPROFENCAR_Result> ListarActividadEncar(int IDProfesional)
+        {
+            List<SP_C_ACTIVIDADPROFENCAR_Result> listarActividad = new List<SP_C_ACTIVIDADPROFENCAR_Result>();
+
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                try
+                {
+                    listarActividad = db.SP_C_ACTIVIDADPROFENCAR(IDProfesional).ToList();
+
+                    return listarActividad;
+
+                }
+                catch (Exception ex)
+                {
+                    listarActividad = null;
+                    return listarActividad;
+                }
+        }
+
         public bool ModificarProceso(int IDActividad,string Proceso)
         {
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
@@ -61,7 +81,7 @@ namespace sistemaControlProyectos.Models
                 }
         }
 
-        public bool RegistrarActividad(tblActividad objetoActividad)
+        public bool RegistrarActividad(tblActividad objetoActividad, int IDProyecto)
         {
             bool respuesta = true;
             try
@@ -73,7 +93,7 @@ namespace sistemaControlProyectos.Models
                         db.SP_A_ACTIVIDAD(objetoActividad.titActividad, objetoActividad.fechaInicio, 
                             objetoActividad.fechaFin, objetoActividad.Descripcion, 
                             objetoActividad.estado, objetoActividad.creador,objetoActividad.proceso,
-                            objetoActividad.IDProyecto);
+                            IDProyecto);
                         db.SaveChanges();
                         return true;
                     }
@@ -113,7 +133,7 @@ namespace sistemaControlProyectos.Models
 
             }
         }
-        public bool ModificarActividad(tblActividad objetoActividad)
+        public bool ModificarActividad(tblActividad objetoActividad, int IDProyecto)
         {
             bool respuesta = true;
             try
@@ -126,7 +146,7 @@ namespace sistemaControlProyectos.Models
                         db.SP_M_ACTIVIDAD(objetoActividad.IDActividad, objetoActividad.titActividad, objetoActividad.fechaInicio,
                             objetoActividad.fechaFin, objetoActividad.Descripcion,
                             objetoActividad.estado, objetoActividad.creador, objetoActividad.proceso,
-                            objetoActividad.IDProyecto);
+                            IDProyecto);
                         db.SaveChanges();
                         return true;
                     }

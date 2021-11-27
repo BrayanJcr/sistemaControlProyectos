@@ -25,6 +25,5 @@ namespace sistemaControlProyectos.Models
         public string correo { get; set; }
         public string telefono { get; set; }
         public Nullable<int> IDProyectoActual { get; set; }
-        public Nullable<int> IDReporte { get; set; }
     }
 }

@@ -62,7 +62,7 @@ namespace sistemaControlProyectos.Models
 
             }
         }
-        public bool RegistrarReporte(tblReporte objeto, string detalle)
+        public bool RegistrarReporte(tblReporte objeto, string detalle, int IDProfesional)
         {
             bool respuesta = true;
             try
@@ -72,7 +72,7 @@ namespace sistemaControlProyectos.Models
 
                     try
                     {
-                        db.SP_A_REPORTE(objeto.FechaRep, objeto.Descripcion, null, objeto.IDProfesional, detalle);
+                        db.SP_A_REPORTE(objeto.FechaRep, objeto.Descripcion, null, IDProfesional, detalle);
                         db.SaveChanges();
                         return true;
                     }

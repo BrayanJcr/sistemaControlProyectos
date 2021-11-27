@@ -17,7 +17,6 @@ namespace sistemaControlProyectos.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblReporte()
         {
-            this.tblProfesional = new HashSet<tblProfesional>();
             this.tblReporte_Actividad = new HashSet<tblReporte_Actividad>();
         }
     
@@ -29,9 +28,7 @@ namespace sistemaControlProyectos.Models
         public int IDProfesional { get; set; }
     
         public virtual tblDocumento tblDocumento { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblProfesional> tblProfesional { get; set; }
-        public virtual tblProfesional tblProfesional1 { get; set; }
+        public virtual tblProfesional tblProfesional { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblReporte_Actividad> tblReporte_Actividad { get; set; }
     }

@@ -11,12 +11,16 @@ namespace sistemaControlProyectos.Models
 {
     using System;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class SP_C_ACTIVIDADPROFENCAR_Result
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public int IDActividad { get; set; }
+        public string titActividad { get; set; }
+        public System.DateTime fechaInicio { get; set; }
+        public System.DateTime fechaFin { get; set; }
+        public string Descripcion { get; set; }
+        public bool estado { get; set; }
+        public string creador { get; set; }
+        public string proceso { get; set; }
+        public int IDProyecto { get; set; }
     }
 }

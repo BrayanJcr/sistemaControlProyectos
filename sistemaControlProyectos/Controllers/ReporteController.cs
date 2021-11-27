@@ -10,32 +10,31 @@ namespace sistemaControlProyectos.Controllers
     public class ReporteController : Controller
     {
         // GET: Reporte
+        private static SP_C_PROFESIONAL_Result SesionUsuario;
         private LoginController p = new LoginController();
         public ActionResult Reporte()
         {
             return p.MenuSession(View());
         }
-        public ActionResult TablaRepo()
+        public ActionResult Revisar()
         {
             return p.MenuSession(View());
         }
 
-        public JsonResult Listar()
+        public JsonResult Listar(String estado)
         {
-            //List<SP_C_REPORTE_Result> listarREPORTE = new List<SP_C_REPORTE_Result>();
+            List<SP_C_REPORTE_Result> lista;
 
-            //using (DBControlProyectoEntities db = new DBControlProyectoEntities())
-            //{
+            if (estado != "Todo") {
+                lista = Models.ReporteModelo.Instancia.ListarReporte().Where(u => u.Estado == estado).ToList();
+            }
+            else
+            {
+                lista = Models.ReporteModelo.Instancia.ListarReporte();
+            }
 
-            //listarREPORTE = db.SP_C_REPORTE().ToList();
-            //listarREPORTE = (from p in db.tblREPORTE select p).ToList();
-            //}
-            //return Json(new { data = listarREPORTE }, JsonRequestBehavior.AllowGet);
-
-            List<SP_C_REPORTE_Result> lista = Models.ReporteModelo.Instancia.ListarReporte();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
-
 
         public JsonResult Obtener(int IDReport)
         {
@@ -65,8 +64,8 @@ namespace sistemaControlProyectos.Controllers
         public JsonResult Guardar(tblReporte objeto ,string xml)
         {
             bool respuesta = false;
-
-            respuesta = Models.ReporteModelo.Instancia.RegistrarReporte(objeto,xml);
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            respuesta = Models.ReporteModelo.Instancia.RegistrarReporte(objeto,xml,SesionUsuario.IDProfesional);
 
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }

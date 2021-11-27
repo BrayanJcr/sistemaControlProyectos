@@ -5,35 +5,41 @@
 });
 
 function ListarArea() {
-    $.ajax({
-        type: "POST",
-        contentType: "application/json; charset=utf-8",
-        url: "Listar",
-        data: "{}",
+    jQuery.ajax({
+        url: "/Area/ListarAreaPadre",
+        type: "GET",
         dataType: "json",
-        success: function (Result) {
-            console.log(Result);
-            Result = Result.data;
-            console.log(Result);
-            var data = [];
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
             var area = [];
-            $.each(Result, function (i, item) {
-                var serieA = [
-                    item.IdNomAreaPadre, item.IDArea
-                ]
-                var serie = {
-                    id: item.IDArea, 
-                    title: item.nomArea,
-                    name: item.encargado,
+            area.push(['Accionistas', 'Tablero']);
+
+            var datos = [{ id: 'Accionistas' }];
+
+            $.each(data.data, function (i, item) {
+                console.log(i);
+                if (i == 0) {
+                    area.push(['Tablero', 'Gerente']);
+                    datos.push({ id: "Tablero" });
+                    datos.push({
+                        id: item.nomArea,
+                        title: item.nomArea,
+                        name: item.nombre,});
+                } else {
+
+                    area.push([item.nomPadre, item.nomArea])
+
+                    datos.push(
+                        {
+                            id: item.nomArea,
+                            title: item.nomArea,
+                            name: item.nombre,
+                        })
                 }
-
-                area.push(serieA);
-                data.push(serie);
-
-                console.log(data);
-                console.log(area);
-                resultados(data,area);
             })
+            console.log(datos)
+            console.log(area)
+            resultados(datos, area);
         },
         error: function (Result) {
             alert("Error");
@@ -41,10 +47,10 @@ function ListarArea() {
     });
 }
 
-function resultados(data,area) {
-    var data = data;
-    var area = area
-    dibujarOrganigrama(data,area);
+function resultados(datos,area) {
+    var datos = datos;
+    var area = area;
+    dibujarOrganigrama(datos,area);
 }
 
 function dibujarOrganigrama(data,area) {
@@ -55,7 +61,7 @@ function dibujarOrganigrama(data,area) {
         },
 
         title: {
-            text: 'Organigrama de BRAVAJAL'
+            text: 'Organigrama del Proyecto'
         },
 
         accessibility: {
@@ -82,7 +88,6 @@ function dibujarOrganigrama(data,area) {
                 dataLabels: {
                     color: 'black'
                 },
-                color: '#980104',
                 height: 25
             }, {
                 level: 1,
@@ -90,7 +95,6 @@ function dibujarOrganigrama(data,area) {
                 dataLabels: {
                 color: 'black'
                 },
-                color: '#980104',
                 height: 25
             }, {
                 level: 2,
