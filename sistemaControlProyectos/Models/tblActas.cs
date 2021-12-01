@@ -10,16 +10,15 @@
 namespace sistemaControlProyectos.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class SP_C_REUNION_Result
+    public partial class tblActas
     {
-        public int IDReunion { get; set; }
-        public string nombre { get; set; }
-        public string tipoDeReunion { get; set; }
-        public System.DateTime fecha { get; set; }
-        public string ubicacion { get; set; }
-        public string tema { get; set; }
-        public bool estado { get; set; }
-        public string titProyecto { get; set; }
+        public int IDActas { get; set; }
+        public string DescripcionActas { get; set; }
+        public Nullable<System.DateTime> FechaCreacion { get; set; }
+        public Nullable<int> IDReunion { get; set; }
+    
+        public virtual tblReunion tblReunion { get; set; }
     }
 }
