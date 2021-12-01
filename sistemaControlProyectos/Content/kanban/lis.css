@@ -41,6 +41,7 @@ header {
         padding: 8px;
         transition: all 0.2s linear;
         border-radius: 10px;
+        
     }
 
         .lists .list .list-item {
@@ -49,5 +50,13 @@ header {
             padding: 15px 20px;
             text-align: center;
             margin: 4px 0px;
-            
         }
+            .lists .list .list-item .ProcesoColor {
+                background: #ffc107;
+            }
+            .lists .list .list-item .NuevoColor {
+                background: #28a745;
+            }
+            .lists .list .list-item .TerminadoColor {
+                background: #007bff;
+            }

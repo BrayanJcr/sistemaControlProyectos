@@ -126,19 +126,17 @@ function asignarProfesional() {
 
         var $request = {
             objeto: {
-                IDProfesional: parseInt($("#txtIdResponsable").val()),  
-                IDReunion: parseInt($("#txtIdReunion").val()),     
+                IDReunion: parseInt($("#txtIdReunion").val()),
+                IDProfesional: parseInt($("#txtIdResponsable").val()),
             }
         }
-
         jQuery.ajax({
-            url: "/Reunion/GuardarprofesionalReunion",
+            url: "/Reunion/GuardarProfesionalReunion?IDProfesional=" + $request.objeto.IDProfesional + "&IDReunion=" + $request.objeto.IDReunion,
             type: "POST",
             data: JSON.stringify($request),
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                console.log($request);
                 if (data.resultado) {
                     tabladata.ajax.reload();
                     $("#txtIdResponsable").val("0");

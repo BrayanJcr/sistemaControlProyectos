@@ -22,6 +22,16 @@ namespace sistemaControlProyectos.Controllers
             return p.MenuSession(View());
         }
 
+        public ActionResult AsignarReunion()
+        {
+            return p.MenuSession(View());
+        }
+        public ActionResult Documento()
+        {
+
+            return p.MenuSession(View());
+
+        }
         public JsonResult Listar()
         {
             //List<SP_C_Reunion_Result> listarReunion = new List<SP_C_Reunion_Result>();
@@ -70,7 +80,17 @@ namespace sistemaControlProyectos.Controllers
 
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GuardarProfesionalReunion(tblProfesional_Reunion objetoReunion)
+            {
+            bool respuesta = false;
 
+            
+                respuesta = ReunionModelo.Instancia.RegistrarProfesionalReunion(objetoReunion);
+            
+
+
+            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult Eliminar(int IDReunion)
         {
             bool respuesta = true;

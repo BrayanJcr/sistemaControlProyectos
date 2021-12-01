@@ -10,13 +10,15 @@
 namespace sistemaControlProyectos.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class tblActas
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public int IDActas { get; set; }
+        public string DescripcionActas { get; set; }
+        public Nullable<System.DateTime> FechaCreacion { get; set; }
+        public Nullable<int> IDReunion { get; set; }
+    
+        public virtual tblReunion tblReunion { get; set; }
     }
 }

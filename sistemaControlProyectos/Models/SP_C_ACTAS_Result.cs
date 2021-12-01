@@ -10,14 +10,14 @@
 namespace sistemaControlProyectos.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class SP_C_ACTAS_Result
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public string DescripcionActas { get; set; }
+        public Nullable<System.DateTime> FechaCreacion { get; set; }
+        public string titProyecto { get; set; }
+        public string DNI { get; set; }
+        public string nombre { get; set; }
+        public string apellidos { get; set; }
     }
 }

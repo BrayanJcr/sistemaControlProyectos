@@ -287,6 +287,12 @@
     <Compile Include="Models\SP_A_REPORTE_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_C_ACTAS_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_C_ACTIVIDADPROFENCAR_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_C_ACTIVIDAD_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -368,16 +374,10 @@
     <Compile Include="Models\SP_C_USUARIO_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SP_M_ActualizarPermisos_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
+    <Compile Include="Models\tblActas.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblActividad.cs">
@@ -2554,6 +2554,7 @@
     <Content Include="Scripts\Views\Profesional_AsignarProye.js" />
     <Content Include="Scripts\Views\Recurso_Asignar.js" />
     <Content Include="Scripts\Views\Reporte_Tabla.js" />
+    <Content Include="Scripts\Views\Reunion_AsignarProfesional.js" />
     <Content Include="Scripts\Views\ValidarActividades.js" />
     <Content Include="Views\img\brayan.jpg" />
     <Content Include="Web.config" />
@@ -2597,6 +2598,7 @@
     <Content Include="Views\Reporte\TablaRepo.cshtml" />
     <Content Include="Views\Reunion\Reunion.cshtml" />
     <Content Include="Views\Reunion\Actas.cshtml" />
+    <Content Include="Views\Reunion\AsignarReunion.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Usuario\Usuario.cshtml" />
     <Content Include="Views\Shared\Proyecto.cshtml" />

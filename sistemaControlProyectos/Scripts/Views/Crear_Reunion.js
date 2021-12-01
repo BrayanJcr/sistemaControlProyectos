@@ -51,6 +51,29 @@ $(document).ready(function () {
         beforeSend: function () {
         },
     });
+    jQuery.ajax({
+        url: "/Profesional/Listar",
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            $("#cmbProfesional").html("");
+
+            if (data.data != null) {
+                $.each(data.data, function (i, item) {
+
+                    $("<option>").attr({ "value": item.IDProfesional }).text(item.nombre).appendTo("#cmbProfesional");
+
+                })
+                $("#cmbProfesional").val($("#cmbProfesional option:first").val());
+            }
+        },
+        error: function (error) {
+            console.log(error)
+        },
+        beforeSend: function () {
+        },
+    });
 
     tabla_Reunion = $('#tbReunion').DataTable({
         "ajax": {
@@ -69,6 +92,7 @@ $(document).ready(function () {
                 "searchable": false,
                 "width": "150px"
             },
+            { "data": "nombre" },
             { "data": "tipoDeReunion" },
             { "data": "fecha", "render": function (data) { return Cambiarfecha(data);}},
             { "data": "ubicacion" },
@@ -113,6 +137,8 @@ function abrirModal($IDReunion) {
                     $("#txtTema").val(data.tema);
                     $("#txtEtapa").val(data.estado);
                     $("#cmbProyectos").val(data.IDProyecto);
+                    $("#cmbProfesional").val(data.IDProfesional);
+
                 }
 
             }
@@ -124,6 +150,7 @@ function abrirModal($IDReunion) {
         $("#txtTema").val("");
         $("#txtEtapa").val(1);
         $("#cmbProyectos").val($("#cmbProyectos option:first").val());
+        $("#cmbProfesional").val($("#cmbProfesional option:first").val());
     }
 
     $('#FormModal').modal('show');
@@ -139,6 +166,7 @@ function Guardar() {
             ubicacion: $("#txtUbicacion").val(),
             tema: $("#txtTema").val(),
             estado: $("#cboEtapa").val(),
+            IDProfesional: ($("#cmbProfesional").val()),
             IDProyecto: $("#cmbProyectos").val(),
             proceso: ($("#cboProceso").val()),
         }

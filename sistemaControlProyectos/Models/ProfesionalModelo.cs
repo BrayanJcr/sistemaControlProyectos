@@ -97,7 +97,7 @@ namespace sistemaControlProyectos.Models
 
                     try
                     {
-                        db.SP_M_PROFESIONAL(profesional.IDProfesional,profesional.DNI, profesional.IDCargo, profesional.IDReporte,profesional.IDProyectoActual);
+                        db.SP_M_PROFESIONAL(profesional.IDProfesional,profesional.DNI, profesional.IDCargo, profesional.IDProyectoActual);
                         db.SaveChanges();
                         return true;
                     }

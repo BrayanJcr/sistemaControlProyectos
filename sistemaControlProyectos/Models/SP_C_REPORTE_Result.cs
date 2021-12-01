@@ -19,5 +19,6 @@ namespace sistemaControlProyectos.Models
         public string Estado { get; set; }
         public Nullable<int> IDDoc { get; set; }
         public int IDProfesional { get; set; }
+        public string nombre { get; set; }
     }
 }

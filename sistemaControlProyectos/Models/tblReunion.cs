@@ -17,6 +17,7 @@ namespace sistemaControlProyectos.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblReunion()
         {
+            this.tblActas = new HashSet<tblActas>();
             this.tblProfesional_Reunion = new HashSet<tblProfesional_Reunion>();
         }
     
@@ -27,7 +28,11 @@ namespace sistemaControlProyectos.Models
         public string tema { get; set; }
         public bool estado { get; set; }
         public int IDProyecto { get; set; }
+        public int IDProfesional { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblActas> tblActas { get; set; }
+        public virtual tblProfesional tblProfesional { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblProfesional_Reunion> tblProfesional_Reunion { get; set; }
         public virtual tblProyecto tblProyecto { get; set; }
