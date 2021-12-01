@@ -43,6 +43,26 @@ namespace sistemaControlProyectos.Models
                     return listarReunion;
                 }
         }
+
+        public List<SP_C_ProfesionalReunion_Result> ListaReunionProfesional()
+        {
+            List<SP_C_ProfesionalReunion_Result> listarReunionProfesional = new List<SP_C_ProfesionalReunion_Result>();
+
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+                try
+                {
+                    listarReunionProfesional = db.SP_C_ProfesionalReunion().ToList();
+
+                    return listarReunionProfesional;
+
+                }
+                catch (Exception ex)
+                {
+                    listarReunionProfesional = null;
+                    return listarReunionProfesional;
+                }
+        }
+
         public bool RegistrarProfesionalReunion(tblProfesional_Reunion objetoActividadRes)
         {
             bool respuesta = true;

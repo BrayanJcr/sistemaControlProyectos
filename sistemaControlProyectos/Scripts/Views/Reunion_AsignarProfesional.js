@@ -11,6 +11,27 @@ function CerrarResponsable() {
     $('#modalResponsable').modal('hide');
 }
 
+//Cambiar Fechas
+function Cambiarfecha(fechaEntra) {
+    var fechaString = fechaEntra.substr(6);
+    var fechaActual = new Date(parseInt(fechaString));
+    var mes = fechaActual.getMonth() + 1;
+    var dia = fechaActual.getDate();
+    var anio = fechaActual.getFullYear();
+    if (dia < 10 && mes < 10) {
+        var fecha = anio + "-0" + mes + "-0" + dia;
+    } else {
+        if (dia < 10)
+            var fecha = anio + "-" + mes + "-0" + dia;
+        else {
+            if (mes < 10)
+                var fecha = anio + "-0" + mes + "-" + dia;
+            else
+                var fecha = anio + "-" + mes + "-" + dia;
+        }
+    }
+    return fecha;
+}
 
 $(document).ready(function () {
 
@@ -63,17 +84,17 @@ $(document).ready(function () {
 
     tabladata = $('#tbdata').DataTable({
         "ajax": {
-            "url": "/Actividades/ListarAsignacion",
+            "url": "/Reunion/ObtenerAsignaciones",
             "type": "GET",
             "datatype": "json"
         },
         "columns": [
-            { "data": "titActividad" },
-            { "data": "creador" },
-            { "data": "nombre" },
-            { "data": "nomCargo" },
+            { "data": "Asistente" },
+            { "data": "tema" },
+            { "data": "fecha", "render": function (data) { return Cambiarfecha(data); }},
+            { "data": "ubicacion" },
             {
-                "data": "IDProfActividad", "render": function (data, type, row, meta) {
+                "data": "IDProfesional_reunion", "render": function (data, type, row, meta) {
                     return "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
                 },
                 "orderable": false,

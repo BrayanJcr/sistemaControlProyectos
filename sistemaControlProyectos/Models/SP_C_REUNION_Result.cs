@@ -14,6 +14,7 @@ namespace sistemaControlProyectos.Models
     public partial class SP_C_REUNION_Result
     {
         public int IDReunion { get; set; }
+        public string nombre { get; set; }
         public string tipoDeReunion { get; set; }
         public System.DateTime fecha { get; set; }
         public string ubicacion { get; set; }

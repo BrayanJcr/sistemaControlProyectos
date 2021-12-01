@@ -97,6 +97,13 @@ namespace sistemaControlProyectos.Controllers
             respuesta = Models.ReunionModelo.Instancia.EliminarReunion(IDReunion);
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult ObtenerAsignaciones()
+        {
 
+
+            List<SP_C_ProfesionalReunion_Result> lista = ReunionModelo.Instancia.ListaReunionProfesional();
+
+            return Json(new { data = lista },JsonRequestBehavior.AllowGet);
+        }
     }
 }

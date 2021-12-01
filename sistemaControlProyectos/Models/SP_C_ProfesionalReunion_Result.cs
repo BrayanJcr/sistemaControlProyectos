@@ -14,7 +14,9 @@ namespace sistemaControlProyectos.Models
     public partial class SP_C_ProfesionalReunion_Result
     {
         public int IDProfesional_reunion { get; set; }
-        public int IDProfesional { get; set; }
-        public int IDReunion { get; set; }
+        public string Asistente { get; set; }
+        public string tema { get; set; }
+        public System.DateTime fecha { get; set; }
+        public string ubicacion { get; set; }
     }
 }

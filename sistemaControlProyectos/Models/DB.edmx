@@ -2387,8 +2387,10 @@
         </ComplexType>
         <ComplexType Name="SP_C_ProfesionalReunion_Result">
           <Property Type="Int32" Name="IDProfesional_reunion" Nullable="false" />
-          <Property Type="Int32" Name="IDProfesional" Nullable="false" />
-          <Property Type="Int32" Name="IDReunion" Nullable="false" />
+          <Property Type="String" Name="Asistente" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tema" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="String" Name="ubicacion" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="SP_C_PROYECTO_Result">
           <Property Type="Int32" Name="IDProyecto" Nullable="false" />
@@ -2495,6 +2497,7 @@
         </ComplexType>
         <ComplexType Name="SP_C_REUNION_Result">
           <Property Type="Int32" Name="IDReunion" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="tipoDeReunion" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="fecha" Nullable="false" />
           <Property Type="String" Name="ubicacion" Nullable="false" MaxLength="50" />
@@ -3039,8 +3042,10 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_ProfesionalReunion_Result">
                 <ScalarProperty Name="IDProfesional_reunion" ColumnName="IDProfesional_reunion" />
-                <ScalarProperty Name="IDProfesional" ColumnName="IDProfesional" />
-                <ScalarProperty Name="IDReunion" ColumnName="IDReunion" />
+                <ScalarProperty Name="Asistente" ColumnName="Asistente" />
+                <ScalarProperty Name="tema" ColumnName="tema" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3179,6 +3184,7 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="DBControlProyectoModel.SP_C_REUNION_Result">
                 <ScalarProperty Name="IDReunion" ColumnName="IDReunion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="tipoDeReunion" ColumnName="tipoDeReunion" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
