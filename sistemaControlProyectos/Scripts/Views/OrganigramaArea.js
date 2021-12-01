@@ -19,7 +19,7 @@ function ListarArea() {
             $.each(data.data, function (i, item) {
                 console.log(i);
                 if (i == 0) {
-                    area.push(['Tablero', 'Gerente']);
+                    area.push(['Tablero', 'Director Proyecto']);
                     datos.push({ id: "Tablero" });
                     datos.push({
                         id: item.nomArea,
