@@ -487,12 +487,17 @@ namespace sistemaControlProyectos.Models
     
         public virtual ObjectResult<SP_C_ACTAS_Result> SP_C_ACTAS()
         {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_ACTIVIDAD_Result>("SP_C_ACTIVIDAD");
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_ACTAS_Result>("SP_C_ACTAS");
         }
     
-        public virtual ObjectResult<SP_C_ACTIVIDAD_Result> SP_C_ACTIVIDAD()
+        public virtual ObjectResult<SP_C_ACTIVIDADPROFENCAR_Result> SP_C_ACTIVIDADPROFENCAR(Nullable<int> iDProfesional)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_ACTIVIDAD_Result>("SP_C_ACTIVIDAD");
+            var iDProfesionalParameter = iDProfesional.HasValue ?
+                new ObjectParameter("IDProfesional", iDProfesional) :
+                new ObjectParameter("IDProfesional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_ACTIVIDADPROFENCAR_Result>("SP_C_ACTIVIDADPROFENCAR", iDProfesionalParameter);
         }
     
         public virtual ObjectResult<SP_C_ACTIVIDADPROFENCAR_Result> SP_C_ACTIVIDADPROFENCAR(Nullable<int> iDProfesional)

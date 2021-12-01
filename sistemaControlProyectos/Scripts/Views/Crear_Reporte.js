@@ -39,7 +39,7 @@ $(document).ready(function () {
     tablaActividad = $('#tblActividad').DataTable({
 
         ajax: {
-            url: "/Actividades/ListarEsta?estado=" + "true",
+            url: "/Actividades/ListarEstaEncar?estado=" + "true",
             type: "GET",
             datatype: "json"
         },
@@ -89,7 +89,6 @@ function Guardar() {
         objeto: {
             FechaRep :  ($("#txtFecha").val()),
             Descripcion: $("#txtDescripcion").val(),
-            IDProfesional: $('#txtIDUsuarioSession').val(),
         },
         xml: $xml,
     };

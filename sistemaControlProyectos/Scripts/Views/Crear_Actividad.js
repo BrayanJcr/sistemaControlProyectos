@@ -54,31 +54,6 @@ function Cerrar() {
 var tablaActividad;
 $(document).ready(function () {
     
-    //OBTENER PROYECTOS
-    jQuery.ajax({
-        url: "/Proyectos/Listar",
-        type: "GET",
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            $("#cboProyecto").html("");
-
-            if (data.data != null) {
-                $.each(data.data, function (i, item) {
-
-                    $("<option>").attr({ "value": item.IDProyecto }).text(item.titProyecto).appendTo("#cboProyecto");
-
-                })
-                $("#cboProyecto").val($("#cboProyecto option:first").val());
-            }
-        },
-        error: function (error) {
-            console.log(error)
-        },
-        beforeSend: function () {
-        },
-    });
-    
     tablaActividad = $('#tblActividad').DataTable({
 
         "ajax": {
@@ -146,7 +121,6 @@ function abrirModal($IDActividad) {
                     $("#txtFechaIni").val(Cambiarfecha(data.fechaInicio));
                     $("#txtFechaFin").val(Cambiarfecha(data.fechaFin));
                     $("#txtDescripcion").val(data.Descripcion);
-                    $("#cboProyecto").val(data.IDProyecto);
                     $("#cboEstado").val(data.estado == true ? 1 : 0);
                     $("#cboProceso").val(data.proceso);
                 }
@@ -157,7 +131,6 @@ function abrirModal($IDActividad) {
         $("#txtFechaIni").val("");
         $("#txtFechaFin").val("");
         $("#txtDescripcion").val("");
-        $("#cboProyecto").val($("#cboProyecto option:first").val());
         $("#cboEstado").val(1);
         $("#cboProceso").val("Nuevo");
     }
@@ -177,7 +150,6 @@ function Guardar() {
             Descripcion: $("#txtDescripcion").val(),
             estado: $("#cboEstado").val() == "1" ? true : false,
             creador: $("#txtNombreUsuario").val(),
-            IDProyecto: ($("#cboProyecto").val()),
             proceso: ($("#cboProceso").val()),
         }
     }

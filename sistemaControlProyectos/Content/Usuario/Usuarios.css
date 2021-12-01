@@ -20,7 +20,7 @@ form img {
     order: 3;
 }
 
-form li, div > p {
+form #datos, .form-group > p {
     background: #eee;
     display: flex;
     justify-content: space-between;

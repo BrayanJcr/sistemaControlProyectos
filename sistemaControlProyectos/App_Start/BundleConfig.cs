@@ -32,7 +32,6 @@ namespace sistemaControlProyectos
                       "~/Content/datatable/css/buttons.dataTables.min.css",
                       "~/Content/Actividades/Actividades.css",
                       "~/Content/Proyectos/Proyectos.css",
-                      "~/Content/Usuario/Usuarios.css",
 
                       "~/Content/sweetalert2/css/sweetalert.css"
                       ));

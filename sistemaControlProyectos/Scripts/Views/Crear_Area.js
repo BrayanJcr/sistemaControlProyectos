@@ -34,7 +34,7 @@ $(document).ready(function () {
 
     //OBTENER PROFESIONAL
     jQuery.ajax({
-        url: "/Usuario/Listar",
+        url: "/Profesional/Listar",
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
@@ -44,7 +44,7 @@ $(document).ready(function () {
             if (data.data != null) {
                 $.each(data.data, function (i, item) {
 
-                    $("<option>").attr({ "value": item.DNI }).text(item.nombre).appendTo("#cboEncargado");
+                    $("<option>").attr({ "value": item.IDProfesional }).text(item.nombre).appendTo("#cboEncargado");
 
                 })
                 $("#cboEncargado").val($("#cboEncargado option:first").val());
@@ -76,7 +76,7 @@ $(document).ready(function () {
                 "width": "150px"
             },
             { "data": "nomArea" },
-            { "data": "IDProfesional" },
+            { "data": "nombre" },
             { "data": "nomPadre" }
         ],
         dom: 'Blfrtip',
@@ -130,10 +130,11 @@ function Guardar() {
         objeto: {
             IDRecurso: parseInt($("#txtIDArea").val()),
             nomArea: $("#txtNombre").val(),
-            encargado: $("#cboEncargado").text(),
+            IDProfesional: $("#cboEncargado").val(),
             IdNomAreaPadre: ($("#cboPadre").val()),
         }
     }
+    console.log($("#txtNombre").val());
     console.log($request);
     jQuery.ajax({
         url: "/Area/Guardar",

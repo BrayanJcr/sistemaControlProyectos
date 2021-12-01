@@ -293,6 +293,9 @@
     <Compile Include="Models\SP_C_ACTIVIDADPROFENCAR_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_C_ACTIVIDADPROFENCAR_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_C_ACTIVIDAD_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -2212,6 +2215,8 @@
     <Content Include="Content\fontawesome-free\svgs\solid\z.svg" />
     <Content Include="Content\jquery.loading.overlay\loadingoverlay.min.js" />
     <Content Include="Content\Usuario\Usuarios.css" />
+    <Content Include="imagenes\Bravajal.jpg" />
+    <Content Include="imagenes\user.jpg" />
     <Content Include="Models\DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DB.edmx</DependentUpon>
@@ -2244,17 +2249,8 @@
     <Content Include="Global.asax" />
     <Content Include="imagenes\contruccion.jpg" />
     <Content Include="imagenes\favicon.ico" />
-    <Content Include="imagenes\fondoBravajal.jpg" />
     <Content Include="imagenes\fondoLogin.jpg" />
     <Content Include="imagenes\logo-bravajal.svg" />
-    <Content Include="imagenes\work_1.jpg" />
-    <Content Include="imagenes\work_2.jpg" />
-    <Content Include="imagenes\work_3.jpg" />
-    <Content Include="imagenes\work_4.jpg" />
-    <Content Include="imagenes\work_5.jpg" />
-    <Content Include="imagenes\work_6.jpg" />
-    <Content Include="imagenes\work_7.jpg" />
-    <Content Include="imagenes\work_8.jpg" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
@@ -2536,7 +2532,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="imagenes\brayan.jpg" />
     <Content Include="Scripts\Views\Actualizar_IDPoyecto.js" />
     <Content Include="Scripts\Views\Crear_Actividad.js" />
     <Content Include="Scripts\Views\Crear_Area.js" />
@@ -2555,6 +2550,7 @@
     <Content Include="Scripts\Views\Recurso_Asignar.js" />
     <Content Include="Scripts\Views\Reporte_Tabla.js" />
     <Content Include="Scripts\Views\Reunion_AsignarProfesional.js" />
+    <Content Include="Scripts\Views\Revision_Reporte.js" />
     <Content Include="Scripts\Views\ValidarActividades.js" />
     <Content Include="Views\img\brayan.jpg" />
     <Content Include="Web.config" />
@@ -2595,7 +2591,7 @@
     <Content Include="Views\Actividades\Gantt.cshtml" />
     <Content Include="Views\Permisos\Permisos.cshtml" />
     <Content Include="Views\Reporte\Reporte.cshtml" />
-    <Content Include="Views\Reporte\TablaRepo.cshtml" />
+    <Content Include="Views\Reporte\Revisar.cshtml" />
     <Content Include="Views\Reunion\Reunion.cshtml" />
     <Content Include="Views\Reunion\Actas.cshtml" />
     <Content Include="Views\Reunion\AsignarReunion.cshtml" />

@@ -43,10 +43,10 @@ namespace sistemaControlProyectos.Controllers
             List<SP_C_ACTIVIDAD_Result> lista = Models.ActividadesModelo.Instancia.ListarActividad().Where(a => a.IDProyecto== SesionUsuario.IDProyectoActual).ToList();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult ListarEsta(bool estado)
+        public JsonResult ListarEstaEncar(bool estado)
         {
             SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
-            List<SP_C_ACTIVIDAD_Result> lista = Models.ActividadesModelo.Instancia.ListarActividad().Where(a => a.IDProyecto == SesionUsuario.IDProyectoActual && a.estado == estado).ToList();
+            List<SP_C_ACTIVIDADPROFENCAR_Result> lista = Models.ActividadesModelo.Instancia.ListarActividadEncar(SesionUsuario.IDProfesional).Where(a => a.IDProyecto == SesionUsuario.IDProyectoActual && a.estado == estado).ToList();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
 
@@ -67,14 +67,14 @@ namespace sistemaControlProyectos.Controllers
         public JsonResult Guardar(tblActividad objeto)
         {
             bool respuesta = false;
-
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
             if (objeto.IDActividad == 0)
             {
-                respuesta = Models.ActividadesModelo.Instancia.RegistrarActividad(objeto);
+                respuesta = Models.ActividadesModelo.Instancia.RegistrarActividad(objeto, (int)SesionUsuario.IDProyectoActual);
             }
             else
             {
-                respuesta = Models.ActividadesModelo.Instancia.ModificarActividad(objeto);
+                respuesta = Models.ActividadesModelo.Instancia.ModificarActividad(objeto, (int)SesionUsuario.IDProyectoActual);
             }
 
 

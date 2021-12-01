@@ -7,9 +7,11 @@ using System.Web.Mvc;
 
 namespace sistemaControlProyectos.Controllers
 {
+    [Route("/api/[controller]")]
     public class AreaController : Controller
     {
         // GET: Area
+        private static SP_C_PROFESIONAL_Result SesionUsuario;
         private LoginController p = new LoginController();
         public ActionResult Area()
         {
@@ -23,23 +25,24 @@ namespace sistemaControlProyectos.Controllers
 
         public JsonResult Listar()
         {
-           // List<tblArea> listarActividad = new List<tblArea>();
+            // List<tblArea> listarActividad = new List<tblArea>();
 
-           // using (DBControlProyectoEntities db = new DBControlProyectoEntities())
-           // {
+            // using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            // {
 
-             //   listarActividad = db.SP_C_AREA().ToList();
-                //listarActividad = (from p in db.tblArea select p).ToList();
+            //   listarActividad = db.SP_C_AREA().ToList();
+            //listarActividad = (from p in db.tblArea select p).ToList();
             //}
             //return Json(new { data = listarActividad }, JsonRequestBehavior.AllowGet);
-
-            List<SP_C_AREA_Result> listar = AreaModelo.Instancia.ListarArea();
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            List<SP_C_AREA_Result> listar = AreaModelo.Instancia.ListarArea().Where(a => a.IDProyecto == SesionUsuario.IDProyectoActual).ToList();
             return Json(new { data = listar }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult ListarAreaPadre()
         {
-            List<SP_C_AREAPADRE_Result> listar = AreaModelo.Instancia.ListarAreaPadre();
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
+            List<SP_C_AREAPADRE_Result> listar = AreaModelo.Instancia.ListarAreaPadre().Where(a => a.IDProyecto == SesionUsuario.IDProyectoActual).ToList();
             return Json(new { data = listar }, JsonRequestBehavior.AllowGet);
         }
 
@@ -60,15 +63,16 @@ namespace sistemaControlProyectos.Controllers
         [HttpPost]
         public JsonResult Guardar(tblArea objeto)
         {
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
             bool respuesta = false;
 
             if (objeto.IDArea == 0)
             {
-                respuesta = Models.AreaModelo.Instancia.RegistrarArea(objeto);
+                respuesta = Models.AreaModelo.Instancia.RegistrarArea(objeto, (int)SesionUsuario.IDProyectoActual);
             }
             else
             {
-                respuesta = Models.AreaModelo.Instancia.ModificarArea(objeto);
+                respuesta = Models.AreaModelo.Instancia.ModificarArea(objeto, (int)SesionUsuario.IDProyectoActual);
             }
 
 

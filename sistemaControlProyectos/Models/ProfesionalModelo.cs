@@ -49,7 +49,6 @@ namespace sistemaControlProyectos.Models
         public bool RegistrarProfesional(tblProfesional profesional)
         {
             
-            
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
                 try
