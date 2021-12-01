@@ -1,4 +1,8 @@
-﻿window.onload = function () {
+﻿function Cerrar() {
+    $('#FormModal').modal('hide');
+}
+
+window.onload = function () {
     var fecha = new Date(); //Fecha actual
     var mes = fecha.getMonth() + 1; //obteniendo mes
     var dia = fecha.getDate(); //obteniendo dia
@@ -7,9 +11,8 @@
         dia = '0' + dia; //agrega cero si el menor de 10
     if (mes < 10)
         mes = '0' + mes //agrega cero si el menor de 10
-    var diaFin = dia + 1;
     document.getElementById('txtFechInic').value = ano + "-" + mes + "-" + dia;
-    document.getElementById('txtFechFin').value = ano + "-" + mes + "-" + diaFin;
+    document.getElementById('txtFechFin').value = ano + "-" + mes + "-" + dia;
 }
 
 //Cambiar Fechas
@@ -101,4 +104,31 @@ function buscar() {
         ],
         responsive: true
     });
+}
+
+
+function Detalle($IDReporte) {
+
+    $("#txtIdReporte").val($IDReporte);
+    if ($IDReporte != 0) {
+
+        jQuery.ajax({
+            url: "/Reporte/Obtener" + "?IDReport=" + $IDReporte,
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                data = data.data;
+                if (data != null) {
+                    $("#txtUsuario").val(data.nombre);
+                    $("#txtFechaReporte").val(Cambiarfecha(data.FechaRep));
+                    $("#txtDescripcion").val(data.Descripcion);
+                    $("#txtEstadoMod").val(data.Estado);
+                }
+            }
+        });
+    }
+
+    $('#FormModal').modal('show');
+
 }

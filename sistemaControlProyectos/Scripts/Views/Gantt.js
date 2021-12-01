@@ -200,7 +200,9 @@ function dibujarGrafico(serie) {
         }],
 
         exporting: {
-            sourceWidth: 1000
+            allowHTML: true,
+            sourceWidth: 800,
+            sourceHeight: 600
         }
     });
 }

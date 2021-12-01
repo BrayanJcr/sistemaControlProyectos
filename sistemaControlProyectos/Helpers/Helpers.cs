@@ -9,7 +9,8 @@ using System.Web.Mvc;
 namespace sistemaControlProyectos.Helpers
 {
     public static class Helpers
-    {        public static MvcHtmlString ActionLinkAllow(this HtmlHelper helper)
+    {        
+        public static MvcHtmlString ActionLinkAllow(this HtmlHelper helper)
         {
 
             StringBuilder sb = new StringBuilder();

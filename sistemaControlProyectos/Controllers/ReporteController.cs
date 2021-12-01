@@ -38,16 +38,15 @@ namespace sistemaControlProyectos.Controllers
 
         public JsonResult Obtener(int IDReport)
         {
-            tblReporte ObtenerREPORTE = new tblReporte();
+
+            SP_C_REPORTE_Result ObtenerREPORTE;
 
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
-
-                ObtenerREPORTE = (from p in db.tblReporte.Where(x => x.IDReport == IDReport)
-                                  select p).FirstOrDefault();
+                ObtenerREPORTE = ReporteModelo.Instancia.ListarReporte().Where(r => r.IDReport == IDReport).FirstOrDefault();
             }
 
-            return Json(ObtenerREPORTE, JsonRequestBehavior.AllowGet);
+            return Json(new { data = ObtenerREPORTE }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

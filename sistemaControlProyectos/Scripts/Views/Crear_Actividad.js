@@ -23,8 +23,6 @@ jQuery.ajax({
     },
 });
 
-console.log(permisoEdi);
-
 //Cambiar Fechas
 function Cambiarfecha(fechaEntra) {
     var fechaString = fechaEntra.substr(6);
