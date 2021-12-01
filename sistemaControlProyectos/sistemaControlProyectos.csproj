@@ -293,9 +293,6 @@
     <Compile Include="Models\SP_C_ACTIVIDADPROFENCAR_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SP_C_ACTIVIDADPROFENCAR_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SP_C_ACTIVIDAD_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -2548,7 +2545,6 @@
     <Content Include="Scripts\Views\Profesional_Asignar.js" />
     <Content Include="Scripts\Views\Profesional_AsignarProye.js" />
     <Content Include="Scripts\Views\Recurso_Asignar.js" />
-    <Content Include="Scripts\Views\Reporte_Tabla.js" />
     <Content Include="Scripts\Views\Reunion_AsignarProfesional.js" />
     <Content Include="Scripts\Views\Revision_Reporte.js" />
     <Content Include="Scripts\Views\ValidarActividades.js" />

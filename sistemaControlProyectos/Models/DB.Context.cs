@@ -487,17 +487,12 @@ namespace sistemaControlProyectos.Models
     
         public virtual ObjectResult<SP_C_ACTAS_Result> SP_C_ACTAS()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_ACTIVIDAD_Result>("SP_C_ACTIVIDAD");
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_ACTAS_Result>("SP_C_ACTAS");
         }
     
-        public virtual ObjectResult<SP_C_ACTIVIDADPROFENCAR_Result> SP_C_ACTIVIDADPROFENCAR(Nullable<int> iDProfesional)
+        public virtual ObjectResult<SP_C_ACTIVIDAD_Result> SP_C_ACTIVIDAD()
         {
-            var iDProfesionalParameter = iDProfesional.HasValue ?
-                new ObjectParameter("IDProfesional", iDProfesional) :
-                new ObjectParameter("IDProfesional", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_ACTIVIDADPROFENCAR_Result>("SP_C_ACTIVIDADPROFENCAR", iDProfesionalParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_ACTIVIDAD_Result>("SP_C_ACTIVIDAD");
         }
     
         public virtual ObjectResult<SP_C_ACTIVIDADPROFENCAR_Result> SP_C_ACTIVIDADPROFENCAR(Nullable<int> iDProfesional)
@@ -660,9 +655,13 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_RECURSO_ACTIVIDAD_Result>("SP_C_RECURSO_ACTIVIDAD");
         }
     
-        public virtual ObjectResult<SP_C_REPORTE_Result> SP_C_REPORTE()
+        public virtual ObjectResult<SP_C_REPORTE_Result> SP_C_REPORTE(Nullable<int> iDProyecto)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_REPORTE_Result>("SP_C_REPORTE");
+            var iDProyectoParameter = iDProyecto.HasValue ?
+                new ObjectParameter("IDProyecto", iDProyecto) :
+                new ObjectParameter("IDProyecto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_REPORTE_Result>("SP_C_REPORTE", iDProyectoParameter);
         }
     
         public virtual ObjectResult<SP_C_REUNION_Result> SP_C_REUNION()

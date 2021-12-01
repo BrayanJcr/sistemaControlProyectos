@@ -23,14 +23,15 @@ namespace sistemaControlProyectos.Controllers
 
         public JsonResult Listar(String estado)
         {
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
             List<SP_C_REPORTE_Result> lista;
 
             if (estado != "Todo") {
-                lista = Models.ReporteModelo.Instancia.ListarReporte().Where(u => u.Estado == estado).ToList();
+                lista = Models.ReporteModelo.Instancia.ListarReporte((int)SesionUsuario.IDProyectoActual).Where(u => u.Estado == estado).ToList();
             }
             else
             {
-                lista = Models.ReporteModelo.Instancia.ListarReporte();
+                lista = Models.ReporteModelo.Instancia.ListarReporte((int)SesionUsuario.IDProyectoActual);
             }
 
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
@@ -38,12 +39,12 @@ namespace sistemaControlProyectos.Controllers
 
         public JsonResult Obtener(int IDReport)
         {
-
+            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
             SP_C_REPORTE_Result ObtenerREPORTE;
 
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
-                ObtenerREPORTE = ReporteModelo.Instancia.ListarReporte().Where(r => r.IDReport == IDReport).FirstOrDefault();
+                ObtenerREPORTE = ReporteModelo.Instancia.ListarReporte((int)SesionUsuario.IDProyectoActual).Where(r => r.IDReport == IDReport).FirstOrDefault();
             }
 
             return Json(new { data = ObtenerREPORTE }, JsonRequestBehavior.AllowGet);

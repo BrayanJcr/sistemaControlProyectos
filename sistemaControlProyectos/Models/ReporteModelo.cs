@@ -25,14 +25,14 @@ namespace sistemaControlProyectos.Models
             }
         }
 
-        public List<SP_C_REPORTE_Result> ListarReporte()
+        public List<SP_C_REPORTE_Result> ListarReporte(int IDProyecto)
         {
             List<SP_C_REPORTE_Result> listarReporte = new List<SP_C_REPORTE_Result>();
 
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
                 try
                 {
-                    listarReporte = db.SP_C_REPORTE().ToList();
+                    listarReporte = db.SP_C_REPORTE(IDProyecto).ToList();
 
                     return listarReporte;
 

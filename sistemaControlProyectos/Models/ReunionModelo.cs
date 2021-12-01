@@ -83,10 +83,13 @@ namespace sistemaControlProyectos.Models
 
                     try
                     {
-                        db.SP_A_REUNION( objetoReunion.tipoDeReunion, objetoReunion.fecha,
+                        db.SP_A_REUNION( objetoReunion.tipoDeReunion, 
+                            objetoReunion.fecha,
                             objetoReunion.ubicacion,
-                            objetoReunion.tema, objetoReunion.estado,
-                            objetoReunion.IDProyecto,objetoReunion.IDProfesional);
+                            objetoReunion.tema, 
+                            objetoReunion.estado,
+                            objetoReunion.IDProyecto,
+                            objetoReunion.IDProfesional);
                         db.SaveChanges();
                         return true;
                     }

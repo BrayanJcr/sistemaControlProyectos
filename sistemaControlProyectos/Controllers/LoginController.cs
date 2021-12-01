@@ -31,7 +31,15 @@ namespace sistemaControlProyectos.Controllers
         internal ActionResult MenuSession(ViewResult viewResult)
         {
             SesionUsuario = (SP_C_PROFESIONAL_Result)System.Web.HttpContext.Current.Session["profesional"];
-            viewResult.ViewBag.NombreUsuario = SesionUsuario.nombre.Substring(0, 6) + " " + SesionUsuario.apellidos.ToUpper().Substring(0,9);
+            if (SesionUsuario.nombre.Length > 6 )
+            {
+                SesionUsuario.nombre = SesionUsuario.nombre.Substring(0, 6);
+            }
+            if (SesionUsuario.apellidos.Length > 9)
+            {
+                SesionUsuario.apellidos = SesionUsuario.apellidos.Substring(0,9);
+            }
+            viewResult.ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos.ToUpper();
             viewResult.ViewBag.IDCargo = SesionUsuario.IDCargo;
             viewResult.ViewBag.Cargo = SesionUsuario.nomCargo;
             SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
@@ -51,18 +59,5 @@ namespace sistemaControlProyectos.Controllers
             return viewResult;
         }
 
-        public SP_C_PROFESIONAL_Result ListarSession()
-        {
-            SesionUsuario = (SP_C_PROFESIONAL_Result)Session["profesional"];
-            ViewBag.NombreUsuario = SesionUsuario.nombre + " " + SesionUsuario.apellidos;
-            ViewBag.IDCargo = SesionUsuario.IDCargo;
-            ViewBag.Cargo = SesionUsuario.nomCargo;
-            SP_C_PROYECTO_Result proyecto = ProyectosModelo.Instancia.ListarProyecto().Where(p => p.IDProyecto == SesionUsuario.IDProyectoActual).FirstOrDefault();
-            ViewBag.IDUsuario = SesionUsuario.IDProfesional;
-            ViewBag.proyecto = proyecto.titProyecto;
-            ViewBag.IDProyectoActual = proyecto.IDProyecto;
-
-            return SesionUsuario;
-        }
     }
 }
