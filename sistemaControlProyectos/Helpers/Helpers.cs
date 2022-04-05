@@ -18,7 +18,7 @@ namespace sistemaControlProyectos.Helpers
             if (HttpContext.Current.Session["usuario"] != null)
             {
                 SP_C_PROFESIONAL_Result sUsuario = (SP_C_PROFESIONAL_Result)HttpContext.Current.Session["usuario"];
-                string imagenURL = "../imagenes/Bravajal.jpg";
+                string imagenURL = "../imagenes/proyectoDefecto.png";
                 List<SP_C_PROYECTOPROFESIONALIMAGEN_Result> listar = ProyectosModelo.Instancia.ListarProyectoProfesionalImagen(sUsuario.IDProfesional).ToList();
                 foreach (SP_C_PROYECTOPROFESIONALIMAGEN_Result item in listar)
                 {

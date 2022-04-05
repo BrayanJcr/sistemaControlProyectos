@@ -2216,6 +2216,8 @@
     <Content Include="Content\jquery.loading.overlay\loadingoverlay.min.js" />
     <Content Include="Content\Usuario\Usuarios.css" />
     <Content Include="imagenes\Bravajal.jpg" />
+    <Content Include="imagenes\logoEmpresa.png" />
+    <Content Include="imagenes\proyectoDefecto.png" />
     <Content Include="imagenes\user.jpg" />
     <Content Include="Models\DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -2595,7 +2597,7 @@
     <Content Include="Views\Reunion\Reunion.cshtml" />
     <Content Include="Views\Reunion\Actas.cshtml" />
     <Content Include="Views\Reunion\AsignarReunion.cshtml" />
-    <None Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Usuario\Usuario.cshtml" />
     <Content Include="Views\Shared\Proyecto.cshtml" />
   </ItemGroup>
