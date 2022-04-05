@@ -28,6 +28,7 @@ namespace sistemaControlProyectos.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tblActas> tblActas { get; set; }
         public virtual DbSet<tblActividad> tblActividad { get; set; }
         public virtual DbSet<tblArea> tblArea { get; set; }

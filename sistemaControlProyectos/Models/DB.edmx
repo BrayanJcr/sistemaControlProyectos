@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBControlProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBControlProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="tblActas">
           <Key>
             <PropertyRef Name="IDActas" />
@@ -228,7 +238,7 @@
           <Property Name="telefono" Type="varchar" MaxLength="50" />
           <Property Name="usrImagen" Type="varchar(max)" />
         </EntityType>
-        <Association Name="FK__tblActas__IDReun__6C190EBB">
+        <Association Name="FK__tblActas__IDReun__245D67DE">
           <End Role="tblReunion" Type="Self.tblReunion" Multiplicity="0..1" />
           <End Role="tblActas" Type="Self.tblActas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -240,7 +250,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblActivi__IDPro__5FB337D6">
+        <Association Name="FK__tblActivi__IDPro__17F790F9">
           <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
           <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -252,7 +262,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblArea__IDProfe__5DCAEF64">
+        <Association Name="FK__tblArea__IDProfe__160F4887">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblArea" Type="Self.tblArea" Multiplicity="*" />
           <ReferentialConstraint>
@@ -264,7 +274,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblArea__IDProye__5629CD9C">
+        <Association Name="FK__tblArea__IDProye__0E6E26BF">
           <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="0..1" />
           <End Role="tblArea" Type="Self.tblArea" Multiplicity="*" />
           <ReferentialConstraint>
@@ -276,7 +286,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblCuader__IDCua__6B24EA82">
+        <Association Name="FK__tblCuader__IDCua__236943A5">
           <End Role="tblCuadernoObra" Type="Self.tblCuadernoObra" Multiplicity="1" />
           <End Role="tblCuadernoProfesional" Type="Self.tblCuadernoProfesional" Multiplicity="*" />
           <ReferentialConstraint>
@@ -288,7 +298,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblCuader__IDDoc__5441852A">
+        <Association Name="FK__tblCuader__IDDoc__0C85DE4D">
           <End Role="tblDocumento" Type="Self.tblDocumento" Multiplicity="1" />
           <End Role="tblCuadernoObra" Type="Self.tblCuadernoObra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -300,7 +310,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblCuader__IDPro__534D60F1">
+        <Association Name="FK__tblCuader__IDPro__0B91BA14">
           <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
           <End Role="tblCuadernoObra" Type="Self.tblCuadernoObra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -312,7 +322,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblCuader__IDPro__6A30C649">
+        <Association Name="FK__tblCuader__IDPro__22751F6C">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblCuadernoProfesional" Type="Self.tblCuadernoProfesional" Multiplicity="*" />
           <ReferentialConstraint>
@@ -324,7 +334,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblPermis__IDCar__5812160E">
+        <Association Name="FK__tblPermis__IDCar__10566F31">
           <End Role="tblCargo" Type="Self.tblCargo" Multiplicity="1" />
           <End Role="tblPermisos" Type="Self.tblPermisos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -336,7 +346,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblPermis__IDSub__59063A47">
+        <Association Name="FK__tblPermis__IDSub__114A936A">
           <End Role="tblSubMenu" Type="Self.tblSubMenu" Multiplicity="0..1" />
           <End Role="tblPermisos" Type="Self.tblPermisos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -348,7 +358,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDAct__6754599E">
+        <Association Name="FK__tblProfes__IDAct__1F98B2C1">
           <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="1" />
           <End Role="tblProfesional_Actividad" Type="Self.tblProfesional_Actividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -360,7 +370,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDCar__59FA5E80">
+        <Association Name="FK__tblProfes__IDCar__123EB7A3">
           <End Role="tblCargo" Type="Self.tblCargo" Multiplicity="1" />
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="*" />
           <ReferentialConstraint>
@@ -372,7 +382,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDPro__60A75C0F">
+        <Association Name="FK__tblProfes__IDPro__18EBB532">
           <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
           <End Role="tblProfesional_Proyecto" Type="Self.tblProfesional_Proyecto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -384,7 +394,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDPro__619B8048">
+        <Association Name="FK__tblProfes__IDPro__19DFD96B">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblProfesional_Proyecto" Type="Self.tblProfesional_Proyecto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -396,7 +406,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDPro__6383C8BA">
+        <Association Name="FK__tblProfes__IDPro__1BC821DD">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblProfesional_Reunion" Type="Self.tblProfesional_Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -408,7 +418,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDPro__66603565">
+        <Association Name="FK__tblProfes__IDPro__1EA48E88">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblProfesional_Actividad" Type="Self.tblProfesional_Actividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -420,7 +430,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDReu__628FA481">
+        <Association Name="FK__tblProfes__IDReu__1AD3FDA4">
           <End Role="tblReunion" Type="Self.tblReunion" Multiplicity="1" />
           <End Role="tblProfesional_Reunion" Type="Self.tblProfesional_Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -432,7 +442,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfesio__DNI__32E0915F">
+        <Association Name="FK__tblProfesio__DNI__6B24EA82">
           <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="*" />
           <ReferentialConstraint>
@@ -444,7 +454,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProyec__IDPro__571DF1D5">
+        <Association Name="FK__tblProyec__IDPro__0F624AF8">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -456,7 +466,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblRecurs__IDAct__68487DD7">
+        <Association Name="FK__tblRecurs__IDAct__208CD6FA">
           <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="1" />
           <End Role="tblRecurso_Actividad" Type="Self.tblRecurso_Actividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -468,7 +478,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblRecurs__IDRec__693CA210">
+        <Association Name="FK__tblRecurs__IDRec__2180FB33">
           <End Role="tblRecurso" Type="Self.tblRecurso" Multiplicity="1" />
           <End Role="tblRecurso_Actividad" Type="Self.tblRecurso_Actividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -480,7 +490,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblReport__IDAct__656C112C">
+        <Association Name="FK__tblReport__IDAct__1DB06A4F">
           <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="1" />
           <End Role="tblReporte_Actividad" Type="Self.tblReporte_Actividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -492,7 +502,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblReport__IDDoc__5535A963">
+        <Association Name="FK__tblReport__IDDoc__0D7A0286">
           <End Role="tblDocumento" Type="Self.tblDocumento" Multiplicity="0..1" />
           <End Role="tblReporte" Type="Self.tblReporte" Multiplicity="*" />
           <ReferentialConstraint>
@@ -504,7 +514,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblReport__IDPro__5AEE82B9">
+        <Association Name="FK__tblReport__IDPro__1332DBDC">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblReporte" Type="Self.tblReporte" Multiplicity="*" />
           <ReferentialConstraint>
@@ -516,7 +526,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblReport__IDRep__6477ECF3">
+        <Association Name="FK__tblReport__IDRep__1CBC4616">
           <End Role="tblReporte" Type="Self.tblReporte" Multiplicity="1" />
           <End Role="tblReporte_Actividad" Type="Self.tblReporte_Actividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -528,7 +538,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblReunio__IDPro__5BE2A6F2">
+        <Association Name="FK__tblReunio__IDPro__14270015">
           <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
           <End Role="tblReunion" Type="Self.tblReunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -540,7 +550,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblReunio__IDPro__5CD6CB2B">
+        <Association Name="FK__tblReunio__IDPro__151B244E">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblReunion" Type="Self.tblReunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -552,7 +562,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblSubMen__IDMen__5EBF139D">
+        <Association Name="FK__tblSubMen__IDMen__17036CC0">
           <End Role="tblMenu" Type="Self.tblMenu" Multiplicity="1" />
           <End Role="tblSubMenu" Type="Self.tblSubMenu" Multiplicity="*" />
           <ReferentialConstraint>
@@ -944,6 +954,7 @@
           <Parameter Name="usrImagen" Type="varchar(max)" Mode="In" />
         </Function>
         <EntityContainer Name="DBControlProyectoModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblActas" EntityType="Self.tblActas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblActividad" EntityType="Self.tblActividad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblArea" EntityType="Self.tblArea" Schema="dbo" store:Type="Tables" />
@@ -965,115 +976,115 @@
           <EntitySet Name="tblReunion" EntityType="Self.tblReunion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSubMenu" EntityType="Self.tblSubMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tblActas__IDReun__6C190EBB" Association="Self.FK__tblActas__IDReun__6C190EBB">
+          <AssociationSet Name="FK__tblActas__IDReun__245D67DE" Association="Self.FK__tblActas__IDReun__245D67DE">
             <End Role="tblReunion" EntitySet="tblReunion" />
             <End Role="tblActas" EntitySet="tblActas" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblActivi__IDPro__5FB337D6" Association="Self.FK__tblActivi__IDPro__5FB337D6">
+          <AssociationSet Name="FK__tblActivi__IDPro__17F790F9" Association="Self.FK__tblActivi__IDPro__17F790F9">
             <End Role="tblProyecto" EntitySet="tblProyecto" />
             <End Role="tblActividad" EntitySet="tblActividad" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblArea__IDProfe__5DCAEF64" Association="Self.FK__tblArea__IDProfe__5DCAEF64">
+          <AssociationSet Name="FK__tblArea__IDProfe__160F4887" Association="Self.FK__tblArea__IDProfe__160F4887">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblArea" EntitySet="tblArea" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblArea__IDProye__5629CD9C" Association="Self.FK__tblArea__IDProye__5629CD9C">
+          <AssociationSet Name="FK__tblArea__IDProye__0E6E26BF" Association="Self.FK__tblArea__IDProye__0E6E26BF">
             <End Role="tblProyecto" EntitySet="tblProyecto" />
             <End Role="tblArea" EntitySet="tblArea" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblCuader__IDCua__6B24EA82" Association="Self.FK__tblCuader__IDCua__6B24EA82">
+          <AssociationSet Name="FK__tblCuader__IDCua__236943A5" Association="Self.FK__tblCuader__IDCua__236943A5">
             <End Role="tblCuadernoObra" EntitySet="tblCuadernoObra" />
             <End Role="tblCuadernoProfesional" EntitySet="tblCuadernoProfesional" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblCuader__IDDoc__5441852A" Association="Self.FK__tblCuader__IDDoc__5441852A">
+          <AssociationSet Name="FK__tblCuader__IDDoc__0C85DE4D" Association="Self.FK__tblCuader__IDDoc__0C85DE4D">
             <End Role="tblDocumento" EntitySet="tblDocumento" />
             <End Role="tblCuadernoObra" EntitySet="tblCuadernoObra" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblCuader__IDPro__534D60F1" Association="Self.FK__tblCuader__IDPro__534D60F1">
+          <AssociationSet Name="FK__tblCuader__IDPro__0B91BA14" Association="Self.FK__tblCuader__IDPro__0B91BA14">
             <End Role="tblProyecto" EntitySet="tblProyecto" />
             <End Role="tblCuadernoObra" EntitySet="tblCuadernoObra" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblCuader__IDPro__6A30C649" Association="Self.FK__tblCuader__IDPro__6A30C649">
+          <AssociationSet Name="FK__tblCuader__IDPro__22751F6C" Association="Self.FK__tblCuader__IDPro__22751F6C">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblCuadernoProfesional" EntitySet="tblCuadernoProfesional" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblPermis__IDCar__5812160E" Association="Self.FK__tblPermis__IDCar__5812160E">
+          <AssociationSet Name="FK__tblPermis__IDCar__10566F31" Association="Self.FK__tblPermis__IDCar__10566F31">
             <End Role="tblCargo" EntitySet="tblCargo" />
             <End Role="tblPermisos" EntitySet="tblPermisos" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblPermis__IDSub__59063A47" Association="Self.FK__tblPermis__IDSub__59063A47">
+          <AssociationSet Name="FK__tblPermis__IDSub__114A936A" Association="Self.FK__tblPermis__IDSub__114A936A">
             <End Role="tblSubMenu" EntitySet="tblSubMenu" />
             <End Role="tblPermisos" EntitySet="tblPermisos" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDAct__6754599E" Association="Self.FK__tblProfes__IDAct__6754599E">
+          <AssociationSet Name="FK__tblProfes__IDAct__1F98B2C1" Association="Self.FK__tblProfes__IDAct__1F98B2C1">
             <End Role="tblActividad" EntitySet="tblActividad" />
             <End Role="tblProfesional_Actividad" EntitySet="tblProfesional_Actividad" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDCar__59FA5E80" Association="Self.FK__tblProfes__IDCar__59FA5E80">
+          <AssociationSet Name="FK__tblProfes__IDCar__123EB7A3" Association="Self.FK__tblProfes__IDCar__123EB7A3">
             <End Role="tblCargo" EntitySet="tblCargo" />
             <End Role="tblProfesional" EntitySet="tblProfesional" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDPro__60A75C0F" Association="Self.FK__tblProfes__IDPro__60A75C0F">
+          <AssociationSet Name="FK__tblProfes__IDPro__18EBB532" Association="Self.FK__tblProfes__IDPro__18EBB532">
             <End Role="tblProyecto" EntitySet="tblProyecto" />
             <End Role="tblProfesional_Proyecto" EntitySet="tblProfesional_Proyecto" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDPro__619B8048" Association="Self.FK__tblProfes__IDPro__619B8048">
+          <AssociationSet Name="FK__tblProfes__IDPro__19DFD96B" Association="Self.FK__tblProfes__IDPro__19DFD96B">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblProfesional_Proyecto" EntitySet="tblProfesional_Proyecto" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDPro__6383C8BA" Association="Self.FK__tblProfes__IDPro__6383C8BA">
+          <AssociationSet Name="FK__tblProfes__IDPro__1BC821DD" Association="Self.FK__tblProfes__IDPro__1BC821DD">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblProfesional_Reunion" EntitySet="tblProfesional_Reunion" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDPro__66603565" Association="Self.FK__tblProfes__IDPro__66603565">
+          <AssociationSet Name="FK__tblProfes__IDPro__1EA48E88" Association="Self.FK__tblProfes__IDPro__1EA48E88">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblProfesional_Actividad" EntitySet="tblProfesional_Actividad" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDReu__628FA481" Association="Self.FK__tblProfes__IDReu__628FA481">
+          <AssociationSet Name="FK__tblProfes__IDReu__1AD3FDA4" Association="Self.FK__tblProfes__IDReu__1AD3FDA4">
             <End Role="tblReunion" EntitySet="tblReunion" />
             <End Role="tblProfesional_Reunion" EntitySet="tblProfesional_Reunion" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfesio__DNI__32E0915F" Association="Self.FK__tblProfesio__DNI__32E0915F">
+          <AssociationSet Name="FK__tblProfesio__DNI__6B24EA82" Association="Self.FK__tblProfesio__DNI__6B24EA82">
             <End Role="tblUsuario" EntitySet="tblUsuario" />
             <End Role="tblProfesional" EntitySet="tblProfesional" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProyec__IDPro__571DF1D5" Association="Self.FK__tblProyec__IDPro__571DF1D5">
+          <AssociationSet Name="FK__tblProyec__IDPro__0F624AF8" Association="Self.FK__tblProyec__IDPro__0F624AF8">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblProyecto" EntitySet="tblProyecto" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblRecurs__IDAct__68487DD7" Association="Self.FK__tblRecurs__IDAct__68487DD7">
+          <AssociationSet Name="FK__tblRecurs__IDAct__208CD6FA" Association="Self.FK__tblRecurs__IDAct__208CD6FA">
             <End Role="tblActividad" EntitySet="tblActividad" />
             <End Role="tblRecurso_Actividad" EntitySet="tblRecurso_Actividad" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblRecurs__IDRec__693CA210" Association="Self.FK__tblRecurs__IDRec__693CA210">
+          <AssociationSet Name="FK__tblRecurs__IDRec__2180FB33" Association="Self.FK__tblRecurs__IDRec__2180FB33">
             <End Role="tblRecurso" EntitySet="tblRecurso" />
             <End Role="tblRecurso_Actividad" EntitySet="tblRecurso_Actividad" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblReport__IDAct__656C112C" Association="Self.FK__tblReport__IDAct__656C112C">
+          <AssociationSet Name="FK__tblReport__IDAct__1DB06A4F" Association="Self.FK__tblReport__IDAct__1DB06A4F">
             <End Role="tblActividad" EntitySet="tblActividad" />
             <End Role="tblReporte_Actividad" EntitySet="tblReporte_Actividad" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblReport__IDDoc__5535A963" Association="Self.FK__tblReport__IDDoc__5535A963">
+          <AssociationSet Name="FK__tblReport__IDDoc__0D7A0286" Association="Self.FK__tblReport__IDDoc__0D7A0286">
             <End Role="tblDocumento" EntitySet="tblDocumento" />
             <End Role="tblReporte" EntitySet="tblReporte" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblReport__IDPro__5AEE82B9" Association="Self.FK__tblReport__IDPro__5AEE82B9">
+          <AssociationSet Name="FK__tblReport__IDPro__1332DBDC" Association="Self.FK__tblReport__IDPro__1332DBDC">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblReporte" EntitySet="tblReporte" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblReport__IDRep__6477ECF3" Association="Self.FK__tblReport__IDRep__6477ECF3">
+          <AssociationSet Name="FK__tblReport__IDRep__1CBC4616" Association="Self.FK__tblReport__IDRep__1CBC4616">
             <End Role="tblReporte" EntitySet="tblReporte" />
             <End Role="tblReporte_Actividad" EntitySet="tblReporte_Actividad" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblReunio__IDPro__5BE2A6F2" Association="Self.FK__tblReunio__IDPro__5BE2A6F2">
+          <AssociationSet Name="FK__tblReunio__IDPro__14270015" Association="Self.FK__tblReunio__IDPro__14270015">
             <End Role="tblProyecto" EntitySet="tblProyecto" />
             <End Role="tblReunion" EntitySet="tblReunion" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblReunio__IDPro__5CD6CB2B" Association="Self.FK__tblReunio__IDPro__5CD6CB2B">
+          <AssociationSet Name="FK__tblReunio__IDPro__151B244E" Association="Self.FK__tblReunio__IDPro__151B244E">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblReunion" EntitySet="tblReunion" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblSubMen__IDMen__5EBF139D" Association="Self.FK__tblSubMen__IDMen__5EBF139D">
+          <AssociationSet Name="FK__tblSubMen__IDMen__17036CC0" Association="Self.FK__tblSubMen__IDMen__17036CC0">
             <End Role="tblMenu" EntitySet="tblMenu" />
             <End Role="tblSubMenu" EntitySet="tblSubMenu" />
           </AssociationSet>
@@ -1087,6 +1098,16 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBControlProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="tblActas">
           <Key>
             <PropertyRef Name="IDActas" />
@@ -1095,7 +1116,7 @@
           <Property Name="DescripcionActas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
           <Property Name="IDReunion" Type="Int32" />
-          <NavigationProperty Name="tblReunion" Relationship="Self.FK__tblActas__IDReun__6C190EBB" FromRole="tblActas" ToRole="tblReunion" />
+          <NavigationProperty Name="tblReunion" Relationship="Self.FK__tblActas__IDReun__245D67DE" FromRole="tblActas" ToRole="tblReunion" />
         </EntityType>
         <EntityType Name="tblActividad">
           <Key>
@@ -1110,10 +1131,10 @@
           <Property Name="creador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="proceso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDProyecto" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblActivi__IDPro__5FB337D6" FromRole="tblActividad" ToRole="tblProyecto" />
-          <NavigationProperty Name="tblProfesional_Actividad" Relationship="Self.FK__tblProfes__IDAct__6754599E" FromRole="tblActividad" ToRole="tblProfesional_Actividad" />
-          <NavigationProperty Name="tblRecurso_Actividad" Relationship="Self.FK__tblRecurs__IDAct__68487DD7" FromRole="tblActividad" ToRole="tblRecurso_Actividad" />
-          <NavigationProperty Name="tblReporte_Actividad" Relationship="Self.FK__tblReport__IDAct__656C112C" FromRole="tblActividad" ToRole="tblReporte_Actividad" />
+          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblActivi__IDPro__17F790F9" FromRole="tblActividad" ToRole="tblProyecto" />
+          <NavigationProperty Name="tblProfesional_Actividad" Relationship="Self.FK__tblProfes__IDAct__1F98B2C1" FromRole="tblActividad" ToRole="tblProfesional_Actividad" />
+          <NavigationProperty Name="tblRecurso_Actividad" Relationship="Self.FK__tblRecurs__IDAct__208CD6FA" FromRole="tblActividad" ToRole="tblRecurso_Actividad" />
+          <NavigationProperty Name="tblReporte_Actividad" Relationship="Self.FK__tblReport__IDAct__1DB06A4F" FromRole="tblActividad" ToRole="tblReporte_Actividad" />
         </EntityType>
         <EntityType Name="tblArea">
           <Key>
@@ -1124,8 +1145,8 @@
           <Property Name="nomArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDProfesional" Type="Int32" Nullable="false" />
           <Property Name="IDProyecto" Type="Int32" />
-          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblArea__IDProfe__5DCAEF64" FromRole="tblArea" ToRole="tblProfesional" />
-          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblArea__IDProye__5629CD9C" FromRole="tblArea" ToRole="tblProyecto" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblArea__IDProfe__160F4887" FromRole="tblArea" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblArea__IDProye__0E6E26BF" FromRole="tblArea" ToRole="tblProyecto" />
           <NavigationProperty Name="tblArea1" Relationship="Self.FK_IdNomAreaPadre" FromRole="tblArea" ToRole="tblArea1" />
           <NavigationProperty Name="tblArea2" Relationship="Self.FK_IdNomAreaPadre" FromRole="tblArea1" ToRole="tblArea" />
         </EntityType>
@@ -1137,8 +1158,8 @@
           <Property Name="nomCargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Activo" Type="Boolean" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tblPermisos" Relationship="Self.FK__tblPermis__IDCar__5812160E" FromRole="tblCargo" ToRole="tblPermisos" />
-          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDCar__59FA5E80" FromRole="tblCargo" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblPermisos" Relationship="Self.FK__tblPermis__IDCar__10566F31" FromRole="tblCargo" ToRole="tblPermisos" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDCar__123EB7A3" FromRole="tblCargo" ToRole="tblProfesional" />
         </EntityType>
         <EntityType Name="tblCuadernoObra">
           <Key>
@@ -1155,9 +1176,9 @@
           <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDProyecto" Type="Int32" Nullable="false" />
           <Property Name="IDDocumento" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblCuadernoProfesional" Relationship="Self.FK__tblCuader__IDCua__6B24EA82" FromRole="tblCuadernoObra" ToRole="tblCuadernoProfesional" />
-          <NavigationProperty Name="tblDocumento" Relationship="Self.FK__tblCuader__IDDoc__5441852A" FromRole="tblCuadernoObra" ToRole="tblDocumento" />
-          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblCuader__IDPro__534D60F1" FromRole="tblCuadernoObra" ToRole="tblProyecto" />
+          <NavigationProperty Name="tblCuadernoProfesional" Relationship="Self.FK__tblCuader__IDCua__236943A5" FromRole="tblCuadernoObra" ToRole="tblCuadernoProfesional" />
+          <NavigationProperty Name="tblDocumento" Relationship="Self.FK__tblCuader__IDDoc__0C85DE4D" FromRole="tblCuadernoObra" ToRole="tblDocumento" />
+          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblCuader__IDPro__0B91BA14" FromRole="tblCuadernoObra" ToRole="tblProyecto" />
         </EntityType>
         <EntityType Name="tblCuadernoProfesional">
           <Key>
@@ -1166,8 +1187,8 @@
           <Property Name="IDCuaderno_Profesional" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDProfesional" Type="Int32" Nullable="false" />
           <Property Name="IDCuaderObra" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblCuadernoObra" Relationship="Self.FK__tblCuader__IDCua__6B24EA82" FromRole="tblCuadernoProfesional" ToRole="tblCuadernoObra" />
-          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblCuader__IDPro__6A30C649" FromRole="tblCuadernoProfesional" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblCuadernoObra" Relationship="Self.FK__tblCuader__IDCua__236943A5" FromRole="tblCuadernoProfesional" ToRole="tblCuadernoObra" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblCuader__IDPro__22751F6C" FromRole="tblCuadernoProfesional" ToRole="tblProfesional" />
         </EntityType>
         <EntityType Name="tblDocumento">
           <Key>
@@ -1177,8 +1198,8 @@
           <Property Name="NombreDoc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RealNomb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DOC" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <NavigationProperty Name="tblCuadernoObra" Relationship="Self.FK__tblCuader__IDDoc__5441852A" FromRole="tblDocumento" ToRole="tblCuadernoObra" />
-          <NavigationProperty Name="tblReporte" Relationship="Self.FK__tblReport__IDDoc__5535A963" FromRole="tblDocumento" ToRole="tblReporte" />
+          <NavigationProperty Name="tblCuadernoObra" Relationship="Self.FK__tblCuader__IDDoc__0C85DE4D" FromRole="tblDocumento" ToRole="tblCuadernoObra" />
+          <NavigationProperty Name="tblReporte" Relationship="Self.FK__tblReport__IDDoc__0D7A0286" FromRole="tblDocumento" ToRole="tblReporte" />
         </EntityType>
         <EntityType Name="tblMenu">
           <Key>
@@ -1189,7 +1210,7 @@
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
           <Property Name="Icono" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblSubMenu" Relationship="Self.FK__tblSubMen__IDMen__5EBF139D" FromRole="tblMenu" ToRole="tblSubMenu" />
+          <NavigationProperty Name="tblSubMenu" Relationship="Self.FK__tblSubMen__IDMen__17036CC0" FromRole="tblMenu" ToRole="tblSubMenu" />
         </EntityType>
         <EntityType Name="tblPermisos">
           <Key>
@@ -1201,8 +1222,8 @@
           <Property Name="Activo" Type="Boolean" />
           <Property Name="Edicion" Type="Boolean" Nullable="false" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tblCargo" Relationship="Self.FK__tblPermis__IDCar__5812160E" FromRole="tblPermisos" ToRole="tblCargo" />
-          <NavigationProperty Name="tblSubMenu" Relationship="Self.FK__tblPermis__IDSub__59063A47" FromRole="tblPermisos" ToRole="tblSubMenu" />
+          <NavigationProperty Name="tblCargo" Relationship="Self.FK__tblPermis__IDCar__10566F31" FromRole="tblPermisos" ToRole="tblCargo" />
+          <NavigationProperty Name="tblSubMenu" Relationship="Self.FK__tblPermis__IDSub__114A936A" FromRole="tblPermisos" ToRole="tblSubMenu" />
         </EntityType>
         <EntityType Name="tblProfesional">
           <Key>
@@ -1212,16 +1233,16 @@
           <Property Name="DNI" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDCargo" Type="Int32" Nullable="false" />
           <Property Name="IDProyectoActual" Type="Int32" />
-          <NavigationProperty Name="tblArea" Relationship="Self.FK__tblArea__IDProfe__5DCAEF64" FromRole="tblProfesional" ToRole="tblArea" />
-          <NavigationProperty Name="tblCargo" Relationship="Self.FK__tblProfes__IDCar__59FA5E80" FromRole="tblProfesional" ToRole="tblCargo" />
-          <NavigationProperty Name="tblCuadernoProfesional" Relationship="Self.FK__tblCuader__IDPro__6A30C649" FromRole="tblProfesional" ToRole="tblCuadernoProfesional" />
-          <NavigationProperty Name="tblProfesional_Proyecto" Relationship="Self.FK__tblProfes__IDPro__619B8048" FromRole="tblProfesional" ToRole="tblProfesional_Proyecto" />
-          <NavigationProperty Name="tblProfesional_Reunion" Relationship="Self.FK__tblProfes__IDPro__6383C8BA" FromRole="tblProfesional" ToRole="tblProfesional_Reunion" />
-          <NavigationProperty Name="tblProfesional_Actividad" Relationship="Self.FK__tblProfes__IDPro__66603565" FromRole="tblProfesional" ToRole="tblProfesional_Actividad" />
-          <NavigationProperty Name="tblUsuario" Relationship="Self.FK__tblProfesio__DNI__32E0915F" FromRole="tblProfesional" ToRole="tblUsuario" />
-          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblProyec__IDPro__571DF1D5" FromRole="tblProfesional" ToRole="tblProyecto" />
-          <NavigationProperty Name="tblReporte" Relationship="Self.FK__tblReport__IDPro__5AEE82B9" FromRole="tblProfesional" ToRole="tblReporte" />
-          <NavigationProperty Name="tblReunion" Relationship="Self.FK__tblReunio__IDPro__5CD6CB2B" FromRole="tblProfesional" ToRole="tblReunion" />
+          <NavigationProperty Name="tblArea" Relationship="Self.FK__tblArea__IDProfe__160F4887" FromRole="tblProfesional" ToRole="tblArea" />
+          <NavigationProperty Name="tblCargo" Relationship="Self.FK__tblProfes__IDCar__123EB7A3" FromRole="tblProfesional" ToRole="tblCargo" />
+          <NavigationProperty Name="tblCuadernoProfesional" Relationship="Self.FK__tblCuader__IDPro__22751F6C" FromRole="tblProfesional" ToRole="tblCuadernoProfesional" />
+          <NavigationProperty Name="tblProfesional_Proyecto" Relationship="Self.FK__tblProfes__IDPro__19DFD96B" FromRole="tblProfesional" ToRole="tblProfesional_Proyecto" />
+          <NavigationProperty Name="tblProfesional_Reunion" Relationship="Self.FK__tblProfes__IDPro__1BC821DD" FromRole="tblProfesional" ToRole="tblProfesional_Reunion" />
+          <NavigationProperty Name="tblProfesional_Actividad" Relationship="Self.FK__tblProfes__IDPro__1EA48E88" FromRole="tblProfesional" ToRole="tblProfesional_Actividad" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.FK__tblProfesio__DNI__6B24EA82" FromRole="tblProfesional" ToRole="tblUsuario" />
+          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblProyec__IDPro__0F624AF8" FromRole="tblProfesional" ToRole="tblProyecto" />
+          <NavigationProperty Name="tblReporte" Relationship="Self.FK__tblReport__IDPro__1332DBDC" FromRole="tblProfesional" ToRole="tblReporte" />
+          <NavigationProperty Name="tblReunion" Relationship="Self.FK__tblReunio__IDPro__151B244E" FromRole="tblProfesional" ToRole="tblReunion" />
         </EntityType>
         <EntityType Name="tblProfesional_Actividad">
           <Key>
@@ -1230,8 +1251,8 @@
           <Property Name="IDProfActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDProfesional" Type="Int32" Nullable="false" />
           <Property Name="IDActividad" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblProfes__IDAct__6754599E" FromRole="tblProfesional_Actividad" ToRole="tblActividad" />
-          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDPro__66603565" FromRole="tblProfesional_Actividad" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblProfes__IDAct__1F98B2C1" FromRole="tblProfesional_Actividad" ToRole="tblActividad" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDPro__1EA48E88" FromRole="tblProfesional_Actividad" ToRole="tblProfesional" />
         </EntityType>
         <EntityType Name="tblProfesional_Proyecto">
           <Key>
@@ -1240,8 +1261,8 @@
           <Property Name="IDProfeProyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDProfesional" Type="Int32" Nullable="false" />
           <Property Name="IDProyecto" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDPro__619B8048" FromRole="tblProfesional_Proyecto" ToRole="tblProfesional" />
-          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblProfes__IDPro__60A75C0F" FromRole="tblProfesional_Proyecto" ToRole="tblProyecto" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDPro__19DFD96B" FromRole="tblProfesional_Proyecto" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblProfes__IDPro__18EBB532" FromRole="tblProfesional_Proyecto" ToRole="tblProyecto" />
         </EntityType>
         <EntityType Name="tblProfesional_Reunion">
           <Key>
@@ -1250,8 +1271,8 @@
           <Property Name="IDProfesional_reunion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDProfesional" Type="Int32" Nullable="false" />
           <Property Name="IDReunion" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDPro__6383C8BA" FromRole="tblProfesional_Reunion" ToRole="tblProfesional" />
-          <NavigationProperty Name="tblReunion" Relationship="Self.FK__tblProfes__IDReu__628FA481" FromRole="tblProfesional_Reunion" ToRole="tblReunion" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfes__IDPro__1BC821DD" FromRole="tblProfesional_Reunion" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblReunion" Relationship="Self.FK__tblProfes__IDReu__1AD3FDA4" FromRole="tblProfesional_Reunion" ToRole="tblReunion" />
         </EntityType>
         <EntityType Name="tblProyecto">
           <Key>
@@ -1269,12 +1290,12 @@
           <Property Name="imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="seguimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDProfesional" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblActivi__IDPro__5FB337D6" FromRole="tblProyecto" ToRole="tblActividad" />
-          <NavigationProperty Name="tblArea" Relationship="Self.FK__tblArea__IDProye__5629CD9C" FromRole="tblProyecto" ToRole="tblArea" />
-          <NavigationProperty Name="tblCuadernoObra" Relationship="Self.FK__tblCuader__IDPro__534D60F1" FromRole="tblProyecto" ToRole="tblCuadernoObra" />
-          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProyec__IDPro__571DF1D5" FromRole="tblProyecto" ToRole="tblProfesional" />
-          <NavigationProperty Name="tblProfesional_Proyecto" Relationship="Self.FK__tblProfes__IDPro__60A75C0F" FromRole="tblProyecto" ToRole="tblProfesional_Proyecto" />
-          <NavigationProperty Name="tblReunion" Relationship="Self.FK__tblReunio__IDPro__5BE2A6F2" FromRole="tblProyecto" ToRole="tblReunion" />
+          <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblActivi__IDPro__17F790F9" FromRole="tblProyecto" ToRole="tblActividad" />
+          <NavigationProperty Name="tblArea" Relationship="Self.FK__tblArea__IDProye__0E6E26BF" FromRole="tblProyecto" ToRole="tblArea" />
+          <NavigationProperty Name="tblCuadernoObra" Relationship="Self.FK__tblCuader__IDPro__0B91BA14" FromRole="tblProyecto" ToRole="tblCuadernoObra" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProyec__IDPro__0F624AF8" FromRole="tblProyecto" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblProfesional_Proyecto" Relationship="Self.FK__tblProfes__IDPro__18EBB532" FromRole="tblProyecto" ToRole="tblProfesional_Proyecto" />
+          <NavigationProperty Name="tblReunion" Relationship="Self.FK__tblReunio__IDPro__14270015" FromRole="tblProyecto" ToRole="tblReunion" />
         </EntityType>
         <EntityType Name="tblRecurso">
           <Key>
@@ -1284,7 +1305,7 @@
           <Property Name="nomRecurso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cantidadStock" Type="Int32" Nullable="false" />
           <Property Name="costo" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
-          <NavigationProperty Name="tblRecurso_Actividad" Relationship="Self.FK__tblRecurs__IDRec__693CA210" FromRole="tblRecurso" ToRole="tblRecurso_Actividad" />
+          <NavigationProperty Name="tblRecurso_Actividad" Relationship="Self.FK__tblRecurs__IDRec__2180FB33" FromRole="tblRecurso" ToRole="tblRecurso_Actividad" />
         </EntityType>
         <EntityType Name="tblRecurso_Actividad">
           <Key>
@@ -1294,8 +1315,8 @@
           <Property Name="IDRecurso" Type="Int32" Nullable="false" />
           <Property Name="IDActividad" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblRecurs__IDAct__68487DD7" FromRole="tblRecurso_Actividad" ToRole="tblActividad" />
-          <NavigationProperty Name="tblRecurso" Relationship="Self.FK__tblRecurs__IDRec__693CA210" FromRole="tblRecurso_Actividad" ToRole="tblRecurso" />
+          <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblRecurs__IDAct__208CD6FA" FromRole="tblRecurso_Actividad" ToRole="tblActividad" />
+          <NavigationProperty Name="tblRecurso" Relationship="Self.FK__tblRecurs__IDRec__2180FB33" FromRole="tblRecurso_Actividad" ToRole="tblRecurso" />
         </EntityType>
         <EntityType Name="tblReporte">
           <Key>
@@ -1307,9 +1328,9 @@
           <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDDoc" Type="Int32" />
           <Property Name="IDProfesional" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblDocumento" Relationship="Self.FK__tblReport__IDDoc__5535A963" FromRole="tblReporte" ToRole="tblDocumento" />
-          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblReport__IDPro__5AEE82B9" FromRole="tblReporte" ToRole="tblProfesional" />
-          <NavigationProperty Name="tblReporte_Actividad" Relationship="Self.FK__tblReport__IDRep__6477ECF3" FromRole="tblReporte" ToRole="tblReporte_Actividad" />
+          <NavigationProperty Name="tblDocumento" Relationship="Self.FK__tblReport__IDDoc__0D7A0286" FromRole="tblReporte" ToRole="tblDocumento" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblReport__IDPro__1332DBDC" FromRole="tblReporte" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblReporte_Actividad" Relationship="Self.FK__tblReport__IDRep__1CBC4616" FromRole="tblReporte" ToRole="tblReporte_Actividad" />
         </EntityType>
         <EntityType Name="tblReporte_Actividad">
           <Key>
@@ -1318,8 +1339,8 @@
           <Property Name="IDRepActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDReporte" Type="Int32" Nullable="false" />
           <Property Name="IDActividad" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblReport__IDAct__656C112C" FromRole="tblReporte_Actividad" ToRole="tblActividad" />
-          <NavigationProperty Name="tblReporte" Relationship="Self.FK__tblReport__IDRep__6477ECF3" FromRole="tblReporte_Actividad" ToRole="tblReporte" />
+          <NavigationProperty Name="tblActividad" Relationship="Self.FK__tblReport__IDAct__1DB06A4F" FromRole="tblReporte_Actividad" ToRole="tblActividad" />
+          <NavigationProperty Name="tblReporte" Relationship="Self.FK__tblReport__IDRep__1CBC4616" FromRole="tblReporte_Actividad" ToRole="tblReporte" />
         </EntityType>
         <EntityType Name="tblReunion">
           <Key>
@@ -1333,10 +1354,10 @@
           <Property Name="estado" Type="Boolean" Nullable="false" />
           <Property Name="IDProyecto" Type="Int32" Nullable="false" />
           <Property Name="IDProfesional" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblActas" Relationship="Self.FK__tblActas__IDReun__6C190EBB" FromRole="tblReunion" ToRole="tblActas" />
-          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblReunio__IDPro__5CD6CB2B" FromRole="tblReunion" ToRole="tblProfesional" />
-          <NavigationProperty Name="tblProfesional_Reunion" Relationship="Self.FK__tblProfes__IDReu__628FA481" FromRole="tblReunion" ToRole="tblProfesional_Reunion" />
-          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblReunio__IDPro__5BE2A6F2" FromRole="tblReunion" ToRole="tblProyecto" />
+          <NavigationProperty Name="tblActas" Relationship="Self.FK__tblActas__IDReun__245D67DE" FromRole="tblReunion" ToRole="tblActas" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblReunio__IDPro__151B244E" FromRole="tblReunion" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblProfesional_Reunion" Relationship="Self.FK__tblProfes__IDReu__1AD3FDA4" FromRole="tblReunion" ToRole="tblProfesional_Reunion" />
+          <NavigationProperty Name="tblProyecto" Relationship="Self.FK__tblReunio__IDPro__14270015" FromRole="tblReunion" ToRole="tblProyecto" />
         </EntityType>
         <EntityType Name="tblSubMenu">
           <Key>
@@ -1349,8 +1370,8 @@
           <Property Name="Vista" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tblMenu" Relationship="Self.FK__tblSubMen__IDMen__5EBF139D" FromRole="tblSubMenu" ToRole="tblMenu" />
-          <NavigationProperty Name="tblPermisos" Relationship="Self.FK__tblPermis__IDSub__59063A47" FromRole="tblSubMenu" ToRole="tblPermisos" />
+          <NavigationProperty Name="tblMenu" Relationship="Self.FK__tblSubMen__IDMen__17036CC0" FromRole="tblSubMenu" ToRole="tblMenu" />
+          <NavigationProperty Name="tblPermisos" Relationship="Self.FK__tblPermis__IDSub__114A936A" FromRole="tblSubMenu" ToRole="tblPermisos" />
         </EntityType>
         <EntityType Name="tblUsuario">
           <Key>
@@ -1366,9 +1387,9 @@
           <Property Name="Activo" Type="Boolean" />
           <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="usrImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfesio__DNI__32E0915F" FromRole="tblUsuario" ToRole="tblProfesional" />
+          <NavigationProperty Name="tblProfesional" Relationship="Self.FK__tblProfesio__DNI__6B24EA82" FromRole="tblUsuario" ToRole="tblProfesional" />
         </EntityType>
-        <Association Name="FK__tblActas__IDReun__6C190EBB">
+        <Association Name="FK__tblActas__IDReun__245D67DE">
           <End Role="tblReunion" Type="Self.tblReunion" Multiplicity="0..1" />
           <End Role="tblActas" Type="Self.tblActas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1380,7 +1401,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblActivi__IDPro__5FB337D6">
+        <Association Name="FK__tblActivi__IDPro__17F790F9">
           <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
           <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1392,7 +1413,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDAct__6754599E">
+        <Association Name="FK__tblProfes__IDAct__1F98B2C1">
           <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="1" />
           <End Role="tblProfesional_Actividad" Type="Self.tblProfesional_Actividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1404,7 +1425,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblRecurs__IDAct__68487DD7">
+        <Association Name="FK__tblRecurs__IDAct__208CD6FA">
           <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="1" />
           <End Role="tblRecurso_Actividad" Type="Self.tblRecurso_Actividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1416,7 +1437,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblReport__IDAct__656C112C">
+        <Association Name="FK__tblReport__IDAct__1DB06A4F">
           <End Role="tblActividad" Type="Self.tblActividad" Multiplicity="1" />
           <End Role="tblReporte_Actividad" Type="Self.tblReporte_Actividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1428,7 +1449,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblArea__IDProfe__5DCAEF64">
+        <Association Name="FK__tblArea__IDProfe__160F4887">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblArea" Type="Self.tblArea" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1440,7 +1461,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblArea__IDProye__5629CD9C">
+        <Association Name="FK__tblArea__IDProye__0E6E26BF">
           <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="0..1" />
           <End Role="tblArea" Type="Self.tblArea" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1464,7 +1485,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblPermis__IDCar__5812160E">
+        <Association Name="FK__tblPermis__IDCar__10566F31">
           <End Role="tblCargo" Type="Self.tblCargo" Multiplicity="1" />
           <End Role="tblPermisos" Type="Self.tblPermisos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1476,7 +1497,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDCar__59FA5E80">
+        <Association Name="FK__tblProfes__IDCar__123EB7A3">
           <End Role="tblCargo" Type="Self.tblCargo" Multiplicity="1" />
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1488,7 +1509,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblCuader__IDCua__6B24EA82">
+        <Association Name="FK__tblCuader__IDCua__236943A5">
           <End Role="tblCuadernoObra" Type="Self.tblCuadernoObra" Multiplicity="1" />
           <End Role="tblCuadernoProfesional" Type="Self.tblCuadernoProfesional" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1500,7 +1521,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblCuader__IDDoc__5441852A">
+        <Association Name="FK__tblCuader__IDDoc__0C85DE4D">
           <End Role="tblDocumento" Type="Self.tblDocumento" Multiplicity="1" />
           <End Role="tblCuadernoObra" Type="Self.tblCuadernoObra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1512,7 +1533,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblCuader__IDPro__534D60F1">
+        <Association Name="FK__tblCuader__IDPro__0B91BA14">
           <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
           <End Role="tblCuadernoObra" Type="Self.tblCuadernoObra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1524,7 +1545,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblCuader__IDPro__6A30C649">
+        <Association Name="FK__tblCuader__IDPro__22751F6C">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblCuadernoProfesional" Type="Self.tblCuadernoProfesional" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1536,7 +1557,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblReport__IDDoc__5535A963">
+        <Association Name="FK__tblReport__IDDoc__0D7A0286">
           <End Role="tblDocumento" Type="Self.tblDocumento" Multiplicity="0..1" />
           <End Role="tblReporte" Type="Self.tblReporte" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1548,7 +1569,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblSubMen__IDMen__5EBF139D">
+        <Association Name="FK__tblSubMen__IDMen__17036CC0">
           <End Role="tblMenu" Type="Self.tblMenu" Multiplicity="1" />
           <End Role="tblSubMenu" Type="Self.tblSubMenu" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1560,7 +1581,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblPermis__IDSub__59063A47">
+        <Association Name="FK__tblPermis__IDSub__114A936A">
           <End Role="tblSubMenu" Type="Self.tblSubMenu" Multiplicity="0..1" />
           <End Role="tblPermisos" Type="Self.tblPermisos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1572,7 +1593,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDPro__619B8048">
+        <Association Name="FK__tblProfes__IDPro__19DFD96B">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblProfesional_Proyecto" Type="Self.tblProfesional_Proyecto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1584,7 +1605,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDPro__6383C8BA">
+        <Association Name="FK__tblProfes__IDPro__1BC821DD">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblProfesional_Reunion" Type="Self.tblProfesional_Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1596,7 +1617,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDPro__66603565">
+        <Association Name="FK__tblProfes__IDPro__1EA48E88">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblProfesional_Actividad" Type="Self.tblProfesional_Actividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1608,7 +1629,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfesio__DNI__32E0915F">
+        <Association Name="FK__tblProfesio__DNI__6B24EA82">
           <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1620,7 +1641,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProyec__IDPro__571DF1D5">
+        <Association Name="FK__tblProyec__IDPro__0F624AF8">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1632,7 +1653,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblReport__IDPro__5AEE82B9">
+        <Association Name="FK__tblReport__IDPro__1332DBDC">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblReporte" Type="Self.tblReporte" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1644,7 +1665,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblReunio__IDPro__5CD6CB2B">
+        <Association Name="FK__tblReunio__IDPro__151B244E">
           <End Role="tblProfesional" Type="Self.tblProfesional" Multiplicity="1" />
           <End Role="tblReunion" Type="Self.tblReunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1656,7 +1677,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDPro__60A75C0F">
+        <Association Name="FK__tblProfes__IDPro__18EBB532">
           <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
           <End Role="tblProfesional_Proyecto" Type="Self.tblProfesional_Proyecto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1668,7 +1689,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProfes__IDReu__628FA481">
+        <Association Name="FK__tblProfes__IDReu__1AD3FDA4">
           <End Role="tblReunion" Type="Self.tblReunion" Multiplicity="1" />
           <End Role="tblProfesional_Reunion" Type="Self.tblProfesional_Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1680,7 +1701,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblReunio__IDPro__5BE2A6F2">
+        <Association Name="FK__tblReunio__IDPro__14270015">
           <End Role="tblProyecto" Type="Self.tblProyecto" Multiplicity="1" />
           <End Role="tblReunion" Type="Self.tblReunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1692,7 +1713,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblRecurs__IDRec__693CA210">
+        <Association Name="FK__tblRecurs__IDRec__2180FB33">
           <End Role="tblRecurso" Type="Self.tblRecurso" Multiplicity="1" />
           <End Role="tblRecurso_Actividad" Type="Self.tblRecurso_Actividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1704,7 +1725,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblReport__IDRep__6477ECF3">
+        <Association Name="FK__tblReport__IDRep__1CBC4616">
           <End Role="tblReporte" Type="Self.tblReporte" Multiplicity="1" />
           <End Role="tblReporte_Actividad" Type="Self.tblReporte_Actividad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1717,6 +1738,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DBControlProyectoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="tblActas" EntityType="Self.tblActas" />
           <EntitySet Name="tblActividad" EntityType="Self.tblActividad" />
           <EntitySet Name="tblArea" EntityType="Self.tblArea" />
@@ -1738,31 +1760,31 @@
           <EntitySet Name="tblReunion" EntityType="Self.tblReunion" />
           <EntitySet Name="tblSubMenu" EntityType="Self.tblSubMenu" />
           <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" />
-          <AssociationSet Name="FK__tblActas__IDReun__6C190EBB" Association="Self.FK__tblActas__IDReun__6C190EBB">
+          <AssociationSet Name="FK__tblActas__IDReun__245D67DE" Association="Self.FK__tblActas__IDReun__245D67DE">
             <End Role="tblReunion" EntitySet="tblReunion" />
             <End Role="tblActas" EntitySet="tblActas" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblActivi__IDPro__5FB337D6" Association="Self.FK__tblActivi__IDPro__5FB337D6">
+          <AssociationSet Name="FK__tblActivi__IDPro__17F790F9" Association="Self.FK__tblActivi__IDPro__17F790F9">
             <End Role="tblProyecto" EntitySet="tblProyecto" />
             <End Role="tblActividad" EntitySet="tblActividad" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDAct__6754599E" Association="Self.FK__tblProfes__IDAct__6754599E">
+          <AssociationSet Name="FK__tblProfes__IDAct__1F98B2C1" Association="Self.FK__tblProfes__IDAct__1F98B2C1">
             <End Role="tblActividad" EntitySet="tblActividad" />
             <End Role="tblProfesional_Actividad" EntitySet="tblProfesional_Actividad" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblRecurs__IDAct__68487DD7" Association="Self.FK__tblRecurs__IDAct__68487DD7">
+          <AssociationSet Name="FK__tblRecurs__IDAct__208CD6FA" Association="Self.FK__tblRecurs__IDAct__208CD6FA">
             <End Role="tblActividad" EntitySet="tblActividad" />
             <End Role="tblRecurso_Actividad" EntitySet="tblRecurso_Actividad" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblReport__IDAct__656C112C" Association="Self.FK__tblReport__IDAct__656C112C">
+          <AssociationSet Name="FK__tblReport__IDAct__1DB06A4F" Association="Self.FK__tblReport__IDAct__1DB06A4F">
             <End Role="tblActividad" EntitySet="tblActividad" />
             <End Role="tblReporte_Actividad" EntitySet="tblReporte_Actividad" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblArea__IDProfe__5DCAEF64" Association="Self.FK__tblArea__IDProfe__5DCAEF64">
+          <AssociationSet Name="FK__tblArea__IDProfe__160F4887" Association="Self.FK__tblArea__IDProfe__160F4887">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblArea" EntitySet="tblArea" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblArea__IDProye__5629CD9C" Association="Self.FK__tblArea__IDProye__5629CD9C">
+          <AssociationSet Name="FK__tblArea__IDProye__0E6E26BF" Association="Self.FK__tblArea__IDProye__0E6E26BF">
             <End Role="tblProyecto" EntitySet="tblProyecto" />
             <End Role="tblArea" EntitySet="tblArea" />
           </AssociationSet>
@@ -1770,87 +1792,87 @@
             <End Role="tblArea" EntitySet="tblArea" />
             <End Role="tblArea1" EntitySet="tblArea" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblPermis__IDCar__5812160E" Association="Self.FK__tblPermis__IDCar__5812160E">
+          <AssociationSet Name="FK__tblPermis__IDCar__10566F31" Association="Self.FK__tblPermis__IDCar__10566F31">
             <End Role="tblCargo" EntitySet="tblCargo" />
             <End Role="tblPermisos" EntitySet="tblPermisos" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDCar__59FA5E80" Association="Self.FK__tblProfes__IDCar__59FA5E80">
+          <AssociationSet Name="FK__tblProfes__IDCar__123EB7A3" Association="Self.FK__tblProfes__IDCar__123EB7A3">
             <End Role="tblCargo" EntitySet="tblCargo" />
             <End Role="tblProfesional" EntitySet="tblProfesional" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblCuader__IDCua__6B24EA82" Association="Self.FK__tblCuader__IDCua__6B24EA82">
+          <AssociationSet Name="FK__tblCuader__IDCua__236943A5" Association="Self.FK__tblCuader__IDCua__236943A5">
             <End Role="tblCuadernoObra" EntitySet="tblCuadernoObra" />
             <End Role="tblCuadernoProfesional" EntitySet="tblCuadernoProfesional" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblCuader__IDDoc__5441852A" Association="Self.FK__tblCuader__IDDoc__5441852A">
+          <AssociationSet Name="FK__tblCuader__IDDoc__0C85DE4D" Association="Self.FK__tblCuader__IDDoc__0C85DE4D">
             <End Role="tblDocumento" EntitySet="tblDocumento" />
             <End Role="tblCuadernoObra" EntitySet="tblCuadernoObra" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblCuader__IDPro__534D60F1" Association="Self.FK__tblCuader__IDPro__534D60F1">
+          <AssociationSet Name="FK__tblCuader__IDPro__0B91BA14" Association="Self.FK__tblCuader__IDPro__0B91BA14">
             <End Role="tblProyecto" EntitySet="tblProyecto" />
             <End Role="tblCuadernoObra" EntitySet="tblCuadernoObra" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblCuader__IDPro__6A30C649" Association="Self.FK__tblCuader__IDPro__6A30C649">
+          <AssociationSet Name="FK__tblCuader__IDPro__22751F6C" Association="Self.FK__tblCuader__IDPro__22751F6C">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblCuadernoProfesional" EntitySet="tblCuadernoProfesional" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblReport__IDDoc__5535A963" Association="Self.FK__tblReport__IDDoc__5535A963">
+          <AssociationSet Name="FK__tblReport__IDDoc__0D7A0286" Association="Self.FK__tblReport__IDDoc__0D7A0286">
             <End Role="tblDocumento" EntitySet="tblDocumento" />
             <End Role="tblReporte" EntitySet="tblReporte" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblSubMen__IDMen__5EBF139D" Association="Self.FK__tblSubMen__IDMen__5EBF139D">
+          <AssociationSet Name="FK__tblSubMen__IDMen__17036CC0" Association="Self.FK__tblSubMen__IDMen__17036CC0">
             <End Role="tblMenu" EntitySet="tblMenu" />
             <End Role="tblSubMenu" EntitySet="tblSubMenu" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblPermis__IDSub__59063A47" Association="Self.FK__tblPermis__IDSub__59063A47">
+          <AssociationSet Name="FK__tblPermis__IDSub__114A936A" Association="Self.FK__tblPermis__IDSub__114A936A">
             <End Role="tblSubMenu" EntitySet="tblSubMenu" />
             <End Role="tblPermisos" EntitySet="tblPermisos" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDPro__619B8048" Association="Self.FK__tblProfes__IDPro__619B8048">
+          <AssociationSet Name="FK__tblProfes__IDPro__19DFD96B" Association="Self.FK__tblProfes__IDPro__19DFD96B">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblProfesional_Proyecto" EntitySet="tblProfesional_Proyecto" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDPro__6383C8BA" Association="Self.FK__tblProfes__IDPro__6383C8BA">
+          <AssociationSet Name="FK__tblProfes__IDPro__1BC821DD" Association="Self.FK__tblProfes__IDPro__1BC821DD">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblProfesional_Reunion" EntitySet="tblProfesional_Reunion" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDPro__66603565" Association="Self.FK__tblProfes__IDPro__66603565">
+          <AssociationSet Name="FK__tblProfes__IDPro__1EA48E88" Association="Self.FK__tblProfes__IDPro__1EA48E88">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblProfesional_Actividad" EntitySet="tblProfesional_Actividad" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfesio__DNI__32E0915F" Association="Self.FK__tblProfesio__DNI__32E0915F">
+          <AssociationSet Name="FK__tblProfesio__DNI__6B24EA82" Association="Self.FK__tblProfesio__DNI__6B24EA82">
             <End Role="tblUsuario" EntitySet="tblUsuario" />
             <End Role="tblProfesional" EntitySet="tblProfesional" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProyec__IDPro__571DF1D5" Association="Self.FK__tblProyec__IDPro__571DF1D5">
+          <AssociationSet Name="FK__tblProyec__IDPro__0F624AF8" Association="Self.FK__tblProyec__IDPro__0F624AF8">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblProyecto" EntitySet="tblProyecto" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblReport__IDPro__5AEE82B9" Association="Self.FK__tblReport__IDPro__5AEE82B9">
+          <AssociationSet Name="FK__tblReport__IDPro__1332DBDC" Association="Self.FK__tblReport__IDPro__1332DBDC">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblReporte" EntitySet="tblReporte" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblReunio__IDPro__5CD6CB2B" Association="Self.FK__tblReunio__IDPro__5CD6CB2B">
+          <AssociationSet Name="FK__tblReunio__IDPro__151B244E" Association="Self.FK__tblReunio__IDPro__151B244E">
             <End Role="tblProfesional" EntitySet="tblProfesional" />
             <End Role="tblReunion" EntitySet="tblReunion" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDPro__60A75C0F" Association="Self.FK__tblProfes__IDPro__60A75C0F">
+          <AssociationSet Name="FK__tblProfes__IDPro__18EBB532" Association="Self.FK__tblProfes__IDPro__18EBB532">
             <End Role="tblProyecto" EntitySet="tblProyecto" />
             <End Role="tblProfesional_Proyecto" EntitySet="tblProfesional_Proyecto" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProfes__IDReu__628FA481" Association="Self.FK__tblProfes__IDReu__628FA481">
+          <AssociationSet Name="FK__tblProfes__IDReu__1AD3FDA4" Association="Self.FK__tblProfes__IDReu__1AD3FDA4">
             <End Role="tblReunion" EntitySet="tblReunion" />
             <End Role="tblProfesional_Reunion" EntitySet="tblProfesional_Reunion" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblReunio__IDPro__5BE2A6F2" Association="Self.FK__tblReunio__IDPro__5BE2A6F2">
+          <AssociationSet Name="FK__tblReunio__IDPro__14270015" Association="Self.FK__tblReunio__IDPro__14270015">
             <End Role="tblProyecto" EntitySet="tblProyecto" />
             <End Role="tblReunion" EntitySet="tblReunion" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblRecurs__IDRec__693CA210" Association="Self.FK__tblRecurs__IDRec__693CA210">
+          <AssociationSet Name="FK__tblRecurs__IDRec__2180FB33" Association="Self.FK__tblRecurs__IDRec__2180FB33">
             <End Role="tblRecurso" EntitySet="tblRecurso" />
             <End Role="tblRecurso_Actividad" EntitySet="tblRecurso_Actividad" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblReport__IDRep__6477ECF3" Association="Self.FK__tblReport__IDRep__6477ECF3">
+          <AssociationSet Name="FK__tblReport__IDRep__1CBC4616" Association="Self.FK__tblReport__IDRep__1CBC4616">
             <End Role="tblReporte" EntitySet="tblReporte" />
             <End Role="tblReporte_Actividad" EntitySet="tblReporte_Actividad" />
           </AssociationSet>
@@ -2536,6 +2558,17 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DBControlProyectoModelStoreContainer" CdmEntityContainer="DBControlProyectoEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBControlProyectoModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblActas">
             <EntityTypeMapping TypeName="DBControlProyectoModel.tblActas">
               <MappingFragment StoreEntitySet="tblActas">

@@ -377,6 +377,9 @@
     <Compile Include="Models\SP_M_ActualizarPermisos_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblActas.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
