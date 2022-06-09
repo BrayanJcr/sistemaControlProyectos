@@ -37,6 +37,7 @@ namespace sistemaControlProyectos
                       ));
 
             bundles.Add(new StyleBundle("~/Content/Plugins.js").Include(
+                      "~/Scripts/jquery-2.1.1.min.js",
                       "~/Content/datatable/js/jquery.dataTables.min.js",
                       "~/Content/datatable/js/dataTables.buttons.min.js",
                       "~/Content/jquery.loading.overlay/loadingoverlay.min.js",

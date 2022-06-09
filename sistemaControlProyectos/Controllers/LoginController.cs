@@ -1,5 +1,9 @@
 ﻿using sistemaControlProyectos.Models;
+using System;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Web;
 using System.Web.Mvc;
 
 namespace sistemaControlProyectos.Controllers
@@ -11,7 +15,6 @@ namespace sistemaControlProyectos.Controllers
         // GET: Login
         public ActionResult Login()
         {
-
             return View();
         }
         [HttpPost]
@@ -26,6 +29,42 @@ namespace sistemaControlProyectos.Controllers
             }
             Session["usuario"] = listar;
             return RedirectToAction("ProyectosInicio", "Proyectos");
+        }
+
+        public ActionResult LoginFirma(HttpPostedFileBase FirmaDigital)
+        {
+            try
+            {
+                string theFileName = Path.GetFileName(FirmaDigital.FileName);
+                byte[] thePictureAsBytes = new byte[FirmaDigital.ContentLength];
+                using (BinaryReader theReader = new BinaryReader(FirmaDigital.InputStream))
+                {
+                    thePictureAsBytes = theReader.ReadBytes(FirmaDigital.ContentLength);
+                }
+                string thePictureDataAsString = Convert.ToBase64String(thePictureAsBytes);
+
+                string codigo = Base64Encode(thePictureDataAsString);
+
+                SP_C_PROFESIONALFIRMA_Result listarFirma = ProfesionalModelo.instancia.ListarProfesionalFirma(codigo);
+                SP_C_PROFESIONAL_Result listar = ProfesionalModelo.instancia.ListarProfesional().Where(u => u.DNI == listarFirma.DNI && u.contraseña == listarFirma.contraseña).FirstOrDefault();
+                if (listar == null)
+                {
+                    ViewBag.ErrorFirma = "Firma Digital no encontrada";
+                    return View("Login");
+                }
+                Session["usuario"] = listar;
+                return RedirectToAction("ProyectosInicio", "Proyectos");
+            }
+            catch (Exception ex) {
+                ViewBag.ErrorFirma = "Firma Digital no encontrada";
+                return View("Login");
+            }
+            
+        }
+
+        public static string Base64Encode(string plainText)
+        {
+            return System.Web.Helpers.Crypto.Hash(plainText);
         }
 
         internal ActionResult MenuSession(ViewResult viewResult)
@@ -55,7 +94,6 @@ namespace sistemaControlProyectos.Controllers
             {
                 viewResult.ViewBag.ImagenUsuario = usuario.usrImagen;
             }
-
             return viewResult;
         }
 

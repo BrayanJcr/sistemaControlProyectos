@@ -45,7 +45,27 @@ namespace sistemaControlProyectos.Models
 
             }
         }
-       
+
+        public SP_C_PROFESIONALFIRMA_Result ListarProfesionalFirma(string data)
+        {
+            SP_C_PROFESIONALFIRMA_Result listarProfesional = new SP_C_PROFESIONALFIRMA_Result();
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+
+                try
+                {
+                    listarProfesional = db.SP_C_PROFESIONALFIRMA(data).FirstOrDefault();
+                    return listarProfesional;
+                }
+                catch (Exception ex)
+                {
+                    listarProfesional = null;
+                    return listarProfesional;
+                }
+
+            }
+        }
+
         public bool RegistrarProfesional(tblProfesional profesional)
         {
             

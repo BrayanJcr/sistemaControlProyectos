@@ -17,7 +17,7 @@ namespace sistemaControlProyectos.Models
         public string nombre { get; set; }
         public string apellidos { get; set; }
         public string contraseña { get; set; }
-        public string firma { get; set; }
+        public Nullable<int> firma { get; set; }
         public string profesion { get; set; }
         public string correo { get; set; }
         public Nullable<bool> Activo { get; set; }

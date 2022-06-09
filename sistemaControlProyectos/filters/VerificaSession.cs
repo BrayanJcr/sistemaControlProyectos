@@ -16,23 +16,23 @@ namespace sistemaControlProyectos.filters
         {
 
             sUsuario = (SP_C_PROFESIONAL_Result)HttpContext.Current.Session["usuario"];
-           
-                if (sUsuario == null)
-                {
-                    if (filterContext.Controller is LoginController == false)
-                    {
-                        filterContext.HttpContext.Response.Redirect("~/Login/Login");
-                    }
 
-                }
-                else
+            if (sUsuario == null)
+            {
+                if (filterContext.Controller is LoginController == false)
                 {
-
-                    if (filterContext.Controller is LoginController == true)
-                    {
-                        filterContext.HttpContext.Response.Redirect("~/Home/Index");
-                    }
+                    filterContext.HttpContext.Response.Redirect("~/Login/Login");
                 }
+
+            }
+            else
+            {
+
+                if (filterContext.Controller is LoginController == true)
+                {
+                    filterContext.HttpContext.Response.Redirect("~/Home/Index");
+                }
+            }
             base.OnActionExecuting(filterContext);
         }
     }

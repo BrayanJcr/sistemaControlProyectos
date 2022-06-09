@@ -48,7 +48,7 @@ namespace sistemaControlProyectos.Controllers
         }
 
         [HttpPost]
-        public JsonResult Guardar(tblUsuario objeto)
+        public JsonResult Guardar(tblUsuario objeto,string documento)
         {
 
             JsonResult listar = Obtener(objeto.DNI);
@@ -57,11 +57,11 @@ namespace sistemaControlProyectos.Controllers
 
             if (listar.Data == null)
             {
-                    respuesta = UsuarioModelo.instancia.RegistrarUsuario(objeto);
+                    respuesta = UsuarioModelo.instancia.RegistrarUsuario(objeto, documento);
             }
             else
             {
-                respuesta = UsuarioModelo.instancia.ModificarProfesional(objeto);
+                respuesta = UsuarioModelo.instancia.ModificarProfesional(objeto,documento);
             }
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }

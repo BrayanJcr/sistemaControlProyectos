@@ -326,6 +326,9 @@
     <Compile Include="Models\SP_C_ProfesionalActividad_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_C_PROFESIONALFIRMA_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_C_PROFESIONALID_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -375,9 +378,6 @@
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_M_ActualizarPermisos_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblActas.cs">
@@ -2547,6 +2547,8 @@
     <Content Include="Scripts\Views\Crear_Reunion.js" />
     <Content Include="Scripts\Views\Crear_Usuario.js" />
     <Content Include="Scripts\Views\Gantt.js" />
+    <Content Include="Scripts\Views\LoginFirma.js" />
+    <Content Include="Scripts\Views\modules\blobManager.js" />
     <Content Include="Scripts\Views\OrganigramaArea.js" />
     <Content Include="Scripts\Views\Profesional_Asignar.js" />
     <Content Include="Scripts\Views\Profesional_AsignarProye.js" />

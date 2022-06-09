@@ -8,9 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/">
     <title>@ViewBag.Title - SMSP</title>
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/Plugins.css")
-    @Scripts.Render("~/bundles/modernizr")
+
+    <script src="/Scripts/jquery-3.4.1.js"></script>
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+
+    <link href="/Content/datatable/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="/Content/datatable/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="/Content/Actividades/Actividades.css" rel="stylesheet" />
+    <link href="/Content/Proyectos/Proyectos.css" rel="stylesheet" />
+    <link href="/Content/sweetalert2/css/sweetalert.css" rel="stylesheet" />
+
+    <script src="/Scripts/modernizr-2.8.3.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -31,19 +39,19 @@
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
                 <div class="sidebar-brand">
-                    <a href="javascript:;">Grupo Bravajal</a>
+                    <a href="javascript:;">SMSP</a>
                     <div id="close-sidebar">
                         <i class="fas fa-times"></i>
                     </div>
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-                        <img class="img-fluid img-rounded" src=@ViewBag.ImagenUsuario alt="User picture"/>
+                        <img class="img-fluid img-rounded" src=@ViewBag.ImagenUsuario alt="User picture" />
                     </div>
                     <div class="user-info">
                         <input id="txtIDUsuarioSession" type="hidden" value="@ViewBag.IDUsuario" />
                         <input id="txtNombreUsuario" type="hidden" value="@ViewBag.NombreUsuario" />
-                        <span class="user-name" >
+                        <span class="user-name">
                             @ViewBag.NombreUsuario
                         </span>
                         <input id="txtIDCargo" type="hidden" value="@ViewBag.IDCargo" />
@@ -91,9 +99,14 @@
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
     <script src="~/Content/menu/js/menu.js"></script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Content/Plugins.js")
+    <script src="/Scripts/jquery-3.4.1.js"></script>
+
+    <script src="/Scripts/bootstrap.js"></script>
+
+    <script src="/Content/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="/Content/datatable/js/dataTables.buttons.min.js"></script>
+    <script src="/Content/jquery.loading.overlay/loadingoverlay.min.js"></script>
+    <script src="/Content/sweetalert2/js/sweetalert.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

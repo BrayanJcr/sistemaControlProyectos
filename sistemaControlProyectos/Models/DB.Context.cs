@@ -28,7 +28,6 @@ namespace sistemaControlProyectos.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tblActas> tblActas { get; set; }
         public virtual DbSet<tblActividad> tblActividad { get; set; }
         public virtual DbSet<tblArea> tblArea { get; set; }
@@ -197,7 +196,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_CUADERNOPROFESIONAL", idProfesionalParameter, iDCuaderObraParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_DOCUMENTO(Nullable<int> iDDoc, string nombreDoc, string realNomb, byte[] dOC)
+        public virtual ObjectResult<string> SP_A_DOCUMENTO(Nullable<int> iDDoc, string nombreDoc, string realNomb, string codigo, byte[] dOC)
         {
             var iDDocParameter = iDDoc.HasValue ?
                 new ObjectParameter("IDDoc", iDDoc) :
@@ -211,11 +210,15 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("RealNomb", realNomb) :
                 new ObjectParameter("RealNomb", typeof(string));
     
+            var codigoParameter = codigo != null ?
+                new ObjectParameter("codigo", codigo) :
+                new ObjectParameter("codigo", typeof(string));
+    
             var dOCParameter = dOC != null ?
                 new ObjectParameter("DOC", dOC) :
                 new ObjectParameter("DOC", typeof(byte[]));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_DOCUMENTO", iDDocParameter, nombreDocParameter, realNombParameter, dOCParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_DOCUMENTO", iDDocParameter, nombreDocParameter, realNombParameter, codigoParameter, dOCParameter);
         }
     
         public virtual ObjectResult<string> SP_A_MENU(string nombreMenu, string icono)
@@ -445,7 +448,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_SUBMENU", iDMenuParameter, nombreSubMenuParameter, controladorParameter, vistaParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_USUARIO(string dNI, string nombre, string apellidos, string contraseña, string firma, string profesion, string correo, string telefono, string usrImagen)
+        public virtual ObjectResult<string> SP_A_USUARIO(string dNI, string nombre, string apellidos, string contraseña, string profesion, string correo, string telefono, string usrImagen, string contenidoFirma, string codigo)
         {
             var dNIParameter = dNI != null ?
                 new ObjectParameter("DNI", dNI) :
@@ -463,10 +466,6 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("contraseña", contraseña) :
                 new ObjectParameter("contraseña", typeof(string));
     
-            var firmaParameter = firma != null ?
-                new ObjectParameter("firma", firma) :
-                new ObjectParameter("firma", typeof(string));
-    
             var profesionParameter = profesion != null ?
                 new ObjectParameter("profesion", profesion) :
                 new ObjectParameter("profesion", typeof(string));
@@ -483,7 +482,15 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("usrImagen", usrImagen) :
                 new ObjectParameter("usrImagen", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_USUARIO", dNIParameter, nombreParameter, apellidosParameter, contraseñaParameter, firmaParameter, profesionParameter, correoParameter, telefonoParameter, usrImagenParameter);
+            var contenidoFirmaParameter = contenidoFirma != null ?
+                new ObjectParameter("contenidoFirma", contenidoFirma) :
+                new ObjectParameter("contenidoFirma", typeof(string));
+    
+            var codigoParameter = codigo != null ?
+                new ObjectParameter("codigo", codigo) :
+                new ObjectParameter("codigo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_USUARIO", dNIParameter, nombreParameter, apellidosParameter, contraseñaParameter, profesionParameter, correoParameter, telefonoParameter, usrImagenParameter, contenidoFirmaParameter, codigoParameter);
         }
     
         public virtual ObjectResult<SP_C_ACTAS_Result> SP_C_ACTAS()
@@ -571,14 +578,18 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PERMISOSEDITAR_Result>("SP_C_PERMISOSEDITAR", iDCargoParameter, nombreSubMenuParameter);
         }
     
-        public virtual ObjectResult<SP_C_PROFESIONAL_Result> SP_C_PROFESIONAL()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROFESIONAL_Result>("SP_C_PROFESIONAL");
-        }
-    
         public virtual ObjectResult<SP_C_ProfesionalActividad_Result> SP_C_ProfesionalActividad()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_ProfesionalActividad_Result>("SP_C_ProfesionalActividad");
+        }
+    
+        public virtual ObjectResult<SP_C_PROFESIONALFIRMA_Result> SP_C_PROFESIONALFIRMA(string codigo)
+        {
+            var codigoParameter = codigo != null ?
+                new ObjectParameter("codigo", codigo) :
+                new ObjectParameter("codigo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROFESIONALFIRMA_Result>("SP_C_PROFESIONALFIRMA", codigoParameter);
         }
     
         public virtual ObjectResult<SP_C_PROFESIONALID_Result> SP_C_PROFESIONALID(Nullable<int> iDProfesional)
@@ -1300,7 +1311,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_REUNION", iDReunionParameter, tipoDeReunionParameter, fechaParameter, ubicacionParameter, temaParameter, estadoParameter, iDProyectoParameter, iDProfesionalParameter);
         }
     
-        public virtual ObjectResult<string> SP_M_USUARIO(string dNI, string nombre, string apellidos, string contraseña, string firma, string profesion, string correo, string telefono, string usrImagen)
+        public virtual ObjectResult<string> SP_M_USUARIO(string dNI, string nombre, string apellidos, string contraseña, string profesion, string correo, string telefono, string usrImagen, string contenidoFirma, string codigo)
         {
             var dNIParameter = dNI != null ?
                 new ObjectParameter("DNI", dNI) :
@@ -1318,10 +1329,6 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("contraseña", contraseña) :
                 new ObjectParameter("contraseña", typeof(string));
     
-            var firmaParameter = firma != null ?
-                new ObjectParameter("firma", firma) :
-                new ObjectParameter("firma", typeof(string));
-    
             var profesionParameter = profesion != null ?
                 new ObjectParameter("profesion", profesion) :
                 new ObjectParameter("profesion", typeof(string));
@@ -1338,7 +1345,20 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("usrImagen", usrImagen) :
                 new ObjectParameter("usrImagen", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_USUARIO", dNIParameter, nombreParameter, apellidosParameter, contraseñaParameter, firmaParameter, profesionParameter, correoParameter, telefonoParameter, usrImagenParameter);
+            var contenidoFirmaParameter = contenidoFirma != null ?
+                new ObjectParameter("contenidoFirma", contenidoFirma) :
+                new ObjectParameter("contenidoFirma", typeof(string));
+    
+            var codigoParameter = codigo != null ?
+                new ObjectParameter("codigo", codigo) :
+                new ObjectParameter("codigo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_USUARIO", dNIParameter, nombreParameter, apellidosParameter, contraseñaParameter, profesionParameter, correoParameter, telefonoParameter, usrImagenParameter, contenidoFirmaParameter, codigoParameter);
+        }
+    
+        public virtual ObjectResult<SP_C_PROFESIONAL_Result> SP_C_PROFESIONAL()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_PROFESIONAL_Result>("SP_C_PROFESIONAL");
         }
     }
 }

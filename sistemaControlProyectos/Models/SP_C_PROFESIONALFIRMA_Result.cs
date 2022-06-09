@@ -11,7 +11,7 @@ namespace sistemaControlProyectos.Models
 {
     using System;
     
-    public partial class SP_C_PROFESIONAL_Result
+    public partial class SP_C_PROFESIONALFIRMA_Result
     {
         public int IDProfesional { get; set; }
         public string DNI { get; set; }

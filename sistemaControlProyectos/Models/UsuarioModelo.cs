@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace sistemaControlProyectos.Models
@@ -43,16 +44,16 @@ namespace sistemaControlProyectos.Models
 
             }
         }
-        public bool RegistrarUsuario(tblUsuario usuario)
+        public bool RegistrarUsuario(tblUsuario usuario,String documento)
         {
-
+            string codigo = Base64Encode(documento);
 
             using (DBControlProyectoEntities db = new DBControlProyectoEntities())
             {
 
                 try
                 {
-                    db.SP_A_USUARIO(usuario.DNI, usuario.nombre, usuario.apellidos, usuario.contraseña,usuario.firma,usuario.profesion,usuario.correo,usuario.telefono,usuario.usrImagen);
+                    db.SP_A_USUARIO(usuario.DNI, usuario.nombre, usuario.apellidos, usuario.contraseña,usuario.profesion,usuario.correo,usuario.telefono,usuario.usrImagen,documento,codigo);
                     db.SaveChanges();
                     return true;
                 }
@@ -64,8 +65,15 @@ namespace sistemaControlProyectos.Models
 
             }
         }
-        public bool ModificarProfesional(tblUsuario usuario)
+
+        public static string Base64Encode(string plainText)
         {
+            return System.Web.Helpers.Crypto.Hash(plainText);
+        }
+
+        public bool ModificarProfesional(tblUsuario usuario,string Documento)
+        {
+            string codigo = null;
             bool respuesta = true;
             try
             {
@@ -74,7 +82,7 @@ namespace sistemaControlProyectos.Models
 
                     try
                     {
-                        db.SP_M_USUARIO(usuario.DNI, usuario.nombre, usuario.apellidos, usuario.contraseña, usuario.firma, usuario.profesion, usuario.correo, usuario.telefono, usuario.usrImagen);
+                        db.SP_M_USUARIO(usuario.DNI, usuario.nombre, usuario.apellidos, usuario.contraseña, usuario.profesion, usuario.correo, usuario.telefono, usuario.usrImagen, Documento, codigo);
                         db.SaveChanges();
                         return true;
                     }

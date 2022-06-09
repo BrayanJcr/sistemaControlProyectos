@@ -1,4 +1,6 @@
-﻿function Cerrar() {
+﻿
+
+function Cerrar() {
     $('#FormModal').modal('hide');
 }
 
@@ -106,7 +108,6 @@ function abrirModal($DNI) {
                     $("#txtNombre").val(data.nombre);
                     $("#txtApellidos").val(data.apellidos);
                     $("#txtPassword").val(data.contraseña);
-                    $("#txtFirmaDigital").val(data.firma);
                     $("#txtProfesion").val(data.profesion);
                     $("#txtCorreo").val(data.correo);
                     $("#txtTelefono").val(data.telefono);
@@ -120,7 +121,6 @@ function abrirModal($DNI) {
         $("#txtNombre").val("");
         $("#txtApellidos").val("");
         $("#txtPassword").val("");
-        $("#txtFirmaDigital").val("");
         $("#txtProfesion").val("");
         $("#txtCorreo").val("");
         $("#txtTelefono").val("");
@@ -130,45 +130,67 @@ function abrirModal($DNI) {
     $('#FormModal').modal('show');
 
 }
-function guardar() {
 
-    var $request = {
-        objeto: {
-            DNI: parseInt($("#txtDni").val()),
-            nombre: ($("#txtNombre").val()),
-            apellidos: ($("#txtApellidos").val()),
-            contraseña: ($("#txtPassword").val()),
-            firma: ($("#txtFirmaDigital").val()),
-            profesion: ($("#txtProfesion").val()),
-            telefono: ($("#txtTelefono").val()),
-            correo: ($("#txtCorreo").val()),
-            usrImagen: document.getElementById("imagenUser").src,
+function getBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            resolve(reader.result.split(',')[1]);
         }
-    }
-    console.log($request)
-    jQuery.ajax({
-        url: "/Usuario/Guardar",
-        type: "POST",
-        data: JSON.stringify($request),
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            console.log(data)
-            if (data.resultado) {
-                tblUsuario.ajax.reload();
-                $('#FormModal').modal('hide');
-            } else {
-                swal("Mensaje", "No se pudo guardar los cambios", "warning")
-
-            }
-        },
-        error: function (error) {
-            console.log(error)
-        },
-        beforeSend: function () {
-
-        },
+        reader.onerror = error => reject(error);
     });
+}
+
+function guardar() {
+    var file = document.querySelector('#firma').files[0];
+
+    getBase64(file).then(
+        data => {
+
+        var documents = data;
+
+        console.log(documents);
+
+        var $request = {
+            objeto: {
+                DNI: parseInt($("#txtDni").val()),
+                nombre: ($("#txtNombre").val()),
+                apellidos: ($("#txtApellidos").val()),
+                contraseña: ($("#txtPassword").val()),
+                profesion: ($("#txtProfesion").val()),
+                telefono: ($("#txtTelefono").val()),
+                correo: ($("#txtCorreo").val()),
+                usrImagen: document.getElementById("imagenUser").src,
+            }, documento: documents
+        }
+        console.log($request)
+        jQuery.ajax({
+            url: "/Usuario/Guardar",
+            type: "POST",
+            data: JSON.stringify($request),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data)
+                if (data.resultado) {
+                    tblUsuario.ajax.reload();
+                    $('#FormModal').modal('hide');
+                } else {
+                    swal("Mensaje", "No se pudo guardar los cambios", "warning")
+
+                }
+            },
+            error: function (error) {
+                console.log(error)
+            },
+            beforeSend: function () {
+
+            },
+        });
+
+        }
+    );
 }
 
 function Eliminar($DNI) {

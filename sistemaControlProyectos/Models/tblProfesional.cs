@@ -31,9 +31,7 @@ namespace sistemaControlProyectos.Models
         public string DNI { get; set; }
         public int IDCargo { get; set; }
         public Nullable<int> IDProyectoActual { get; set; }
-
         public List<tblMenu> OListaMenu { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblArea> tblArea { get; set; }
         public virtual tblCargo tblCargo { get; set; }
