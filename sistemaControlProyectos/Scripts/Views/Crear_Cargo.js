@@ -56,7 +56,6 @@ function abrirModal($IDCargo) {
     console.log($IDCargo);
     $("#txtIDCargo").val($IDCargo);
     if ($IDCargo != 0) {
-
         jQuery.ajax({
             url: "/Cargo/Obtener" + "?IDCargo=" + $IDCargo,
             type: "GET",

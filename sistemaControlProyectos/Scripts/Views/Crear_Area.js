@@ -107,7 +107,7 @@ function abrirModal($IDArea) {
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-
+                console.log(data.nomArea);
                 if (data != null) {
                     $("#txtNombre").val(data.nomArea);
                     $("#cboEncargado").val(data.encargado);

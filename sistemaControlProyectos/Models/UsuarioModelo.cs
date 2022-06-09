@@ -52,7 +52,7 @@ namespace sistemaControlProyectos.Models
 
                 try
                 {
-                    db.SP_A_USUARIO(usuario.DNI, usuario.nombre, usuario.apellidos, usuario.contraseña,usuario.firma,usuario.profesion,usuario.correo,usuario.telefono,usuario.usrImagen);
+                    db.SP_A_USUARIO(usuario.DNI, usuario.nombre, usuario.apellidos, usuario.contraseña,usuario.firma.ToString(),usuario.profesion,usuario.correo,usuario.telefono,usuario.usrImagen);
                     db.SaveChanges();
                     return true;
                 }
@@ -74,7 +74,7 @@ namespace sistemaControlProyectos.Models
 
                     try
                     {
-                        db.SP_M_USUARIO(usuario.DNI, usuario.nombre, usuario.apellidos, usuario.contraseña, usuario.firma, usuario.profesion, usuario.correo, usuario.telefono, usuario.usrImagen);
+                        db.SP_M_USUARIO(usuario.DNI, usuario.nombre, usuario.apellidos, usuario.contraseña, usuario.firma.ToString(), usuario.profesion, usuario.correo, usuario.telefono, usuario.usrImagen);
                         db.SaveChanges();
                         return true;
                     }

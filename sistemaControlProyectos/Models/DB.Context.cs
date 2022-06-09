@@ -27,7 +27,11 @@ namespace sistemaControlProyectos.Models
             throw new UnintentionalCodeFirstException();
         }
     
+<<<<<<< Updated upstream
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+=======
+        public virtual DbSet<tblActas> tblActas { get; set; }
+>>>>>>> Stashed changes
         public virtual DbSet<tblActividad> tblActividad { get; set; }
         public virtual DbSet<tblArea> tblArea { get; set; }
         public virtual DbSet<tblCargo> tblCargo { get; set; }
@@ -178,7 +182,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_CUADERNOPROFESIONAL", idProfesionalParameter, iDCuaderObraParameter);
         }
     
-        public virtual ObjectResult<string> SP_A_DOCUMENTO(Nullable<int> iDDoc, string nombreDoc, string realNomb, byte[] dOC)
+        public virtual ObjectResult<string> SP_A_DOCUMENTO(Nullable<int> iDDoc, string nombreDoc, string realNomb, string codigo, byte[] dOC)
         {
             var iDDocParameter = iDDoc.HasValue ?
                 new ObjectParameter("IDDoc", iDDoc) :
@@ -192,11 +196,15 @@ namespace sistemaControlProyectos.Models
                 new ObjectParameter("RealNomb", realNomb) :
                 new ObjectParameter("RealNomb", typeof(string));
     
+            var codigoParameter = codigo != null ?
+                new ObjectParameter("codigo", codigo) :
+                new ObjectParameter("codigo", typeof(string));
+    
             var dOCParameter = dOC != null ?
                 new ObjectParameter("DOC", dOC) :
                 new ObjectParameter("DOC", typeof(byte[]));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_DOCUMENTO", iDDocParameter, nombreDocParameter, realNombParameter, dOCParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_A_DOCUMENTO", iDDocParameter, nombreDocParameter, realNombParameter, codigoParameter, dOCParameter);
         }
     
         public virtual ObjectResult<string> SP_A_MENU(string nombreMenu, string icono)
@@ -502,6 +510,11 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_AREA_Result>("SP_C_AREA");
         }
     
+        public virtual ObjectResult<SP_C_AREAINICIO_Result> SP_C_AREAINICIO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_AREAINICIO_Result>("SP_C_AREAINICIO");
+        }
+    
         public virtual ObjectResult<SP_C_AREAPADRE_Result> SP_C_AREAPADRE()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_AREAPADRE_Result>("SP_C_AREAPADRE");
@@ -534,6 +547,15 @@ namespace sistemaControlProyectos.Models
         public virtual ObjectResult<SP_C_DOCUMENTO_Result> SP_C_DOCUMENTO()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_DOCUMENTO_Result>("SP_C_DOCUMENTO");
+        }
+    
+        public virtual ObjectResult<SP_C_HIJOS_Result> SP_C_HIJOS(Nullable<int> iDArea)
+        {
+            var iDAreaParameter = iDArea.HasValue ?
+                new ObjectParameter("IDArea", iDArea) :
+                new ObjectParameter("IDArea", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_C_HIJOS_Result>("SP_C_HIJOS", iDAreaParameter);
         }
     
         public virtual ObjectResult<SP_C_MENU_Result> SP_C_MENU()
@@ -1359,6 +1381,7 @@ namespace sistemaControlProyectos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_M_USUARIO", dNIParameter, nombreParameter, apellidosParameter, contraseñaParameter, firmaParameter, profesionParameter, correoParameter, telefonoParameter, usrImagenParameter);
         }
     
+<<<<<<< Updated upstream
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
         {
             var diagramnameParameter = diagramname != null ?
@@ -1379,6 +1402,15 @@ namespace sistemaControlProyectos.Models
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+=======
+        public virtual ObjectResult<SP_O_AREA_Result> SP_O_AREA(Nullable<int> iDArea)
+        {
+            var iDAreaParameter = iDArea.HasValue ?
+                new ObjectParameter("IDArea", iDArea) :
+                new ObjectParameter("IDArea", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_O_AREA_Result>("SP_O_AREA", iDAreaParameter);
+>>>>>>> Stashed changes
         }
     }
 }

@@ -25,7 +25,63 @@ namespace sistemaControlProyectos.Models
                 return _instancia;
             }
         }
+        public List<SP_O_AREA_Result> ObtenerArea(int IDArea)
+        {
+            List<SP_O_AREA_Result> listarArea = new List<SP_O_AREA_Result>();
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
 
+                try
+                {
+                    listarArea = db.SP_O_AREA(IDArea).ToList();
+                    return listarArea;
+                }
+                catch (Exception ex)
+                {
+                    return listarArea;
+
+                }
+
+            }
+        }
+
+        public List<SP_C_HIJOS_Result> ListarHijos(int IDArea)
+        {
+            List<SP_C_HIJOS_Result> listarArea = new List<SP_C_HIJOS_Result>();
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+
+                try
+                {
+                    listarArea = db.SP_C_HIJOS(IDArea).ToList();
+                    return listarArea;
+                }
+                catch (Exception)
+                {
+                    return listarArea;
+
+                }
+            }
+        }
+        public List<SP_C_AREAINICIO_Result> ConsultarInicio()
+        {
+            List<SP_C_AREAINICIO_Result> listarArea;
+            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
+            {
+
+                try
+                {
+                    listarArea = db.SP_C_AREAINICIO().ToList();
+                    return listarArea;
+                }
+                catch (Exception ex)
+                {
+                    listarArea = null;
+                    return listarArea;
+                }
+
+            }
+        }
         public List<SP_C_AREA_Result> ListarArea()
         {
             List<SP_C_AREA_Result> listarCargo = new List<SP_C_AREA_Result>();

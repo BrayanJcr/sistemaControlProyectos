@@ -45,18 +45,9 @@ namespace sistemaControlProyectos.Controllers
 
         public JsonResult Obtener(int idArea)
         {
-            tblArea ObtenerArea = new tblArea();
-
-            using (DBControlProyectoEntities db = new DBControlProyectoEntities())
-            {
-
-                ObtenerArea = (from p in db.tblArea.Where(x => x.IDArea == idArea)
-                                    select p).FirstOrDefault();
-            }
-
-            return Json(ObtenerArea, JsonRequestBehavior.AllowGet);
+            List<SP_O_AREA_Result> listar = AreaModelo.Instancia.ObtenerArea(idArea);
+            return Json(new { data = listar }, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public JsonResult Guardar(tblArea objeto)
         {
@@ -78,8 +69,87 @@ namespace sistemaControlProyectos.Controllers
         public JsonResult Eliminar(int IDArea)
         {
             bool respuesta = true;
-            respuesta = Models.AreaModelo.Instancia.EliminarArea(IDArea);
+            respuesta = AreaModelo.Instancia.EliminarArea(IDArea);
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult ObtenerDatos(int IDArea)
+        {
+            List<Area> listar = datos(IDArea);
+            return Json(listar, JsonRequestBehavior.AllowGet);
+        }
+
+        public List<Area> datos(int IDArea)
+        {
+            List<Area> area = null;
+            if (IDArea == 0)
+            {
+                List<SP_C_AREAINICIO_Result> listar = AreaModelo.Instancia.ConsultarInicio().ToList();
+                foreach (var list in listar)
+                {
+                    area = new List<Area>()
+                    {
+                        new Area()
+                        {
+                            id=list.IDArea,
+                            puesto = list.nomArea,
+                            nombre=list.nombre,
+                            hijos=datosHijo(IDArea+1)
+                        }
+                    };
+                }
+            }
+            else
+            {
+                IDArea += 1;
+                List<SP_O_AREA_Result> listar = AreaModelo.Instancia.ObtenerArea(IDArea);
+                foreach (var list in listar)
+                {
+                    area = new List<Area>()
+                    {
+                        new Area()
+                        {
+                            id=list.IDArea,
+                            puesto = list.nomArea,
+                            nombre=list.nombre,
+                            hijos=datosHijo(IDArea)
+                        }
+                    };
+                }
+            }
+            return area;
+        }
+        public Area[] datosHijo(int IDArea)
+        {
+            Area[] data;
+            List<SP_C_HIJOS_Result> listar = AreaModelo.Instancia.ListarHijos(IDArea).ToList();
+            if (listar.Count == 0)
+            {
+                data = new Area[0];
+            }
+            else
+            {
+                data = new Area[listar.Count];
+                Area area;
+                int i = 0;
+                foreach (var list in listar)
+                {
+
+                    area = new Area()
+                    {
+                        id = list.IDArea,
+                        puesto = list.nomArea,
+                        nombre = list.nombre,
+                        hijos = datosHijo(list.IDArea),
+                    };
+                    data[i] = area;
+                    i++;
+                }
+
+
+
+
+            }
+            return data;
         }
     }
 }

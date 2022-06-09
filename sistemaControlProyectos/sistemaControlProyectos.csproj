@@ -242,6 +242,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
+    <Compile Include="Models\Area.cs" />
     <Compile Include="Models\Conexion.cs" />
     <Compile Include="Controllers\ActividadesController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
@@ -287,6 +288,9 @@
     <Compile Include="Models\SP_C_ACTIVIDAD_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_C_AREAINICIO_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_C_AREAPADRE_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -303,6 +307,9 @@
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_DOCUMENTO_Result.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_C_HIJOS_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_C_MENU_Result.cs">
@@ -368,10 +375,14 @@
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_M_ActualizarPermisos_Result.cs">
+=======
+    <Compile Include="Models\SP_O_AREA_Result.cs">
+>>>>>>> Stashed changes
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
@@ -444,6 +455,7 @@
     <Content Include="Content\actas\Actas.css" />
     <Content Include="Content\Actividades\Actividades.css" />
     <Content Include="Content\Actividades\Gantt.css" />
+    <Content Include="Content\Area\Area.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -2219,7 +2231,12 @@
       <DependentUpon>DB.edmx</DependentUpon>
       <LastGenOutput>DB.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\html2canvas.min.js" />
+    <Content Include="Scripts\html2pdf.min.js" />
+    <Content Include="Scripts\jspdf.debug.js" />
     <Content Include="Scripts\Views\Crear_Actas.js" />
+    <Content Include="Scripts\Views\Data.js" />
+    <Content Include="Scripts\Views\DescargarOrga.js" />
     <Content Include="Scripts\Views\DragAndDrop.js" />
     <Content Include="Content\login\css\campo.css" />
     <Content Include="Content\login\css\login.css" />
@@ -2545,13 +2562,17 @@
     <Content Include="Scripts\Views\Crear_Reporte.js" />
     <Content Include="Scripts\Views\Crear_Reunion.js" />
     <Content Include="Scripts\Views\Crear_Usuario.js" />
+    <Content Include="Scripts\Views\Filtro.js" />
     <Content Include="Scripts\Views\Gantt.js" />
+    <Content Include="Scripts\Views\Organigrama.js" />
     <Content Include="Scripts\Views\OrganigramaArea.js" />
     <Content Include="Scripts\Views\Profesional_Asignar.js" />
     <Content Include="Scripts\Views\Profesional_AsignarProye.js" />
     <Content Include="Scripts\Views\Recurso_Asignar.js" />
     <Content Include="Scripts\Views\Reporte_Tabla.js" />
     <Content Include="Scripts\Views\ValidarActividades.js" />
+    <Content Include="Scripts\xml2json.js" />
+    <Content Include="Scripts\vkbeautify.0.99.00.beta.js" />
     <Content Include="Views\img\brayan.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

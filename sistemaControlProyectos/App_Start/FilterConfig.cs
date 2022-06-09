@@ -9,6 +9,7 @@ namespace sistemaControlProyectos
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new filters.VerificaSession());
+            
 
         }
     }

@@ -56,7 +56,7 @@ namespace sistemaControlProyectos.Controllers
             //}
             //return Json(new { data = listarActividad }, JsonRequestBehavior.AllowGet);
 
-            List<SP_C_PROYECTOLISTA_Result> lista = Models.ProyectosModelo.Instancia.ListarTabla();
+            List<SP_C_PROYECTOLISTA_Result> lista = ProyectosModelo.Instancia.ListarTabla();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
 
@@ -64,15 +64,15 @@ namespace sistemaControlProyectos.Controllers
         [HttpPost]
         public JsonResult Guardar(tblProyecto objeto)
         {
-            bool respuesta = false;
+            bool respuesta;
 
             if (objeto.IDProyecto == 0)
             {
-                respuesta = Models.ProyectosModelo.Instancia.RegistrarProyecto(objeto);
+                respuesta = ProyectosModelo.Instancia.RegistrarProyecto(objeto);
             }
             else
             {
-                respuesta = Models.ProyectosModelo.Instancia.ModificarProyecto(objeto);
+                respuesta = ProyectosModelo.Instancia.ModificarProyecto(objeto);
             }
 
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
@@ -80,8 +80,7 @@ namespace sistemaControlProyectos.Controllers
 
         public JsonResult Eliminar(int IDProyecto)
         {
-            bool respuesta = true;
-            respuesta = Models.ProyectosModelo.Instancia.EliminarProyecto(IDProyecto);
+            bool respuesta = ProyectosModelo.Instancia.EliminarProyecto(IDProyecto);
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
 
@@ -90,16 +89,14 @@ namespace sistemaControlProyectos.Controllers
         [HttpGet]
         public JsonResult ListarAsignacion()
         {
-            List<SP_C_PROYECTOPROFESIONAL_Result> lista = Models.ProyectosModelo.Instancia.ListarProyectoProfesional();
+            List<SP_C_PROYECTOPROFESIONAL_Result> lista = ProyectosModelo.Instancia.ListarProyectoProfesional();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
         public JsonResult GuardarProyectoProfes(tblProfesional_Proyecto objeto)
         {
-            bool respuesta = false;
-
-            respuesta = Models.ProyectosModelo.Instancia.RegistrarProyectoProfesional(objeto);
+            bool respuesta = ProyectosModelo.Instancia.RegistrarProyectoProfesional(objeto);
 
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
@@ -107,8 +104,7 @@ namespace sistemaControlProyectos.Controllers
         [HttpGet]
         public JsonResult EliminarProyectoProfes(int idProfeProyecto)
         {
-            bool respuesta = true;
-            respuesta = Models.ProyectosModelo.Instancia.EliminarAsigProfesional(idProfeProyecto);
+            bool respuesta = ProyectosModelo.Instancia.EliminarAsigProfesional(idProfeProyecto);
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
 

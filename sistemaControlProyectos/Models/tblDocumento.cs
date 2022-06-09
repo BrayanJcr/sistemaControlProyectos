@@ -19,16 +19,20 @@ namespace sistemaControlProyectos.Models
         {
             this.tblCuadernoObra = new HashSet<tblCuadernoObra>();
             this.tblReporte = new HashSet<tblReporte>();
+            this.tblUsuario = new HashSet<tblUsuario>();
         }
     
         public int IDDoc { get; set; }
         public string NombreDoc { get; set; }
         public string RealNomb { get; set; }
-        public byte[] DOC { get; set; }
+        public string DOC { get; set; }
+        public string codigo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCuadernoObra> tblCuadernoObra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblReporte> tblReporte { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblUsuario> tblUsuario { get; set; }
     }
 }

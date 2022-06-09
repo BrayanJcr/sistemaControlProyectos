@@ -38,7 +38,7 @@ function buscar() {
     }
     //OBTENER PERMISOS
     jQuery.ajax({
-        url: "/Permisos/Listar"+ "?IDCargo=" + $("#cboRol").val(),
+        url: "/Permisos/Listar?IDCargo=" + $("#cboRol").val(),
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",

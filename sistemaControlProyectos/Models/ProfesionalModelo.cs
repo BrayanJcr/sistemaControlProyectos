@@ -37,7 +37,7 @@ namespace sistemaControlProyectos.Models
                     listarProfesional = db.SP_C_PROFESIONAL().ToList();
                     return listarProfesional;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     listarProfesional = null;
                     return listarProfesional;

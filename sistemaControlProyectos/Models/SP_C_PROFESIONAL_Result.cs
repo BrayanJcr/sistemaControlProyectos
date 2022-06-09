@@ -17,10 +17,11 @@ namespace sistemaControlProyectos.Models
         public string DNI { get; set; }
         public string nombre { get; set; }
         public string apellidos { get; set; }
+        public string nomArea { get; set; }
         public int IDCargo { get; set; }
         public string nomCargo { get; set; }
         public string contraseña { get; set; }
-        public string firma { get; set; }
+        public Nullable<int> firma { get; set; }
         public string profesion { get; set; }
         public string correo { get; set; }
         public string telefono { get; set; }

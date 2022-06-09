@@ -16,6 +16,7 @@ namespace sistemaControlProyectos.Models
         public int IDDoc { get; set; }
         public string NombreDoc { get; set; }
         public string RealNomb { get; set; }
-        public byte[] DOC { get; set; }
+        public string DOC { get; set; }
+        public string codigo { get; set; }
     }
 }
